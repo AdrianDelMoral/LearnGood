@@ -1,17 +1,18 @@
 <x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <a href="/">
-                <img src="imagenes/form_LogReg/logo.jpg" alt="logo" style="width:4rem; height:4rem;">
-            </a>
-            {{-- <x-jet-authentication-card-logo /> --}}
-        </x-slot>
+    <x-jet-authentication-card> {{-- vendor\laravel\jetstream\resources\views\components\authentication-card.blade.php --}}
+
         <form method="POST" action="{{ route('register') }}">
             @csrf
+            <div class="py-5 flex justify-center">
+                <a href="/">
+                    <img src="imagenes/form_LogReg/logo.png" alt="logo" style="width:4rem; height:4rem;">
+                </a>
+            </div>
 
             <div class="mt-4">
                 <x-jet-label for="role_id" value="{{ __('Registrarme Como:') }}" />
-                <select name="role_id" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                <select name="role_id"
+                    class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
                     <option selected disabled>Selecciona tu Tipo de Usuario</option>
                     <option value="Alumno">Alumno</option>
                     <option value="Profesor">Profesor</option>
@@ -52,11 +53,12 @@
                     </x-jet-label>
                 </div>
             @endif
+
             <x-jet-validation-errors class="mb-4" />
             <div class="flex items-center justify-end mt-4"> <a
-                    class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }} </a>
-                <x-jet-button class="ml-4"> {{ __('Register') }} </x-jet-button>
+                    class="underline text-sm text-white transition-all hover:text-gray-900" href="{{ route('login') }}">
+                    {{ __('Ya registrado?') }} </a>
+                <x-jet-button class="ml-4"> {{ __('Registrarme') }} </x-jet-button>
             </div>
         </form>
     </x-jet-authentication-card>
