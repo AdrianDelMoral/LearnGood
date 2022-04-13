@@ -1,0 +1,139 @@
+a {
+    text-decoration: none;
+}
+
+/* Nav */
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav__div_primero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    text-align: center;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    margin-left: 2rem;
+}
+
+.nav__div_segundo {
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+.navTitle {
+    margin-left: 2rem;
+    color: #fff;
+}
+
+.nav__div_segundo__subdiv {
+    display: flex;
+    text-align: center;
+}
+
+/* Botones NavBar */
+.boton_div-nav {
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    border: 2px solid transparent;
+    border-radius: 0.5rem;
+    background:
+        linear-gradient(#111827 0 0) padding-box,
+        /*this is your #111827 background*/
+        linear-gradient(40deg, #3f83f8 0%, #7e3af2 100%) border-box;
+    padding: .8rem 1.5rem .8rem 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.boton_div-nav a:visited {
+    color: white;
+}
+
+
+.boton_div-nav:hover {
+    background: linear-gradient(40deg, #3f83f8 0%, #7e3af2 100%) border-box;
+}
+
+
+/* Footer  */
+.izquierda a {
+    text-decoration: none;
+    color: #4b4b4b;
+}
+
+.izquierda a:visited {
+    color: #4b4b4b;
+}
+
+.bordes {
+    margin: 2rem 1rem 1rem 1rem;
+}
+
+.bordes__ordenar {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.bordes__ordenar li {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.bordes__ordenar li:hover {
+    background: #f2f2f2;
+}
+
+.bordes__ordenar li a {
+    padding: 1rem;
+}
+
+.bordes__ordenar li img {
+    margin: 0 1rem 0 1rem;
+}
+
+.izquierda {
+    padding-left: 0;
+}
+
+.margenFooter {
+    margin: 0 2rem 0 2rem;
+}
+
+.margenFooter span {
+    padding: 0 0 0 1rem;
+    font-weight: 600;
+    margin-bottom: 5rem;
+}
+
+.end {
+    border-top: 1px solid #ccc;
+    text-align: center;
+    padding: .5rem;
+    font-size: .8rem;
+}
+
+footer {
+    border-top: 1px solid #ccc;
+}
+
+/* Medias Queries */
+@media (max-width: 768px) {
+    .bordes__ordenar {
+        flex-wrap: wrap;
+    }
+}

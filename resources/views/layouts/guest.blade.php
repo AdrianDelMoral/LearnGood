@@ -28,7 +28,7 @@
         <x-navbar />
     {{-- FIN Navbar --}}
 
-    <div class="font-sans text-gray-900 antialiased">
+    <div class="font-sans antialiased">
         {{ $slot }}
     </div>
 </body>
