@@ -1,135 +1,168 @@
-<nav class="nav bg-dark">
-    <div class="nav__div_primero">
-        <a href="/">
-            <img src="imagenes/form_LogReg/logo.png" alt="logo" style="width:4rem; height:4rem;">
-        </a>
-        <h1 class="navTitle">Learn Good</h1>
+{{-- <nav class="navbar navbar-expand-xxl navbar-dark bg-dark" aria-label="Seventh navbar example">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Expand at xxl</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExampleXxl"
+            aria-controls="navbarsExampleXxl" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleXxl">
+            <ul class="navbar-nav me-auto mb-2 mb-xl-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled">Disabled</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdownXxl" data-bs-toggle="dropdown"
+                        aria-expanded="false">Dropdown</a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownXxl">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form>
+                <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+            </form>
+        </div>
     </div>
-    <div class="nav__div_segundo">
-        @if (Route::has('login'))
-            @auth
-                <a href="{{ route('profile.show') }}">
-                    <button class="boton_div-nav mx-3">
-                        <span class="boton_div-span">
-                            Perfil
-                        </span>
-                    </button>
+</nav> --}}
+<nav class="navbar navbar-expand-xl navbar-dark bg-dark" aria-label="Seventh navbar example">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExampleXxl"
+            aria-controls="navbarsExampleXxl" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="contenidoNav collapse navbar-collapse" id="navbarsExampleXxl">
+            <div class=" nav__div_primero">
+                <a href="/">
+                    <x-jet-application-mark/>
+                    {{-- <img src="{{ asset('imagenes/form_LogReg/logo.png') }}" alt="logo" style="width:4.8rem; height:4rem;"> --}}
                 </a>
-            @else
-                <div class="nav__div_segundo__subdiv">
-                    <a href="{{ route('login') }}">
-                        <button class="boton_div-nav mx-3">
-                            <span class="boton_div-span">
-                                Iniciar Sesión
-                            </span>
-                        </button>
-                    </a>
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}">
-                            <button class="boton_div-nav mx-3">
-                                <span class="boton_div-span">
-                                    Registrarse
-                                </span>
-                            </button>
-                        </a>
-                    @endif
-                @endauth
+                <h1 class="navTitle">Learn Good</h1>
             </div>
-        @endif
+            <div class="nav__div_segundo">
+                <div class="btn-group">
+                    <button type="button" class="btn boton_div-nav mx-3 dropdown-toggle" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <div class="fotoPerfil">
+                            <div class="cajaImg">
+                                @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
+                                    <div
+                                        class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
+                                        <img class="h-8 w-8 rounded-full object-cover"
+                                            src="{{ Auth::user()->profile_photo_url }}"
+                                            alt="{{ Auth::user()->role_id }}" />
+                                    </div>
+                                @else
+                                    <h1>{{ Auth::user()->nombre }} - Rol: {{ Auth::user()->role_id }}
+                                    </h1>
+                                @endif
+                            </div>
+                        </div>
+                        Perfil
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        @auth
+                            <li>
+                                <a class="dropdown-item" href="{{ route('profile.show') }}">Perfil</a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="{{-- {{ route('Profesor.show') }} --}}">Perfil Vista Alumno</a>
+                            </li>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" id="logout" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault(); this.closest('form').submit();">
+                                        Cerrar Sesión
+                                    </a>
+                                </li>
+                            </form>
+                        @else
+                            <li>
+                                <a class="dropdown-item" href="{{ route('login') }}">Iniciar Sesión</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{{ route('register') }}">Registrarse</a>
+                            </li>
+                        @endauth
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 </nav>
-{{-- <div class="ml-3 relative">
-    <x-jet-dropdown align="right" width="48">
-        <x-slot name="trigger">
+
+{{-- <div class="navigation">
+    <div class="menu_toggle"></div>
+    <div class="profile">
+        <div class="imgBx">
             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-                <button
+                <div
                     class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
                     <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}"
                         alt="{{ Auth::user()->role_id }}" />
-                </button>
-            @else
-                <span class="inline-flex rounded-md">
-                    <button type="button"
-                        class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition">
-                        {{ Auth::user()->nombre }} - Rol:
-                        {{ Auth::user()->role_id }}
-
-                        <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                            fill="currentColor">
-                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                        </svg>
-                    </button>
-                </span>
-            @endif
-        </x-slot>
-
-        <x-slot name="content">
-            <!-- Account Management -->
-            <div class="block px-4 py-2 text-xs text-gray-400">
-                {{ __('Manage Account') }}
-            </div>
-
-            <x-jet-dropdown-link href="{{ route('profile.show') }}">
-                {{ __('Profile') }}
-            </x-jet-dropdown-link>
-
-            @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
-                <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
-                    {{ __('API Tokens') }}
-                </x-jet-dropdown-link>
-            @endif
-
-            <div class="border-t border-gray-100"></div>
-
-            <!-- Authentication -->
-            <form method="POST" action="{{ route('logout') }}" x-data>
-                @csrf
-
-                <x-jet-dropdown-link href="{{ route('logout') }}" @click.prevent="$root.submit();">
-                    {{ __('Log Out') }}
-                </x-jet-dropdown-link>
-            </form>
-        </x-slot>
-    </x-jet-dropdown>
-</div> --}}
-{{-- <nav>
-    <div class="ml-8 py-5 flex justify-between text-4xl xs:text-2xl text-center items-center">
-        <a href="/">
-            <img src="imagenes/form_LogReg/logo.png" alt="logo" style="width:4rem; height:4rem;">
-        </a>
-        <h1 class="ml-8">Learn Good</h1>
-    </div>
-    @if (Route::has('login'))
-        <div class="mx-8">
-            @auth
-                <button>
-                    <span>
-                        <a href="{{ url('/dashboard') }}">
-                            Dashboard
-                        </a>
-                    </span>
-                </button>
-            @else
-                <div class="flex text-center">
-                    <button>
-                        <span>
-                            <a href="{{ route('login') }}">
-                                Iniciar Sesión
-                            </a>
-                        </span>
-                    </button>
-                    @if (Route::has('register'))
-                        <button>
-                            <span>
-                                <a href="{{ route('register') }}">
-                                    Registrarse
-                                </a>
-                            </span>
-                        </button>
-                    @endif
                 </div>
-            @endauth
+            @else
+                <h1>{{ Auth::user()->nombre }} - Rol: {{ Auth::user()->role_id }}
+                </h1>
+            @endif
         </div>
-    @endif
+    </div>
+    <ul class="menu">
+        <li>
+            <a href="#">
+                <span class="icon">
+                    <ion-icon name="person-outline"></ion-icon>
+                </span>
+                <span class="text">Profile</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="icon">
+                    <ion-icon name="chatbox-outline"></ion-icon>
+                </span>
+                <span class="text">Inbox</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="icon">
+                    <ion-icon name="settings-outline"></ion-icon>
+                </span>
+                <span class="text">Settings</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="icon">
+                    <ion-icon name="help-circle-outline"></ion-icon>
+                </span>
+                <span class="text">Support</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="icon">
+                    <ion-icon name="log-out-outline"></ion-icon>
+                </span>
+                <span class="text">Logout</span>
+            </a>
+        </li>
+    </ul>
+</div> --}}
 
-</nav> --}}

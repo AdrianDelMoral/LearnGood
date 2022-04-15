@@ -33,3 +33,7 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+
+Route::get('mi-perfil/{id}', [ProfesorController::class, 'index'])->name('Profesor.index');
+

@@ -71,6 +71,40 @@
             <x-jet-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="state.email" />
             <x-jet-input-error for="email" class="mt-2" />
         </div>
+
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="descripcion" value="{{ __('Descripcion') }}" />
+            {{-- <x-jet-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="state.email" /> --}}
+
+            @if (Auth::user()->descripcion === null)
+                <textarea name="" id="" type="textarea" cols="61" rows="10" class="mt-1 rounded rounded-3" placeholder="Escribe aquí una descripción que defina tus aptitudes y especialidades"
+                    wire:model.defer="state.descripcion">
+
+                </textarea>
+            @else
+            <textarea name="" id="" type="textarea" cols="61" rows="10" class="mt-1 rounded rounded-3" placeholder="Escribe aquí una descripción que defina tus aptitudes y especialidades"
+                    wire:model.defer="state.descripcion">
+                    <p>{{ Auth::user()->descripcion }}</p>
+
+                </textarea>
+            @endif
+
+            <x-jet-input-error for="descripcion" class="mt-2" />
+        </div>
+
+        {{-- <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="textarea" value="{{ __('descripcion') }}" />
+            <textarea name="" id="" cols="61" rows="10" class="mt-1 rounded rounded-3" placeholder="Descripcion" wire:model.defer="state.descripcion">
+                @if (Auth::user()->descripcion === null)
+                    La descripción del usuario actualmente está vacia. Prueba a rellenar el campo desde
+                        el formulario proporcionado con el boton editar.
+                @else
+
+                @endif
+                <x-jet-input-error for="descripcion" class="mt-2" />
+            </textarea>
+            <x-jet-input-error for="email" class="mt-2" />
+        </div> --}}
     </x-slot>
 
     <x-slot name="actions">

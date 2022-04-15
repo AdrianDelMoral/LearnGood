@@ -23,7 +23,24 @@ return new class extends Migration
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
+            $table->string('descripcion')->nullable();
+
             $table->timestamps();
+
+            //      /* Tablas que usará solo profesor */
+            //      // tabla de precios
+            //      $table->int('precios')->nullable();
+
+            //      // tabla redes Sociales
+            //      $table->string('redes_sociales')->nullable();
+            //      // tabla especialidades
+            //      $table->string('especialidades')->nullable();
+            //      // tabla alumnos
+            //      $table->string('solicitudes_de_alumnos')->nullable();
+
+            //      /* Tablas que usará solo alumno */
+            //      $table->string('links_de_contacto')->nullable();
+
         });
     }
 

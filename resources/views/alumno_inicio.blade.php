@@ -18,6 +18,7 @@
 
     <!-- Link CSS locales-->
     <link rel="stylesheet" href="{{ URL::asset('css/navFooter.css') }}">{{-- Se incluirá el css de public/css/navFooter.css --}}
+    <link rel="stylesheet" href="{{ URL::asset('css/alumno/alumno_inicio.css') }}">{{-- Se incluirá el css de public/css/navFooter.css --}}
 
     <title>@yield('titulo')</title>{{-- Titulo de Dashboard - Inicio --}}
 </head>
