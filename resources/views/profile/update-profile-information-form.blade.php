@@ -74,22 +74,58 @@
 
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="descripcion" value="{{ __('Descripcion') }}" />
-            {{-- <x-jet-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="state.email" /> --}}
-
             @if (Auth::user()->descripcion === null)
-                <textarea name="" id="" type="textarea" cols="61" rows="10" class="mt-1 rounded rounded-3" placeholder="Escribe aquí una descripción que defina tus aptitudes y especialidades"
-                    wire:model.defer="state.descripcion">
+                <textarea name="descripcion" id="descripcion" type="textarea" rows="5" class="w-100 mt-1 rounded rounded-3"
+                    placeholder="Escribe aquí una descripción que defina tus aptitudes y especialidades"
+                    wire:model.defer="state.descripcion" maxlength="255" style="resize: none;">
 
                 </textarea>
             @else
-            <textarea name="" id="" type="textarea" cols="61" rows="10" class="mt-1 rounded rounded-3" placeholder="Escribe aquí una descripción que defina tus aptitudes y especialidades"
-                    wire:model.defer="state.descripcion">
-                    <p>{{ Auth::user()->descripcion }}</p>
-
+                <textarea name="descripcion" id="descripcion" type="textarea" rows="5" class="w-100 mt-1 rounded rounded-3"
+                    placeholder="Escribe aquí una descripción que defina tus aptitudes y especialidades"
+                    wire:model.defer="state.descripcion" maxlength="255" style="resize: none;">
+                    {{ Auth::user()->descripcion }}
                 </textarea>
             @endif
 
             <x-jet-input-error for="descripcion" class="mt-2" />
+        </div>
+        <div class="col-span-6 sm:col-span-4 flex flex-wrap">
+            <div class="w-50 md:w-1/2 pr-4">
+                @if (Auth::user()->pais === null)
+                    <div class="col-span-6 sm:col-span-4">
+                        <x-jet-label for="pais" value="{{ __('País') }}" />
+                        <x-jet-input id="pais" type="text" class="mt-1 block w-full" wire:model.defer="state.pais"
+                            autocomplete="pais" placeholder="País" maxlength="27" />
+                        <x-jet-input-error for="pais" class="mt-2" />
+                    </div>
+                @else
+                    <div class="col-span-6 sm:col-span-4">
+                        <x-jet-label for="pais" value="{{ __('País') }}" />
+                        <x-jet-input id="pais" type="text" class="mt-1 block w-full" wire:model.defer="state.pais"
+                            autocomplete="pais" placeholder="País" value="{{ Auth::user()->pais }}" maxlength="27"/>
+                        <x-jet-input-error for="pais" class="mt-2"/>
+                    </div>
+                @endif
+            </div>
+
+            <div class="w-50 md:w-1/2 pl-4">
+                @if (Auth::user()->ciudad === null)
+                    <div class="col-span-6 sm:col-span-4">
+                        <x-jet-label for="ciudad" value="{{ __('Ciudad') }}" />
+                        <x-jet-input id="ciudad" type="text" class="mt-1 block w-full" wire:model.defer="state.ciudad"
+                            autocomplete="ciudad" placeholder="Ciudad" maxlength="27" />
+                        <x-jet-input-error for="ciudad" class="mt-2" />
+                    </div>
+                @else
+                    <div class="col-span-6 sm:col-span-4">
+                        <x-jet-label for="ciudad" value="{{ __('Ciudad') }}" />
+                        <x-jet-input id="ciudad" type="text" class="mt-1 block w-full" wire:model.defer="state.ciudad"
+                            autocomplete="ciudad" placeholder="Ciudad" value="{{ Auth::user()->ciudad }}" maxlength="27" />
+                        <x-jet-input-error for="ciudad" class="mt-2" />
+                    </div>
+                @endif
+            </div>
         </div>
 
         {{-- <div class="col-span-6 sm:col-span-4">

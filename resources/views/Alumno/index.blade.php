@@ -12,8 +12,8 @@
             </div>
         </article>
     </section> --}}
-    <section class="container rounded bg-white mt-5 mb-5">
-        <article class="row">
+    <div class="container rounded bg-white mt-5 mb-5">
+        <div class="row">
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                     <img class="rounded-circle mt-5" width="150px" height="150px"
@@ -29,14 +29,10 @@
                         <h4 class="text-right">Ajustes de Perfil - {{ Auth::user()->role_id }}</h4>
                     </div>
                     <div class="row mt-2">
-                        <div class="col-md-6">
-                            <label class="labels">Nombre</label>
-                            <input type="text" class="form-control" placeholder="Nombre" value="">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="labels">Apellidos</label>
-                            <input type="text" class="form-control" value="" placeholder="Apellidos">
-                        </div>
+                        <div class="col-md-6"><label class="labels">Nombre</label><input type="text"
+                                class="form-control" placeholder="Nombre" value=""></div>
+                        <div class="col-md-6"><label class="labels">Apellidos</label><input type="text"
+                                class="form-control" value="" placeholder="Apellidos"></div>
                     </div>
                     <div class="row mt-3">
                         <fieldset disabled>
@@ -45,12 +41,21 @@
                                 <input type="text" class="form-control" value="email@gmail.com" bloqued>
                             </div>
                         </fieldset>
-                        <div class="col-md-12 mb-3">
-                            <label for="descripcion" class="labels">Descripción sobre el Profesor</label>
-                            <textarea class="form-control" id="descripcion" rows="3" placeholder="Escribe una pequeña descripción sobre ti">
+                        @if (Auth::user()->descripcion === null)
+                            <div class="col-md-12 mb-3">
+                                <label for="descripcion" class="labels">Descripción sobre el
+                                    Profesor</label>
+                                <textarea class="form-control" rows="3"
+                                    placeholder="Escribe aquí una descripción que defina tus aptitudes y especialidades"></textarea>
+                            </div>
+                        @else
+                            <div class="col-md-12 mb-3">
+                                <label for="descripcion" class="labels">Descripción sobre el Profesor</label>
+                                <textarea class="form-control" rows="3"
+                                    placeholder="Escribe aquí una descripción que defina tus aptitudes y especialidades">{{ Auth::user()->descripcion }}</textarea>
+                            </div>
+                        @endif
 
-                            </textarea>
-                        </div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-6">
@@ -71,8 +76,8 @@
                 <div class="p-3 py-5">
                     <div class="d-flex justify-content-between align-items-center experience mb-4 rounded">
                         <span class="border px-3 p-1 add-experience rounded-3 bg_dark_text_light">
-                            <i class="fa fa-plus">
-                            </i>Editar Especialidades</span>
+                            Editar Especialidades
+                        </span>
                     </div>
 
                     <div class="col-md-12 mb-4">
@@ -85,6 +90,6 @@
                     </div>
                 </div>
             </div>
-        </article>
-    </section>
+        </div>
+    </div>
 @endsection

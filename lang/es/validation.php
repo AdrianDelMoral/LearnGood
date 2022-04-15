@@ -86,7 +86,7 @@ return [
         'array' => 'El :attribute no debe tener más de :max elementos.',
         'file' => 'El :attribute no debe ser mayor que :max kilobytes.',
         'numeric' => 'El :attribute no debe ser mayor que :max.',
-        'string' => 'El :attribute no debe tener más de :máx caracteres.',
+        'string' => 'El :attribute no debe tener más de :max caracteres.',
     ],
     'mimes' => 'El :attribute debe ser un archivo de tipo: :values.',
     'mimetypes' => 'El :attribute debe ser un archivo de tipo: :values.',

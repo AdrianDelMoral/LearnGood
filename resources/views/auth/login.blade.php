@@ -16,13 +16,13 @@
                 </a>
             </div>
             <div class="block mb-4">
-                <x-jet-label for="email" value="{{ __('Email') }}" />
+                <x-jet-label for="email" value="{{ __('Email') }}" class="text-white" />
                 <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required
                     autofocus />
             </div>
 
             <div class="block pb-5">
-                <x-jet-label for="password" value="{{ __('Contraseña') }}" />
+                <x-jet-label for="password" value="{{ __('Contraseña') }}" class="text-white" />
                 <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required
                     autocomplete="current-password" />
             </div>
@@ -36,7 +36,7 @@
 
             <x-jet-validation-errors class="mx-4" />
 
-            <div class="flex items-center justify-end mt-4">
+            <div class="flex items-center justify-end mt-5 pt-5">
                 @if (Route::has('password.request'))
                     <a class="underline text-sm text-white hover:text-gray-900 transition-all"
                         href="{{ route('password.request') }}">
@@ -46,7 +46,7 @@
 
 
 
-                <x-jet-button class="ml-4">
+                <x-jet-button class="ml-5">
                     {{ __('Iniciar Sesión') }}
                 </x-jet-button>
             </div>
