@@ -245,7 +245,7 @@
         <div class="contenidoNav collapse navbar-collapse" id="navbarsExampleXxl">
             <div class=" nav__div_primero">
                 <a href="/">
-                    <img src="{{ asset('imagenes/form_LogReg/logo.png') }}" alt="logo" style="width:4.8rem; height:4rem;">
+                    <img src="{{ asset('imagenes/generales/logo.png') }}" alt="logo" style="width:4.8rem; height:4rem;">
                 </a>
                 <h1 class="navTitle">Learn Good</h1>
             </div>

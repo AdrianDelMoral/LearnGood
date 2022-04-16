@@ -1,7 +1,7 @@
 <nav class="flex justify-between text-white text-center items-center bg-gray-900">
     <div class="ml-8 py-5 flex justify-between text-4xl xs:text-2xl text-center items-center">
         <a href="/">
-            <img src="imagenes/form_LogReg/logo.png" alt="logo" style="width:4.8rem; height:4rem;">
+            <img src="{{ asset('imagenes/generales/logo.png') }}" alt="logo" style="width:4.8rem; height:4rem;">
         </a>
         <h1 class="ml-8">Learn Good</h1>
     </div>

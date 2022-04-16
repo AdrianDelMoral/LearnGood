@@ -44,7 +44,7 @@
             <div class=" nav__div_primero">
                 <a href="/">
                     <x-jet-application-mark/>
-                    {{-- <img src="{{ asset('imagenes/form_LogReg/logo.png') }}" alt="logo" style="width:4.8rem; height:4rem;"> --}}
+                    {{-- <img src="{{ asset('imagenes/generales/logo.png') }}" alt="logo" style="width:4.8rem; height:4rem;"> --}}
                 </a>
                 <h1 class="navTitle">Learn Good</h1>
             </div>

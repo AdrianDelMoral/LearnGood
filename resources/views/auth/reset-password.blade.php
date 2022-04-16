@@ -2,7 +2,7 @@
     <x-jet-authentication-card>
         <x-slot name="logo">
             <a href="/">
-                <img src="imagenes/form_LogReg/logo.jpg" alt="logo" style="width:4rem; height:4rem;">
+                <img src="imagenes/generales/logo.jpg" alt="logo" style="width:4rem; height:4rem;">
             </a>
             {{-- <x-jet-authentication-card-logo /> --}}
         </x-slot>

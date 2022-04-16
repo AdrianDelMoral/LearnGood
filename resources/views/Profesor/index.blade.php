@@ -1,4 +1,4 @@
-@extends('solicitados_inicio')
+@extends('profesor_inicio')
 @section('titulo', 'Página Principal')
 @section('cuerpo')
     <a href=""><button>Ver mis solicitudes</button></a>

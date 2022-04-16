@@ -5,7 +5,7 @@
             @csrf
             <div class="py-5 flex justify-center">
                 <a href="/">
-                    <img src="imagenes/form_LogReg/logo.png" alt="logo" style="width:4.8rem; height:4rem;">
+                    <img src="imagenes/generales/logo.png" alt="logo" style="width:4.8rem; height:4rem;">
                 </a>
             </div>
 
