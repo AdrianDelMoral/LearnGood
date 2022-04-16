@@ -7,14 +7,47 @@
 
     <div>
 
-        {{-- <div class="container rounded bg-white mt-5 mb-5">
+        <div class="container rounded bg-white mt-5 mb-5">
             <div class="row">
                 <div class="col-md-3 border-right">
                     <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                        <img class="rounded-circle mt-5" width="150px" height="150px"
-                            src="https://i.blogs.es/7436bd/descarga/1366_521.jpeg"><span
-                            class="font-weight-bold mt-4">{{ Auth::user()->nombre }} {{ Auth::user()->apellidos }}</span>
+
+                        <div class="cajaImg_profesor">
+                            @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
+                                <div
+                                    class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
+                                    <img class="rounded-circle img-fluid overflow-hidden"
+                                        src="{{ Auth::user()->profile_photo_url }}"
+                                        alt="{{ Auth::user()->role_id }}" width="150px" height="150px" />
+                                </div>
+                            @else
+                                <h1>{{ Auth::user()->nombre }} - Rol: {{ Auth::user()->role_id }}
+                                </h1>
+                            @endif
+                        </div>
+                        <span class="font-weight-bold mt-4">{{ Auth::user()->nombre }}
+                            {{ Auth::user()->apellidos }}</span>
                         <span class="text-black-50 mt-2">{{ Auth::user()->email }}</span>
+                        {{-- inicio bucle redes sociales --}}
+                        <div class="div_socials d-flex flex-row align-items-center text-center mt-3">
+                            {{-- si es github --}}
+                            <a href="{{-- {{ Auth::user()->redes_sociales->link->github }} --}}" class="social m-3">
+                                <span class="fa-brands fa-2x fa-github"></span>
+                            </a>
+                            {{-- si es linkedin --}}
+                            <a href="{{-- {{ Auth::user()->redes_sociales->link->linkedin }} --}}" class="social m-3">
+                                <span class="fa-brands fa-2x fa-linkedin"></span>
+                            </a>
+                            {{-- si es discord --}}
+                            <a href="{{-- {{ Auth::user()->redes_sociales->link->discord }} --}}" class="social m-3">
+                                <span class="fa-brands fa-2x fa-discord"></span>
+                            </a>
+                            {{-- si es facebook --}}
+                            <a href="{{-- {{ Auth::user()->redes_sociales->link->facebook }} --}}" class="social m-3">
+                                <span class="fa-brands fa-2x fa-facebook"></span>
+                            </a>
+                        </div>
+                        {{-- fin bucle redes sociales --}}
                     </div>
                 </div>
                 <div class="col-md-5 border-right">
@@ -25,32 +58,35 @@
                         <div class="row mt-2">
                             <div class="col-md-6">
                                 <label class="labels">Nombre</label>
-                                <input type="text" class="form-control" placeholder="Nombre"  value="{{ Auth::user()->nombre }}">
+                                <input type="text" class="form-control" placeholder="Nombre"
+                                    value="{{ Auth::user()->nombre }}">
                             </div>
                             <div class="col-md-6"><label class="labels">Apellidos</label>
-                                <input type="text" class="form-control"  placeholder="Apellidos" value="{{ Auth::user()->apellidos }}">
+                                <input type="text" class="form-control" placeholder="Apellidos"
+                                    value="{{ Auth::user()->apellidos }}">
                             </div>
                         </div>
                         <div class="row mt-3">
                             <fieldset disabled>
                                 <div class="col-md-12 mb-3">
                                     <label class="labels">Email</label>
-                                    <input type="text" class="form-control" value="{{ Auth::user()->email }}" bloqued>
+                                    <input type="text" class="form-control" value="{{ Auth::user()->email }}"
+                                        bloqued>
                                 </div>
                             </fieldset>
                             @if (Auth::user()->descripcion === null)
                                 <div class="col-md-12 mb-3">
-                                    <label for="descripcion" class="labels">Descripción sobre el Profesor</label>
+                                    <label for="descripcion" class="labels">Descripción sobre el
+                                        Profesor</label>
                                     <textarea class="form-control w-100" rows="3" style="resize: none;"
                                         placeholder="Escribe aquí una descripción que defina tus aptitudes y especialidades"></textarea>
                                 </div>
                             @else
                                 <div class="col-md-12 mb-3">
-                                    <label for="descripcion" class="labels">Descripción sobre el Profesor</label>
-                                    <textarea class="form-control w-100" style="resize: none;"
-                                    rows="5"
-                                    placeholder="Escribe aquí una descripción que defina tus aptitudes y especialidades"
-                                    >{{ Auth::user()->descripcion }}</textarea>
+                                    <label for="descripcion" class="labels">Descripción sobre el
+                                        Profesor</label>
+                                    <textarea class="form-control w-100" style="resize: none;" rows="5"
+                                        placeholder="Escribe aquí una descripción que defina tus aptitudes y especialidades">{{ Auth::user()->descripcion }}</textarea>
                                 </div>
                             @endif
 
@@ -58,11 +94,13 @@
                         <div class="row mt-3">
                             <div class="col-md-6">
                                 <label class="labels">País</label>
-                                <input type="text" class="form-control" placeholder="País" value="{{ Auth::user()->pais }}">
+                                <input type="text" class="form-control" placeholder="País"
+                                    value="{{ Auth::user()->pais }}">
                             </div>
                             <div class="col-md-6">
                                 <label class="labels">Ciudad</label>
-                                <input type="text" class="form-control" placeholder="Ciudad" value="{{ Auth::user()->ciudad }}">
+                                <input type="text" class="form-control" placeholder="Ciudad"
+                                    value="{{ Auth::user()->ciudad }}">
                             </div>
                         </div>
                         <div class="mt-5 text-center">
@@ -89,7 +127,7 @@
                     </div>
                 </div>
             </div>
-        </div> --}}
+        </div>
         <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
             @if (Laravel\Fortify\Features::canUpdateProfileInformation())
                 @livewire('profile.update-profile-information-form')

@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('redes_sociales', function (Blueprint $table) {
+        // Solicitados
+        Schema::create('teachers', function (Blueprint $table) {
             $table->id();
             $table->foreignId("user_id")->constrained();
-            $table->string('discord');
-            $table->string('linkedIn');
-            $table->string('email');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('redes_sociales');
+        Schema::dropIfExists('teachers');
     }
 };

@@ -13,9 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('especialidades', function (Blueprint $table) {
+        // Especialidades
+        Schema::create('specialties', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("user_id")->constrained();
+            $table->foreignId("teachers_id")->constrained();
             $table->string('nombre');
             $table->date('fecha_inicio');
             $table->date('fecha_finalizacion');
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('especialidades');
+        Schema::dropIfExists('specialties');
     }
 };

@@ -15,6 +15,9 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
 
+    <!-- Link ICONOS-->
+    <script src="https://kit.fontawesome.com/75b8de379c.js" crossorigin="anonymous"></script>
+
     <!-- Link CSS locales-->
     <link rel="stylesheet" href="{{ URL::asset('css/profesor/profesor_inicio.css') }}">{{-- Se incluirá el css de public/css/navFooter.css --}}
     <link rel="stylesheet" href="{{ URL::asset('css/navFooter.css') }}">{{-- Se incluirá el css de public/css/navFooter.css --}}

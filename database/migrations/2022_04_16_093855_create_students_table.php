@@ -13,13 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('precios', function (Blueprint $table) {
+        // Solicitantes
+        Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->integer('precio');
-            $table->integer('horas');
-
-            $table->foreignId('user_id')->nullable()->constrained();
-
+            $table->foreignId("user_id")->constrained();
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('precios');
+        Schema::dropIfExists('students');
     }
 };

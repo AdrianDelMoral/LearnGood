@@ -13,13 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('solicitudes_alumnos', function (Blueprint $table) {
+        Schema::create('prices', function (Blueprint $table) {
             $table->id();
-            $table->string('id_profesor');
-            $table->foreignId("user_id")->constrained();
-            $table->string('id_alumno')->nullable();
-            $table->boolean('estado_pago')->default(null);
-            /* $table->string('estado_de_pago'); */
+            $table->integer('precio');
+            $table->integer('horas');
+
+            $table->foreignId('teachers_id')->nullable()->constrained();
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('solicitudes_alumnos');
+        Schema::dropIfExists('prices');
     }
 };

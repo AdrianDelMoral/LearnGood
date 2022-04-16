@@ -68,7 +68,9 @@
         <!-- Email -->
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="email" value="{{ __('Email') }}" />
-            <x-jet-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="state.email" />
+            <fieldset disabled>
+                <x-jet-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="state.email" />
+            </fieldset>
             <x-jet-input-error for="email" class="mt-2" />
         </div>
 
@@ -103,8 +105,8 @@
                     <div class="col-span-6 sm:col-span-4">
                         <x-jet-label for="pais" value="{{ __('País') }}" />
                         <x-jet-input id="pais" type="text" class="mt-1 block w-full" wire:model.defer="state.pais"
-                            autocomplete="pais" placeholder="País" value="{{ Auth::user()->pais }}" maxlength="27"/>
-                        <x-jet-input-error for="pais" class="mt-2"/>
+                            autocomplete="pais" placeholder="País" value="{{ Auth::user()->pais }}" maxlength="27" />
+                        <x-jet-input-error for="pais" class="mt-2" />
                     </div>
                 @endif
             </div>
@@ -121,7 +123,8 @@
                     <div class="col-span-6 sm:col-span-4">
                         <x-jet-label for="ciudad" value="{{ __('Ciudad') }}" />
                         <x-jet-input id="ciudad" type="text" class="mt-1 block w-full" wire:model.defer="state.ciudad"
-                            autocomplete="ciudad" placeholder="Ciudad" value="{{ Auth::user()->ciudad }}" maxlength="27" />
+                            autocomplete="ciudad" placeholder="Ciudad" value="{{ Auth::user()->ciudad }}"
+                            maxlength="27" />
                         <x-jet-input-error for="ciudad" class="mt-2" />
                     </div>
                 @endif
