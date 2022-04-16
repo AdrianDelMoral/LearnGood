@@ -122,3 +122,19 @@ body {
     color: #fff;
     background-color: #212529;
 }
+
+.social {
+    color: #6c077d;
+}
+
+.cajaImg_profesor {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 50%;
+    transition: 0.5s;
+}

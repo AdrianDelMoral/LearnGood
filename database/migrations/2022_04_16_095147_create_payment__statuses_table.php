@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('links_de_contacto', function (Blueprint $table) {
+        // Estados  de pago
+        Schema::create('payment__statuses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("user_id")->constrained();
-            $table->string('link_red_social');
+            $table->boolean('estado_pago');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('links_de_contacto');
+        Schema::dropIfExists('payment__statuses');
     }
 };

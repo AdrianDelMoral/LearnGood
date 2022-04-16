@@ -35,5 +35,5 @@ Route::middleware([
 });
 
 
-Route::get('mi-perfil/{id}', [ProfesorController::class, 'index'])->name('Profesor.show');
+Route::get('mi-perfil/{id}', [TeacherController::class, 'index'])->name('Profesor.show');
 
