@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('request__mades', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("teachers_id")->constrained();
-            $table->foreignId("students_id")->constrained();
+            $table->foreignId("students_id")->nullable()->constrained();
+            $table->foreignId("teachers_id")->nullable()->constrained();
+            $table->boolean('estado_pago');
             $table->timestamps();
         });
     }

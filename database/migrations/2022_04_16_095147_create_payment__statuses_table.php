@@ -16,6 +16,7 @@ return new class extends Migration
         // Estados  de pago
         Schema::create('payment__statuses', function (Blueprint $table) {
             $table->id();
+            /* $table->boolean('students_id')->nullable()->constrained(); */
             $table->boolean('estado_pago');
             $table->timestamps();
         });
