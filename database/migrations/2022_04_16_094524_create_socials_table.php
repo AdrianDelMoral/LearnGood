@@ -16,7 +16,7 @@ return new class extends Migration
         // Redes Sociales
         Schema::create('socials', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("teachers_id")->constrained();
+            $table->foreignId("users_id")->constrained();
             $table->string('discord');
             $table->string('linkedIn');
             $table->string('email');

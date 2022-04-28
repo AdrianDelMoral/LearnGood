@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('precio');
             $table->integer('horas');
 
-            $table->foreignId('teachers_id')->nullable()->constrained();
+            $table->foreignId('users_id')->nullable()->constrained();
             $table->timestamps();
         });
     }

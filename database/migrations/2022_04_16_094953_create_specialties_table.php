@@ -16,7 +16,7 @@ return new class extends Migration
         // Especialidades
         Schema::create('specialties', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("teachers_id")->constrained();
+            $table->foreignId("users_id")->constrained();
             $table->string('nombre');
             $table->date('fecha_inicio');
             $table->date('fecha_finalizacion');

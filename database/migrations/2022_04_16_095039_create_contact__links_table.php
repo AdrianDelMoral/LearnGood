@@ -16,7 +16,7 @@ return new class extends Migration
         // Links de Contacto(usuario)
         Schema::create('contact__links', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("students_id")->constrained();
+            $table->foreignId("users_id")->constrained();
             $table->string('link_red_social');
             $table->timestamps();
         });

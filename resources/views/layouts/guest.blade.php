@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-
+    <script src="{{ asset('js/register.js') }}" defer></script>
     <!-- Fonts -->
     {{-- Tailwind --}}
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -24,7 +24,7 @@
 
 <body>
     {{-- Navbar --}}
-        <x-navbar />
+    <x-navbar />
     {{-- FIN Navbar --}}
 
     <div class="font-sans antialiased">
