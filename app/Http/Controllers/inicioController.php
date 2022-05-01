@@ -12,8 +12,8 @@ class inicioController extends Controller
     {
         $users = User::All();// sacamos todos los usuarios, para después mostrar los que deseemos en cada vista
 
-        if(Auth::user()->role_id === 'Admin'){
-                if(Auth::user()){ // Hacemos un compact, para poder pasarle a una vista una variable anteriormente creada de una tabla de la base de datos
+        if(Auth::user()){ // Hacemos un compact, para poder pasarle a una vista una variable anteriormente creada de una tabla de la base de datos
+            if(Auth::user()->role_id === 'Admin'){
                 return view('Admin.index', compact('users'));
             }
 
