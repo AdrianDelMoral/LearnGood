@@ -1,7 +1,7 @@
 @extends('alumno_edit')
 @section('titulo', 'Editar información')
 @section('cuerpo')
-    <section class="row justify-content-center mLogin">
+    {{-- <section class="row justify-content-center mLogin">
         <article class="col-md-6">
             <h1 class="text-center my-5">Registro de usuarios nuevos</h1>
 
@@ -58,5 +58,7 @@
                 </div>
             </div>
         </article>
-    </section>
+    </section> --}}
+
+    <h1>editar solicitud alumno</h1>
 @endsection

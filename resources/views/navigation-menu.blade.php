@@ -1,6 +1,6 @@
 {{-- Jestream -- Anterior --}}
 
-    {{-- <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+{{-- <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
         <!-- Primary Navigation Menu -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
@@ -245,11 +245,13 @@
         <div class="contenidoNav collapse navbar-collapse" id="navbarsExampleXxl">
             <div class=" nav__div_primero">
                 <a href="/">
-                    <img src="{{ asset('imagenes/generales/logo.png') }}" alt="logo" style="width:4.8rem; height:4rem;">
+                    <img src="{{ asset('imagenes/generales/logo.png') }}" alt="logo"
+                        style="width:4.8rem; height:4rem;">
                 </a>
                 <h1 class="navTitle">Learn Good</h1>
             </div>
             <div class="nav__div_segundo">
+                <a class="h4 text-white" href="/">Inicio</a>
                 <div class="btn-group">
                     <button type="button" class="btn boton_div-nav mx-3 dropdown-toggle" data-bs-toggle="dropdown"
                         aria-expanded="false">
@@ -270,16 +272,17 @@
                         </div>
                         Perfil
                     </button>
+
                     <ul class="dropdown-menu dropdown-menu-dark">
                         @auth
                             <li>
-                                <a class="dropdown-item" href="{{ route('profile.show') }}">Perfil</a>
+                                <a class="dropdown-item" href="{{ route('profile.show') }}">Editar Perfil</a>
                             </li>
-                            <li>
-                                {{-- alumno/edit.blade --}}
-                                {{-- <a class="dropdown-item" href="{{ route('Profesor.show') }}">Perfil Vista Alumno</a> --}}
-                                <a class="dropdown-item" href="{{-- {{ route('Alumno.show') }} --}}">Perfil Vista Alumno</a>
-                            </li>
+                            @if (Auth::user()->role_id == 'Profesor')
+                                <li>
+                                    <a class="dropdown-item" href="{{-- {{ route('Profesor.show') }} --}}">Perfil Vista Alumno</a>
+                                </li>
+                            @endif
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
 

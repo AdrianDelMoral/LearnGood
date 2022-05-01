@@ -1,6 +1,16 @@
 @extends('alumno_inicio')
 @section('titulo', 'Editar información')
 @section('cuerpo')
+<h1>alumno inicio</h1>
+
+@foreach ($users as $user)
+    @if ($user->role_id == 'Profesor')
+        {{ $user->nombre }} <br>
+        {{ $user->apellidos }} <br>
+        {{ $user->role_id }}
+    @endif
+@endforeach
+
     {{-- <section class="row justify-content-center mLogin">
         <article class="col-md-6">
             <h1 class="text-center my-5">Información del usuario</h1>
@@ -12,7 +22,7 @@
             </div>
         </article>
     </section> --}}
-    <div class="container rounded bg-white mt-5 mb-5">
+    {{-- <div class="container rounded bg-white mt-5 mb-5">
         <div class="row">
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
@@ -91,5 +101,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection

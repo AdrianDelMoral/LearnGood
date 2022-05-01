@@ -4,25 +4,30 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class inicioController extends Controller
 {
     public function index()
     {
-        if(Auth::user()){
-            if(Auth::user()->role_id === 'Admin'){
-                return view('index.Admin');
+        $users = User::All();// sacamos todos los usuarios, para después mostrar los que deseemos en cada vista
+
+        if(Auth::user()->role_id === 'Admin'){
+                if(Auth::user()){ // Hacemos un compact, para poder pasarle a una vista una variable anteriormente creada de una tabla de la base de datos
+                return view('Admin.index', compact('users'));
             }
 
             if(Auth::user()->role_id === 'Profesor'){
-                return view('Profesor.index');
+                // Hacemos un compact, para poder pasarle a una vista una variable anteriormente creada de una tabla de la base de datos
+                return view('Profesor.index', compact('users'));
             }
 
             if(Auth::user()->role_id === 'Alumno'){
-                return view('Alumno.index');
+                // Hacemos un compact, para poder pasarle a una vista una variable anteriormente creada de una tabla de la base de datos
+                return view('Alumno.index', compact('users'));
             }
         }
 
-        return view('auth.login');
+        return view('home');
     }
 }
