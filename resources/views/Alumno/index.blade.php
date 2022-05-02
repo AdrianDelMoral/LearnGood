@@ -5,6 +5,7 @@
 
 @foreach ($users as $user)
     @if ($user->role_id == 'Profesor')
+        {{ $user->profile_photo_path }} <br>
         {{ $user->nombre }} <br>
         {{ $user->apellidos }} <br>
         {{ $user->role_id }}
