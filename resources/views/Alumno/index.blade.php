@@ -18,18 +18,18 @@
     @endforeach --}}
     <div class="container">
         <div class="row">
-            <div class="col-lg-4">
-                @foreach ($users as $user)
-                    @if ($user->role_id == 'Profesor')
-                        {{-- <div class="fotoPerfil_card">
-                            <div class="cajaImg_card">
-                                <img class="h-8 w-8 rounded-full object-cover" src="{{ $user->profile_photo_url }}"
-                                    alt="{{ $user->name }}">
-                            </div>
-                        </div >--}}
-                        {{-- <br> --}}
-                        {{-- {{ $user->nombre }}
-                        {{ $user->apellidos }} --}}
+            @foreach ($users as $user)
+                @if ($user->role_id == 'Profesor')
+                    {{-- <div class="fotoPerfil_card">
+                        <div class="cajaImg_card">
+                            <img class="h-8 w-8 rounded-full object-cover" src="{{ $user->profile_photo_url }}"
+                                alt="{{ $user->name }}">
+                        </div>
+                    </div>
+                    <br>
+                    {{ $user->nombre }}
+                    {{ $user->apellidos }} --}}
+                    <div class="col-lg-4 my-5">
                         <div class="card p-0">
                             <div class="card-image">
                                 <img src="{{ $user->profile_photo_url }}" alt="{{ $user->name }}">
@@ -45,44 +45,13 @@
                                 </ul>
                             </div>
                         </div>
-                    @endif
-                @endforeach
-            </div>
-            {{-- <div class="col-lg-4">
-                <div class="card p-0">
-                    <div class="card-image"> <img
-                            src="https://images.pexels.com/photos/381843/pexels-photo-381843.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-                            alt=""> </div>
-                    <div class="card-content d-flex flex-column align-items-center">
-                        <h4 class="pt-2">SomeOne Famous</h4>
-                        <h5>Creative Desinger</h5>
-                        <ul class="social-icons d-flex justify-content-center">
-                            <li style="--i:1"> <a href="#"> <span class="fab fa-linkedin"></span> </a> </li>
-                            <li style="--i:2"> <a href="#"> <span class="fab fa-twitter"></span> </a> </li>
-                            <li style="--i:3"> <a href="#"> <span class="fab fa-github"></span> </a> </li>
-                        </ul>
                     </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="card p-0">
-                    <div class="card-image"> <img
-                            src="https://images.pexels.com/photos/139829/pexels-photo-139829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-                            alt=""> </div>
-                    <div class="card-content d-flex flex-column align-items-center">
-                        <h4 class="pt-2">SomeOne Famous</h4>
-                        <h5>Creative Desinger</h5>
-                        <ul class="social-icons d-flex justify-content-center">
-                            <li style="--i:1"> <a href="#"> <span class="fab fa-linkedin"></span> </a> </li>
-                            <li style="--i:2"> <a href="#"> <span class="fab fa-twitter"></span> </a> </li>
-                            <li style="--i:3"> <a href="#"> <span class="fab fa-github"></span> </a> </li>
-                        </ul>
-                    </div>
-                </div>
-            </div> --}}
+                @endif
+            @endforeach
         </div>
     </div>
-    {{-- // Editar info profesor desde admin
+    {{--
+        // Editar info profesor desde admin
         <section class="row justify-content-center mLogin">
         <article class="col-md-6">
             <h1 class="text-center my-5">Información del usuario</h1>
