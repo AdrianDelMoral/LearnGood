@@ -18,7 +18,7 @@
     @endforeach --}}
     <div class="container">
         <div class="row">
-            @foreach ($users as $user)
+            @foreach ($usersProfesor as $user)
                 @if ($user->role_id == 'Profesor')
                     {{-- <div class="fotoPerfil_card">
                         <div class="cajaImg_card">
@@ -37,12 +37,26 @@
                             </div>
                             <div class="card-content d-flex flex-column align-items-center">
                                 <h4 class="pt-2">{{ $user->nombre }} {{ $user->apellidos }}</h4>
-                                {{-- <h5>Creative Desinger</h5> --}}
+                                <h5>Programadora</h5>
+                                {{-- @foreach ($profesorLinks as $linksProfe)
+                                    @if ($linksProfe->users_id !== null)
+                                        <ul class="social-icons d-flex justify-content-center">
+                                            <li style="--i:1"> <a href="#"> <span class="fab fa-linkedin"></span> </a> </li>
+                                            <li style="--i:2"> <a href="#"> <span class="fab fa-twitter"></span> </a> </li>
+                                            <li style="--i:3"> <a href="#"> <span class="fab fa-github"></span> </a> </li>
+                                        </ul>
+                                    @else
+                                        <p class="text-dark fw-bold">Sin redes Sociales</p>
+                                    @endif
+                                @endforeach --}}
                                 <ul class="social-icons d-flex justify-content-center">
                                     <li style="--i:1"> <a href="#"> <span class="fab fa-linkedin"></span> </a> </li>
                                     <li style="--i:2"> <a href="#"> <span class="fab fa-twitter"></span> </a> </li>
                                     <li style="--i:3"> <a href="#"> <span class="fab fa-github"></span> </a> </li>
                                 </ul>
+                                <a href="{{-- {{ route('alumno.show', $user->id) }} --}}">
+                                    <button class="btn btn-dark my-3">Ver Profesor</button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -50,8 +64,7 @@
             @endforeach
         </div>
     </div>
-    {{--
-        // Editar info profesor desde admin
+    {{-- // Editar info profesor desde admin
         <section class="row justify-content-center mLogin">
         <article class="col-md-6">
             <h1 class="text-center my-5">Información del usuario</h1>

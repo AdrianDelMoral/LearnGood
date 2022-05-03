@@ -15,11 +15,19 @@ return new class extends Migration
     {
         // Redes Sociales
         Schema::create('socials', function (Blueprint $table) {
+            /*
+                $table->id();
+                $table->foreignId("users_id")->constrained();
+                $table->string('discord')->nullable();
+                $table->string('linkedIn')->nullable();
+                $table->string('twitter')->nullable();
+                $table->timestamps();
+            */
             $table->id();
             $table->foreignId("users_id")->constrained();
-            $table->string('discord');
-            $table->string('linkedIn');
-            $table->string('email');
+            $table->string('nombre_red_social')->nullable();
+            $table->string('link')->nullable();
+            $table->string('twitter')->nullable();
             $table->timestamps();
         });
     }
