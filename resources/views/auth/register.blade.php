@@ -39,13 +39,13 @@
                 <div class="mt-4">
                     <x-jet-label for="apellidos" value="{{ __('Apellidos') }}" class="text-white" />
                     <x-jet-input id="apellidos" class="block mt-1 w-full bg-gray-800  text-yellow-500" type="text" name="apellidos" :value="old('apellidos')"
-                        required autofocus autocomplete="name" />
+                        required autofocus autocomplete="apellidos" />
                 </div>
 
                 <div class="mt-4 profesor hidden">
                     <x-jet-label for="idioma" value="{{ __('Idioma') }}" class="text-white" />
                     <x-jet-input id="idioma" class="block mt-1 w-full bg-gray-800  text-yellow-500" type="text" name="idioma" :value="old('idioma')"
-                        autofocus autocomplete="idioma" />
+                        required autofocus autocomplete="idioma" />
                 </div>
 
                 <div class="mt-4 profesor hidden">
@@ -54,14 +54,20 @@
                     {{-- <label for="descripcion" class="labels">Descripción sobre el Profesor</label> --}}
                     <textarea id="descripcion"
                         class="w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm bg-gray-800  text-yellow-500"
-                        rows="3" style="resize: none;" name="descripcion" :value="old('descripcion')"
-                        placeholder="Escribe aquí una breve descripción sobre ti." autofocus
+                        rows="3" style="resize: none;"
+                        name="descripcion"
+                        :value="old('descripcion')"
+                        placeholder="Escribe aquí una breve descripción sobre ti."
+                        autofocus
                         autocomplete="descripcion"></textarea>
                 </div>
 
+
                 <div class="mt-4">
                     <x-jet-label for="email" value="{{ __('Email') }}" class="text-white" />
-                    <x-jet-input id="email" class="block mt-1 w-full bg-gray-800  text-yellow-500" type="email" name="email" :value="old('email')"
+                    <x-jet-input id="email" class="block mt-1 w-full bg-gray-800  text-yellow-500" type="email"
+                        name="email"
+                        :value="old('email')"
                         required />
                 </div>
 

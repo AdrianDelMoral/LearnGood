@@ -101,8 +101,7 @@
                     <textarea name="descripcion" id="descripcion" type="textarea" rows="5" class="w-100 mt-1 rounded rounded-3"
                         placeholder="Escribe aquí una descripción que defina tus aptitudes y especialidades"
                         wire:model.defer="state.descripcion" maxlength="255" style="resize: none;">
-
-                </textarea>
+                    </textarea>
                 @else
                     <textarea name="descripcion" id="descripcion" type="textarea" rows="5" class="w-100 mt-1 rounded rounded-3"
                         placeholder="Escribe aquí una descripción que defina tus aptitudes y especialidades"
