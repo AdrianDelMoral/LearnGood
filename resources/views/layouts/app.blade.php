@@ -26,8 +26,8 @@
     <link rel="stylesheet" href="{{ URL::asset('css/profesor/profesor_inicio.css') }}">{{-- Se incluirá el css de public/css/navFooter.css --}}
     <link rel="stylesheet" href="{{ URL::asset('css/navFooter.css') }}">{{-- Se incluirá el css de public/css/navFooter.css --}}
     @livewireStyles
-<!-- Link ICONOS-->
-<script src="https://kit.fontawesome.com/75b8de379c.js" crossorigin="anonymous"></script>
+    <!-- Link ICONOS-->
+    <script src="https://kit.fontawesome.com/75b8de379c.js" crossorigin="anonymous"></script>
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
