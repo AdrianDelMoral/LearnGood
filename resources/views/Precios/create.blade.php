@@ -1,4 +1,4 @@
-@extends('precios_crear')
+@extends('layout')
 @section('titulo', 'Añadir un precio nuevo')
 
 @section('CSSadded') {{-- Añadir css de esta vista --}}

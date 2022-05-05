@@ -1,4 +1,4 @@
-@extends('alumno_layout')
+@extends('layout')
 @section('titulo', 'Editar información')
 
 @section('CSSadded') {{-- Añadir css de esta vista --}}

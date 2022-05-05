@@ -1,4 +1,4 @@
-@extends('precios_layout')
+@extends('layout')
 @section('titulo', 'Precios del Profesor')
 
 @section('CSSadded') {{-- Añadir css de esta vista --}}

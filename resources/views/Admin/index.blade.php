@@ -1,4 +1,4 @@
-@extends('admin_layout')
+@extends('layout')
 @section('titulo', 'Admin View')
 
 @section('CSSadded') {{-- Añadir css de esta vista --}}

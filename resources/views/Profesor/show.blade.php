@@ -1,4 +1,4 @@
-@extends('profesor_layout')
+@extends('layout')
 
 @section('titulo', 'Página Principal')
 
