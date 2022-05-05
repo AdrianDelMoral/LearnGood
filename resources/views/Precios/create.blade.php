@@ -2,7 +2,7 @@
 @section('titulo', 'Añadir un precio nuevo')
 
 @section('CSSadded') {{-- Añadir css de esta vista --}}
-    <link rel="stylesheet" href="{{ URL::asset('css/alumno/precios_inicio.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/alumno/precios_create.css') }}">
 @endsection
 
 @section('cuerpo')
