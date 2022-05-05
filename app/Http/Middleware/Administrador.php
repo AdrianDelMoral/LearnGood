@@ -17,7 +17,7 @@ class Administrador
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user()->role == 'Admin') {
+        if (Auth::user()->role_id == 'Admin') {
             return $next($request); // Para que continue con la petición
         } else {
             return redirect('/');

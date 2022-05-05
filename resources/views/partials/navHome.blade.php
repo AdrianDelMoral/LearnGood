@@ -14,28 +14,11 @@
                 <h1 class="navTitle">Learn Good</h1>
             </div>
             <div class="nav__div_segundo">
-                <div class="btn boton_div-nav text-white  mx-3">
-                    <a class="px-4 py-2" href="/">Inicio</a>
-                </div>
+                <a class="text-white btn boton_div-nav mx-3" href="/">Inicio</a>
                 <div class="btn-group">
                     <button type="button" class="btn boton_div-nav mx-3 dropdown-toggle" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        <div class="fotoPerfil">
-                            <div class="cajaImg">
-                                @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-                                    <div
-                                        class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
-                                        <img class="h-8 w-8 rounded-full object-cover"
-                                            src="{{ Auth::user()->profile_photo_url }}"
-                                            alt="{{ Auth::user()->role_id }}" />
-                                    </div>
-                                @else
-                                    <h1>{{ Auth::user()->nombre }} - Rol: {{ Auth::user()->role_id }}
-                                    </h1>
-                                @endif
-                            </div>
-                        </div>
-                        Perfil
+                        Login y Registro
                     </button>
                     <ul class="dropdown-menu dropdown-menu-dark">
                         @auth

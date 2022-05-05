@@ -1,59 +1,30 @@
-@extends('alumno_inicio')
+@extends('alumno_layout')
 @section('titulo', 'Editar información')
+
+@section('CSSadded') {{-- Añadir css de esta vista --}}
+    <link rel="stylesheet" href="{{ URL::asset('css/alumno/alumno_inicio.css') }}">
+@endsection
+
 @section('cuerpo')
     <h1>alumno inicio</h1>
 
-    {{-- @foreach ($users as $user)
-        @if ($user->role_id == 'Profesor')
-            <div class="fotoPerfil_card">
-                <div class="cajaImg_card">
-                    <img class="h-8 w-8 rounded-full object-cover" src="{{ $user->profile_photo_url }}"
-                        alt="{{ $user->name }}">
-                </div>
-            </div>
-            <br>
-            {{ $user->nombre }} <br>
-            {{ $user->apellidos }} <br>
-        @endif
-    @endforeach --}}
     <div class="container">
         <div class="row">
             @foreach ($usersProfesor as $user)
                 @if ($user->role_id == 'Profesor')
-                    {{-- <div class="fotoPerfil_card">
-                        <div class="cajaImg_card">
-                            <img class="h-8 w-8 rounded-full object-cover" src="{{ $user->profile_photo_url }}"
-                                alt="{{ $user->name }}">
-                        </div>
-                    </div>
-                    <br>
-                    {{ $user->nombre }}
-                    {{ $user->apellidos }} --}}
                     <div class="col-lg-4 my-5">
                         <div class="card p-0">
                             <div class="card-image">
                                 <img src="{{ $user->profile_photo_url }}" alt="{{ $user->name }}">
-                                {{-- <img src="https://images.pexels.com/photos/2746187/pexels-photo-2746187.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt=""> --}}
                             </div>
                             <div class="card-content d-flex flex-column align-items-center">
                                 <h4 class="pt-2">{{ $user->nombre }} {{ $user->apellidos }}</h4>
                                 <h5>Programadora</h5>
-                                {{-- @foreach ($profesorLinks as $linksProfe)
-                                    @if ($linksProfe->users_id !== null)
                                         <ul class="social-icons d-flex justify-content-center">
                                             <li style="--i:1"> <a href="#"> <span class="fab fa-linkedin"></span> </a> </li>
                                             <li style="--i:2"> <a href="#"> <span class="fab fa-twitter"></span> </a> </li>
                                             <li style="--i:3"> <a href="#"> <span class="fab fa-github"></span> </a> </li>
                                         </ul>
-                                    @else
-                                        <p class="text-dark fw-bold">Sin redes Sociales</p>
-                                    @endif
-                                @endforeach --}}
-                                <ul class="social-icons d-flex justify-content-center">
-                                    <li style="--i:1"> <a href="#"> <span class="fab fa-linkedin"></span> </a> </li>
-                                    <li style="--i:2"> <a href="#"> <span class="fab fa-twitter"></span> </a> </li>
-                                    <li style="--i:3"> <a href="#"> <span class="fab fa-github"></span> </a> </li>
-                                </ul>
                                 <a href="{{-- {{ route('alumno.show', $user->id) }} --}}">
                                     <button class="btn btn-dark my-3">Ver Profesor</button>
                                 </a>

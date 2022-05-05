@@ -1,5 +1,10 @@
-@extends('admin_inicio')
+@extends('admin_layout')
 @section('titulo', 'Admin View')
+
+@section('CSSadded') {{-- Añadir css de esta vista --}}
+    <link rel="stylesheet" href="{{ URL::asset('css/admin/admin_inicio.css') }}">
+@endsection
+
 @section('cuerpo')
 
     <div class="container">

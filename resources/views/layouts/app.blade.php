@@ -33,7 +33,6 @@
 </head>
 
 <body class="font-sans bg_gradient_twoColors antialiased">
-    {{-- <x-navbar/> --}}
 
     <x-jet-banner />
 

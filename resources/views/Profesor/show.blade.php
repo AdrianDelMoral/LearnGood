@@ -1,5 +1,11 @@
-@extends('profesor_show')
+@extends('profesor_layout')
+
 @section('titulo', 'Página Principal')
+
+@section('CSSadded')
+    <link rel="stylesheet" href="{{ URL::asset('css/profesor/profesor_show.css') }}">
+@endsection
+
 @section('cuerpo')
     {{-- <div class="page-wrapper p-t-180 font-poppins">
         <section class="row justify-content-center">
@@ -274,7 +280,7 @@
                                     <p class="mt-4">
                                         Nota Final:
                                     </p>
-                                    <p class="text-center h1">6,5</p>
+                                    <p   class="text-center h1">6,5</p>
                                     <table class="mt-4 table table-bordered border-light table-dark">
                                         <thead>
                                             <tr>

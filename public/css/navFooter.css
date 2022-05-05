@@ -1,6 +1,17 @@
 a {
     text-decoration: none;
 }
+body {
+    font-family: "Poppins", "Arial", "Helvetica Neue", sans-serif;
+    min-height: 100vh;
+    font-weight: 400;
+    font-size: 14px;
+    background: -webkit-gradient(linear, left bottom, left top, from(#fbc2eb), to(#a18cd1));
+    background: -webkit-linear-gradient(bottom, #fbc2eb 0%, #a18cd1 100%);
+    background: -moz-linear-gradient(bottom, #fbc2eb 0%, #a18cd1 100%);
+    background: -o-linear-gradient(bottom, #fbc2eb 0%, #a18cd1 100%);
+    background: linear-gradient(to top, #fbc2eb 0%, #a18cd1 100%);
+}
 
 /* Nav */
 
@@ -105,6 +116,11 @@ a {
 /* Foto Perfil NAV */
 
 /* Footer  */
+.sticky-footer{
+    position: sticky;
+    top: 100%;
+
+}
 .izquierda a {
     text-decoration: none;
     color: #4b4b4b;

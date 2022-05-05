@@ -19,16 +19,9 @@ fieldset, legend {
     min-height: 100vh;
 }
 
-body {
-    font-family: "Poppins", "Arial", "Helvetica Neue", sans-serif;
-    font-weight: 400;
-    font-size: 14px;
-}
-
 /* ==========================================================================
     #BACKGROUND
      ========================================================================== */
-
 
 .bg_gradient_twoColors {
     background: -webkit-gradient(linear, left bottom, left top, from(#fbc2eb), to(#a18cd1));

@@ -17,7 +17,7 @@ class Profesor
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user()->role == 'Profesor') {
+        if (Auth::user()->role_id == 'Profesor') {
             return $next($request); // Para que continue con la petición
         } else {
             return redirect('/');

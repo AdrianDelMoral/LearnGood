@@ -1,5 +1,10 @@
-@extends('alumno_edit')
+@extends('alumno_layout')
 @section('titulo', 'Editar información')
+
+@section('CSSadded') {{-- Añadir css de esta vista --}}
+    <link rel="stylesheet" href="{{ URL::asset('css/alumno/alumno_edit.css') }}">
+@endsection
+
 @section('cuerpo')
     {{-- <section class="row justify-content-center mLogin">
         <article class="col-md-6">

@@ -13,10 +13,14 @@ class TeacherController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    /* public function index()
+    public function index()
     {
-        return view('Profesor.index');
-    } */
+        if(Auth::user()->role_id === 'Profesor'){
+            $usersProfesor = User::All()->where('role_id', '=', 'Profesor' );
+            return view('Profesor.index', compact('users'));
+        }
+        return view('/');
+    }
 
     /**
      * Show the form for creating a new resource.

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Price;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class PriceController extends Controller
 {
@@ -14,7 +17,9 @@ class PriceController extends Controller
      */
     public function index()
     {
-        //
+        $usuario = Auth::user()->id;
+        $precios = Price::All()->where('user_id', '=', 'usuario');
+        return view('precios.index', compact('precios'));
     }
 
     /**
@@ -24,7 +29,7 @@ class PriceController extends Controller
      */
     public function create()
     {
-        //
+        return view('precios.create');
     }
 
     /**

@@ -61,28 +61,16 @@ Route::middleware([
     Aplico un middleware previamente creado y configurado
     solo podrá acceder la gente autentificada con dicho rol
 */
-
-Route::group(['middleware'=>'auth'], function(){
-    Route::group(['middleware'=>'administrador'], function(){
-        Route::resource('/panel-de-administrador', AdminController::class);
-    });
-    Route::group(['middleware'=>'alumno'], function(){
-        Route::resource('/alumno-inicio', StudentController::class);
-    });
-    Route::group(['middleware'=>'profesor'], function(){
-        Route::resource('/profesor-inicio', TeacherController::class);
-        //     Route::resource('/prices_inicio', PriceController::class);
-
-   Route::get('/prices_inicio/{user}', [PriceController::class, 'show'])->name('prices_inicio');
-    });
+Route::middleware(['auth', 'administrador'])->group(function () {
+    //Route::resource('/Panel-De-Administrador', AdminController::class);
 });
-/*
-    Route::middleware(['auth', 'administrador'])->group(function () {
-    });
 
-    Route::middleware(['auth', 'profesor'])->group(function () {
-    });
+Route::middleware(['auth', 'profesor'])->group(function () {
+    //Route::resource('/Profesor-Inicio', TeacherController::class);
+    Route::resource('/precios', PriceController::class);
+});
 
-    Route::middleware(['auth', 'alumno'])->group(function () {
-    });
-*/
+Route::middleware(['auth', 'alumno'])->group(function () {
+    //Route::resource('/Alumno-Inicio', StudentController::class);
+});
+
