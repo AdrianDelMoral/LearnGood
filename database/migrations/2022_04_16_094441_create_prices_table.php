@@ -14,10 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('prices', function (Blueprint $table) {
-            $table->id()->nullable();
-            $table->foreignId('users_id')->nullable()->constrained();
-            $table->integer('precio')->nullable();
-            $table->integer('horas')->nullable();
+            $table->id();
+            $table->foreignId('user_id')->nullable()->constrained();
+            $table->integer('precio');
+            $table->integer('horas');
             $table->timestamps();
         });
     }

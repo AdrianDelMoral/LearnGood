@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Social;
+use App\Models\Connection;
 use Illuminate\Http\Request;
 
-class SocialController extends Controller
+class ConnectionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class SocialController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Social  $social
+     * @param  \App\Models\Connection  $connection
      * @return \Illuminate\Http\Response
      */
-    public function show(Social $social)
+    public function show(Connection $connection)
     {
         //
     }
@@ -52,10 +52,10 @@ class SocialController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Social  $social
+     * @param  \App\Models\Connection  $connection
      * @return \Illuminate\Http\Response
      */
-    public function edit(Social $social)
+    public function edit(Connection $connection)
     {
         //
     }
@@ -64,10 +64,10 @@ class SocialController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Social  $social
+     * @param  \App\Models\Connection  $connection
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Social $social)
+    public function update(Request $request, Connection $connection)
     {
         //
     }
@@ -75,10 +75,10 @@ class SocialController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Social  $social
+     * @param  \App\Models\Connection  $connection
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Social $social)
+    public function destroy(Connection $connection)
     {
         //
     }

@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Student;
-use App\Models\User;
+use App\Models\Platform;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class StudentController extends Controller
+class PlatformController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +14,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        return view('Alumno.index');
+        //
     }
 
     /**
@@ -43,22 +41,21 @@ class StudentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Student  $student
+     * @param  \App\Models\Platform  $platform
      * @return \Illuminate\Http\Response
      */
-    public function show(User $id)
+    public function show(Platform $platform)
     {
-        //$profe = User::get($id);
-        return view('Alumno.show', compact('id'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Student  $student
+     * @param  \App\Models\Platform  $platform
      * @return \Illuminate\Http\Response
      */
-    public function edit(Student $student)
+    public function edit(Platform $platform)
     {
         //
     }
@@ -67,10 +64,10 @@ class StudentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Student  $student
+     * @param  \App\Models\Platform  $platform
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Student $student)
+    public function update(Request $request, Platform $platform)
     {
         //
     }
@@ -78,10 +75,10 @@ class StudentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Student  $student
+     * @param  \App\Models\Platform  $platform
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Student $student)
+    public function destroy(Platform $platform)
     {
         //
     }

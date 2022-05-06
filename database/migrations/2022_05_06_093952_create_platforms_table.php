@@ -13,12 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        // Especialidades, un profesor tendra una especialidad como materia principal
-        Schema::create('specialties', function (Blueprint $table) {
+        Schema::create('platforms', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->date('fecha_inicio');
-            $table->date('fecha_finalizacion');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('specialties');
+        Schema::dropIfExists('platforms');
     }
 };

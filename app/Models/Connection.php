@@ -5,12 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Price extends Model
+class Connection extends Model
 {
     use HasFactory;
-    // Probando
-    public function users()
-    {
-        return $this->belongsToMany(User::class);
-    }
 }

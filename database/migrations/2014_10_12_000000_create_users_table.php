@@ -29,19 +29,12 @@ return new class extends Migration
             $table->timestamps();
 
             //      /* Tablas que usará solo profesor */
-            //      // tabla de precios
-            //      $table->int('precios')->nullable();
 
-            //      // tabla redes Sociales
-            //      $table->string('redes_sociales')->nullable();
-            //      // tabla especialidades
-            //      $table->string('especialidades')->nullable();
-            //      // tabla alumnos
-            //      $table->string('solicitudes_de_alumnos')->nullable();
+            // alumnos
+                // $table->string('alumnos')->nullable();
 
-            //      /* Tablas que usará solo alumno */
-            //      $table->string('links_de_contacto')->nullable();
-
+            // profesores
+                // $table->string('solicitudes_de_alumnos')->nullable();
         });
     }
 

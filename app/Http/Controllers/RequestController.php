@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Contact_Link;
+use App\Models\Request;
 use Illuminate\Http\Request;
 
-class ContactLinkController extends Controller
+class RequestController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class ContactLinkController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Contact_Link  $contact_Link
+     * @param  \App\Models\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function show(Contact_Link $contact_Link)
+    public function show(Request $request)
     {
         //
     }
@@ -52,10 +52,10 @@ class ContactLinkController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Contact_Link  $contact_Link
+     * @param  \App\Models\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function edit(Contact_Link $contact_Link)
+    public function edit(Request $request)
     {
         //
     }
@@ -64,10 +64,10 @@ class ContactLinkController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Contact_Link  $contact_Link
+     * @param  \App\Models\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Contact_Link $contact_Link)
+    public function update(Request $request, Request $request)
     {
         //
     }
@@ -75,10 +75,10 @@ class ContactLinkController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Contact_Link  $contact_Link
+     * @param  \App\Models\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Contact_Link $contact_Link)
+    public function destroy(Request $request)
     {
         //
     }

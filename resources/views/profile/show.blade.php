@@ -15,8 +15,12 @@
 
             @if (Auth::user()->role_id == 'Profesor')
                 <div class="d-flex justify-content-center">
-                    <button class="m-5 btn btn-primary profile-button">Ver mis precios</button>
-                    <button class="m-5 btn btn-primary profile-button">Ver mis alumnos(Tanto pendientes como los que ya se les ha impartido clase)</button>
+                    <a href="">
+                        <button class="m-5 btn btn-primary profile-button">Ver mis precios</button>
+                    </a>
+                    <a href="">
+                        <button class="m-5 btn btn-primary profile-button">Ver mis alumnos(Tanto pendientes como los que ya se les ha impartido clase)</button>
+                    </a>
                 </div>
             @endif
 

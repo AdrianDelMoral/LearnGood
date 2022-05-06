@@ -13,10 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        // Estados  de pago
-        Schema::create('payment__statuses', function (Blueprint $table) {
+        Schema::create('requests', function (Blueprint $table) {
             $table->id();
-            $table->boolean('users_id')->nullable()->constrained();
+            $table->foreignId("user_id")->nullable()->constrained();
             $table->boolean('estado_pago');
             $table->timestamps();
         });
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('payment__statuses');
+        Schema::dropIfExists('requests');
     }
 };

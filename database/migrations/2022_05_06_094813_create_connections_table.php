@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('request__mades', function (Blueprint $table) {
+        Schema::create('connections', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("users_id")->nullable()->constrained();
-            $table->boolean('estado_pago');
+            $table->foreignId("user_id")->nullable()->constrained();
+            $table->foreignId("platform_id")->nullable()->constrained();
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('request__mades');
+        Schema::dropIfExists('connections');
     }
 };

@@ -13,11 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        // Links de Contacto(usuario)
-        Schema::create('contact__links', function (Blueprint $table) {
+        Schema::create('experience', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("users_id")->constrained();
-            $table->string('link_red_social');
+            $table->foreignId("user_id")->constrained();
+            $table->foreignId("specialty_id")->constrained();
+            $table->string("titulo");
+            $table->string("descripcion");
+            $table->date('fecha_inicio');
+            $table->date('fecha_finalizacion');
             $table->timestamps();
         });
     }
@@ -29,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contact__links');
+        Schema::dropIfExists('experience');
     }
 };
