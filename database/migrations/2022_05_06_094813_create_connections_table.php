@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId("user_id")->nullable()->constrained();
             $table->foreignId("platform_id")->nullable()->constrained();
+            $table->string("nombre_usuario")->nullable()->constrained();
             $table->timestamps();
         });
     }
