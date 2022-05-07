@@ -157,21 +157,21 @@
                                 <p class="text-danger fw-bold">Profesor Sin redes Actualmente</p>
                             @endif --}}
                             <!--  {{-- si es github --}}
-                                    <a href="{{-- {{ Auth::user()->redes_sociales->link->github }} --}}" class="social m-3">
-                                        <span class="fa-brands fa-2x fa-github"></span>
-                                    </a>
-                                    {{-- si es linkedin --}}
-                                    <a href="{{-- {{ Auth::user()->redes_sociales->link->linkedin }} --}}" class="social m-3">
-                                        <span class="fa-brands fa-2x fa-linkedin"></span>
-                                    </a>
-                                    {{-- si es discord --}}
-                                    <a href="{{-- {{ Auth::user()->redes_sociales->link->discord }} --}}" class="social m-3">
-                                        <span class="fa-brands fa-2x fa-discord"></span>
-                                    </a>
-                                    {{-- si es facebook --}}
-                                    <a href="{{-- {{ Auth::user()->redes_sociales->link->facebook }} --}}" class="social m-3">
-                                        <span class="fa-brands fa-2x fa-facebook"></span>
-                                    </a>-->
+                                                                                            <a href="{{-- {{ Auth::user()->redes_sociales->link->github }} --}}" class="social m-3">
+                                                                                                <span class="fa-brands fa-2x fa-github"></span>
+                                                                                            </a>
+                                                                                            {{-- si es linkedin --}}
+                                                                                            <a href="{{-- {{ Auth::user()->redes_sociales->link->linkedin }} --}}" class="social m-3">
+                                                                                                <span class="fa-brands fa-2x fa-linkedin"></span>
+                                                                                            </a>
+                                                                                            {{-- si es discord --}}
+                                                                                            <a href="{{-- {{ Auth::user()->redes_sociales->link->discord }} --}}" class="social m-3">
+                                                                                                <span class="fa-brands fa-2x fa-discord"></span>
+                                                                                            </a>
+                                                                                            {{-- si es facebook --}}
+                                                                                            <a href="{{-- {{ Auth::user()->redes_sociales->link->facebook }} --}}" class="social m-3">
+                                                                                                <span class="fa-brands fa-2x fa-facebook"></span>
+                                                                                            </a>-->
                         </div>
                         {{-- fin bucle redes sociales --}}
                     </div>
@@ -198,72 +198,82 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-10 container">
                     <div class="p-3 py-5">
                         <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
                             <h1 class="display-4 fw-normal">Precios</h1>
                         </div>
-                        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-                            <div class="col">
-                                <div class="card mb-4 rounded-3 shadow-sm">
-                                    <div class="card-header py-3">
-                                        <h4 class="my-0 fw-normal">Primer Precio</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <h1 class="card-title pricing-card-title">
-                                            10€<small class="text-muted fw-light">/h</small>
-                                        </h1>
-                                        <ul class="list-unstyled mt-3 mb-4">
-                                            <li>Ejercicios Personalizados</li>
-                                        </ul>
-                                        <button type="button" class="w-100 btn btn-lg btn-outline-primary">
-                                            Solicitar Servicio
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card mb-4 rounded-3 shadow-sm">
-                                    <div class="card-header py-3">
-                                        <h4 class="my-0 fw-normal">Segundo Precio</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <h1 class="card-title pricing-card-title">
-                                            20€<small class="text-muted fw-light">/h</small>
-                                        </h1>
-                                        <ul class="list-unstyled mt-3 mb-4">
-                                            <li>Ejercicios Personalizados</li>
-                                            <li>Practica Verbal / Escrita</li>
-                                        </ul>
-                                        <button type="button" class="w-100 btn btn-lg btn-primary">Solicitar
-                                            Servicio</button>
+                        @if (!$precios)
+                            <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+                                <div class="col">
+                                    <div class="card mb-4 rounded-3 shadow-sm">
+                                        <div class="card-header py-3">
+                                            <h4 class="my-0 fw-normal">Primer Precio</h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <h1 class="card-title pricing-card-title">
+                                                10€<small class="text-muted fw-light">/h</small>
+                                            </h1>
+                                            <ul class="list-unstyled mt-3 mb-4">
+                                                <li>Ejercicios Personalizados</li>
+                                            </ul>
+                                            <button type="button" class="w-100 btn btn-lg btn-outline-primary">
+                                                Solicitar Servicio
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col">
+                                <div class="col">
+                                    <div class="card mb-4 rounded-3 shadow-sm">
+                                        <div class="card-header py-3">
+                                            <h4 class="my-0 fw-normal">Segundo Precio</h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <h1 class="card-title pricing-card-title">
+                                                20€<small class="text-muted fw-light">/h</small>
+                                            </h1>
+                                            <ul class="list-unstyled mt-3 mb-4">
+                                                <li>Ejercicios Personalizados</li>
+                                                <li>Practica Verbal / Escrita</li>
+                                            </ul>
+                                            <button type="button" class="w-100 btn btn-lg btn-primary">Solicitar
+                                                Servicio</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
 
-                                <div class="card mb-4 rounded-3 shadow-sm border-primary">
-                                    <div class="card-header py-3 text-white bg-primary border-primary">
-                                        <h4 class="my-0 fw-normal">Tercer Precio</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <h1 class="card-title pricing-card-title">
-                                            30€<small class="text-muted fw-light">/h</small>
-                                        </h1>
-                                        <ul class="list-unstyled mt-3 mb-4">
-                                            <li>Ejercicios Personalizados</li>
-                                            <li>Practica Verbal / Escrita</li>
-                                            <li>Examenes de Prueba</li>
-                                        </ul>
-                                        <button type="button" class="w-100 btn btn-lg btn-primary">Solicitar
-                                            Servicio</button>
+                                    <div class="card mb-4 rounded-3 shadow-sm border-primary">
+                                        <div class="card-header py-3 text-white bg-primary border-primary">
+                                            <h4 class="my-0 fw-normal">Tercer Precio</h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <h1 class="card-title pricing-card-title">
+                                                30€<small class="text-muted fw-light">/h</small>
+                                            </h1>
+                                            <ul class="list-unstyled mt-3 mb-4">
+                                                <li>Ejercicios Personalizados</li>
+                                                <li>Practica Verbal / Escrita</li>
+                                                <li>Examenes de Prueba</li>
+                                            </ul>
+                                            <button type="button" class="w-100 btn btn-lg btn-primary">Solicitar
+                                                Servicio</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        @else
+                            <div class="d-flex row my-5">
+                                <h2 class="h4 text-center text-danger fw-text">No se han añadido aun precios</h2>
+                                <div class="d-flex justify-content-center">
+                                    <a href="{{-- {{ route('precios.index') }} --}}">
+                                        <button class="btn btn-primary mt-5 mx-5">Añadir precios</button>
+                                    </a>
+                                </div>
+                            </div>
+                        @endif
                     </div>
-                </div>
-                <div>
                     <div class="container">
                         <div class="row justify-content-center text-center">
                             <div class="col-md-8 col-lg-6">
@@ -272,93 +282,106 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row justify-content-center">
-                            <!-- Single Product -->
-                            {{-- Inicio Bucle especialidades --}}
-                            <div class="col-md-8 col-lg-6 col-xl-5">
-                                <div class="card bg-dark text-light m-3">
-                                    <div class="m-4">
-                                        <p class="card-caption h2 text-red">
-                                            Nivel: A2
-                                        </p>
-                                        <p class="mt-4">
-                                            Nota Final:
-                                        </p>
-                                        <p class="text-center h1">7</p>
-                                        <table class="mt-4 table table-bordered border-light table-dark">
-                                            <thead>
-                                                <tr class="text-center">
-                                                    <th scope="col text-center">Fecha de Finalización</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td class="text-center">19 / 6 / 2022</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                        @if (!$experience)
+                            <div class="row justify-content-center">
+                                <!-- Single Product -->
+                                {{-- Inicio Bucle especialidades --}}
+                                <div class="col-md-8 col-lg-6 col-xl-5">
+                                    <div class="card bg-dark text-light m-3">
+                                        <div class="m-4">
+                                            <p class="card-caption h2 text-red">
+                                                Nivel: A2
+                                            </p>
+                                            <p class="mt-4">
+                                                Nota Final:
+                                            </p>
+                                            <p class="text-center h1">7</p>
+                                            <table class="mt-4 table table-bordered border-light table-dark">
+                                                <thead>
+                                                    <tr class="text-center">
+                                                        <th scope="col text-center">Fecha de Finalización</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-center">19 / 6 / 2022</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            {{-- Fin Bucle Especialidades --}}
-                            {{-- Inicio Bucle especialidades --}}
-                            <div class="col-md-8 col-lg-6 col-xl-5">
-                                <div class="card bg-dark text-light m-3">
-                                    <div class="m-4">
-                                        <p class="card-caption h2 text-red">
-                                            Nivel: B1
-                                        </p>
-                                        <p class="mt-4">
-                                            Nota Final:
-                                        </p>
-                                        <p class="text-center h1">9</p>
-                                        <table class="mt-4 table table-bordered border-light table-dark">
-                                            <thead>
-                                                <tr class="text-center">
-                                                    <th scope="col">Fecha de Finalización</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td class="text-center">19 / 6 / 2022</td>
-                                                </tr>
-                                            </tbody>
-                                            </tbody>
-                                        </table>
+                                {{-- Fin Bucle Especialidades --}}
+                                {{-- Inicio Bucle especialidades --}}
+                                <div class="col-md-8 col-lg-6 col-xl-5">
+                                    <div class="card bg-dark text-light m-3">
+                                        <div class="m-4">
+                                            <p class="card-caption h2 text-red">
+                                                Nivel: B1
+                                            </p>
+                                            <p class="mt-4">
+                                                Nota Final:
+                                            </p>
+                                            <p class="text-center h1">9</p>
+                                            <table class="mt-4 table table-bordered border-light table-dark">
+                                                <thead>
+                                                    <tr class="text-center">
+                                                        <th scope="col">Fecha de Finalización</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-center">19 / 6 / 2022</td>
+                                                    </tr>
+                                                </tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            {{-- Fin Bucle Especialidades --}}
-                            {{-- Inicio Bucle especialidades --}}
-                            <div class="col-md-8 col-lg-6 col-xl-5">
-                                <div class="card bg-dark text-light m-3">
-                                    <div class="m-4">
-                                        <p class="card-caption h2 text-red">
-                                            Nivel: B2
-                                        </p>
-                                        <p class="mt-4">
-                                            Nota Final:
-                                        </p>
-                                        <p class="text-center h1">6,5</p>
-                                        <table class="mt-4 table table-bordered border-light table-dark">
-                                            <thead>
-                                                <tr class="text-center">
-                                                    <th scope="col">Fecha de Finalización</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td class="text-center">19 / 6 / 2022</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                {{-- Fin Bucle Especialidades --}}
+                                {{-- Inicio Bucle especialidades --}}
+                                <div class="col-md-8 col-lg-6 col-xl-5">
+                                    <div class="card bg-dark text-light m-3">
+                                        <div class="m-4">
+                                            <p class="card-caption h2 text-red">
+                                                Nivel: B2
+                                            </p>
+                                            <p class="mt-4">
+                                                Nota Final:
+                                            </p>
+                                            <p class="text-center h1">6,5</p>
+                                            <table class="mt-4 table table-bordered border-light table-dark">
+                                                <thead>
+                                                    <tr class="text-center">
+                                                        <th scope="col">Fecha de Finalización</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-center">19 / 6 / 2022</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
+                                {{-- Fin Bucle Especialidades --}}
                             </div>
-                            {{-- Fin Bucle Especialidades --}}
-                        </div>
+                        @else
+                            <div class="d-flex row my-5">
+                                <h2 class="h4 text-center text-danger fw-text">No se han añadido aun especialidades
+                                </h2>
+                                <div class="d-flex justify-content-center">
+                                    <a href="{{-- {{ route('precios.index') }} --}}" class="">
+                                        <button class="btn btn-primary mt-5 mx-5">Añadir especialidad</button>
+                                    </a>
+                                </div>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
-    @endsection
+    </div>
+@endsection
