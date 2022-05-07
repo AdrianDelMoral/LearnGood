@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-use App\Models\Social;
 use App\Models\Price;
 
 class inicioController extends Controller
@@ -20,11 +19,10 @@ class inicioController extends Controller
             }
 
             if(Auth::user()->role_id === 'Profesor'){
-                $redes = Social::All();
                 $precios = Price::All();
                 // $experiencia = Experience::All();
                 // Hacemos un compact, para poder pasarle a una vista una variable anteriormente creada de una tabla de la base de datos
-                return view('Profesor.index', compact('precios','redes'));
+                return view('Profesor.index', compact('precios'));
             }
 
             if(Auth::user()->role_id === 'Alumno'){

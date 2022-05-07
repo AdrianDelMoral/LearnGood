@@ -119,6 +119,12 @@
 
     <div>
         <div class="container rounded bg-white mt-5 mb-5">
+            <div class="d-flex flex-wrap justify-content-center">
+                <a href="{{ route('precios.index') }}" class="">
+                    <button class="btn btn-primary mt-5 mx-5">Ver mis precios</button>
+                </a>
+                <button class="btn btn-primary mt-5 mx-5">Ver mis solicitudes</button>
+            </div>
             <div class="d-flex justify-content-center">
                 <div class="text-center mt-5">
                     <div class="d-flex justify-content-between align-items-center mb-3">
@@ -141,7 +147,7 @@
                         <span class="fw-bold text-primary mt-4">{{ Auth::user()->email }}</span>
                         {{-- inicio bucle redes sociales --}}
                         <div class="div_socials d-flex flex-row align-items-center text-center mt-3">
-                            @if (!$redes)
+                            {{-- @if (!$redes)
                                 @foreach ($redes as $red)
                                     <a href="{{ $red->link }}" class="social m-3">
                                         <span class="fa-brands fa-2x fa-github"></span>
@@ -149,7 +155,7 @@
                                 @endforeach
                             @else
                                 <p class="text-danger fw-bold">Profesor Sin redes Actualmente</p>
-                            @endif
+                            @endif --}}
                             <!--  {{-- si es github --}}
                                     <a href="{{-- {{ Auth::user()->redes_sociales->link->github }} --}}" class="social m-3">
                                         <span class="fa-brands fa-2x fa-github"></span>
@@ -208,7 +214,7 @@
                                             10€<small class="text-muted fw-light">/h</small>
                                         </h1>
                                         <ul class="list-unstyled mt-3 mb-4">
-                                            <li>1h de clase</li>
+                                            <li>Ejercicios Personalizados</li>
                                         </ul>
                                         <button type="button" class="w-100 btn btn-lg btn-outline-primary">
                                             Solicitar Servicio
@@ -222,10 +228,12 @@
                                         <h4 class="my-0 fw-normal">Segundo Precio</h4>
                                     </div>
                                     <div class="card-body">
-                                        <h1 class="card-title pricing-card-title">15€</h1>
+                                        <h1 class="card-title pricing-card-title">
+                                            20€<small class="text-muted fw-light">/h</small>
+                                        </h1>
                                         <ul class="list-unstyled mt-3 mb-4">
-                                            <li>3h de clase</li>
-                                            <li>Videos personalizados</li>
+                                            <li>Ejercicios Personalizados</li>
+                                            <li>Practica Verbal / Escrita</li>
                                         </ul>
                                         <button type="button" class="w-100 btn btn-lg btn-primary">Solicitar
                                             Servicio</button>
@@ -239,11 +247,13 @@
                                         <h4 class="my-0 fw-normal">Tercer Precio</h4>
                                     </div>
                                     <div class="card-body">
-                                        <h1 class="card-title pricing-card-title">30€</h1>
+                                        <h1 class="card-title pricing-card-title">
+                                            30€<small class="text-muted fw-light">/h</small>
+                                        </h1>
                                         <ul class="list-unstyled mt-3 mb-4">
-                                            <li>6h de clase</li>
-                                            <li>Prioridad ante los demás</li>
-                                            <li>Videos personalizados</li>
+                                            <li>Ejercicios Personalizados</li>
+                                            <li>Practica Verbal / Escrita</li>
+                                            <li>Examenes de Prueba</li>
                                         </ul>
                                         <button type="button" class="w-100 btn btn-lg btn-primary">Solicitar
                                             Servicio</button>
@@ -269,7 +279,7 @@
                                 <div class="card bg-dark text-light m-3">
                                     <div class="m-4">
                                         <p class="card-caption h2 text-red">
-                                            Licenciado en Matemáticas
+                                            Nivel: A2
                                         </p>
                                         <p class="mt-4">
                                             Nota Final:
@@ -277,14 +287,12 @@
                                         <p class="text-center h1">7</p>
                                         <table class="mt-4 table table-bordered border-light table-dark">
                                             <thead>
-                                                <tr>
-                                                    <th scope="col text-center">Inicio</th>
-                                                    <th scope="col text-center">Finalización</th>
+                                                <tr class="text-center">
+                                                    <th scope="col text-center">Fecha de Finalización</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td class="text-center">22 / 9 / 2018</td>
                                                     <td class="text-center">19 / 6 / 2022</td>
                                                 </tr>
                                             </tbody>
@@ -298,7 +306,7 @@
                                 <div class="card bg-dark text-light m-3">
                                     <div class="m-4">
                                         <p class="card-caption h2 text-red">
-                                            Licenciado en Historia de ESPAÑA
+                                            Nivel: B1
                                         </p>
                                         <p class="mt-4">
                                             Nota Final:
@@ -306,16 +314,15 @@
                                         <p class="text-center h1">9</p>
                                         <table class="mt-4 table table-bordered border-light table-dark">
                                             <thead>
-                                                <tr>
-                                                    <th scope="col text-center">Inicio</th>
-                                                    <th scope="col text-center">Finalización</th>
+                                                <tr class="text-center">
+                                                    <th scope="col">Fecha de Finalización</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td class="text-center">22 / 9 / 2017</td>
-                                                    <td class="text-center">19 / 6 / 2018</td>
+                                                    <td class="text-center">19 / 6 / 2022</td>
                                                 </tr>
+                                            </tbody>
                                             </tbody>
                                         </table>
                                     </div>
@@ -327,7 +334,7 @@
                                 <div class="card bg-dark text-light m-3">
                                     <div class="m-4">
                                         <p class="card-caption h2 text-red">
-                                            Licenciado en Quimica
+                                            Nivel: B2
                                         </p>
                                         <p class="mt-4">
                                             Nota Final:
@@ -335,15 +342,13 @@
                                         <p class="text-center h1">6,5</p>
                                         <table class="mt-4 table table-bordered border-light table-dark">
                                             <thead>
-                                                <tr>
-                                                    <th scope="col text-center">Inicio</th>
-                                                    <th scope="col text-center">Finalización</th>
+                                                <tr class="text-center">
+                                                    <th scope="col">Fecha de Finalización</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td class="text-center">22 / 9 / 2013</td>
-                                                    <td class="text-center">19 / 6 / 2015</td>
+                                                    <td class="text-center">19 / 6 / 2022</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -353,13 +358,6 @@
                             {{-- Fin Bucle Especialidades --}}
                         </div>
                     </div>
-                </div>
-                <div class="d-flex flex-wrap justify-content-center">
-                    <a href="{{ route('precios.index') }}" class="">
-                        <button class="btn btn-primary mt-5 mx-5">Ver mis precios</button>
-                    </a>
-                    <button class="btn btn-primary mt-5 mx-5">Ver mis solicitudes</button>
-                    <button class="btn btn-primary mt-5 mx-5">Ver vista de alumno</button>
                 </div>
             </div>
         </div>

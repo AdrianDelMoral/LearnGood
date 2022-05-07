@@ -251,7 +251,9 @@
                 <h1 class="navTitle">Learn Good</h1>
             </div>
             <div class="nav__div_segundo">
-                <a class="h4 text-white" href="/">Inicio</a>
+                <div class="btn boton_div-nav text-white  mx-3">
+                    <a class="px-4 py-2" href="/">Inicio</a>
+                </div>
                 <div class="btn-group">
                     <button type="button" class="btn boton_div-nav mx-3 dropdown-toggle" data-bs-toggle="dropdown"
                         aria-expanded="false">

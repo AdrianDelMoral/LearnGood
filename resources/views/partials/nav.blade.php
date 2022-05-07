@@ -44,7 +44,7 @@
                             </li>
                             @if (Auth::user()->role_id == 'Profesor')
                                 <li>
-                                    <a class="dropdown-item" href="{{-- {{ route('Profesor.show') }} --}}">Perfil Vista Alumno</a>
+                                    <a class="dropdown-item" href="{{-- {{ route('Profesor.show') }} --}}">Vista Alumno</a>
                                 </li>
                             @endif
 
