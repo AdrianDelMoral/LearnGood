@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Platform extends Model
 {
     use HasFactory;
+
+    public function socials (){
+        return $this->hasMany(Social::class);
+    }
 }

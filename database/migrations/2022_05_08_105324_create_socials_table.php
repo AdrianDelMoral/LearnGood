@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('connections', function (Blueprint $table) {
+        Schema::create('socials', function (Blueprint $table) {
             $table->id();
             $table->foreignId("user_id")->nullable()->constrained();
             $table->foreignId("platform_id")->nullable()->constrained();
-            $table->string("nombre_usuario")->nullable()->constrained();
+            $table->string("username")->nullable()->constrained();
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('connections');
+        Schema::dropIfExists('socials');
     }
 };

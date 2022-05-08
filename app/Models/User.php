@@ -55,12 +55,21 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    // Probando
-    /*public function solicitudes()
-    {
-        return $this->belongsToMany(User::class);
-    }*/
+    public function price (){
+        return $this->belongsTo(Price::class);
+    }
 
+    // Probando
+    public function subject ()
+    {
+        return $this->belongsToMany(Subject::class);
+    }
+
+
+    public function social ()
+    {
+        return $this->belongsToMany(Social::class);
+    }
     /*public function students()
     {
         return $this->hasMany(Socials::class);
