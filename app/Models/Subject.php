@@ -13,8 +13,8 @@ class Subject extends Model
         return $this->hasMany(User::class);
     }
 
-    public function specialty ()
+    public function level ()
     {
-        return $this->belongsTo(Specialty::class);
+        return $this->belongsTo(Level::class);
     }
 }

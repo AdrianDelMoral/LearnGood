@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Specialty;
+use App\Models\Level;
 use Illuminate\Http\Request;
 
-class SpecialtyController extends Controller
+class LevelController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class SpecialtyController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Specialty  $specialty
+     * @param  \App\Models\Level  $level
      * @return \Illuminate\Http\Response
      */
-    public function show(Specialty $specialty)
+    public function show(Level $level)
     {
         //
     }
@@ -52,10 +52,10 @@ class SpecialtyController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Specialty  $specialty
+     * @param  \App\Models\Level  $level
      * @return \Illuminate\Http\Response
      */
-    public function edit(Specialty $specialty)
+    public function edit(Level $level)
     {
         //
     }
@@ -64,10 +64,10 @@ class SpecialtyController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Specialty  $specialty
+     * @param  \App\Models\Level  $level
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Specialty $specialty)
+    public function update(Request $request, Level $level)
     {
         //
     }
@@ -75,10 +75,10 @@ class SpecialtyController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Specialty  $specialty
+     * @param  \App\Models\Level  $level
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Specialty $specialty)
+    public function destroy(Level $level)
     {
         //
     }

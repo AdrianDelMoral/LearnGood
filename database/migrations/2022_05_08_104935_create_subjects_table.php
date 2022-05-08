@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('subjects', function (Blueprint $table) {
             $table->id();
             $table->foreignId("user_id")->constrained();
-            $table->foreignId("specialty_id")->constrained();
+            $table->foreignId("level_id")->constrained();
             $table->string("titulo");
             $table->string("descripcion");
             $table->date('fecha_inicio');
