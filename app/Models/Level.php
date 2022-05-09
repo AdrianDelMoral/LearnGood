@@ -10,6 +10,6 @@ class Level extends Model
     use HasFactory;
 
     public function subjects (){
-        return $this->hasMany(Experience::class);
+        return $this->hasMany(Subject::class);
     }
 }

@@ -55,23 +55,42 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function price (){
+    public function price()
+    {
         return $this->belongsTo(Price::class);
     }
 
     // Probando
-    public function subject ()
+    public function subject()
     {
         return $this->belongsToMany(Subject::class);
     }
 
 
-    public function social ()
+    public function social()
     {
         return $this->belongsToMany(Social::class);
     }
-    /*public function students()
+
+
+    public function seguidos()
     {
-        return $this->hasMany(Socials::class);
-    }*/
+        return $this->belongsToMany(User::class, 'user_user', 'user_id', 'user_id_seguido');
+    }
+    // Y para declarar la relación inversa:
+
+    public function seguidores()
+    {
+        return $this->belongsToMany(User::class, 'user_user', 'user_id_seguido', 'user_id');
+    }
+
+    // Luego podrás relacionar los usuarios:
+
+    // $usuario_seguido->seguidores()->attach($usuarioId);
+    // Y obtener los resultados:
+    //
+    // $seguidores = $user->seguidores;
+    //
+    // $seguidos = $user->seguidos;
+
 }
