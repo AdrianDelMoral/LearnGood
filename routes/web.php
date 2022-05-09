@@ -40,7 +40,7 @@ Route::group(['middleware' => 'auth'], function() {
     });
 
     Route::group(['middleware' => 'administrador', 'prefix' => 'administrador'], function() {
-        // Route::get('/{id}', [StudentController::class, 'show'])->name('alumno.show');
+
     });
 
     Route::group(['middleware' => 'profesor', 'prefix' => 'profesor'], function() {
