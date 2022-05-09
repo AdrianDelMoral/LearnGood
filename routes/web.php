@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\InicioController;
-use App\Http\Controllers\PlatformController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\PriceController;
 
@@ -41,7 +40,7 @@ Route::group(['middleware' => 'auth'], function() {
     });
 
     Route::group(['middleware' => 'administrador', 'prefix' => 'administrador'], function() {
-      //  Route::get('/{id}', [StudentController::class, 'show'])->name('alumno.show');
+        // Route::get('/{id}', [StudentController::class, 'show'])->name('alumno.show');
     });
 
     Route::group(['middleware' => 'profesor', 'prefix' => 'profesor'], function() {

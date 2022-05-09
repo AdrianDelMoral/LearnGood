@@ -1,39 +1,3 @@
-{{-- <footer class="bg-dark text-light">
-    <section class="d-flex flex-wrap py-5 mt-5 border-top">
-        <article class="col-3 m-xs-5 p-xs-0 p-md-5">
-            <h1 class="text-center text-info"><span class="fa-solid fa-book"></span><br>Learn Good</h1>
-        </article>
-
-        <article class="col-3">
-            <h2 class="h4 text-info">Places Where We Work</h2>
-            <ul class="nav flex-column">
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">Learn Good Spain</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">Learn Good France</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">Learn Good EEUU</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">Learn Good UK</a></li>
-            </ul>
-        </article>
-
-        <article class="col-3">
-            <h2 class="h4 text-info">Information</h2>
-            <ul class="nav flex-column">
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">About Learn Good</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">Help & FAQ</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">Contact</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">Terms of Service</a></li>
-            </ul>
-        </article>
-
-        <article class="col-3">
-            <h2 class="h4 text-info">Social</h2>
-            <ul class="nav flex-column">
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">Instagram</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">Twitter</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-light">LinkedIn</a></li>
-            </ul>
-        </article>
-    </section>
-</footer> --}}
 <!-- Footer -->
 <footer class="text-center text-lg-start bg-dark text-muted text-light sticky-footer">
     <!-- Section: Social media -->
@@ -47,22 +11,22 @@
         <!-- Right -->
         <div>
             <a href="" class="me-4 text-danger">
-                <i class="fab fa-facebook-f"></i>
+                <span class="fab fa-facebook-f"></span>
             </a>
             <a href="" class="me-4 text-danger">
-                <i class="fab fa-twitter"></i>
+                <span class="fab fa-twitter"></span>
             </a>
             <a href="" class="me-4 text-danger">
-                <i class="fab fa-google"></i>
+                <span class="fab fa-google"></span>
             </a>
             <a href="" class="me-4 text-danger">
-                <i class="fab fa-instagram"></i>
+                <span class="fab fa-instagram"></span>
             </a>
             <a href="" class="me-4 text-danger">
-                <i class="fab fa-linkedin"></i>
+                <span class="fab fa-linkedin"></span>
             </a>
             <a href="" class="me-4 text-danger">
-                <i class="fab fa-github"></i>
+                <span class="fab fa-github"></span>
             </a>
         </div>
         <!-- Right -->
@@ -136,17 +100,17 @@
                         Contact
                     </h6>
                     <p>
-                        <i class="fas fa-home me-3"></i> New York, NY 10012, US
+                        <span class="fas fa-home me-3"></span> New York, NY 10012, US
                     </p>
                     <p>
-                        <i class="fas fa-envelope me-3"></i>
+                        <span class="fas fa-envelope me-3"></span>
                         info@example.com
                     </p>
 
-                    <p><i class="fas fa-phone me-3"></i> + 01 234 567 88
+                    <p><span class="fas fa-phone me-3"></span> + 01 234 567 88
                     </p>
 
-                    <p><i class="fas fa-print me-3"></i> + 01 234 567 89
+                    <p><span class="fas fa-print me-3"></span> + 01 234 567 89
                     </p>
                 </div>
                 <!-- Grid column -->
