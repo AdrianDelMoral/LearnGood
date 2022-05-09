@@ -72,25 +72,4 @@ class User extends Authenticatable
         return $this->belongsToMany(Social::class);
     }
 
-
-    public function seguidos()
-    {
-        return $this->belongsToMany(User::class, 'user_user', 'user_id', 'user_id_seguido');
-    }
-    // Y para declarar la relación inversa:
-
-    public function seguidores()
-    {
-        return $this->belongsToMany(User::class, 'user_user', 'user_id_seguido', 'user_id');
-    }
-
-    // Luego podrás relacionar los usuarios:
-
-    // $usuario_seguido->seguidores()->attach($usuarioId);
-    // Y obtener los resultados:
-    //
-    // $seguidores = $user->seguidores;
-    //
-    // $seguidos = $user->seguidos;
-
 }
