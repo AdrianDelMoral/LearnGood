@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\InicioController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\InicioController;
+use App\Http\Controllers\PlatformController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\PriceController;
 
@@ -18,14 +19,6 @@ use App\Http\Controllers\PriceController;
 |
 */
 
-/* Route::get('/', function () {
-    return view('welcome');
-}); */
-
-/* Route::get('/', function () {
-    return view('home');
-}); */
-
 Route::resource('/', InicioController::class)->only('index');
 
 
@@ -39,41 +32,6 @@ Route::middleware([
     })->name('dashboard');
 });
 
-/*
-    Route::get('prueba', function () {
-
-    })->middleware(['auth:sanctum', 'profesor']);
-
-    Route::get('prueba', function () {
-
-    })->middleware(['auth:sanctum', 'alumno']);
-
-    Route::get('prueba', function () {
-
-    })->middleware(['auth:sanctum', 'administrador']);
-
-    Route::get('no-autorizado', function () {
-        return "Usted no está autorizado";
-    })->middleware(['auth:sanctum','administrador']);
-*/
-
-/*
-    Aplico un middleware previamente creado y configurado
-    solo podrá acceder la gente autentificada con dicho rol
-*/
-    // Route::middleware(['auth', 'administrador'])->group(function () {
-    //      Route::resource('/Panel-De-Administrador', AdminController::class);
-    //});
-
-    // Route::middleware(['auth', 'profesor'])->group(function () {
-    //     //Route::resource('/Profesor-Inicio', TeacherController::class);
-    //     Route::resource('/precios', PriceController::class);
-    // });
-
-// Route::middleware(['auth', 'alumno'])->group(function () {
-//     //Route::resource('/Alumno-Inicio', StudentController::class);
-//     Route::get('/{id}', [StudentController::class, 'show'])->name('alumno.show');
-// });
 
 Route::group(['middleware' => 'auth'], function() {
     //Route::resource('/precios', PriceController::class);
