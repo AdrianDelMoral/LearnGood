@@ -21,10 +21,9 @@ class inicioController extends Controller
 
             if(Auth::user()->role_id === 'Profesor'){
                 $precios = Price::All();
-                $experience = Experience::All();
                 // $experiencia = Experience::All();
                 // Hacemos un compact, para poder pasarle a una vista una variable anteriormente creada de una tabla de la base de datos
-                return view('Profesor.index', compact('precios','experience'));
+                return view('Profesor.index', compact('precios'));
             }
 
             if(Auth::user()->role_id === 'Alumno'){
