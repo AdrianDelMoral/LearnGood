@@ -6,9 +6,10 @@
 @endsection
 
 @section('cuerpo')
+    @livewire('platform-component')
 
-    <div class="container">
-        <h1 class="text-center my-5">Admin - Inicio</h1>
+    <div class="container mt-5">
+        <h1 class="text-center my-5">Lista de Usuarios</h1>
         <table class="table table-dark table-bordered border-white table-striped">
             <thead>
                 <tr>
