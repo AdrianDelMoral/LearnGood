@@ -14,7 +14,8 @@ class LevelController extends Controller
      */
     public function index()
     {
-        //
+        $levels = Level::All();
+        return view('admin.levels.index', compact('levels'));
     }
 
     /**

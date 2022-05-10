@@ -8,15 +8,34 @@
         <div class="contenidoNav collapse navbar-collapse" id="navbarsExampleXxl">
             <div class=" nav__div_primero">
                 <a href="/">
-                    <x-jet-application-mark/>
+                    <x-jet-application-mark />
                     {{-- <img src="{{ asset('imagenes/generales/logo.png') }}" alt="logo" style="width:4.8rem; height:4rem;"> --}}
                 </a>
                 <h1 class="navTitle">Learn Good</h1>
             </div>
             <div class="nav__div_segundo">
-                <div class="btn boton_div-nav text-white  mx-3">
-                    <a class="px-4 py-2" href="/">Inicio</a>
-                </div>
+                <a  class="btn boton_div-nav text-white  mx-3" href="/">
+                    <div class="px-4 py-2" >
+                        Inicio
+                    </div>
+                </a>
+                @if (Auth::User()->role_id === 'Admin')
+                    <a  class="btn boton_div-nav text-white  mx-3" href="{{ route('manageusers.index') }}">
+                        <div class="px-4 py-2" >
+                            Gestionar Usuarios
+                        </div>
+                    </a>
+
+                    <a class="btn boton_div-nav text-white mx-3" href="{{ route('platforms.index') }}">
+                        <div class="px-4 py-2">Redes Sociales</div>
+                    </a>
+
+                    <a class="btn boton_div-nav text-white  mx-3" href="{{ route('levels.index') }}">
+                        <div class="px-4 py-2">
+                            Niveles De Ingles
+                        </div>
+                    </a>
+                @endif
                 <div class="btn-group">
                     <button type="button" class="btn boton_div-nav mx-3 dropdown-toggle" data-bs-toggle="dropdown"
                         aria-expanded="false">

@@ -66,6 +66,6 @@ class Kernel extends HttpKernel
         /* establecer la ruta de los middleware, para poder usarlos después donde desee */
         'profesor' => \App\Http\Middleware\Profesor::class,
         'alumno' => \App\Http\Middleware\Alumno::class,
-        'administrador' => \App\Http\Middleware\Administrador::class,
+        'admin' => \App\Http\Middleware\Administrador::class,
     ];
 }

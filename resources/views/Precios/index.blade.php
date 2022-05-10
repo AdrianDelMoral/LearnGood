@@ -30,8 +30,8 @@
                     </tr>
                 @else
                     <tr>
-                        <td colspan="2" class="h4 text-center py-4">No hay datos</td>
-                        <td colspan="2" class="h4 text-center py-4">
+                        <td colspan="5" class="h4 text-center py-4">
+                            <p>No hay datos</p>
                             <a href="{{ route('precios.create') }}">
                                 <button class="btn btn-success">Añadir precios</button>
                             </a>

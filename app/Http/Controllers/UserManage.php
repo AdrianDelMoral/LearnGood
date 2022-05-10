@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Platform;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class PlatformController extends Controller
+class UserManage extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,9 @@ class PlatformController extends Controller
      */
     public function index()
     {
-        $platforms = Platform::All();
-        return view('admin.platforms.index', compact('platforms'));
+        // sacamos todos los usuarios, para mostrarselos al administrador
+        $users = User::All();
+        return view('admin.users.index', compact('users'));
     }
 
     /**
@@ -42,10 +43,10 @@ class PlatformController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Platform  $platform
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Platform $platform)
+    public function show($id)
     {
         //
     }
@@ -53,10 +54,10 @@ class PlatformController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Platform  $platform
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Platform $platform)
+    public function edit($id)
     {
         //
     }
@@ -65,10 +66,10 @@ class PlatformController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Platform  $platform
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Platform $platform)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -76,10 +77,10 @@ class PlatformController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Platform  $platform
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Platform $platform)
+    public function destroy($id)
     {
         //
     }
