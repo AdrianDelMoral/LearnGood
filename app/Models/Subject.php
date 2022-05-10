@@ -9,6 +9,12 @@ class Subject extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'descripcion',
+        'fecha_inicio',
+        'fecha_finalizacion',
+    ];
+
     public function users(){
         return $this->hasMany(User::class);
     }

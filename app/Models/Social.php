@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Social extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'username',
+    ];
+
     public function users(){
         return $this->hasMany(User::class);
     }

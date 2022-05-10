@@ -9,6 +9,10 @@ class Level extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'nombre',
+    ];
+
     public function subjects (){
         return $this->hasMany(Subject::class);
     }

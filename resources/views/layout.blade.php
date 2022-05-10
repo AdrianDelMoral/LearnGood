@@ -20,7 +20,6 @@
     <link rel="stylesheet" href="{{ URL::asset('css/navFooter.css') }}">
 
     @yield('CSSadded')
-    @yield('JSadded')
     <title>@yield('titulo')</title>
 </head>
 
@@ -28,6 +27,8 @@
     @include('partials.nav')
     @yield('cuerpo')
     @include('partials.footer')
+
+    @yield('JSadded')
 </body>
 
 </html>

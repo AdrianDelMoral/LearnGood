@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('prices', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained();
-            $table->integer('precio');
+            $table->double('precio');
             $table->integer('horas');
             $table->timestamps();
         });
