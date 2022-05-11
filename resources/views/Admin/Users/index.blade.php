@@ -24,7 +24,13 @@
                     <tr>
                         <th scope="row">{{ $user->id }}</th>
                         <td class="text-center">
+                            <p>{{ $user->role_id }}</p>
+                        </td>
+                        <td class="text-center">
                             <p>{{ $user->nombre }}</p>
+                        </td>
+                        <td class="text-center">
+                            <p>{{ $user->apellidos }}</p>
                         </td>
                         <td class="text-center">
                             <button class="btn btn-success">Editar</button>
