@@ -14,7 +14,9 @@ class Price extends Model
     protected $fillable = [
         'id_user',
         'precio',
-        'horas'
+        'ventajaUno',
+        'ventajaDos',
+        'ventajaTres'
     ];
 
     public function orders(){
