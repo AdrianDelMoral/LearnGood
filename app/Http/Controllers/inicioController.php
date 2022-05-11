@@ -23,11 +23,11 @@ class inicioController extends Controller
                 $precios = Price::All();
                 // $experiencia = Experience::All();
                 // Hacemos un compact, para poder pasarle a una vista una variable anteriormente creada de una tabla de la base de datos
-                return view('Profesor.index', compact('precios'));
+                return view('Profesor.index');
             }
 
             if(Auth::user()->role_id === 'Alumno'){
-                $usersProfesor = User::All()->where('role_id', '=', 'Profesor' );
+                $usersProfesor = User::where('role_id', '=', 'Profesor' );
                 return view('Alumno.index', compact('usersProfesor'));// Hacemos un compact, para poder pasarle a una vista una variable anteriormente creada de una tabla de la base de datos
             }
         }
