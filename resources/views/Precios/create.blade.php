@@ -6,22 +6,26 @@
 @endsection
 
 @section('cuerpo')
-<div class="container">
-    <div>
-        <h1>Formulario de Añadir un precio nuevo</h1>
-    </div>
-    <div>
-        <form action="">
+    <div class="container">
+        <div>
+            <h1 class="fw-bold text-center">Añadir un nuevo Precio</h1>
+        </div>
+
+        <form action="{{route('precios.store')}}" method="post">
             @csrf
-            <div>
+            <div class="form-group">
                 <label class="labels" for="precio">Precio</label>
-                <input type="number" name="precio" id="precio">
+                <input type="number" class="form-control" name="precio" id="precio" aria-describedby="precioHelp"
+                    placeholder="Precio €">
             </div>
-            <div>
-                <textarea name="descripcion" id="descripcion" class="radius-5 border-2" cols="30" rows="10" placeholder="Breve descripcion de este precio"></textarea>
+
+            <div class="form-group">
+                <label for="horas">Horas</label>
+                <input type="number" class="form-control" name="horas" id="horas" placeholder="Horas">
             </div>
+
             <button class="btn btn-success">Añadir Precio</button>
         </form>
     </div>
-</div>
+    </div>
 @endsection

@@ -18,8 +18,10 @@ class PriceController extends Controller
     public function index()
     {
         $usuario = Auth::user()->id;
-        $precios = Price::All()->where('user_id', '=', 'usuario');
+        $precios = Price::where('user_id', $usuario)->paginate(2);
+        // $precios = Price::get();
         return view('precios.index', compact('precios'));
+
     }
 
     /**

@@ -55,9 +55,9 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function price()
+    public function prices()
     {
-        return $this->belongsTo(Price::class);
+        return $this->hasMany(Price::class);
     }
 
     // Probando
@@ -66,6 +66,9 @@ class User extends Authenticatable
         return $this->belongsToMany(Subject::class);
     }
 
+    public function orders(){
+        return $this->hasMany(Order::class);
+    }
 
     public function social()
     {

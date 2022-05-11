@@ -19,6 +19,10 @@ class Order extends Model
         return $this->belongsToMany(User::class, 'orders', 'user_id_profesor', 'user_id_alumno');
     }
 
+    public function prices(){
+        return $this->belongsTo(Price::class);
+    }
+
     // Luego podrás relacionar los usuarios:
         // $usuario_seguido->seguidores()->attach($usuarioId);
 

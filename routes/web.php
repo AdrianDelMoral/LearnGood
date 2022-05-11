@@ -9,6 +9,7 @@ use App\Http\Controllers\PlatformController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\PriceController;
 use App\Http\Controllers\UserManage;
+use App\Http\Livewire\PricesComponent;
 
 /*
 |--------------------------------------------------------------------------

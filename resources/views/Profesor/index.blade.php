@@ -12,7 +12,9 @@
                 <a href="{{ route('precios.index') }}" class="">
                     <button class="btn btn-primary mt-5 mx-5">Ver mis precios</button>
                 </a>
-                <button class="btn btn-primary mt-5 mx-5">Ver mis solicitudes</button>
+                <a href="{{ route('precios.index') }}" class="">
+                    <button class="btn btn-primary mt-5 mx-5">Ver mis solicitudes</button>
+                </a>
             </div>
             <div class="d-flex justify-content-center">
                 <div class="text-center mt-5">

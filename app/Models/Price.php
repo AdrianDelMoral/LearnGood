@@ -8,8 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Price extends Model
 {
     use HasFactory;
+
+    protected $table = 'prices';
+
+    protected $fillable = [
+        'id_user',
+        'precio',
+        'horas'
+    ];
+
+    public function orders(){
+        return $this->hasMany(Order::class);
+    }
+
     public function users(){
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class);
     }
 
 }
