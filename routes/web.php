@@ -4,8 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\InicioController;
+use App\Http\Controllers\LevelController;
+use App\Http\Controllers\PlatformController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\PriceController;
+use App\Http\Controllers\UserManage;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +21,7 @@ use App\Http\Controllers\PriceController;
 |
 */
 
+// siempre que ponga "/" me redireccione al index
 Route::resource('/', InicioController::class)->only('index');
 
 
@@ -33,19 +37,20 @@ Route::middleware([
 
 
 Route::group(['middleware' => 'auth'], function() {
-    //Route::resource('/precios', PriceController::class);
 
     Route::group(['middleware' => 'alumno', 'prefix' => 'alumno'], function() {
+        /*Rutas de inicio*/
         Route::get('/{id}', [StudentController::class, 'show'])->name('alumno.show');
     });
 
-    Route::group(['middleware' => 'administrador', 'prefix' => 'administrador'], function() {
-        // Route::get('/{id}', [StudentController::class, 'show'])->name('alumno.show');
+    Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function() {
+        Route::resource('/platforms', PlatformController::class);
+        Route::resource('/manageusers', UserManage::class);
+        Route::resource('/levels', LevelController::class);
     });
 
     Route::group(['middleware' => 'profesor', 'prefix' => 'profesor'], function() {
         Route::resource('/precios', PriceController::class);
     });
-
 
 });
