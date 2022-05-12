@@ -150,7 +150,6 @@
 
         <a href="/"><button class="btn btn-primary mt-3 mb-5">Volver a Inicio</button></a>
     </div>
-
 @endsection
 @section('JSadded')
 @endsection
