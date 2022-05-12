@@ -16,10 +16,11 @@ return new class extends Migration
         Schema::create('prices', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained();
-            $table->integer('precio');
+            $table->string('nombrePack');
+            $table->double('precio');
             $table->string('ventajaUno');
-            $table->string('ventajaDos');
-            $table->string('ventajaTres');
+            $table->string('ventajaDos')->nullable();
+            $table->string('ventajaTres')->nullable();
             $table->timestamps();
         });
     }

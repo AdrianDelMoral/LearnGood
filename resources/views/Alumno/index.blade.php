@@ -25,7 +25,7 @@
                                             <li style="--i:2"> <a href="#"> <span class="fab fa-twitter"></span> </a> </li>
                                             <li style="--i:3"> <a href="#"> <span class="fab fa-github"></span> </a> </li>
                                         </ul>
-                                <a href="{{ route('alumno.show', $user->id) }}">
+                                <a href="{{ route('alumno.index', $user->id) }}">
                                     <button class="btn btn-dark my-3">Ver Profesor</button>
                                 </a>
                             </div>

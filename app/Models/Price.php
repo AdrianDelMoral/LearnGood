@@ -13,6 +13,7 @@ class Price extends Model
 
     protected $fillable = [
         'id_user',
+        'nombrePack',
         'precio',
         'ventajaUno',
         'ventajaDos',

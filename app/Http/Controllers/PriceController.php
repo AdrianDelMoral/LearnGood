@@ -17,10 +17,9 @@ class PriceController extends Controller
      */
     public function index()
     {
-        $usuario = Auth::user()->id;
-        $precios = Price::where('user_id', $usuario)->paginate(2);
-        return view('precios.index', compact('precios'));
-
+        $user = Auth::user()->id;
+        $precios = Price::where('user_id', '=', $user)->paginate(6); //get, cogeme todos los precios, where, mientras sean de el id del usuario actual
+        return view('precios.index', compact('precios','user'));
     }
 
     /**
@@ -30,7 +29,9 @@ class PriceController extends Controller
      */
     public function create()
     {
-        return view('precios.create');
+        $user = Auth::user()->id;
+        $comprobador = Price::where('user_id', '=', $user); //get, cogeme todos los precios, where, mientras sean de el id del usuario actual
+        return view('precios.create', compact('comprobador'));
     }
 
     /**
@@ -41,7 +42,15 @@ class PriceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $price = new Price();
+        $price->user_id = Auth::user()->id;
+        $price->nombrePack = $request->get('nombrePack');
+        $price->precio = $request->get('precio');
+        $price->ventajaUno = $request->get('ventajaUno');
+        $price->ventajaDos = $request->get('ventajaDos');
+        $price->ventajaTres = $request->get('ventajaTres');
+        $price->save();
+        return view('precios.store', compact('price'));
     }
 
     /**
@@ -50,9 +59,10 @@ class PriceController extends Controller
      * @param  \App\Models\Price  $price
      * @return \Illuminate\Http\Response
      */
-    public function show(Price $price)
+    public function show(Price $precio)
     {
-        //
+
+        return view('precios.show', compact('precio'));
     }
 
     /**
@@ -63,7 +73,7 @@ class PriceController extends Controller
      */
     public function edit(Price $price)
     {
-        //
+        return view('precios.edit', compact('price'));
     }
 
     /**
@@ -73,9 +83,16 @@ class PriceController extends Controller
      * @param  \App\Models\Price  $price
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Price $price)
+    public function update(Request $request, Price $precio)
     {
-        //
+        $precio->nombrePack = $request->get('nombrePack');
+        $precio->precio = $request->get('precio');
+        $precio->ventajaUno = $request->get('ventajaUno');
+        $precio->ventajaDos = $request->get('ventajaDos');
+        $precio->ventajaTres = $request->get('ventajaTres');
+        $precio->save();
+        // return view('precios.store', compact('price'));
+        return redirect()->route('precios.update', compact('price'));
     }
 
     /**
@@ -84,8 +101,9 @@ class PriceController extends Controller
      * @param  \App\Models\Price  $price
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Price $price)
+    public function destroy(Price $precio)
     {
-        //
+        $precio->delete();
+        return redirect()->route('precios.index');
     }
 }

@@ -10,10 +10,8 @@ class TeacherController extends Controller
 
     public function index()
     {
-        if(Auth::user()->role_id === 'Profesor'){
-            $usersProfesor = User::All()->where('role_id', '=', 'Profesor' );
-            return view('Profesor.index', compact('users'));
-        }
-        return view('/');
+            $user = Auth::user()->id;
+            $profeInfo = User::where('user_id', '=', $user);
+            return view('Profesor.index', compact('profeInfo'));
     }
 }

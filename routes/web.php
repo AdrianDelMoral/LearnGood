@@ -22,26 +22,26 @@ use App\Http\Livewire\PricesComponent;
 |
 */
 
-// siempre que ponga "/" me redireccione al index
-Route::resource('/', InicioController::class)->only('index');
 
 
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
+    ])->group(function () {
+        Route::get('/dashboard', function () {
+            return view('dashboard');
+        })->name('dashboard');
+    });
 
+
+// siempre que ponga "/" me redireccione al index
+Route::resource('/', InicioController::class)->only('index');
 
 Route::group(['middleware' => 'auth'], function() {
 
     Route::group(['middleware' => 'alumno', 'prefix' => 'alumno'], function() {
-        /*Rutas de inicio*/
-        Route::get('/{id}', [StudentController::class, 'show'])->name('alumno.show');
+        Route::resource('/alumnoviews', StudentController::class);
     });
 
     Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function() {
@@ -51,6 +51,7 @@ Route::group(['middleware' => 'auth'], function() {
     });
 
     Route::group(['middleware' => 'profesor', 'prefix' => 'profesor'], function() {
+        Route::resource('/teacherviews', TeacherController::class);
         Route::resource('/precios', PriceController::class);
     });
 
