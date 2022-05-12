@@ -12,7 +12,6 @@ class Price extends Model
     protected $table = 'prices';
 
     protected $fillable = [
-        'id_user',
         'nombrePack',
         'precio',
         'ventajaUno',

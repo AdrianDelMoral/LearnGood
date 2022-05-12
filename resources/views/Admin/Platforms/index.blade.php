@@ -43,7 +43,7 @@
                 @else
                     <tr>
                         <td class="text-center" colspan="4">
-                            <button class="btn btn-success">Crear Nueva Red Social</button>
+                            <button class="btn btn-success" href="">Crear Nueva Red Social</button>
                         </td>
                     </tr>
                 @endif

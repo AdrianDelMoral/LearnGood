@@ -9,6 +9,8 @@
 @section('cuerpo')
     <div class="container mt-5">
         <span class="h1">Precios de: {{ Auth::user()->nombre }}</span>
+        <br>
+        <span class="h3 text-primary fw-bold">Precios en total Actualmente: {{ $precios->count() }}</span>
         @if ($precios->count() === 0)
             <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
                 <div class="col w-100">
@@ -27,7 +29,7 @@
                 </div>
             </div>
         @else
-            @if($precios->count() > 3)
+            @if($precios->count() <= 3)
             <!-- Boon addPrice -->
                 <a class="m-3 btn btn-success" href="{{ route('precios.create') }}">
                     <span class="fas fa-plus"></span> Crear Precio
@@ -148,12 +150,6 @@
 
         <a href="/"><button class="btn btn-primary mt-3 mb-5">Volver a Inicio</button></a>
     </div>
-
-
-
-
-
-
 
 @endsection
 @section('JSadded')

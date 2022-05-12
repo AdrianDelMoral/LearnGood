@@ -20,9 +20,14 @@
                             <span class="h3">Ventajas:</span>
                             <div class="ms-3">
                                 <ul class="fw-bold">
-                                    <li type="1" class="ps-2 h5">{{ $precio->ventajaUno }} </li>
-                                    <li type="1" class="ps-2 h5">{{ $precio->ventajaDos }}</li>
-                                    <li type="1" class="ps-2 h5">{{ $precio->ventajaTres }}</li>
+                                    <li type="1" class="ps-2 h5">{{ $precio->ventajaUno }}</li>
+                                    @if ($precio->ventajaDos !== null)
+                                        <li type="1" class="ps-2 h5">{{ $precio->ventajaDos }}</li>
+                                    @endif
+                                    @if ($precio->ventajaTres !== null)
+                                        <li type="1" class="ps-2 h5">{{ $precio->ventajaTres }}</li>
+                                    @endif
+                                </ul>
                                 </ul>
                             </div>
                         </div>

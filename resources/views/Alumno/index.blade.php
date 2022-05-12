@@ -19,12 +19,11 @@
                             </div>
                             <div class="card-content d-flex flex-column align-items-center">
                                 <h4 class="pt-2">{{ $user->nombre }} {{ $user->apellidos }}</h4>
-                                <h5>Programadora</h5>
-                                        <ul class="social-icons d-flex justify-content-center">
-                                            <li style="--i:1"> <a href="#"> <span class="fab fa-linkedin"></span> </a> </li>
-                                            <li style="--i:2"> <a href="#"> <span class="fab fa-twitter"></span> </a> </li>
-                                            <li style="--i:3"> <a href="#"> <span class="fab fa-github"></span> </a> </li>
-                                        </ul>
+                                <ul class="social-icons d-flex justify-content-center">
+                                    <li style="--i:1"> <a href="#"> <span class="fab fa-linkedin"></span> </a> </li>
+                                    <li style="--i:2"> <a href="#"> <span class="fab fa-twitter"></span> </a> </li>
+                                    <li style="--i:3"> <a href="#"> <span class="fab fa-github"></span> </a> </li>
+                                </ul>
                                 <a href="{{ route('alumno.index', $user->id) }}">
                                     <button class="btn btn-dark my-3">Ver Profesor</button>
                                 </a>

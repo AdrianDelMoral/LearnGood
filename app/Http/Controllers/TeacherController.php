@@ -10,8 +10,7 @@ class TeacherController extends Controller
 
     public function index()
     {
-            $user = Auth::user()->id;
-            $profeInfo = User::where('user_id', '=', $user);
-            return view('Profesor.index', compact('profeInfo'));
+            $user = Auth::user();
+            return view('Profesor.index', compact('user'));
     }
 }

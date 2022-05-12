@@ -7,41 +7,49 @@
 
 @section('cuerpo')
     <div class="container col-xxl-8 px-4 py-5">
-        <h1 class="fw-bold text-center">Editar Precio Nº {{ $price->precio }}</h1>
+        <h1 class="fw-bold text-center">Editar Precio Nº {{ $precio->id }}</h1>
         <div class="d-flex justify-content-center">
-
             <form action="{{ route('precios.store') }}" method="post">
                 @csrf
                 <div class="form-group">
+                    <label class="labels" for="nombrePack">Nombre Pack</label>
+                    <input type="text" class="form-control" name="nombrePack" id="nombrePack" aria-describedby="precioHelp"
+                        placeholder="Nombre del Pack" value="{{ $precio->nombrePack }}">
+                    @error('nombrePack')
+                        <p class="form-text text-danger">{{ $mensaje }}</p>
+                    @enderror
+                </div>
+
+                <div class="form-group">
                     <label class="labels" for="precio">Precio</label>
                     <input type="number" class="form-control" name="precio" id="precio" aria-describedby="precioHelp"
-                        placeholder="Precio €" value="{{ $price->precio }}">
+                        placeholder="Precio €" value="{{ $precio->precio }}">
                     @error('precio')
-                        <p class="form-text text-danger">{{ $message }}</p>
+                        <p class="form-text text-danger">{{ $mensaje }}</p>
                     @enderror
                 </div>
 
                 <div class="form-group">
                     <label for="ventajaUno">Ventaja 1</label>
-                    <input type="text" class="form-control" name="ventajaUno" id="ventajaUno" placeholder="Ventaja 1" value="{{ $price->ventajaUno }}">
+                    <input type="text" class="form-control" name="ventajaUno" id="ventajaUno" placeholder="Ventaja 1" value="{{ $precio->ventajaUno }}">
                     @error('ventajaUno')
-                        <p class="form-text text-danger">{{ $message }}</p>
+                        <p class="form-text text-danger">{{ $mensaje }}</p>
                     @enderror
                 </div>
 
                 <div class="form-group">
                     <label for="ventajaUno">Ventaja 2</label>
-                    <input type="text" class="form-control" name="ventajaDos" id="ventajaUno" placeholder="Ventaja 1" value="{{ $price->ventajaDos }}">
+                    <input type="text" class="form-control" name="ventajaDos" id="ventajaUno" placeholder="Ventaja 1" value="{{ $precio->ventajaDos }}">
                     @error('ventajaUno')
-                        <p class="form-text text-danger">{{ $message }}</p>
+                        <p class="form-text text-danger">{{ $mensaje }}</p>
                     @enderror
                 </div>
 
                 <div class="form-group">
                     <label for="ventajaUno">Ventaja 3</label>
-                    <input type="text" class="form-control" name="ventajaTres" id="ventajaUno" placeholder="Ventaja 1" value="{{ $price->ventajaTres }}">
+                    <input type="text" class="form-control" name="ventajaTres" id="ventajaUno" placeholder="Ventaja 1" value="{{ $precio->ventajaTres }}">
                     @error('ventajaUno')
-                        <p class="form-text text-danger">{{ $message }}</p>
+                        <p class="form-text text-danger">{{ $mensaje }}</p>
                     @enderror
                 </div>
 

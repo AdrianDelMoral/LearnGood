@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('platforms', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
+            $table->string('nombre')->unique();
+            $table->string('Foto');
             $table->timestamps();
         });
     }
