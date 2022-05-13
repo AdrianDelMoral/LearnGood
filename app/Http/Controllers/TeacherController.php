@@ -10,7 +10,7 @@ class TeacherController extends Controller
 
     public function index()
     {
-            $user = Auth::user();
-            return view('Profesor.index', compact('user'));
+        $user = Auth::user();
+        return view('Profesor.index', compact('user'));
     }
 }

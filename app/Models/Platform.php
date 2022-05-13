@@ -9,6 +9,13 @@ class Platform extends Model
 {
     use HasFactory;
 
+    protected $table = 'platforms';
+
+    protected $fillable = [
+        'nombre',
+        'Foto'
+    ];
+
     public function socials (){
         return $this->hasMany(Social::class);
     }

@@ -12,15 +12,15 @@
             <div class="row justify-content-evenly mb-5 pb-5">
                 <div class="col-md-3 border-right">
                     <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                        <div class="cajaImg_profesor">
+                        <div class="cajaImg_profesor" style="position: relative; width: 126px; height: 116px; display: flex; justify-content: center; align-items: center; overflow: hidden; border-radius: 50%; transition: 0.5s;">
                             <div class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
                                 <img class="rounded-circle img-fluid overflow-hidden"
-                                    src="{{ $id->profile_photo_url }}" alt="{{ $id->role_id }}"
-                                    width="150px" height="150px" />
+                                    src="{{ $profeInfo->profile_photo_url }}" alt="{{ $profeInfo->role_id }}"
+                                    width="150px" height="150px"/>
                             </div>
                         </div>
-                        <span class="fw-bold mt-4">{{ $id->nombre }} {{ $id->apellidos }}</span>
-                        <span class="fw-bold text-primary mt-4">{{ $id->email }}</span>
+                        <span class="fw-bold mt-4">{{ $profeInfo->nombre }} {{ $profeInfo->apellidos }}</span>
+                        <span class="fw-bold text-primary mt-4">{{ $profeInfo->email }}</span>
                         {{-- inicio bucle redes sociales --}}
                         <div class="div_socials d-flex flex-row align-items-center text-center mt-3">
                             {{-- @if (!$redes)
@@ -52,34 +52,85 @@
                         {{-- fin bucle redes sociales --}}
                     </div>
                 </div>
-                <div class="d-flex col-md-5 border-right m-5 align-items-center">
-                    @if (!$id->descripcion)
-                        <div class="col-md-6 mb-3">
-                            <p class="h3 fw-bold">Descripción sobre el Profesor</p>
+                <div class="d-flex col-md-7 border-right m-2 align-items-center">
+                    @if ($profeInfo->descripcion === null)
+                        <div class="col-md-8">
+                            <p class="h3 fw-bold text-decoration-underline">Descripción sobre el Profesor</p>
                             <div>
-                                <p>Este profesor aún no a escrito nada sobre el</p>
+                                <p class="h6">Este profesor aún no a escrito nada sobre el</p>
                             </div>
                         </div>
                     @else
-                        <div class="col-md-10 mb-3">
-                            <p class="h3 fw-bold">Descripción sobre el Profesor</p>
-                            <p>{{ $id->descripcion }}</p>
+                        <div class="col-md-8">
+                            <p class="h3 fw-bold text-decoration-underline">Descripción sobre el Profesor</p>
+                            <div class="mt-4">
+                                <p class="h6">{{ $profeInfo->descripcion }}</p>
+                            </div>
                         </div>
                     @endif
                     <div class="row justify-content-evenly">
                         <div class="col-md-3">
-                            <p class="h3 fw-bold">Idioma</p>
-                            <p>{{ $id->idioma }}</p>
+                            <p class="h3 fw-bold text-decoration-underline">Idioma</p>
+                            <div class="mt-4">
+                                <p class="h6">{{ $profeInfo->idioma }}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-10 container">
                     <div class="p-3 py-5">
                         <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
                             <h1 class="display-4 fw-normal">Precios</h1>
                         </div>
-                        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-                            <div class="col">
+                        </div>
+                        <div class="justify-content-center row row-cols-1 row-cols-md-3 mb-3 text-center align-items-center">
+                            @foreach ($profeInfo->prices as $precio)
+                                    {{-- {{ $precio-> }} --}}
+                                    <div class="col">
+                                        @if ($precio->id <= 2)
+                                            <div class="card mb-4 rounded-3 shadow-sm">
+                                                <div class="card-header py-3">
+                                        @endif
+                                        @if ($precio->id > 2)
+                                            <div class="card mb-4 rounded-3 shadow-sm border-primary">
+                                                <div class="card-header py-3 text-white bg-primary border-primary">
+                                        @endif
+                                        <h4 class="my-0 fw-normal">{{ $precio->nombrePack }}</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <p class="h1 card-title pricing-card-title my-3">
+                                            {{ $precio->precio }}<small>€</small>
+                                        </p>
+                                        <div>
+                                            <p class="h3 mx-5 card-title pricing-card-title border-top my-3 pt-3">
+                                                Ventajas:
+                                            </p>
+                                        </div>
+                                        <ul class="list-unstyled mt-3 mb-4">
+                                            <li>{{ $precio->ventajaUno }}</li>
+                                            @if ($precio->ventajaDos !== null)
+                                                <li>{{ $precio->ventajaDos }}</li>
+                                            @endif
+                                            @if ($precio->ventajaTres !== null)
+                                                <li>{{ $precio->ventajaTres }}</li>
+                                            @endif
+                                        </ul>
+                                        @if ($precio->id <= 2)
+                                            <button type="button" class="w-100 btn btn-lg btn-outline-primary">
+                                                Solicitar Servicio
+                                            </button>
+                                        @endif
+                                        @if ($precio->id > 2)
+                                            <button type="button" class="w-100 btn btn-lg btn-primary">
+                                                Solicitar Servicio
+                                            </button>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                            {{-- <div class="col">
                                 <div class="card mb-4 rounded-3 shadow-sm">
                                     <div class="card-header py-3">
                                         <h4 class="my-0 fw-normal">Primer Precio</h4>
@@ -114,7 +165,6 @@
                                 </div>
                             </div>
                             <div class="col">
-
                                 <div class="card mb-4 rounded-3 shadow-sm border-primary">
                                     <div class="card-header py-3 text-white bg-primary border-primary">
                                         <h4 class="my-0 fw-normal">Tercer Precio</h4>
@@ -130,7 +180,7 @@
                                             Servicio</button>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

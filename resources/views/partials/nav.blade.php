@@ -9,7 +9,6 @@
             <div class=" nav__div_primero">
                 <a href="/">
                     <x-jet-application-mark />
-                    {{-- <img src="{{ asset('imagenes/generales/logo.png') }}" alt="logo" style="width:4.8rem; height:4rem;"> --}}
                 </a>
                 <h1 class="navTitle">Learn Good</h1>
             </div>
@@ -27,7 +26,7 @@
                     </a>
 
                     <a class="btn boton_div-nav text-white mx-3" href="{{ route('platforms.index') }}">
-                        <div class="px-4 py-2">Redes Sociales</div>
+                        <div class="px-4 py-2">Plataformas</div>
                     </a>
 
                     <a class="btn boton_div-nav text-white  mx-3" href="{{ route('levels.index') }}">
@@ -61,11 +60,6 @@
                             <li>
                                 <a class="dropdown-item" href="{{ route('profile.show') }}">Editar Perfil</a>
                             </li>
-                            @if (Auth::user()->role_id == 'Profesor')
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('teacherviews.index') }}">Vista Alumno</a>
-                                </li>
-                            @endif
 
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf

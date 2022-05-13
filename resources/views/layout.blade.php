@@ -13,6 +13,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
+
+
+    <!-- Favicon -->
+    <link rel="icon" href="{{ URL::asset('favicon.ico') }}" type="image/x-icon"/>
+    <!-- Favicon -->
+
     <!-- Iconos Online -->
     <script src="https://kit.fontawesome.com/75b8de379c.js" crossorigin="anonymous"></script>
 

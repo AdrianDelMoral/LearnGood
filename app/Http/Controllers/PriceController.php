@@ -43,7 +43,7 @@ class PriceController extends Controller
             Price::create($request->only('user_id', 'nombrePack', 'precio', 'ventajaUno', 'ventajaDos', 'ventajaTres'));
 
             // Mensaje para indicar en index que se a creado con exito
-            return Redirect::Route('precios.index')->with('createMsj', 'Registro Creado con Exito.');
+            return Redirect::Route('precios.index')->with('createMsj', 'Precio Creado con Exito.');
 
         // Le impedriá crear más precios ya que tiene 3 que es su maximo
         } else {
@@ -62,9 +62,6 @@ class PriceController extends Controller
 
     public function update(Request $request, Price $precio)
     {
-        /*
-        // Mensaje para indicar en index que se a creado con exito
-        return Redirect::Route('precios.index')->with('mensaje', 'Registro Creado con Exito.');*/
         $request->validate([
             'user_id' => 'required',
             'nombrePack' => 'required|string|max:100',
@@ -81,15 +78,15 @@ class PriceController extends Controller
         $precio->ventajaTres = $request['ventajaTres'];
         $precio->update();
 
-        // Mensaje para indicar en index que se a creado con exito
-        return Redirect::Route('precios.index')->with('updateMsj', 'Registro Actualizado con Exito.');
+        // Mensaje para indicar en index que se a actualizado con exito
+        return Redirect::Route('precios.index')->with('updateMsj', 'Precio Actualizado con Exito.');
     }
 
     public function destroy(Price $precio)
     {
         $precio->delete();
 
-        // Mensaje para indicar en index que se a creado con exito
-        return Redirect::Route('precios.index')->with('errorMsj', 'Registro Eliminado con Exito.');
+        // Mensaje para indicar en index que se a eliminado con exito
+        return Redirect::Route('precios.index')->with('errorMsj', 'Precio Eliminado con Exito.');
     }
 }

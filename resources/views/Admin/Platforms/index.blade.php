@@ -1,54 +1,69 @@
 @extends('layout')
-@section('titulo', 'Admin View')
+@section('titulo', 'Listado de Plataformas')
 
-@section('CSSadded') {{-- Añadir css de esta vista --}}
-    <link rel="stylesheet" href="{{ URL::asset('css/admin/admin_inicio.css') }}">
+@section('CSSadded')
+    <!--Añadir css de esta vista -->
+    <link rel="stylesheet" href="{{ URL::asset('css/alumno/platforms.css') }}">
 @endsection
 
 @section('cuerpo')
 
-    <div class="container">
-        <h1 class="text-center my-5">Gestionar - Redes Disponibles</h1>
-        @if (!$platforms)
-            <div class="d-flex justify-content-end m-4">
-                <button class="btn btn-primary">Crear Nueva Red Social</button>
-            </div>
-        @endif
-        <table class="table table-dark table-bordered border-white table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nombre Red Social</th>
-                    <th scope="col">Editar</th>
-                    <th scope="col">Eliminar</th>
-                </tr>
-            </thead>
-            <tbody>
+    <div class="container py-5 pb-2">
+        <h1 class="text-center">Listado de Plataformas Disponibles</h1>
 
-                @if (!$platforms)
-                    @foreach ($platforms as $platform)
-                        <tr>
-                            <th scope="row">{{ $platform->id }}</th>
-                            <td class="text-center">
-                                <p>{{ $platform->nombre }}</p>
-                            </td>
-                            <td class="text-center">
-                                <button class="btn btn-success">Editar</button>
-                            </td>
-                            <td class="text-center">
-                                <button class="btn btn-danger">Eliminar</button>
-                            </td>
-                        </tr>
-                    @endforeach
-                @else
+        <x-form-alerts />
+
+        @if ($platforms->count() < 3)
+            <a href="{{ route('platforms.create') }}" class="btn btn-success my-3">Crear Plataforma</a>
+        @endif
+
+        <table class="table table-dark">
+            <thead class="text-center">
+                <th>Nombre de la Plataforma</th>
+                <th>Foto de la Plataforma</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </thead>
+            <tbody class="text-center">
+                @forelse($platforms as $platform)
                     <tr>
-                        <td class="text-center" colspan="4">
-                            <button class="btn btn-success" href="">Crear Nueva Red Social</button>
-                        </td>
+                        <th class="text-center">
+                            <div class="fotoPerfil">
+                                <div class="cajaImg">
+                                    <div class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
+                                        <img class="h-8 w-8 rounded-full object-cover" src="{{ $platform->image }}" src="{{ $platform->role_id }}">
+                                    </div>
+                                </div>
+                            </div></th>
+                        <th class="text-center">{{ $platform->nombre }}</th>
+                        <th class="text-center">
+                            <a href="{{ route('platforms.edit',$platform) }}">
+                                <button class="btn btn-success fas fa-edit fa-xl p-3"></button>
+                            </a>
+
+                        </th>
+                        <th class="text-center">
+                            <form action="{{ route('platforms.destroy',$platform) }}" method="post">
+                                @method('DELETE')
+                                @csrf
+                                <button type="submit" class="btn btn-danger fas fa-trash fa-xl p-3"></button>
+                            </form>
+                        </th>
                     </tr>
-                @endif
+                @empty
+                    <tr>
+                        <th colspan="7" class="text-center">
+                            <p class="h4 text-danger fw-bold m-5">No hay Plataformas Disponibles aun</p>
+                        </th>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
     </div>
+    <div class="container">
+        <a href="{{ url('/') }}"><button class="btn btn-primary mt-1 mb-5">Volver al Inicio</button></a>
+    </div>
 
+@endsection
+@section('JSadded')
 @endsection

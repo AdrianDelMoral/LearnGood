@@ -51,7 +51,7 @@ Route::group(['middleware' => 'auth'], function() {
     });
 
     Route::group(['middleware' => 'profesor', 'prefix' => 'profesor'], function() {
-        Route::resource('/teacherviews', TeacherController::class);
+        Route::resource('teacherviews', TeacherController::class);
         Route::resource('precios', PriceController::class);
     });
 

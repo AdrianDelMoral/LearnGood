@@ -12,6 +12,7 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
+                    <th scope="col">Imagen</th>
                     <th scope="col">ROL</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Apellidos</th>
@@ -21,8 +22,17 @@
             </thead>
             <tbody>
                 @foreach ($users as $user)
-                    <tr>
+                    <tr class="text-center">
                         <th scope="row">{{ $user->id }}</th>
+                        <th scope="row">
+                            <div class="fotoPerfil">
+                                <div class="cajaImg">
+                                    <div class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
+                                        <img class="h-8 w-8 rounded-full object-cover" src="{{ $user->profile_photo_url }}" src="{{ $user->role_id }}">
+                                    </div>
+                                </div>
+                            </div>
+                        </th>
                         <td class="text-center">
                             <p>{{ $user->role_id }}</p>
                         </td>

@@ -60,7 +60,6 @@ class User extends Authenticatable
         return $this->hasMany(Price::class);
     }
 
-    // Probando
     public function subject()
     {
         return $this->belongsToMany(Subject::class);

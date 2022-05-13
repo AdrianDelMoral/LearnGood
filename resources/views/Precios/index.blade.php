@@ -8,52 +8,39 @@
 
 @section('cuerpo')
 
-<div class="container py-5">
+<div class="container py-5 pb-2">
     <h1 class="text-center">Listado de Precios</h1>
-    @if(Session::has('createMsj'))
-        <div class="alert alert-success h5">
-            {{ Session::get('createMsj') }}
-        </div>
-    @endif
-
-    @if(Session::has('updateMsj'))
-    <div class="alert alert-warning h5">
-        {{ Session::get('updateMsj') }}
-    </div>
-    @endif
-
-    @if(Session::has('errorMsj'))
-        <div class="alert alert-danger h5">
-            {{ Session::get('errorMsj') }}
-        </div>
-    @endif
+        <x-form-alerts/>
 
 @if ($precios->count() < 3)
-    <a href="{{ route('precios.create') }}" class="btn btn-primary">Crear Precio</a>
+    <a href="{{ route('precios.create') }}" class="btn btn-success my-3">Crear Precio</a>
 @endif
 
     <table class="table table-dark">
-        <thead>
+        <thead class="text-center">
             <th>Nombre del Pack</th>
             <th>Precio €</th>
             <th>Ventaja 1</th>
             <th>Ventaja 2</th>
             <th>Ventaja 3</th>
-            <th>Opciones</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
         </thead>
-        <tbody>
+        <tbody class="text-center">
             @forelse ($precios as $precio)
                 <tr>
-                    <th>{{ $precio->nombrePack }}</th>
-                    <th>{{ $precio->precio }}</th>
-                    <th>{{ $precio->ventajaUno }}</th>
-                    <th>{{ $precio->ventajaDos }}</th>
-                    <th>{{ $precio->ventajaTres }}</th>
-                    <th>
+                    <th class="text-center">{{ $precio->nombrePack }}</th>
+                    <th class="text-center">{{ $precio->precio }}</th>
+                    <th class="text-center">{{ $precio->ventajaUno }}</th>
+                    <th class="text-center">{{ $precio->ventajaDos }}</th>
+                    <th class="text-center">{{ $precio->ventajaTres }}</th>
+                    <th class="text-center">
                         <a href="{{ route('precios.edit', $precio) }}">
                             <button class="btn btn-success fas fa-edit fa-xl p-3"></button>
                         </a>
 
+                    </th>
+                    <th class="text-center">
                         <form action="{{ route('precios.destroy', $precio) }}" method="post">
                             @method('DELETE')
                             @csrf
@@ -63,11 +50,14 @@
                 </tr>
             @empty
             <tr>
-                <th colspan="7">No hay Precios aun</th>
+                <th colspan="7" class="text-center"><p class="h4 text-danger fw-bold m-5">No hay Precios Aun</p></th>
             </tr>
             @endforelse
         </tbody>
     </table>
+</div>
+<div class="container">
+    <a href="{{ url('/') }}"><button class="btn btn-primary mt-1 mb-5">Volver al Inicio</button></a>
 </div>
 
 @endsection
