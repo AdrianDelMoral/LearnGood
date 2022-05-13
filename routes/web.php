@@ -41,18 +41,18 @@ Route::resource('/', InicioController::class)->only('index');
 Route::group(['middleware' => 'auth'], function() {
 
     Route::group(['middleware' => 'alumno', 'prefix' => 'alumno'], function() {
-        Route::resource('/alumnoviews', StudentController::class);
+        Route::resource('alumnoviews', StudentController::class);
     });
 
     Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function() {
-        Route::resource('/platforms', PlatformController::class);
-        Route::resource('/manageusers', UserManage::class);
-        Route::resource('/levels', LevelController::class);
+        Route::resource('platforms', PlatformController::class);
+        Route::resource('manageusers', UserManage::class);
+        Route::resource('levels', LevelController::class);
     });
 
     Route::group(['middleware' => 'profesor', 'prefix' => 'profesor'], function() {
         Route::resource('/teacherviews', TeacherController::class);
-        Route::resource('/precios', PriceController::class);
+        Route::resource('precios', PriceController::class);
     });
 
 });

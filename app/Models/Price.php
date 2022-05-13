@@ -12,6 +12,7 @@ class Price extends Model
     protected $table = 'prices';
 
     protected $fillable = [
+        'user_id',
         'nombrePack',
         'precio',
         'ventajaUno',
