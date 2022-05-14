@@ -31,7 +31,7 @@
                             <div class="fotoPerfil">
                                 <div class="cajaImg">
                                     <div class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
-                                        <img class="h-8 w-8 rounded-full object-cover" src="{{ $platform->image }}" src="{{ $platform->role_id }}">
+                                        <img class="h-8 w-8 rounded-full object-cover" src="{{ $platform->platformImage }}" src="{{ $platform->role_id }}">
                                     </div>
                                 </div>
                             </div></th>

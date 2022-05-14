@@ -40,12 +40,12 @@
 
             <div class="mb-3">
                 <label for="Foto" class="form-label">Foto de la Plataforma</label>
-                <input class="form-control" type="file" accept="image/*" required name="Foto" id="Foto" placeholder="Precio del Pack" value="{{ old('Foto') ?? @$platform->Foto }}">
+                <input class="form-control" type="file" accept="image/*" required name="platformImage" id="platformImage" placeholder="Precio del Pack" value="{{ old('platformImage') ?? @$platform->platformImage }}">
                 <p class="form-text">Suba una imagen del icono de la plataforma(Formatos Admitidos: SVG)</p>
                 @if (isset($platform))
                 {{ $platform->Foto }}
                 @endif
-                @error('Foto')
+                @error('platformImage')
                     <p class="form-text text-danger">{{ $message }}</p>
                 @enderror
             </div>

@@ -22,30 +22,14 @@ class PlatformController extends Controller
 
     public function store(Request $request)
     {
-        // $foto = $this->foto->store('/public/platformsImages');
         $request->validate([
-            'nombre' => 'required|string|max:100',
-            'Foto' => 'required|max:1000' // solo podrá subir una imagen por plataforma y que sea de un maximo de 100kb de peso
+            'nombre' => 'unique|required|string|max:100',
+            'foto' => 'required|max:1000|mimes:svg' // solo podrá subir una imagen por plataforma y que sea de un maximo de 100kb de peso
         ]);
+        $image = $request->file('foto');
+        $path = Storage::putFile("platformsImages", $image);
 
-        $image = $request->file('Foto');
-        $filename = date('Y-m-d-H:i:s') . "-" . $image->getClientOriginalName();
-        Platform::make($image->getRealPath())->resize(468, 249)->save('public/img/products/' . $filename);
-        $hola = $request->Foto = 'img/products/' . $filename;
-        dd($hola);
-        /* dd($request->get('Foto'));
-        $path = Storage::putFile('Foto',$request->file('Foto')); */
-        /* if($request->hasFile('Foto')){
-            if ($request->file('Foto')->isValid()) {
-                $platform->Foto = "/imagenes/".$path;
-            }
-        } */
-
-        /* '/imagenes/platformsImages' */
-        Platform::create([
-            'nombre' => $request->input['nombre'],
-            /* 'Foto' => $path */
-        ]);
+        Platform::create(['nombre' => $request->get('nombre'), 'foto' => $path]);
 
         // Mensaje para indicar en index que se a creado con exito
         return Redirect::Route('platforms.index')->with('createMsj', 'Plataforma Creada con Exito.');
