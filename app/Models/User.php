@@ -62,7 +62,7 @@ class User extends Authenticatable
 
     public function subject()
     {
-        return $this->belongsToMany(Subject::class);
+        return $this->hasMany(Subject::class);
     }
 
     public function orders(){
