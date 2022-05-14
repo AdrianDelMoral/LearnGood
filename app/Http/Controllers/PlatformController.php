@@ -24,12 +24,15 @@ class PlatformController extends Controller
     {
         $request->validate([
             'nombre' => 'unique|required|string|max:100',
-            'foto' => 'required|max:1000|mimes:svg' // solo podrá subir una imagen por plataforma y que sea de un maximo de 100kb de peso
+            'platformImage' => 'required|max:1000|mimes:svg' // solo podrá subir una imagen por plataforma y que sea de un maximo de 100kb de peso
         ]);
-        $image = $request->file('foto');
-        $path = Storage::putFile("platformsImages", $image);
+        $image = $request->file('platformImage');
+        $path = Storage::putFile("/public/imagenes/platformsImages", $image);
 
-        Platform::create(['nombre' => $request->get('nombre'), 'foto' => $path]);
+        Platform::create([
+            'nombre' => $request->get('nombre'),
+            'platformImage' => $path
+        ]);
 
         // Mensaje para indicar en index que se a creado con exito
         return Redirect::Route('platforms.index')->with('createMsj', 'Plataforma Creada con Exito.');
