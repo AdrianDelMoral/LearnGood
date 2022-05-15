@@ -1,13 +1,12 @@
 @extends('layout')
 
-@section('titulo', 'Lista de Precios')
+@section('titulo', 'Formulario Plataformas')
 
 @section('CSSadded')
     <link rel="stylesheet" href="{{ URL::asset('css/profesor/profesor_show.css') }}">
 @endsection
 
 @section('cuerpo')
-    {{-- Route::resource('precios', PriceController::class);  route('precios./index/create/update....') --}}
     <div class="container py-5 text-center">
 
         @if (isset($platform))
@@ -29,8 +28,8 @@
         <div class="mb-3">
             <label for="nombre" class="form-label">Nombre de la Plataforma</label>
             <input class="form-control" type="text" name="nombre" id="nombre" placeholder="Nombre de la Plataforma"
-                value="{{ old('nombre') ?? @$platform->nombrePack }}">
-            <p class="form-text">Escriba el nombre del Pack</p>
+                value="{{ old('nombre') ?? @$platform->nombre }}">
+            <p class="form-text">Escriba el nombre de la Plataforma</p>
             @error('form')
                 <p class="form-text text-danger">{{ $message }}</p>
             @enderror
@@ -38,8 +37,7 @@
 
         <div class="mb-3">
             <label for="Foto" class="form-label">Foto de la Plataforma</label>
-            <input class="form-control" type="file" accept="image/*" required name="platformImage" id="platformImage"
-                placeholder="Precio del Pack" value="{{ old('platformImage') ?? @$platform->platformImage }}">
+            <input class="form-control" type="file" accept="image/*" required name="platformImage" id="platformImage" value="{{ old('platformImage') ?? @$platform->platformImage }}">
             <p class="form-text">Suba una imagen del icono de la plataforma(Formatos Admitidos: SVG)</p>
             @if (isset($platform))
                 {{ $platform->platformImage }}
@@ -50,9 +48,9 @@
         </div>
 
         @if (isset($platform))
-            <button type="submit" class="btn btn-info">Editar Precio</button>
+            <button type="submit" class="btn btn-info">Editar Plataforma</button>
         @else
-            <button type="submit" class="btn btn-info">Guardar Precio</button>
+            <button type="submit" class="btn btn-info">Guardar Plataforma</button>
         @endif
         </form>
     </div>

@@ -18,13 +18,13 @@
 
     <table class="table table-dark">
         <thead class="text-center">
-            <th>Nombre del Pack</th>
-            <th>Precio €</th>
-            <th>Ventaja 1</th>
-            <th>Ventaja 2</th>
-            <th>Ventaja 3</th>
-            <th>Editar</th>
-            <th>Eliminar</th>
+            <th class="text-center fw-bold text-warning">Nombre del Pack</th>
+            <th class="text-center fw-bold text-warning">Precio €</th>
+            <th class="text-center fw-bold text-warning">Ventaja 1</th>
+            <th class="text-center fw-bold text-warning">Ventaja 2</th>
+            <th class="text-center fw-bold text-warning">Ventaja 3</th>
+            <th class="text-center fw-bold text-warning">Editar</th>
+            <th class="text-center fw-bold text-warning">Eliminar</th>
         </thead>
         <tbody class="text-center">
             @forelse ($precios as $precio)

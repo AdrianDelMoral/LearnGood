@@ -16,7 +16,7 @@ class UserManage extends Controller
     {
         // sacamos todos los usuarios, para mostrarselos al administrador
         $users = User::All();
-        return view('admin.users.index', compact('users'));
+        return view('usersList.index', compact('users'));
     }
 
     /**

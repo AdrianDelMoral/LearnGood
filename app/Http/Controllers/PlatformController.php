@@ -12,26 +12,30 @@ class PlatformController extends Controller
     public function index()
     {
         $platforms = Platform::All();
-        return view('admin.platforms.index', compact('platforms'));
+        return view('platforms.index', compact('platforms'));
     }
 
     public function create()
     {
-        return view('admin.platforms.form');
+        return view('platforms.form');
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'nombre' => 'unique|required|string|max:100',
+            'nombre' => 'required|string|max:100',
             'platformImage' => 'required|max:1000|mimes:svg' // solo podrá subir una imagen por plataforma y que sea de un maximo de 100kb de peso
         ]);
-        $image = $request->file('platformImage');
-        $path = Storage::putFile("/public/imagenes/platformsImages", $image);
+
+        // $image = $request->file('platformImage');
+        // $path = Storage::putFile("public/platformsImages", $image);
+        $imageName = time().'.'.$request->image->extension();
+
+        $request->image->move(public_path('images'), $imageName);
 
         Platform::create([
             'nombre' => $request->get('nombre'),
-            'platformImage' => $path
+            'platformImage' => $imageName
         ]);
 
         // Mensaje para indicar en index que se a creado con exito
@@ -45,7 +49,7 @@ class PlatformController extends Controller
 
     public function edit(Platform $platform)
     {
-        return view('admin.platforms.form')->with('platform', $platform);
+        return view('platforms.form')->with('platform', $platform);
     }
 
     public function update(Request $request, Platform $platform)
@@ -58,7 +62,7 @@ class PlatformController extends Controller
         $platform->update();
 
         // Mensaje para indicar en index que se a actualizado con exito
-        return Redirect::Route('admin.platforms.index')->with('updateMsj', 'Plataforma Actualizada con Exito.');
+        return Redirect::Route('platforms.index')->with('updateMsj', 'Plataforma Actualizada con Exito.');
     }
 
     public function destroy(Platform $platform)
@@ -66,6 +70,6 @@ class PlatformController extends Controller
         $platform->delete();
 
         // Mensaje para indicar en index que se a eliminado con exito
-        return Redirect::Route('admin.platforms.index')->with('errorMsj', 'Plataforma Eliminada con Exito.');
+        return Redirect::Route('platforms.index')->with('errorMsj', 'Plataforma Eliminada con Exito.');
     }
 }

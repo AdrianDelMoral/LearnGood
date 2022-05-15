@@ -13,7 +13,7 @@ class Platform extends Model
 
     protected $fillable = [
         'nombre',
-        'Foto'
+        'platformImage'
     ];
 
     public function socials (){

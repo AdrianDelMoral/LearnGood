@@ -19,10 +19,10 @@
 
         <table class="table table-dark">
             <thead class="text-center">
-                <th>Nombre de la Plataforma</th>
-                <th>Foto de la Plataforma</th>
-                <th>Editar</th>
-                <th>Eliminar</th>
+                <th class="text-center fw-bold text-warning">Nombre de la Plataforma</th>
+                <th class="text-center fw-bold text-warning">Foto de la Plataforma</th>
+                <th class="text-center fw-bold text-warning">Editar</th>
+                <th class="text-center fw-bold text-warning">Eliminar</th>
             </thead>
             <tbody class="text-center">
                 @forelse($platforms as $platform)
@@ -31,8 +31,9 @@
                             <div class="fotoPerfil">
                                 <div class="cajaImg">
                                     <div class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
-                                        <img class="h-8 w-8 rounded-full object-cover" src="{{ $platform->platformImage }}" src="{{ $platform->role_id }}">
+                                        <img class="h-8 w-8 rounded-full object-cover" src="{{ $platform->platformImage }}" alt="{{ $platform->role_id }}">
                                     </div>
+                                    <div>{{ $platform->platformImage }}</div>
                                 </div>
                             </div></th>
                         <th class="text-center">{{ $platform->nombre }}</th>
@@ -43,7 +44,7 @@
 
                         </th>
                         <th class="text-center">
-                            <form action="{{ route('platforms.destroy',$platform) }}" method="post">
+                            <form action="{{ route('platforms.destroy', $platform) }}" method="post">
                                 @method('DELETE')
                                 @csrf
                                 <button type="submit" class="btn btn-danger fas fa-trash fa-xl p-3"></button>

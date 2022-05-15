@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Level;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class LevelController extends Controller
 {
@@ -15,7 +16,7 @@ class LevelController extends Controller
     public function index()
     {
         $levels = Level::All();
-        return view('admin.levels.index', compact('levels'));
+        return view('levels.index', compact('levels'));
     }
 
     /**
@@ -25,7 +26,7 @@ class LevelController extends Controller
      */
     public function create()
     {
-        //
+        return view('levels.form');
     }
 
     /**
@@ -36,7 +37,13 @@ class LevelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre' => 'required|string|max:2',
+        ]);
+        Level::create($request->only('nombre'));
+
+        // Mensaje para indicar en index que se a creado con exito
+        return Redirect::Route('levels.index')->with('createMsj', 'Nivel Creado con Exito.');
     }
 
     /**
@@ -58,7 +65,7 @@ class LevelController extends Controller
      */
     public function edit(Level $level)
     {
-        //
+        return view('levels.form')->with('level', $level);
     }
 
     /**
@@ -70,7 +77,14 @@ class LevelController extends Controller
      */
     public function update(Request $request, Level $level)
     {
-        //
+        $request->validate([
+            'nombre' => 'required|string|max:5',
+        ]);
+        $level->nombre = $request->get('nombre');
+        $level->update();
+
+        // Mensaje para indicar en index que se a actualizado con exito
+        return Redirect::Route('levels.index')->with('updateMsj', 'Nivel Actualizado con Exito.');
     }
 
     /**
@@ -81,6 +95,9 @@ class LevelController extends Controller
      */
     public function destroy(Level $level)
     {
-        //
+        $level->delete();
+
+        // Mensaje para indicar en index que se a eliminado con exito
+        return Redirect::Route('admin.levels.index')->with('errorMsj', 'Nivel Eliminado con Exito.');
     }
 }
