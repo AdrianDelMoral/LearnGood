@@ -12,10 +12,13 @@ class Level extends Model
     protected $table = 'levels';
 
     protected $fillable = [
-        'nombre',
+        'user_id',
+        'levels_id',
+        'descripcion',
+        'fechaFinalizacion'
     ];
 
-    public function subjects (){
+    public function studies (){
         return $this->hasMany(Subject::class);
     }
 }

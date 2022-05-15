@@ -17,7 +17,7 @@
             <a href="{{ route('platforms.create') }}" class="btn btn-success my-3">Crear Plataforma</a>
         @endif
 
-        <table class="table table-dark">
+        <table class="table table-bordered border-warning bg-dark">
             <thead class="text-center">
                 <th class="text-center fw-bold text-warning">Nombre de la Plataforma</th>
                 <th class="text-center fw-bold text-warning">Foto de la Plataforma</th>

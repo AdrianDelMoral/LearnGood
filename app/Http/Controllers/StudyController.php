@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Subject;
+use App\Models\Study;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class SubjectController extends Controller
+class StudyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,13 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        //
+        // usuario conectado actualmente
+        $user = Auth::user()->id;
+
+        // sacar los precios del profesor que esta actualmente logeado
+        $estudios = Study::where('user_id', '=', $user)->get();
+        // devuelve los datos de ese usuario y sus precios
+        return view('estudios.index', compact('estudios', 'user'));
     }
 
     /**
@@ -41,10 +48,10 @@ class SubjectController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Subject  $subject
+     * @param  \App\Models\Study  $study
      * @return \Illuminate\Http\Response
      */
-    public function show(Subject $subject)
+    public function show(Study $study)
     {
         //
     }
@@ -52,10 +59,10 @@ class SubjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Subject  $subject
+     * @param  \App\Models\Study  $study
      * @return \Illuminate\Http\Response
      */
-    public function edit(Subject $subject)
+    public function edit(Study $study)
     {
         //
     }
@@ -64,10 +71,10 @@ class SubjectController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Subject  $subject
+     * @param  \App\Models\Study  $study
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Subject $subject)
+    public function update(Request $request, Study $study)
     {
         //
     }
@@ -75,10 +82,10 @@ class SubjectController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Subject  $subject
+     * @param  \App\Models\Study  $study
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Subject $subject)
+    public function destroy(Study $study)
     {
         //
     }

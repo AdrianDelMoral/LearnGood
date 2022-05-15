@@ -60,9 +60,9 @@ class User extends Authenticatable
         return $this->hasMany(Price::class);
     }
 
-    public function subject()
+    public function study()
     {
-        return $this->belongsToMany(Subject::class);
+        return $this->belongsToMany(Study::class);
     }
 
     public function orders(){

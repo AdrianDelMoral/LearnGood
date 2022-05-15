@@ -40,6 +40,7 @@ class PriceController extends Controller
                 'ventajaDos' => 'string|max:200',
                 'ventajaTres' => 'string|max:20',
             ]);
+
             Price::create($request->only('user_id', 'nombrePack', 'precio', 'ventajaUno', 'ventajaDos', 'ventajaTres'));
 
             // Mensaje para indicar en index que se a creado con exito

@@ -8,6 +8,7 @@ use App\Http\Controllers\LevelController;
 use App\Http\Controllers\PlatformController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\PriceController;
+use App\Http\Controllers\StudyController;
 use App\Http\Controllers\UserManage;
 use App\Http\Livewire\PricesComponent;
 
@@ -53,6 +54,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::group(['middleware' => 'profesor', 'prefix' => 'profesor'], function() {
         Route::resource('teacherviews', TeacherController::class);
         Route::resource('precios', PriceController::class);
+        Route::resource('estudios', StudyController::class);
     });
 
 });

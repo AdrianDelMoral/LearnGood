@@ -86,11 +86,11 @@
                     style="background-image: url('unsplash-photo-2.jpg');">
                     <div
                         class="d-flex align-items-center justify-content-center flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                        <h2 class="pt-5 mb-4 text-center display-6 lh-1 fw-bold">Gestionar Niveles de Ingles</h2>
+                        <h2 class="pt-5 mb-4 text-center display-6 lh-1 fw-bold">Gestionar Niveles de Estudios de Ingles</h2>
 
                         <ul class="d-flex list-unstyled mt-auto mb-5">
                             <li class="me-auto">
-                                <a href="{{-- {{ route('niveles.index') }} --}}">
+                                <a href="{{ route('estudios.index') }}">
                                     <button class="btn btn-primary">Ver Crud</button>
                                 </a>
                             </li>
