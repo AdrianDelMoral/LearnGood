@@ -38,9 +38,10 @@
             <select class="form-control" name="prices_id">
                 <option value="a" selected disabled>===Selecciona un Precio del Profesor===</option>
                 @foreach ($ordersstudent->prices as $price)
-                    <option value="{{ $price->id }}" @if(isset($ordersstudent)) {{ $ordersstudent->prices->id == $price->id ? 'selected' : '' }}@endif>
+                {{ $price }}
+                    {{-- <option value="{{ $price->id }}" @if(isset($ordersstudent->price)) {{ $price->id ? 'selected' : '' }}@endif>
                         {{ $price->precio }} € - Pack: {{ $price->nombrePack }}
-                    </option>
+                    </option> --}}
                 @endforeach
             </select>
         </div>
