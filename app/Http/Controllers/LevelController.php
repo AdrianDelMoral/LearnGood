@@ -26,7 +26,7 @@ class LevelController extends Controller
      */
     public function create()
     {
-        return view('levels.form');
+        return view('levels.create');
     }
 
     /**
@@ -65,7 +65,7 @@ class LevelController extends Controller
      */
     public function edit(Level $level)
     {
-        return view('levels.form')->with('level', $level);
+        return view('levels.edit')->with('level', $level);
     }
 
     /**
@@ -98,6 +98,6 @@ class LevelController extends Controller
         $level->delete();
 
         // Mensaje para indicar en index que se a eliminado con exito
-        return Redirect::Route('admin.levels.index')->with('errorMsj', 'Nivel Eliminado con Exito.');
+        return Redirect::Route('levels.index')->with('errorMsj', 'Nivel Eliminado con Exito.');
     }
 }

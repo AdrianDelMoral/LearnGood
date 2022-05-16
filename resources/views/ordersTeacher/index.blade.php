@@ -14,20 +14,31 @@
 
     <table class="table table-bordered border-warning bg-dark text-light">
         <thead class="text-center">
+            <th class="text-center fw-bold text-warning">Numero de Pedido</th>
             <th class="text-center fw-bold text-warning">Precio</th>
-            <th class="text-center fw-bold text-warning">Nombre del Alumno</th>
+            <th class="text-center fw-bold text-warning">Nombre del Profesor</th>
             <th class="text-center fw-bold text-warning">Estado de Pago</th>
             <th class="text-center fw-bold text-warning">Editar</th>
             <th class="text-center fw-bold text-warning">Eliminar</th>
         </thead>
         <tbody class="text-center">
             @forelse ($ordersTeacher as $order)
+                <div class="bg-dark text-light m-5 p-3">
+                    {{ $order->id }}
+                </div>
                 <tr>
+                    <th class="text-center text-light">{{ $order->id }}</th>
                     <th class="text-center text-light">{{ $order->prices->precio }}</th>
-                    <th class="text-center text-light">{{ $order->alumno->nombre }}</th>
-                    <th class="text-center text-light">{{ $order->status }}</th>
+                    <th class="text-center text-light">{{ $order->prices->users->nombre }} {{ $order->prices->users->apellidos }}</th>
                     <th class="text-center text-light">
-                        <a href="{{ route('ordersteacher.edit', $order) }}">
+                        @if(!$order->status)
+                            <button class="btn btn-danger">Por Realizar</button>
+                        @else
+                            <button class="btn btn-succes">Por Realizar</button>
+                        @endif
+                    </th>
+                    <th class="text-center text-light">
+                        <a href="{{ route('ordersteacher.edit', $order->id) }}">
                             <button class="btn btn-success fas fa-edit fa-xl p-3"></button>
                         </a>
                     </th>
@@ -40,9 +51,9 @@
                     </th>
                 </tr>
             @empty
-            <tr>
-                <th colspan="7" class="text-center"><p class="h4 text-danger fw-bold m-5">No se le han solicitado Servicios Actualmente</p></th>
-            </tr>
+                <tr>
+                    <th colspan="7" class="text-center"><p class="h4 text-danger fw-bold m-5">No se le han solicitado Servicios Actualmente</p></th>
+                </tr>
             @endforelse
         </tbody>
     </table>

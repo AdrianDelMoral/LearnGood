@@ -35,7 +35,7 @@ class SocialController extends Controller
     public function create()
     {
         $platforms = Platform::All();
-        return view('socials.form', compact('platforms'));
+        return view('socials.create', compact('platforms'));
     }
 
     /**
@@ -81,7 +81,8 @@ class SocialController extends Controller
      */
     public function edit(Social $social)
     {
-        //
+        $platforms = Platform::All();
+        return view('socials.edit', compact('platforms'));
     }
 
     /**

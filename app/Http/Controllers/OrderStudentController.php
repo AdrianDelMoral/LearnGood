@@ -17,7 +17,7 @@ class OrderStudentController extends Controller
 
     public function create()
     {
-        return view('ordersstudent.form', compact('prices'));
+        return view('ordersstudent.create', compact('prices'));
     }
 
     public function store(Request $request)
@@ -37,7 +37,7 @@ class OrderStudentController extends Controller
 
     public function edit(Order $ordersstudent)
     {
-        return view('ordersstudent.form', compact('ordersstudent'));
+        return view('ordersstudent.edit', compact('ordersstudent'));
     }
 
     public function update(Request $request, Order $ordersstudent)

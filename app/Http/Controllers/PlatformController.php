@@ -17,7 +17,7 @@ class PlatformController extends Controller
 
     public function create()
     {
-        return view('platforms.form');
+        return view('platforms.create');
     }
 
     public function store(Request $request)
@@ -49,7 +49,7 @@ class PlatformController extends Controller
 
     public function edit(Platform $platform)
     {
-        return view('platforms.form')->with('platform', $platform);
+        return view('platforms.edit')->with('platform', $platform);
     }
 
     public function update(Request $request, Platform $platform)

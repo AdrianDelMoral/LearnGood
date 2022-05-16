@@ -19,9 +19,21 @@
                         <div class="card-content d-flex flex-column align-items-center">
                             <h4 class="text-dark pt-2">{{ $user->nombre }} {{ $user->apellidos }}</h4>
                             <ul class="social-icons d-flex justify-content-center">
-                                <li style="--i:1"> <a href="#"> <span class="text-dark fab fa-linkedin"></span> </a> </li>
-                                <li style="--i:2"> <a href="#"> <span class="text-dark fab fa-twitter"></span> </a> </li>
-                                <li style="--i:3"> <a href="#"> <span class="text-dark fab fa-github"></span> </a> </li>
+                                <li style="--i:1">
+                                    <a href="#">
+                                        <span class="text-dark fab fa-linkedin"></span>
+                                    </a>
+                                </li>
+                                <li style="--i:2">
+                                    <a href="#">
+                                        <span class="text-dark fab fa-twitter"></span>
+                                    </a>
+                                </li>
+                                <li style="--i:3">
+                                    <a href="#">
+                                        <span class="text-dark fab fa-github"></span>
+                                    </a>
+                                </li>
                             </ul>
 
                             <a href="{{ route('alumnoviews.show', $user) }}">

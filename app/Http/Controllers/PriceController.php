@@ -25,7 +25,7 @@ class PriceController extends Controller
 
     public function create()
     {
-        return view('precios.form');
+        return view('precios.create');
     }
 
     public function store(Request $request)
@@ -58,7 +58,7 @@ class PriceController extends Controller
 
     public function edit(Price $precio)
     {
-        return view('precios.form')->with('precio', $precio);
+        return view('precios.edit')->with('precio', $precio);
     }
 
     public function update(Request $request, Price $precio)

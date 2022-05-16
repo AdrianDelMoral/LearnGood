@@ -30,7 +30,7 @@ class StudyController extends Controller
     public function create()
     {
         $levels = Level::All();
-        return view('estudios.form', compact('levels'));
+        return view('estudios.create', compact('levels'));
     }
 
     /**
@@ -69,7 +69,7 @@ class StudyController extends Controller
     public function edit(Study $estudio)
     {
         $levels = Level::All();
-        return view('estudios.form', compact('levels'))->with('estudio', $estudio);
+        return view('estudios.edit', compact('levels'))->with('estudio', $estudio);
     }
 
     public function update(Request $request, Study $estudio)

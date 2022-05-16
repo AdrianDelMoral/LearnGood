@@ -7,56 +7,53 @@
 @endsection
 
 @section('cuerpo')
-    {{-- Route::resource('precios', PriceController::class);  route('precios./index/create/update....') --}}
     <div class="container py-5 text-center">
 
-        @if (isset($estudio))
-            <h1>Editar Red Social</h1>
+        @if (isset($ordersstudent))
+            <h1>Editar Pedido</h1>
             @method('PUT')
         @else
-            <h1>Crear Red Social</h1>
+            <h1>Crear Pedido</h1>
         @endif
 
-        @if (isset($estudio))
-            <form action="{{ route('socials.update', $estudio) }}" method="post">
+        @if (isset($ordersstudent))
+            <form action="{{ route('ordersstudent.update', $ordersstudent) }}" method="post">
                 @method('PUT')
-            @else
-                <form action="{{ route('socials.store') }}" method="post">
+        @else
+            <form action="{{ route('ordersstudent.store') }}" method="post">
         @endif
-
         @csrf
+        {{--
+            El que crea el pedido es el alumno asi que será el que pueda
+            editar el pedido para que siga en user_id enlazado a el,
+            mientras que mediante el precio, sacaré el profesor
+        --}}
 
-        <input required hidden type="text" name="user_id" id="user_id" value="{{ Auth::User()->id }}" required>
+        <input required hidden type="number" name="user_id_alumno" id="user_id_alumno" value="{{ Auth::User()->id }}" required>
 
         <div class="mb-3">
-            <select class="form-control" name="platform_id">
-                <option value="a" selected disabled>===Selecciona una Red Social===</option>
-                @foreach ($platforms as $platform)
-                    <option value="{{ $platform->id }}" @if(isset($estudio)) {{ $estudio->platform_id == $platform->id ? 'selected' : '' }}@endif>
-                        {{ $platform->nombre }}
+            <select class="form-control" name="prices_id">
+                <option value="a" selected disabled>===Selecciona un Precio del Profesor===</option>
+                @foreach ($ordersstudent->prices as $price)
+                    <option value="{{ $price->id }}" @if(isset($ordersstudent->price)) {{ $price->id ? 'selected' : '' }}@endif>
+                        {{ $price->precio }} € - Pack: {{ $price->nombrePack }}
                     </option>
                 @endforeach
             </select>
         </div>
 
-        <div class="mb-3">
-            <label for="username" class="form-label">Nombre de Usuario</label>
-            <input class="form-control" type="text" name="username" id="username" placeholder="Nombre de Usuario"
-                value="{{ old('username') ?? @$social->username }}">
-            <p class="form-text">Nombre de usuario</p>
-            @error('username')
-                <p class="form-text text-danger">{{ $message }}</p>
-            @enderror
-        </div>
+        {{-- Estado de pago en el controlador se pondrá por defecto a 0 ya que aun no ha sido realizada la clase con el profesor --}}
 
-        @if (isset($social))
-            <button type="submit" class="btn btn-info">Editar Red Social</button>
+        @if (isset($ordersstudent))
+            <button type="submit" class="btn btn-info">Editar Pedido</button>
         @else
-            <button type="submit" class="btn btn-info">Guardar Red Social</button>
+            <button type="submit" class="btn btn-info">Crear Pedido</button>
         @endif
         </form>
     </div>
     <div class="container">
-        <a href="{{ route('socials.index') }}"><button class="btn btn-primary mt-1 mb-5">Volver al Listado</button></a>
+        <a href="{{ route('ordersstudent.index') }}">
+            <button class="btn btn-primary mt-1 mb-5">Volver al Listado</button>
+        </a>
     </div>
 @endsection
