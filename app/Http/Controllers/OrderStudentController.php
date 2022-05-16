@@ -38,9 +38,7 @@ class OrderStudentController extends Controller
 
     public function edit(Order $ordersstudent)
     {
-        // return $ordersstudent;
-        $prices = Price::All();
-        return view('ordersstudent.form', compact('prices','ordersstudent'));
+        return view('ordersstudent.form', compact('ordersstudent'));
     }
 
     public function update(Request $request, Order $ordersstudent)
