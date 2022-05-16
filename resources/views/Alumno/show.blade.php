@@ -117,14 +117,18 @@
                                             @endif
                                         </ul>
                                         @if ($precio->id <= 2)
+                                        <a href="{{ route('ordersStudent.create', $user->id) }}">
                                             <button type="button" class="w-100 btn btn-lg btn-outline-primary">
                                                 Solicitar Servicio
                                             </button>
+                                        </a>
                                         @endif
                                         @if ($precio->id > 2)
+                                        <a href="{{ route('ordersStudent.create', $user->id) }}">
                                             <button type="button" class="w-100 btn btn-lg btn-primary">
                                                 Solicitar Servicio
                                             </button>
+                                        </a>
                                         @endif
                                     </div>
                                 </div>

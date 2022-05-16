@@ -11,7 +11,8 @@ use App\Http\Controllers\PriceController;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\StudyController;
 use App\Http\Controllers\UserManage;
-use App\Http\Livewire\PricesComponent;
+use App\Http\Controllers\OrderTeacherController;
+use App\Http\Controllers\OrderStudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,9 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::group(['middleware' => 'alumno', 'prefix' => 'alumno'], function() {
         Route::resource('alumnoviews', StudentController::class);
+
+
+        Route::resource('ordersStudent', OrderStudentController::class);
     });
 
     Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function() {
@@ -58,6 +62,8 @@ Route::group(['middleware' => 'auth'], function() {
         Route::resource('teacherviews', TeacherController::class);
         Route::resource('precios', PriceController::class);
         Route::resource('estudios', StudyController::class);
-    });
 
+
+        Route::resource('ordersTeacher', OrderTeacherController::class);
+    });
 });

@@ -24,22 +24,38 @@
                     <span class="fw-bold text-primary mt-4">{{ $user->email }}</span>
                     {{-- inicio bucle redes sociales --}}
                         <div class="div_socials d-flex flex-row align-items-center text-center mt-3">
-                            {{-- si es github --}}
-                            <a href="{{-- {{ $user->redes_sociales->link->github }} --}}" class="social m-3">
+                        {{--
+                            <!--si es github-->
+                            <a href="" class="social m-3">
                                 <span class="fa-brands fa-2x fa-github"></span>
                             </a>
-                            {{-- si es linkedin --}}
-                            <a href="{{-- {{ $user->redes_sociales->link->linkedin }} --}}" class="social m-3">
+                            <!--si es linkedin-->
+                            <a href="" class="social m-3">
                                 <span class="fa-brands fa-2x fa-linkedin"></span>
                             </a>
-                            {{-- si es discord --}}
-                            <a href="{{-- {{ $user->redes_sociales->link->discord }} --}}" class="social m-3">
+                            <!--si es discord-->
+                            <a href="" class="social m-3">
                                 <span class="fa-brands fa-2x fa-discord"></span>
                             </a>
-                            {{-- si es facebook --}}
-                            <a href="{{-- {{ $user->redes_sociales->link->facebook }} --}}" class="social m-3">
+                            <!--si es facebook-->
+                            <a href="" class="social m-3">
                                 <span class="fa-brands fa-2x fa-facebook"></span>
                             </a>
+                        --}}
+                        @if (!isset($user->social))
+                            no tiene redes sociales
+                        @else
+                            {{-- <img src="{{ asset('imagenes/plaftormImages/' . $social->platform_id) }}" alt=""> --}}
+                            @foreach ($user->social as $socials)
+                            <div class="fotoPerfil">
+                                <a href="" class="social m-3">
+                                    <div class="cajaImg_platform">
+                                        <img src="{{ asset('imagenes/platformImages/'.$socials->platform->platformImage) }}" alt="{{ $socials->platform->nombre}}" style="width: 32px;">
+                                    </div>
+                                </a>
+                            </div>
+                            @endforeach
+                        @endif
                         </div>
                     {{-- fin bucle redes sociales --}}
             </div>
