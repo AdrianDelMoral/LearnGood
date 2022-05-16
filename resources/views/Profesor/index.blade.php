@@ -23,25 +23,25 @@
                     <span class="fw-bold mt-4">{{ $user->nombre }} {{ $user->apellidos }}</span>
                     <span class="fw-bold text-primary mt-4">{{ $user->email }}</span>
                     {{-- inicio bucle redes sociales --}}
-                <div class="div_socials d-flex flex-row align-items-center text-center mt-3">
-                    {{-- si es github --}}
-                    <a href="{{-- {{ $user->redes_sociales->link->github }} --}}" class="social m-3">
-                        <span class="fa-brands fa-2x fa-github"></span>
-                    </a>
-                    {{-- si es linkedin --}}
-                    <a href="{{-- {{ $user->redes_sociales->link->linkedin }} --}}" class="social m-3">
-                        <span class="fa-brands fa-2x fa-linkedin"></span>
-                    </a>
-                    {{-- si es discord --}}
-                    <a href="{{-- {{ $user->redes_sociales->link->discord }} --}}" class="social m-3">
-                        <span class="fa-brands fa-2x fa-discord"></span>
-                    </a>
-                    {{-- si es facebook --}}
-                    <a href="{{-- {{ $user->redes_sociales->link->facebook }} --}}" class="social m-3">
-                        <span class="fa-brands fa-2x fa-facebook"></span>
-                    </a>
-                </div>
-                {{-- fin bucle redes sociales --}}
+                        <div class="div_socials d-flex flex-row align-items-center text-center mt-3">
+                            {{-- si es github --}}
+                            <a href="{{-- {{ $user->redes_sociales->link->github }} --}}" class="social m-3">
+                                <span class="fa-brands fa-2x fa-github"></span>
+                            </a>
+                            {{-- si es linkedin --}}
+                            <a href="{{-- {{ $user->redes_sociales->link->linkedin }} --}}" class="social m-3">
+                                <span class="fa-brands fa-2x fa-linkedin"></span>
+                            </a>
+                            {{-- si es discord --}}
+                            <a href="{{-- {{ $user->redes_sociales->link->discord }} --}}" class="social m-3">
+                                <span class="fa-brands fa-2x fa-discord"></span>
+                            </a>
+                            {{-- si es facebook --}}
+                            <a href="{{-- {{ $user->redes_sociales->link->facebook }} --}}" class="social m-3">
+                                <span class="fa-brands fa-2x fa-facebook"></span>
+                            </a>
+                        </div>
+                    {{-- fin bucle redes sociales --}}
             </div>
         </div>
         <div class="d-flex col-md-7 border-right m-2 align-items-center">

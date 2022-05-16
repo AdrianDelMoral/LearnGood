@@ -8,6 +8,7 @@ use App\Http\Controllers\LevelController;
 use App\Http\Controllers\PlatformController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\PriceController;
+use App\Http\Controllers\SocialController;
 use App\Http\Controllers\StudyController;
 use App\Http\Controllers\UserManage;
 use App\Http\Livewire\PricesComponent;

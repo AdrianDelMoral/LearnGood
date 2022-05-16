@@ -49,16 +49,6 @@
             @enderror
         </div>
 
-        <div class="mb-3">
-            <label for="username" class="form-label">Nombre de Usuario</label>
-            <input class="form-control" type="text" name="username" id="username" placeholder="Nombre de Usuario"
-                value="{{ old('username') ?? @$social->username }}">
-            <p class="form-text">Nombre de usuario</p>
-            @error('username')
-                <p class="form-text text-danger">{{ $message }}</p>
-            @enderror
-        </div>
-
         @if (isset($social))
             <button type="submit" class="btn btn-info">Editar Red Social</button>
         @else
@@ -67,6 +57,6 @@
         </form>
     </div>
     <div class="container">
-        <a href="{{ route('estudios.index') }}"><button class="btn btn-primary mt-1 mb-5">Volver al Listado</button></a>
+        <a href="{{ route('socials.index') }}"><button class="btn btn-primary mt-1 mb-5">Volver al Listado</button></a>
     </div>
 @endsection

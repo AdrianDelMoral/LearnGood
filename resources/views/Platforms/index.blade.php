@@ -34,7 +34,8 @@
                                         <img class="h-8 w-8 rounded-full object-cover" src="{{ asset('imagenes/platformImages/'.$platform->platformImage) }}" alt="{{ $platform->role_id }}">
                                     </div>
                                 </div>
-                            </div></th>
+                            </div>
+                        </th>
                         <th class="text-center">{{ $platform->nombre }}</th>
                         <th class="text-center">
                             <a href="{{ route('platforms.edit',$platform) }}">

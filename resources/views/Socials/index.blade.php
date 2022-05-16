@@ -16,10 +16,9 @@
 
     <table class="table table-bordered border-warning bg-dark text-light">
         <thead class="text-center">
-            <th class="text-center fw-bold text-warning">Nombre</th>
-            <th class="text-center fw-bold text-warning">User Name</th>
-            <th class="text-center fw-bold text-warning">plataforma</th>
+            <th class="text-center fw-bold text-warning">Imagen</th>
             <th class="text-center fw-bold text-warning">Nombre de Plataforma</th>
+            <th class="text-center fw-bold text-warning">User Name</th>
             <th class="text-center fw-bold text-warning">Editar</th>
             <th class="text-center fw-bold text-warning">Eliminar</th>
         </thead>
@@ -27,11 +26,16 @@
             @forelse ($socials as $social)
                 <tr>
                     <th class="text-center text-light">
-                        {{ $social->username }}
+                        <div class="fotoPerfil">
+                            <div class="cajaImg">
+                                <div class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
+                                    <img class="h-8 w-8 rounded-full object-cover" src="{{ asset('imagenes/platformImages/'.$social->platform->platformImage) }}" alt="{{ $social->platform->nombre}}">
+                                </div>
+                            </div>
+                        </div>
                     </th>
-                    <th class="text-center text-light">{{ $social->username }}</th>
                     <th class="text-center text-light">{{ $social->platform->nombre }}</th>
-                    <th class="text-center text-light">{{ asset('imagenes/platformsImages/'.$social->platform->platformImage) }}</th>
+                    <th class="text-center text-light">{{ $social->username }}</th>
                     <th class="text-center text-light">
                         <a href="{{ route('socials.edit', $social) }}">
                             <button class="btn btn-success fas fa-edit fa-xl p-3"></button>
@@ -47,7 +51,7 @@
                 </tr>
             @empty
             <tr>
-                <th colspan="7" class="text-center"><p class="h4 text-danger fw-bold m-5">No hay Niveles de socials Aun</p></th>
+                <th colspan="7" class="text-center"><p class="h4 text-danger fw-bold m-5">No hay Redes Sociales Aun</p></th>
             </tr>
             @endforelse
         </tbody>

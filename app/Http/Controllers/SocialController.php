@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Platform;
 use App\Models\Social;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class SocialController extends Controller
 {
@@ -14,7 +17,14 @@ class SocialController extends Controller
      */
     public function index()
     {
-        //
+        // usuario conectado actualmente
+        $user = Auth::user()->id;
+
+        $platforms = Platform::get();
+        // sacar los precios del profesor que esta actualmente logeado
+        $socials = Social::where('user_id', '=', $user)->get();
+        // devuelve los datos de ese usuario y sus precios
+        return view('socials.index', compact('socials', 'platforms'));
     }
 
     /**
@@ -24,7 +34,8 @@ class SocialController extends Controller
      */
     public function create()
     {
-        //
+        $platforms = Platform::All();
+        return view('socials.form', compact('platforms'));
     }
 
     /**
@@ -35,7 +46,21 @@ class SocialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Le dejará crear precios, hasta un maximo de 3
+        $request->validate([
+            'user_id' => 'required',
+            'platform_id' => 'required|integer',
+            'username' => 'required|string|max:25',
+        ]);
+
+        Social::create([
+            'user_id' => $request->get('user_id'),
+            'platform_id' => $request->get('platform_id'),
+            'username' => $request->get('username'),
+        ]);
+
+        // Mensaje para indicar en index que se a creado con exito
+        return Redirect::Route('socials.index')->with('createMsj', 'Red Social Creada con Exito.');
     }
 
     /**
