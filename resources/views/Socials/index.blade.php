@@ -9,37 +9,36 @@
 @section('cuerpo')
 
 <div class="container py-5 pb-2">
-    <h1 class="text-center">Listado de Estudios</h1>
+    <h1 class="text-center">Listado de Redes Sociales</h1>
         <x-form-alerts/>
 
-{{-- @if ($estudios->count() < 3) --}}
-    <a href="{{ route('estudios.create') }}" class="btn btn-success my-3">Crear Nivel de Estudio</a>
-{{-- @endif --}}
+    <a href="{{ route('socials.create') }}" class="btn btn-success my-3">Crear Red Social</a>
 
     <table class="table table-bordered border-warning bg-dark text-light">
         <thead class="text-center">
-            <th class="text-center fw-bold text-warning">Nivel</th>
-            <th class="text-center fw-bold text-warning">nota</th>
-            <th class="text-center fw-bold text-warning">Fecha Finalizacion</th>
+            <th class="text-center fw-bold text-warning">Nombre</th>
+            <th class="text-center fw-bold text-warning">User Name</th>
+            <th class="text-center fw-bold text-warning">plataforma</th>
+            <th class="text-center fw-bold text-warning">Nombre de Plataforma</th>
             <th class="text-center fw-bold text-warning">Editar</th>
             <th class="text-center fw-bold text-warning">Eliminar</th>
         </thead>
         <tbody class="text-center">
-            @forelse ($estudios as $estudio)
+            @forelse ($socials as $social)
                 <tr>
                     <th class="text-center text-light">
-                        <!-- (No se porque no funciona si el modelo y relaciones están bien......) -->
-                        {{ $estudio->nivel->nombre }}
+                        {{ $social->username }}
                     </th>
-                    <th class="text-center text-light">{{ $estudio->nota }}</th>
-                    <th class="text-center text-light">{{ $estudio->fechaFinalizacion }}</th>
+                    <th class="text-center text-light">{{ $social->username }}</th>
+                    <th class="text-center text-light">{{ $social->platform->nombre }}</th>
+                    <th class="text-center text-light">{{ asset('imagenes/platformsImages/'.$social->platform->platformImage) }}</th>
                     <th class="text-center text-light">
-                        <a href="{{ route('estudios.edit', $estudio) }}">
+                        <a href="{{ route('socials.edit', $social) }}">
                             <button class="btn btn-success fas fa-edit fa-xl p-3"></button>
                         </a>
                     </th>
                     <th class="text-center">
-                        <form action="{{ route('estudios.destroy', $estudio) }}" method="post">
+                        <form action="{{ route('socials.destroy', $social) }}" method="post">
                             @method('DELETE')
                             @csrf
                             <button type="submit" class="btn btn-danger fas fa-trash fa-xl p-3"></button>
@@ -48,7 +47,7 @@
                 </tr>
             @empty
             <tr>
-                <th colspan="7" class="text-center"><p class="h4 text-danger fw-bold m-5">No hay Niveles de Estudios Aun</p></th>
+                <th colspan="7" class="text-center"><p class="h4 text-danger fw-bold m-5">No hay Niveles de socials Aun</p></th>
             </tr>
             @endforelse
         </tbody>

@@ -41,6 +41,8 @@ Route::resource('/', InicioController::class)->only('index');
 
 Route::group(['middleware' => 'auth'], function() {
 
+    Route::resource('socials', SocialController::class);
+
     Route::group(['middleware' => 'alumno', 'prefix' => 'alumno'], function() {
         Route::resource('alumnoviews', StudentController::class);
     });

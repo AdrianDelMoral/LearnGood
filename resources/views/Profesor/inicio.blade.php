@@ -55,7 +55,7 @@
 
                         <ul class="d-flex list-unstyled mt-auto mb-5">
                             <li class="me-auto">
-                                <a href="{{-- {{ route('niveles.index') }} --}}">
+                                <a href="{{-- {{ route('pedidos.index') }} --}}">
                                     <button class="btn btn-primary">Ver Crud</button>
                                 </a>
                             </li>
@@ -72,7 +72,7 @@
 
                         <ul class="d-flex list-unstyled mt-auto mb-5">
                             <li class="me-auto">
-                                <a href="{{-- {{ route('socials.index') }} --}}">
+                                <a href="{{ route('socials.index') }}">
                                     <button class="btn btn-primary">Ver Crud</button>
                                 </a>
                             </li>

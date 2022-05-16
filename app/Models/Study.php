@@ -22,8 +22,8 @@ class Study extends Model
         return $this->hasMany(User::class);
     }
 
-    public function level ()
+    public function nivel ()
     {
-        return $this->belongsTo(Level::class);
+        return $this->belongsTo(Level::class, 'levels_id');
     }
 }

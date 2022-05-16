@@ -68,7 +68,7 @@
             </div>
             <div class="justify-content-center row row-cols-1 row-cols-md-3 mb-3 text-center align-items-center">
                 {{-- Bucle de precios --}}
-                    @if (isset($user->prices))
+                    @if (!isset($user->prices))
                         <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
                             <h2 class="h2 border-bottom">Este profesor aun no a creado precios</h2>
                                 <p class="lead mb-0 fst-italic text-white">Seguro los creará pronto...</p>
@@ -126,13 +126,13 @@
         @else
             <div class="row justify-content-center">
                 <!-- Single Product -->
-                @foreach ($user->studIES as $study)
+                @foreach ($user->studies as $study)
                 {{-- Inicio Bucle especialidades --}}
                 <div class="col-md-8 col-lg-6 col-xl-5">
                     <div class="card bg-dark text-light m-3">
                         <div class="m-4">
                             <p class="card-caption h2 text-red">
-                                Nivel: {{ $study->level->nombre }}
+                                Nivel: {{ $study->nivel->nombre }}
                             </p>
                             <p class="mt-4">
                                 Nota Final:
