@@ -1,60 +1,60 @@
 @extends('layout')
-@section('titulo', 'Precios del Profesor')
-
+@section('titulo', 'Estudios del Profesor')
 @section('CSSadded')
     <!--Añadir css de esta vista -->
     <link rel="stylesheet" href="{{ URL::asset('css/alumno/estudios.css') }}">
 @endsection
-
 @section('cuerpo')
+    <div class="container py-5 pb-2">
+        <h1 class="text-center">Listado de Estudios</h1>
+        <x-form-alerts />
 
-<div class="container py-5 pb-2">
-    <h1 class="text-center">Listado de Estudios</h1>
-        <x-form-alerts/>
+        {{-- @if ($estudios->count() < 3) --}}
+        <a href="{{ route('estudios.create') }}" class="btn btn-success my-3">Crear Nivel de Estudio</a>
+        {{-- @endif --}}
 
-{{-- @if ($estudios->count() < 3) --}}
-    <a href="{{ route('estudios.create') }}" class="btn btn-success my-3">Crear Nivel de Estudio</a>
-{{-- @endif --}}
+        <table class="table table-bordered border-warning bg-dark text-light">
+            <thead class="text-center">
+                <th class="text-center fw-bold text-warning">Nivel</th>
+                <th class="text-center fw-bold text-warning">nota</th>
+                <th class="text-center fw-bold text-warning">Fecha Finalizacion</th>
+                <th class="text-center fw-bold text-warning">Eliminar</th>
+            </thead>
+            <tbody class="text-center">
+                @forelse ($estudios as $estudio)
+                    <tr>
 
-    <table class="table table-bordered border-warning bg-dark">
-        <thead class="text-center">
-            <th class="text-center fw-bold text-warning">Nivel</th>
-            <th class="text-center fw-bold text-warning">descripcion</th>
-            <th class="text-center fw-bold text-warning">Fecha Finalizacion</th>
-            <th class="text-center fw-bold text-warning">Editar</th>
-            <th class="text-center fw-bold text-warning">Eliminar</th>
-        </thead>
-        <tbody class="text-center">
-            @forelse ($estudios as $estudio)
-                <tr>
-                    <th class="text-center">{{ $estudio->descripcion }}</th>
-                    <th class="text-center">{{ $estudio->levels_id->level }}</th>
-                    <th class="text-center">{{ $estudio->fecha_finalizacion }}</th>
-                    <th class="text-center">
-                        <a href="{{ route('estudios.edit', $estudio) }}">
-                            <button class="btn btn-success fas fa-edit fa-xl p-3"></button>
-                        </a>
+                        <th class="text-center">
+                            @foreach ($niveles as $nivel)
+                                @if ($estudio->levels_id == $nivel->id)
+                                    {{ $nivel->nombre }}
+                                @endif
+                            @endforeach
+                        </th>
 
-                    </th>
-                    <th class="text-center">
-                        <form action="{{ route('estudios.destroy', $estudio) }}" method="post">
-                            @method('DELETE')
-                            @csrf
-                            <button type="submit" class="btn btn-danger fas fa-trash fa-xl p-3"></button>
-                        </form>
-                    </th>
-                </tr>
-            @empty
-            <tr>
-                <th colspan="7" class="text-center"><p class="h4 text-danger fw-bold m-5">No hay Niveles de Estudios Aun</p></th>
-            </tr>
-            @endforelse
-        </tbody>
-    </table>
-</div>
-<div class="container">
-    <a href="{{ url('/') }}"><button class="btn btn-primary mt-1 mb-5">Volver al Inicio</button></a>
-</div>
+                        <th class="text-center">{{ $estudio->nota }}</th>
+                        <th class="text-center text-light">{{ $estudio->fechaFinalizacion }}</th>
+                        <th class="text-center">
+                            <form action="{{ route('estudios.destroy', $estudio) }}" method="post">
+                                @method('DELETE')
+                                @csrf
+                                <button type="submit" class="btn btn-danger fas fa-trash fa-xl p-3"></button>
+                            </form>
+                        </th>
+                    </tr>
+                @empty
+                    <tr>
+                        <th colspan="7" class="text-center">
+                            <p class="h4 text-danger fw-bold m-5">No hay Niveles de Estudios Aun</p>
+                        </th>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
+    </div>
+    <div class="container">
+        <a href="{{ url('/') }}"><button class="btn btn-primary mt-1 mb-5">Volver al Inicio</button></a>
+    </div>
 
 @endsection
 @section('JSadded')

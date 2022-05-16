@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Platform;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class PlatformController extends Controller
 {
@@ -22,20 +22,22 @@ class PlatformController extends Controller
 
     public function store(Request $request)
     {
+
         $request->validate([
             'nombre' => 'required|string|max:100',
             'platformImage' => 'required|max:1000|mimes:svg' // solo podrá subir una imagen por plataforma y que sea de un maximo de 100kb de peso
         ]);
 
-        // $image = $request->file('platformImage');
-        // $path = Storage::putFile("public/platformsImages", $image);
-        $imageName = time().'.'.$request->image->extension();
+        $newImageName = time() . '-' . $request->get('nombre') . '.' . $request->platformImage->extension();
+        // dd($newImageName);
 
-        $request->image->move(public_path('images'), $imageName);
+        $request->platformImage->move(public_path('imagenes/platformsImages'), $newImageName);
+
+        // dd($newImageName);
 
         Platform::create([
-            'nombre' => $request->get('nombre'),
-            'platformImage' => $imageName
+            'nombre' => $request->input('nombre'),
+            'platformImage' => $newImageName
         ]);
 
         // Mensaje para indicar en index que se a creado con exito
@@ -55,10 +57,27 @@ class PlatformController extends Controller
     public function update(Request $request, Platform $platform)
     {
         $request->validate([
+            'nombre' => 'required|string|max:100',
+            'platformImage' => 'required|max:1000|mimes:svg' // solo podrá subir una imagen por plataforma y que sea de un maximo de 100kb de peso
+        ]);
+
+        // dd($newImageName);
+
+
+        /* ----------------------------------------------------------------------------------------  */
+
+        $platform = Platform::find($platform);
+        $destinationOlder = 'imagenes/platformsImages' . $platform->platformImage;
+        File::delete($destinationOlder);
+
+        // Mensaje para indicar en index que se a creado con exito
+        $request->validate([
             'nombre' => 'required',
             'image' => 'required',
         ]);
 
+        $newImageName = time() . '-' . $request->get('nombre') . '.' . $request->platformImage->extension();
+        $request->platformImage->move(public_path('imagenes/platformsImages'), $newImageName);
         $platform->update();
 
         // Mensaje para indicar en index que se a actualizado con exito

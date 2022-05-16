@@ -16,7 +16,7 @@
     <a href="{{ route('precios.create') }}" class="btn btn-success my-3">Crear Precio</a>
 @endif
 
-    <table class="table table-bordered border-warning bg-dark">
+<table class="table table-bordered border-warning bg-dark text-light">
         <thead class="text-center">
             <th class="text-center fw-bold text-warning">Nombre del Pack</th>
             <th class="text-center fw-bold text-warning">Precio €</th>

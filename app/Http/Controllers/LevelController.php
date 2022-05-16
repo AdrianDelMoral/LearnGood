@@ -78,7 +78,7 @@ class LevelController extends Controller
     public function update(Request $request, Level $level)
     {
         $request->validate([
-            'nombre' => 'required|string|max:5',
+            'nombre' => 'required|string|max:2',
         ]);
         $level->nombre = $request->get('nombre');
         $level->update();
@@ -98,6 +98,6 @@ class LevelController extends Controller
         $level->delete();
 
         // Mensaje para indicar en index que se a eliminado con exito
-        return Redirect::Route('admin.levels.index')->with('errorMsj', 'Nivel Eliminado con Exito.');
+        return Redirect::Route('levels.index')->with('errorMsj', 'Nivel Eliminado con Exito.');
     }
 }

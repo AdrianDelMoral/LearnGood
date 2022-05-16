@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Level;
 use App\Models\Study;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class StudyController extends Controller
 {
@@ -20,8 +22,9 @@ class StudyController extends Controller
 
         // sacar los precios del profesor que esta actualmente logeado
         $estudios = Study::where('user_id', '=', $user)->get();
+        $niveles = Level::get();
         // devuelve los datos de ese usuario y sus precios
-        return view('estudios.index', compact('estudios', 'user'));
+        return view('estudios.index', compact('estudios', 'niveles'));
     }
 
     /**
@@ -31,7 +34,8 @@ class StudyController extends Controller
      */
     public function create()
     {
-        //
+        $niveles = Level::get();
+        return view('estudios.form', compact('niveles'));
     }
 
     /**
@@ -42,7 +46,28 @@ class StudyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'user_id' => 'required',
+            'levels_id' => 'required',
+            'nota' => 'required|integer|max:11|min:1',
+            'fechaFinalizacion' => 'required|date'
+        ]);
+
+        $study = new Study();
+
+        $study->user_id = $request->user_id;
+        $study->levels_id = $request->get('levels_id');
+        $study->nota = $request->nota;
+        $study->fechaFinalizacion = $request->fechaFinalizacion;
+        $study->save();
+
+        // $level = $request->get("levels_id");
+        // dd($level)
+        // Study::create($request->only('user_id', $level, 'nota','fechaFinalizacion'));
+
+        // Mensaje para indicar en index que se a creado con exito
+        return Redirect::Route('estudios.index')->with('createMsj', 'Nivel de Estudios Creado con Exito.');
     }
 
     /**
@@ -87,6 +112,9 @@ class StudyController extends Controller
      */
     public function destroy(Study $study)
     {
-        //
+        $study->delete();
+
+        // Mensaje para indicar en index que se a eliminado con exito
+        return Redirect::Route('estudios.index')->with('errorMsj', 'Estudios Eliminados con Exito.');
     }
 }

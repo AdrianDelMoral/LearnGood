@@ -17,7 +17,7 @@
             <a href="{{ route('platforms.create') }}" class="btn btn-success my-3">Crear Plataforma</a>
         @endif
 
-        <table class="table table-bordered border-warning bg-dark">
+        <table class="table table-bordered border-warning bg-dark text-light">
             <thead class="text-center">
                 <th class="text-center fw-bold text-warning">Nombre de la Plataforma</th>
                 <th class="text-center fw-bold text-warning">Foto de la Plataforma</th>
@@ -31,9 +31,8 @@
                             <div class="fotoPerfil">
                                 <div class="cajaImg">
                                     <div class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
-                                        <img class="h-8 w-8 rounded-full object-cover" src="{{ $platform->platformImage }}" alt="{{ $platform->role_id }}">
+                                        <img src="{{ asset('imagenes/platformsImages/' . $platform->platformImage) }}" alt="{{ $platform->role_id }}">
                                     </div>
-                                    <div>{{ $platform->platformImage }}</div>
                                 </div>
                             </div></th>
                         <th class="text-center">{{ $platform->nombre }}</th>
