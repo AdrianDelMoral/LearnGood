@@ -55,7 +55,7 @@
 
                         <ul class="d-flex list-unstyled mt-auto mb-5">
                             <li class="me-auto">
-                                <a href="{{ route('ordersTeacher.index', Auth::User()) }}">
+                                <a href="{{ route('ordersteacher.index', Auth::User()) }}">
                                     <button class="btn btn-primary">Ver Crud</button>
                                 </a>
                             </li>

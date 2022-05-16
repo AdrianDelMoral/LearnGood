@@ -27,12 +27,12 @@
                     <th class="text-center text-light">{{ $order->alumno->nombre }}</th>
                     <th class="text-center text-light">{{ $order->status }}</th>
                     <th class="text-center text-light">
-                        <a href="{{ route('ordersTeacher.edit', $order) }}">
+                        <a href="{{ route('ordersteacher.edit', $order) }}">
                             <button class="btn btn-success fas fa-edit fa-xl p-3"></button>
                         </a>
                     </th>
                     <th class="text-center">
-                        <form action="{{ route('ordersTeacher.destroy', $order) }}" method="post">
+                        <form action="{{ route('ordersteacher.destroy', $order) }}" method="post">
                             @method('DELETE')
                             @csrf
                             <button type="submit" class="btn btn-danger fas fa-trash fa-xl p-3"></button>

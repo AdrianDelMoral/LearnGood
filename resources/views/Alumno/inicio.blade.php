@@ -57,7 +57,7 @@
                     <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Ver Pedidos Realizados</h2>
                     <ul class="d-flex list-unstyled mt-auto">
                         <li class="me-auto">
-                            <a href="{{ route('ordersStudent.index') }}">
+                            <a href="{{ route('ordersstudent.index') }}">
                                 <button class="btn btn-primary">Ver Pedidos</button>
                             </a>
                         </li>

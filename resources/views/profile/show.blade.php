@@ -21,7 +21,7 @@
                         </a>
                     </div>
                     <div>
-                        <a href="ordersTeacher.index">
+                        <a href="ordersteacher.index">
                             <button class="m-5 btn btn-primary profile-button">Ver mis alumnos(Tanto pendientes como los
                                 que
                                 ya se les ha impartido clase)</button>

@@ -23,9 +23,9 @@
         </thead>
         <tbody class="text-center">
             @forelse ($ordersStudent as $order)
-                {{-- <div class="bg-dark text-light p-5">
-                    {{ $order }}
-                </div> --}}
+                <div class="bg-dark text-light m-5 p-3">
+                    {{ $order->id }}
+                </div>
                 <tr>
                     <th class="text-center text-light">{{ $order->id }}</th>
                     <th class="text-center text-light">{{ $order->prices->precio }}</th>
@@ -38,12 +38,12 @@
                         @endif
                     </th>
                     <th class="text-center text-light">
-                        <a href="{{ route('ordersStudent.edit', $order->id) }}">
+                        <a href="{{ route('ordersstudent.edit', $order->id) }}">
                             <button class="btn btn-success fas fa-edit fa-xl p-3"></button>
                         </a>
                     </th>
                     <th class="text-center">
-                        <form action="{{ route('ordersStudent.destroy', $order) }}" method="post">
+                        <form action="{{ route('ordersstudent.destroy', $order) }}" method="post">
                             @method('DELETE')
                             @csrf
                             <button type="submit" class="btn btn-danger fas fa-trash fa-xl p-3"></button>

@@ -12,13 +12,13 @@ class OrderStudentController extends Controller
     public function index()
     {
         $ordersStudent = Order::get();
-        return view('ordersStudent.index',compact('ordersStudent'));
+        return view('ordersstudent.index', compact('ordersStudent'));
     }
 
     public function create()
     {
         $prices = Price::All();
-        return view('ordersStudent.form', compact('prices'));
+        return view('ordersstudent.form', compact('prices'));
     }
 
     public function store(Request $request)
@@ -34,7 +34,7 @@ class OrderStudentController extends Controller
             'prices_id' => $request->get('prices_id'),
         ]);
 
-        return Redirect::Route('ordersStudent.index')->with('createMsj', 'Pedido Creado con Exito.');
+        return Redirect::Route('ordersstudent.index')->with('createMsj', 'Pedido Creado con Exito.');
     }
 
     public function show(Order $order)
@@ -45,7 +45,7 @@ class OrderStudentController extends Controller
     public function edit(Order $order)
     {
         $prices = Price::All();
-        return view('ordersStudent.form', compact('prices'))->with('order');
+        return view('ordersstudent.form', compact('prices'))->with('order');
     }
 
     public function update(Request $request, Order $order)
@@ -59,11 +59,14 @@ class OrderStudentController extends Controller
         $order->update();
 
         // Mensaje para indicar en index que se a actualizado con exito
-        return Redirect::Route('platforms.index')->with('updateMsj', 'Pedido Actualizado con Exito.');
+        return Redirect::Route('ordersstudent.index')->with('updateMsj', 'Pedido Actualizado con Exito.');
     }
 
     public function destroy(Order $order)
     {
-        //
+        $order->delete();
+
+        // Mensaje para indicar en index que se a eliminado con exito
+        return Redirect::Route('ordersstudent.index')->with('errorMsj', 'Pedido Eliminado con Exito.');
     }
 }

@@ -49,7 +49,7 @@ Route::group(['middleware' => 'auth'], function() {
         Route::resource('alumnoviews', StudentController::class);
 
 
-        Route::resource('ordersStudent', OrderStudentController::class);
+        Route::resource('ordersstudent', OrderStudentController::class);
     });
 
     Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function() {
@@ -64,6 +64,6 @@ Route::group(['middleware' => 'auth'], function() {
         Route::resource('estudios', StudyController::class);
 
 
-        Route::resource('ordersTeacher', OrderTeacherController::class);
+        Route::resource('ordersteacher', OrderTeacherController::class);
     });
 });

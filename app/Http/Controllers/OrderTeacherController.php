@@ -15,7 +15,7 @@ class OrderTeacherController extends Controller
     public function index()
     {
         $ordersTeacher = Order::get();
-        return view('ordersTeacher.index',compact('ordersTeacher'));
+        return view('ordersteacher.index',compact('ordersTeacher'));
     }
 
     /**

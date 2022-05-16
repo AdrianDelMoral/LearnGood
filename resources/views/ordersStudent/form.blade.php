@@ -17,10 +17,10 @@
         @endif
 
         @if (isset($order))
-            <form action="{{ route('ordersStudent.update', $order) }}" method="post">
+            <form action="{{ route('ordersstudent.update', $order) }}" method="post">
                 @method('PUT')
         @else
-            <form action="{{ route('ordersStudent.store') }}" method="post">
+            <form action="{{ route('ordersstudent.store') }}" method="post">
         @endif
         @csrf
         {{--
@@ -53,7 +53,7 @@
         </form>
     </div>
     <div class="container">
-        <a href="{{ route('ordersStudent.index') }}">
+        <a href="{{ route('ordersstudent.index') }}">
             <button class="btn btn-primary mt-1 mb-5">Volver al Listado</button>
         </a>
     </div>
