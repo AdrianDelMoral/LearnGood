@@ -15,7 +15,7 @@
 
         <a href="{{ route('levels.create') }}" class="btn btn-success my-3">Crear Nivel</a>
 
-        <table class="table table-bordered border-warning bg-dark">
+        <table class="table table-bordered border-warning bg-dark text-light">
             <thead class="text-center">
                 <th class="text-center fw-bold text-warning">>Nombre del Nivel</th>
                 <th class="text-center fw-bold text-warning">>Editar</th>

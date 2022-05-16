@@ -16,6 +16,6 @@ class Level extends Model
     ];
 
     public function studies (){
-        return $this->hasMany(Subject::class);
+        return $this->hasMany(Study::class);
     }
 }

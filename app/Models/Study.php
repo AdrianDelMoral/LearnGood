@@ -24,6 +24,6 @@ class Study extends Model
 
     public function level ()
     {
-        return $this->belongsTo(Level::class, 'id');
+        return $this->belongsTo(Level::class);
     }
 }

@@ -29,13 +29,13 @@ class PlatformController extends Controller
 
         // $image = $request->file('platformImage');
         // $path = Storage::putFile("public/platformsImages", $image);
-        $imageName = time().'.'.$request->image->extension();
+        $newImageName = time().'-'.$request->nombre . '.' .$request->platformImage->extension();
 
-        $request->image->move(public_path('images'), $imageName);
+        $request->platformImage->move(public_path('imagenes/platformImages'), $newImageName);
 
         Platform::create([
             'nombre' => $request->get('nombre'),
-            'platformImage' => $imageName
+            'platformImage' => $newImageName
         ]);
 
         // Mensaje para indicar en index que se a creado con exito

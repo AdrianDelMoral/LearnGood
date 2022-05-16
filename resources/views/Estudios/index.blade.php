@@ -28,13 +28,13 @@
             @forelse ($estudios as $estudio)
                 <tr>
                     <th class="text-center text-light">
-                        @foreach ($levels as $level)
+                        {{-- @foreach ($levels as $level)
                             @if ($level->id == $estudio->levels_id  )
                                 {{ $level->nombre }}
                             @endif
-                        @endforeach
+                        @endforeach --}}
                         <!-- (No se porque no funciona si el modelo y relaciones están bien......) -->
-                        {{-- {{ $estudio->level->nombre }}--}}
+                        {{ $estudio->level }}
                     </th>
                     <th class="text-center text-light">{{ $estudio->nota }}</th>
                     <th class="text-center text-light">{{ $estudio->fechaFinalizacion }}</th>

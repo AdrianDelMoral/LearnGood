@@ -68,7 +68,7 @@
             </div>
             <div class="justify-content-center row row-cols-1 row-cols-md-3 mb-3 text-center align-items-center">
                 {{-- Bucle de precios --}}
-                    @if ($user->prices === null)
+                    @if (isset($user->prices))
                         <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
                             <h2 class="h2 border-bottom">Este profesor aun no a creado precios</h2>
                                 <p class="lead mb-0 fst-italic text-white">Seguro los creará pronto...</p>
@@ -117,25 +117,27 @@
                 </div>
             </div>
         </div>
-        @if ($user->subjects !== null)
+
+        @if (!isset($user->studies))
             <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
-                <h2 class="h2 border-bottom">Este profesor aun no a ingresado estudios de sus niveles de ingles</h2>
+                <h2 class="h2 border-bottom">Este profesor aun no a añadido estudios de sus niveles de ingles</h2>
                 <p class="lead mb-0 fst-italic text-white">Seguro los añadirá pronto...</p>
             </div>
         @else
             <div class="row justify-content-center">
                 <!-- Single Product -->
+                @foreach ($user->studIES as $study)
                 {{-- Inicio Bucle especialidades --}}
                 <div class="col-md-8 col-lg-6 col-xl-5">
                     <div class="card bg-dark text-light m-3">
                         <div class="m-4">
                             <p class="card-caption h2 text-red">
-                                Nivel: A2
+                                Nivel: {{ $study->level->nombre }}
                             </p>
                             <p class="mt-4">
                                 Nota Final:
                             </p>
-                            <p class="text-center h1">7</p>
+                            <p class="text-center h1">{{ $study->nota }}</p>
                             <table class="mt-4 table table-bordered border-light table-dark">
                                 <thead>
                                     <tr class="text-center">
@@ -144,13 +146,14 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td class="text-center">19 / 6 / 2022</td>
+                                        <td class="text-center">{{ $study->fechaFinalizacion }}</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
+                @endforeach
             </div>
         @endif
     </div>

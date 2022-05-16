@@ -13,7 +13,7 @@
 
         <x-form-alerts />
 
-        <table class="table table-bordered border-warning bg-dark">
+        <table class="table table-bordered border-warning bg-dark text-light">
             <thead>
                 <tr>
                     <th scope="col" class="text-center text-warning">Id</th>
