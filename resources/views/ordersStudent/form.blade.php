@@ -30,18 +30,14 @@
         --}}
 
         <input required hidden type="number" name="user_id_alumno" id="user_id_alumno" value="{{ Auth::User()->id }}" required>
-<div>
-    {{ $ordersstudent->prices}}
-</div>
 
         <div class="mb-3">
             <select class="form-control" name="prices_id">
                 <option value="a" selected disabled>===Selecciona un Precio del Profesor===</option>
                 @foreach ($ordersstudent->prices as $price)
-                {{ $price }}
-                    {{-- <option value="{{ $price->id }}" @if(isset($ordersstudent->price)) {{ $price->id ? 'selected' : '' }}@endif>
+                    <option value="{{ $price->id }}" @if(isset($ordersstudent->price)) {{ $price->id ? 'selected' : '' }}@endif>
                         {{ $price->precio }} € - Pack: {{ $price->nombrePack }}
-                    </option> --}}
+                    </option>
                 @endforeach
             </select>
         </div>

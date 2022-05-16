@@ -17,7 +17,6 @@ class OrderStudentController extends Controller
 
     public function create()
     {
-        $prices = Price::All();
         return view('ordersstudent.form', compact('prices'));
     }
 
@@ -43,7 +42,6 @@ class OrderStudentController extends Controller
 
     public function update(Request $request, Order $ordersstudent)
     {
-        dd($ordersstudent);
         $request->validate([
             'user_id_alumno' => 'required',
             'prices_id' => 'required|integer',
