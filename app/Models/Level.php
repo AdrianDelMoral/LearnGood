@@ -12,7 +12,10 @@ class Level extends Model
     protected $table = 'levels';
 
     protected $fillable = [
-        'nombre',
+        'user_id',
+        'levels_id',
+        'descripcion',
+        'fechaFinalizacion'
     ];
 
     public function studies (){

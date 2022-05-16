@@ -37,7 +37,7 @@
 
         <div class="mb-3">
             <label for="Foto" class="form-label">Foto de la Plataforma</label>
-            <input class="form-control" type="file" accept="image/svg" required name="platformImage" id="platformImage" value="{{ old('platformImage') ?? @$platform->platformImage }}">
+            <input class="form-control" type="file" accept="image/*" required name="platformImage" id="platformImage" value="{{ old('platformImage') ?? @$platform->platformImage }}">
             <p class="form-text">Suba una imagen del icono de la plataforma(Formatos Admitidos: SVG)</p>
             @if (isset($platform))
                 {{ $platform->platformImage }}
