@@ -16,10 +16,10 @@
     <a href="{{ route('estudios.create') }}" class="btn btn-success my-3">Crear Nivel de Estudio</a>
 {{-- @endif --}}
 
-    <table class="table table-bordered border-warning bg-dark">
+    <table class="table table-bordered border-warning bg-dark text-light">
         <thead class="text-center">
             <th class="text-center fw-bold text-warning">Nivel</th>
-            <th class="text-center fw-bold text-warning">descripcion</th>
+            <th class="text-center fw-bold text-warning">nota</th>
             <th class="text-center fw-bold text-warning">Fecha Finalizacion</th>
             <th class="text-center fw-bold text-warning">Editar</th>
             <th class="text-center fw-bold text-warning">Eliminar</th>
@@ -27,14 +27,21 @@
         <tbody class="text-center">
             @forelse ($estudios as $estudio)
                 <tr>
-                    <th class="text-center">{{ $estudio->descripcion }}</th>
-                    <th class="text-center">{{ $estudio->levels_id->level }}</th>
-                    <th class="text-center">{{ $estudio->fecha_finalizacion }}</th>
-                    <th class="text-center">
+                    <th class="text-center text-light">
+                        @foreach ($levels as $level)
+                            @if ($level->id == $estudio->levels_id  )
+                                {{ $level->nombre }}
+                            @endif
+                        @endforeach
+                        <!-- (No se porque no funciona si el modelo y relaciones están bien......) -->
+                        {{-- {{ $estudio->level->nombre }}--}}
+                    </th>
+                    <th class="text-center text-light">{{ $estudio->nota }}</th>
+                    <th class="text-center text-light">{{ $estudio->fechaFinalizacion }}</th>
+                    <th class="text-center text-light">
                         <a href="{{ route('estudios.edit', $estudio) }}">
                             <button class="btn btn-success fas fa-edit fa-xl p-3"></button>
                         </a>
-
                     </th>
                     <th class="text-center">
                         <form action="{{ route('estudios.destroy', $estudio) }}" method="post">

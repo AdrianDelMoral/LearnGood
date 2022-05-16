@@ -54,4 +54,7 @@
         @endif
         </form>
     </div>
+    <div class="container">
+        <a href="{{ route('platforms.index') }}"><button class="btn btn-primary mt-1 mb-5">Volver al Listado</button></a>
+    </div>
 @endsection

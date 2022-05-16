@@ -14,7 +14,7 @@ class Study extends Model
     protected $fillable = [
         'user_id',
         'levels_id',
-        'descripcion',
+        'nota',
         'fechaFinalizacion'
     ];
 
@@ -24,6 +24,6 @@ class Study extends Model
 
     public function level ()
     {
-        return $this->belongsTo(Level::class);
+        return $this->belongsTo(Level::class, 'id');
     }
 }
