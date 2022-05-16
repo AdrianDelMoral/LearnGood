@@ -45,7 +45,7 @@ class OrderTeacherController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show(Order $ordersteacher)
     {
         //
     }
@@ -56,7 +56,7 @@ class OrderTeacherController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function edit(Order $order)
+    public function edit(Order $ordersteacher)
     {
         //
     }
@@ -68,7 +68,7 @@ class OrderTeacherController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Order $order)
+    public function update(Request $request, Order $ordersteacher)
     {
         //
     }
@@ -79,7 +79,7 @@ class OrderTeacherController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Order $order)
+    public function destroy(Order $ordersteacher)
     {
         //
     }

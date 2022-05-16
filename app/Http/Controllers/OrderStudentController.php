@@ -23,7 +23,6 @@ class OrderStudentController extends Controller
 
     public function store(Request $request)
     {
-        // Le dejará crear precios, hasta un maximo de 3
         $request->validate([
             'user_id_alumno' => 'required',
             'prices_id' => 'required|integer',
@@ -37,34 +36,30 @@ class OrderStudentController extends Controller
         return Redirect::Route('ordersstudent.index')->with('createMsj', 'Pedido Creado con Exito.');
     }
 
-    public function show(Order $order)
+    public function edit(Order $ordersstudent)
     {
-        //
-    }
-
-    public function edit(Order $order)
-    {
+        // return $ordersstudent;
         $prices = Price::All();
-        return view('ordersstudent.form', compact('prices'))->with('order');
+        return view('ordersstudent.form', compact('prices','ordersstudent'));
     }
 
-    public function update(Request $request, Order $order)
+    public function update(Request $request, Order $ordersstudent)
     {
-        dd($order);
+        dd($ordersstudent);
         $request->validate([
             'user_id_alumno' => 'required',
             'prices_id' => 'required|integer',
         ]);
 
-        $order->update();
+        $ordersstudent->update();
 
         // Mensaje para indicar en index que se a actualizado con exito
         return Redirect::Route('ordersstudent.index')->with('updateMsj', 'Pedido Actualizado con Exito.');
     }
 
-    public function destroy(Order $order)
+    public function destroy(Order $ordersstudent)
     {
-        $order->delete();
+        $ordersstudent->delete();
 
         // Mensaje para indicar en index que se a eliminado con exito
         return Redirect::Route('ordersstudent.index')->with('errorMsj', 'Pedido Eliminado con Exito.');

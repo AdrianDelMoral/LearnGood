@@ -10,11 +10,6 @@ use Illuminate\Support\Facades\Redirect;
 
 class StudyController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         // usuario conectado actualmente
@@ -66,36 +61,17 @@ class StudyController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Study  $study
-     * @return \Illuminate\Http\Response
-     */
     public function show(Study $study)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Study  $study
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Study $estudio)
     {
         $levels = Level::All();
         return view('estudios.form', compact('levels'))->with('estudio', $estudio);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Study  $study
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Study $estudio)
     {
         $request->validate([
@@ -114,12 +90,6 @@ class StudyController extends Controller
         return Redirect::Route('estudios.index')->with('updateMsj', 'Estudios Actualizados con Exito.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Study  $study
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Study $estudio)
     {
         $estudio->delete();

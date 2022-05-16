@@ -9,15 +9,15 @@
 @section('cuerpo')
     <div class="container py-5 text-center">
 
-        @if (isset($order))
+        @if (isset($ordersstudent))
             <h1>Editar Pedido</h1>
             @method('PUT')
         @else
             <h1>Crear Pedido</h1>
         @endif
 
-        @if (isset($order))
-            <form action="{{ route('ordersstudent.update', $order) }}" method="post">
+        @if (isset($ordersstudent))
+            <form action="{{ route('ordersstudent.update', $ordersstudent) }}" method="post">
                 @method('PUT')
         @else
             <form action="{{ route('ordersstudent.store') }}" method="post">
@@ -28,24 +28,25 @@
             editar el pedido para que siga en user_id enlazado a el,
             mientras que mediante el precio, sacaré el profesor
         --}}
-        <input required hidden type="number" name="user_id_alumno" id="user_id_alumno" value="{{ Auth::User()->id }}" required>
 
+        <input required hidden type="number" name="user_id_alumno" id="user_id_alumno" value="{{ Auth::User()->id }}" required>
+    {{ $ordersstudent }}
         <div class="mb-3">
             <select class="form-control" name="prices_id">
                 <option value="a" selected disabled>===Selecciona un Precio del Profesor===</option>
-                @foreach ($prices as $price)
+                {{-- @foreach ($prices as $price)
                     @if ($price)
-                        <option value="{{ $price->id }}" @if(isset($order)) {{ $order->prices_id == $price->id ? 'selected' : '' }}@endif>
+                        <option value="{{ $price->id }}" @if(isset($ordersstudent)) {{ $ordersstudent->prices_id == $price->id ? 'selected' : '' }}@endif>
                             {{ $price->precio }} € - Pack: {{ $price->nombrePack }}
                         </option>
                     @endif
-                @endforeach
+                @endforeach --}}
             </select>
         </div>
 
         {{-- Estado de pago en el controlador se pondrá por defecto a 0 ya que aun no ha sido realizada la clase con el profesor --}}
 
-        @if (isset($order))
+        @if (isset($ordersstudent))
             <button type="submit" class="btn btn-info">Editar Pedido</button>
         @else
             <button type="submit" class="btn btn-info">Crear Pedido</button>
