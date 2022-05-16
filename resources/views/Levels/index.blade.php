@@ -26,7 +26,7 @@
                     <tr>
                         <th class="text-center">{{ $level->nombre }}</th>
                         <th class="text-center">
-                            <a href="{{ route('levels.edit',$level) }}">
+                            <a href="{{ route('levels.edit', $level) }}">
                                 <button class="btn btn-success fas fa-edit fa-xl p-3"></button>
                             </a>
 

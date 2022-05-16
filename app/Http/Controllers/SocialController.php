@@ -46,7 +46,6 @@ class SocialController extends Controller
      */
     public function store(Request $request)
     {
-        // Le dejará crear precios, hasta un maximo de 3
         $request->validate([
             'user_id' => 'required',
             'platform_id' => 'required|integer',

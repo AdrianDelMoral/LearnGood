@@ -30,7 +30,7 @@
 
             <div class="mb-3">
                 <label for="nombrePack" class="form-label">Nombre del Pack</label>
-                <input class="form-control" type="text" name="nombrePack" id="nombrePack" placeholder="Nombre del Pack"
+                <input class="form-control" type="string" max="2" name="nombrePack" id="nombrePack" placeholder="Nombre del Pack"
                     value="{{ old('nombrePack') ?? @$precio->nombrePack }}">
                 <p class="form-text">Escriba el nombre del Pack</p>
                 @error('form')

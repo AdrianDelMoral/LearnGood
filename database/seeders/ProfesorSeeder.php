@@ -16,12 +16,32 @@ class ProfesorSeeder extends Seeder
     public function run()
     {
         User::create([
-            'role_id'=>'Profesor',
-            'nombre'=>'Andrea',
-            'apellidos'=>'Corell Morales',
-            'idioma'=>'Castellano',
-            'descripcion'=>'Este es el segundo usuario, usuario profesor.',
-            'email'=>'profesor@profesor.com',
+            'role_id' => 'Profesor',
+            'nombre' => 'Andrea',
+            'apellidos' => 'Corell Morales',
+            'idioma' => 'Castellano',
+            'descripcion' => 'Este es el segundo usuario, usuario profesor.',
+            'email' => 'profesor@profesor.com',
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+        ]);
+
+        User::create([
+            'role_id' => 'Profesor',
+            'nombre' => 'Carlos',
+            'apellidos' => 'Garcia Carmona',
+            'idioma' => 'Ingles',
+            'descripcion' => 'This is the third user, the user Carlos.',
+            'email' => 'carlos@carlos.com',
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+        ]);
+
+        User::create([
+            'role_id' => 'Profesor',
+            'nombre' => 'Urbano',
+            'apellidos' => 'Cebrian Sanchez',
+            'idioma' => 'Castellano',
+            'descripcion' => 'Este es el segundo usuario, usuario profesor.',
+            'email' => 'urbano@urbano.com',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         ]);
     }

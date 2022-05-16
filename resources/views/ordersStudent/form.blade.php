@@ -7,10 +7,9 @@
 @endsection
 
 @section('cuerpo')
-    {{-- Route::resource('precios', PriceController::class);  route('precios./index/create/update....') --}}
     <div class="container py-5 text-center">
 
-        @if (isset($estudio))
+        @if (isset($order))
             <h1>Editar Pedido</h1>
             @method('PUT')
         @else
@@ -18,28 +17,34 @@
         @endif
 
         @if (isset($order))
-            <form action="{{ route('ordersTeacher.update', $order) }}" method="post">
+            <form action="{{ route('ordersStudent.update', $order) }}" method="post">
                 @method('PUT')
-            @else
-                <form action="{{ route('ordersTeacher.store') }}" method="post">
+        @else
+            <form action="{{ route('ordersStudent.store') }}" method="post">
         @endif
-
         @csrf
-
-        <input required hidden type="text" name="user_id" id="user_id" value="{{ Auth::User()->id }}" required>
+        {{--
+            El que crea el pedido es el alumno asi que será el que pueda
+            editar el pedido para que siga en user_id enlazado a el,
+            mientras que mediante el precio, sacaré el profesor
+        --}}
+        <input required hidden type="number" name="user_id_alumno" id="user_id_alumno" value="{{ Auth::User()->id }}" required>
 
         <div class="mb-3">
-            <select class="form-control" name="platform_id">
+            <select class="form-control" name="prices_id">
                 <option value="a" selected disabled>===Selecciona un Precio del Profesor===</option>
-                {{-- <p>{{ $user->prices }}</p> --}}
                 @foreach ($prices as $price)
-                    <option value="{{ $price->id }}" @if(isset($order)) {{ $estudio->prices_id == $price->id ? 'selected' : '' }}@endif>
-                        {{ $price->nombre }}
-                    </option>
+                    @if ($price)
+                        <option value="{{ $price->id }}" @if(isset($order)) {{ $order->prices_id == $price->id ? 'selected' : '' }}@endif>
+                            {{ $price->precio }} € - Pack: {{ $price->nombrePack }}
+                        </option>
+                    @endif
                 @endforeach
             </select>
         </div>
+
         {{-- Estado de pago en el controlador se pondrá por defecto a 0 ya que aun no ha sido realizada la clase con el profesor --}}
+
         @if (isset($order))
             <button type="submit" class="btn btn-info">Editar Pedido</button>
         @else
@@ -48,6 +53,8 @@
         </form>
     </div>
     <div class="container">
-        <a href="{{ route('ordersTeacher.index') }}"><button class="btn btn-primary mt-1 mb-5">Volver al Listado</button></a>
+        <a href="{{ route('ordersStudent.index') }}">
+            <button class="btn btn-primary mt-1 mb-5">Volver al Listado</button>
+        </a>
     </div>
 @endsection

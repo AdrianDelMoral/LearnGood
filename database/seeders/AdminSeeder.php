@@ -20,7 +20,7 @@ class AdminSeeder extends Seeder
             'nombre'=>'Adrian',
             'apellidos'=>'Del Moral Martín',
             'idioma'=>'Castellano',
-            'descripcion'=>'Este es el primer usuario administrador y el primer usuario creado en la base de datos',
+            'descripcion'=>'Este es el usuario Administrador y el primer usuario creado en la base de datos',
             'email'=>'admin@admin.com',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         ]);

@@ -37,7 +37,7 @@
     <x-jet-banner />
 
     {{-- @include('partials.nav') --}}{{-- Se incluirá el nav de partials/nav.blade.php --}}
-    <div class="min-h-screen bg-gray-300">
+    <div class="min-h-screen">
         @yield('cuerpo')
         @livewire('navigation-menu')
 

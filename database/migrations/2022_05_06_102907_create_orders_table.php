@@ -15,17 +15,14 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("prices_id")->constrained();
-            $table->boolean('estado_pago');
+            $table->foreignId("prices_id")->constrained(); // saco los datos del profesor de la tabla deprecios
+            $table->boolean('status')->default(0);
             $table->timestamps();
-
 
             /*------------------*/
             $table->unsignedBigInteger('user_id_alumno'); // id_Alumno
-            $table->unsignedBigInteger('user_id_profesor'); // id_Profesor
 
             $table->foreign('user_id_alumno')->references('id')->on('users'); // referencia id_Alumno
-            $table->foreign('user_id_profesor')->references('id')->on('users'); // referencia id_Profesor
         });
     }
 

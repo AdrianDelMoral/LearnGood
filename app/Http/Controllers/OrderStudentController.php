@@ -9,90 +9,59 @@ use Illuminate\Support\Facades\Redirect;
 
 class OrderStudentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $ordersStudent = Order::get();
         return view('ordersStudent.index',compact('ordersStudent'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $prices = Price::All();
         return view('ordersStudent.form', compact('prices'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         // Le dejará crear precios, hasta un maximo de 3
         $request->validate([
-            'user_id' => 'required',
-            'precio' => 'required|integer',
-            'status' => 'required|string|max:200',
-            'ventajaDos' => 'string|max:200',
-            'ventajaTres' => 'string|max:20',
+            'user_id_alumno' => 'required',
+            'prices_id' => 'required|integer',
         ]);
 
-        Order::create($request->only('user_id', 'nombrePack', 'precio', 'ventajaUno', 'ventajaDos', 'ventajaTres'));
+        Order::create([
+            'user_id_alumno' => $request->get('user_id_alumno'),
+            'prices_id' => $request->get('prices_id'),
+        ]);
 
         return Redirect::Route('ordersStudent.index')->with('createMsj', 'Pedido Creado con Exito.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
     public function show(Order $order)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Order $order)
     {
-        //
+        $prices = Price::All();
+        return view('ordersStudent.form', compact('prices'))->with('order');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Order $order)
     {
-        //
+        dd($order);
+        $request->validate([
+            'user_id_alumno' => 'required',
+            'prices_id' => 'required|integer',
+        ]);
+
+        $order->update();
+
+        // Mensaje para indicar en index que se a actualizado con exito
+        return Redirect::Route('platforms.index')->with('updateMsj', 'Pedido Actualizado con Exito.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Order $order)
     {
         //
