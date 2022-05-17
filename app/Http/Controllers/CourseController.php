@@ -24,10 +24,11 @@ class CourseController extends Controller
 
     public function create()
     {
+        $user = Auth::user()->id;
         $estudios = Study::get(); // devuelve todos los estudios
-        $estudiosProfe = Study::where('user_id', '=', Auth::user()->id)->get();
-        // return $estudiosProfe;
-        if($estudiosProfe == null){// SI NO TIENE Estudios, no puede crear cursos
+        $estudiosProfe = Study::where('user_id', '=', $user)->get();
+
+        if(!$estudiosProfe->count() == 0){// SI NO TIENE Estudios ( 0 ), no puede crear cursos
             return view('cursos.create', compact('estudiosProfe'));
         }
 
