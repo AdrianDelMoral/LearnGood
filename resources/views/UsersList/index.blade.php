@@ -9,7 +9,7 @@
 @section('cuerpo')
 
     <div class="container py-5 pb-2">
-        <h1 class="text-center">Listado de Plataformas Disponibles</h1>
+        <h1 class="text-center">Listado de Usuarios</h1>
 
         <x-form-alerts />
 
@@ -57,10 +57,45 @@
                 @endforeach
             </tbody>
         </table>
+
+        <div class="d-flex justify-content-center">
+            @if ($users->hasPages())
+                <nav role="navigation" aria-label="Pagination Navigation">
+                    <ul class="pagination">
+                        {{-- Previous Page Link --}}
+                        @if ($users->onFirstPage())
+                            <li class="page-item disabled" aria-disabled="true">
+                                <span class="bg-dark border border-warning text-light page-link">{!! __('X') !!}</span>
+                            </li>
+                        @else
+                            <li class="page-item">
+                                <a class="bg-dark page-link text-light border border-warning" href="{{ $users->previousPageUrl() }}" rel="prev">
+                                    {!! __('<span class="fa-solid fa-arrow-left"></span> Anterior') !!}
+                                </a>
+                            </li>
+                        @endif
+
+                        {{-- Next Page Link --}}
+                        @if ($users->hasMorePages())
+                            <li class="page-item">
+                                <a class="bg-dark page-link text-light border border-warning" href="{{ $users->nextPageUrl() }}"
+                                    rel="next">{!! __('Siguiente <span class="fa-solid fa-arrow-right"></span>') !!}</a>
+                            </li>
+                        @else
+                            <li class="page-item disabled" aria-disabled="true">
+                                <span class="bg-dark text-light border border-warning page-link">{!! __('X') !!}</span>
+                            </li>
+                        @endif
+                    </ul>
+                </nav>
+            @endif
+        </div>
     </div>
+
     <div class="container">
         <a href="{{ url('/') }}"><button class="btn btn-primary mt-1 mb-5">Volver al Inicio</button></a>
     </div>
+
 
 @endsection
 @section('JSadded')

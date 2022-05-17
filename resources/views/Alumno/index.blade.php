@@ -6,11 +6,48 @@
 @endsection
 
 @section('cuerpo')
-<div class="m-5">
-    <h1 class="text-center">Listado de Profesores</h1>
-</div>
+    <div class="m-5">
+        <h1 class="text-center">Listado de Profesores</h1>
+    </div>
 
     <div class="container">
+        {{-- Paginator personalizado --}}
+        <div class="d-flex justify-content-center">
+            @if ($usersProfesor->hasPages())
+                <nav role="navigation" aria-label="Pagination Navigation">
+                    <ul class="pagination">
+                        {{-- Previous Page Link --}}
+                        @if ($usersProfesor->onFirstPage())
+                            <li class="page-item disabled" aria-disabled="true">
+                                <span
+                                    class="bg-dark border border-warning text-light page-link">{!! __('X') !!}</span>
+                            </li>
+                        @else
+                            <li class="page-item">
+                                <a class="bg-dark page-link text-light border border-warning"
+                                    href="{{ $usersProfesor->previousPageUrl() }}" rel="prev">
+                                    {!! __('<span class="fa-solid fa-arrow-left"></span> Anterior') !!}
+                                </a>
+                            </li>
+                        @endif
+
+                        {{-- Next Page Link --}}
+                        @if ($usersProfesor->hasMorePages())
+                            <li class="page-item">
+                                <a class="bg-dark page-link text-light border border-warning"
+                                    href="{{ $usersProfesor->nextPageUrl() }}" rel="next">{!! __('Siguiente <span class="fa-solid fa-arrow-right"></span>') !!}</a>
+                            </li>
+                        @else
+                            <li class="page-item disabled" aria-disabled="true">
+                                <span
+                                    class="bg-dark text-light border border-warning page-link">{!! __('X') !!}</span>
+                            </li>
+                        @endif
+                    </ul>
+                </nav>
+            @endif
+        </div>
+        {{-- Paginator personalizado --}}
         <div class="row justify-content-center">
             @foreach ($usersProfesor as $user)
                 <div class="col-lg-4 my-5">
@@ -46,7 +83,43 @@
                 </div>
             @endforeach
         </div>
+        {{-- Paginator personalizado --}}
+        <div class="d-flex justify-content-center">
+            @if ($usersProfesor->hasPages())
+                <nav role="navigation" aria-label="Pagination Navigation">
+                    <ul class="pagination">
+                        {{-- Previous Page Link --}}
+                        @if ($usersProfesor->onFirstPage())
+                            <li class="page-item disabled" aria-disabled="true">
+                                <span
+                                    class="bg-dark border border-warning text-light page-link">{!! __('X') !!}</span>
+                            </li>
+                        @else
+                            <li class="page-item">
+                                <a class="bg-dark page-link text-light border border-warning"
+                                    href="{{ $usersProfesor->previousPageUrl() }}" rel="prev">
+                                    {!! __('<span class="fa-solid fa-arrow-left"></span> Anterior') !!}
+                                </a>
+                            </li>
+                        @endif
 
-        {{ $usersProfesor->links() }}
+                        {{-- Next Page Link --}}
+                        @if ($usersProfesor->hasMorePages())
+                            <li class="page-item">
+                                <a class="bg-dark page-link text-light border border-warning"
+                                    href="{{ $usersProfesor->nextPageUrl() }}" rel="next">{!! __('Siguiente <span class="fa-solid fa-arrow-right"></span>') !!}</a>
+                            </li>
+                        @else
+                            <li class="page-item disabled" aria-disabled="true">
+                                <span
+                                    class="bg-dark text-light border border-warning page-link">{!! __('X') !!}</span>
+                            </li>
+                        @endif
+                    </ul>
+                </nav>
+            @endif
+        </div>
+        {{-- Paginator personalizado --}}
+    </div>
     </div>
 @endsection
