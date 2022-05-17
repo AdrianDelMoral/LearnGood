@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('titulo', 'Crear Estudios de Ingles')
+@section('titulo', 'Crear Estudios del Profesor')
 
 @section('CSSadded')
     <link rel="stylesheet" href="{{ URL::asset('css/profesor/profesor_show.css') }}">
@@ -21,7 +21,7 @@
             <div class="mb-3">
                 <label for=""></label>
                 <select class="form-control" name="levels_id">
-                    <option value="a" selected disabled>===Selecciona un Nivel de Ingles===</option>
+                    <option value="a" selected disabled>===Selecciona una Categoria de Estudios Disponible===</option>
                     @foreach ($levels as $level)
                         <option value="{{ $level->id }}"
                             @if (isset($estudio)) {{ $estudio->levels_id == $level->id ? 'selected' : '' }} @endif>

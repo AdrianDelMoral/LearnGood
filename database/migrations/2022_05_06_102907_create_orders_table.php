@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("prices_id")->constrained(); // saco los datos del profesor de la tabla deprecios
+            $table->foreignId("courses_id")->constrained(); // saco los datos del profesor de la tabla de cursos
             $table->boolean('status')->default(0);
             $table->timestamps();
 

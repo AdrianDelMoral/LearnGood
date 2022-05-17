@@ -20,7 +20,7 @@
             <div class="mb-3">
                 <label for=""></label>
                 <select class="form-control" name="levels_id">
-                    <option value="a" selected disabled>===Selecciona un Nivel de Ingles===</option>
+                    <option value="a" selected disabled>===Selecciona una Categoria de Estudios Disponible===</option>
                     @foreach ($levels as $level)
                         <option value="{{ $level->id }}">
                             {{ $level->nombre }}
@@ -31,7 +31,6 @@
                     <p class="form-text text-danger">{{ $message }}</p>
                 @enderror
             </div>
-
             <div class="mb-3">
                 <label for="nota" class="form-label">Nota final</label>
                 <input class="form-control" type="number" name="nota" id="nota" placeholder="Nota final">

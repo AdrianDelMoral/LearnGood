@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Price;
+use App\Models\Course;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -17,7 +17,7 @@ class StudentController extends Controller
     public function show($id)
     {
         $profeInfo = User::find($id);
-        $prices = Price::find('user_id' == $id);
+        $courses = Course::find('user_id' == $id);
         return view('alumno.show', compact('profeInfo'));
     }
 

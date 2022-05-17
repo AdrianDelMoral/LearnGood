@@ -91,15 +91,15 @@
                         </div>
                     </div>
                     <div class="justify-content-center row row-cols-1 row-cols-md-3 text-center align-items-center">
-                        @forelse ($profeInfo->prices as $precio)
+                        @forelse ($profeInfo->courses as $course)
                             <div class="col">
                                     <div class="priEstContainer mb-4 rounded-3 shadow-sm text-light">
                                         <div class="card-header py-3">
-                                <h4 class="my-0 fw-normal text-dark">{{ $precio->nombrePack }}</h4>
+                                <h4 class="my-0 fw-normal text-dark">{{ $course->nombrePack }}</h4>
                             </div>
                             <div class="card-body">
                                 <p class="h1 card-title pricing-card-title my-3">
-                                    {{ $precio->precio }}<small>€</small>
+                                    {{ $course->precio }}<small>€</small>
                                 </p>
                                 <div>
                                     <p class="h3 mx-5 card-title pricing-card-title border-top border-dark my-3 pt-3">
@@ -107,22 +107,22 @@
                                     </p>
                                 </div>
                                 <ul class="list-unstyled mt-3 mb-4">
-                                    <li>{{ $precio->ventajaUno }}</li>
-                                    @if ($precio->ventajaDos !== null)
-                                        <li>{{ $precio->ventajaDos }}</li>
+                                    <li>{{ $course->ventajaUno }}</li>
+                                    @if ($course->ventajaDos !== null)
+                                        <li>{{ $course->ventajaDos }}</li>
                                     @endif
-                                    @if ($precio->ventajaTres !== null)
-                                        <li>{{ $precio->ventajaTres }}</li>
+                                    @if ($course->ventajaTres !== null)
+                                        <li>{{ $course->ventajaTres }}</li>
                                     @endif
                                 </ul>
-                                @if ($precio->id <= 2)
+                                @if ($course->id <= 2)
                                     <a href="{{ route('ordersstudent.createOrder', $profeInfo->id) }}">
                                         <button type="button" class="w-100 btn btn-lg btn-outline-dark fw-bold">
                                             Solicitar Servicio
                                         </button>
                                     </a>
                                 @endif
-                                @if ($precio->id > 2)
+                                @if ($course->id > 2)
                                     <a href="{{ route('ordersstudent.createOrder', $profeInfo->id) }}">
                                         <button type="button" class="w-100 btn btn-lg btn-dark fw-bold">
                                             Solicitar Servicio

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
-use App\Models\Price;
+use App\Models\Course;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -18,7 +18,7 @@ class OrderStudentController extends Controller
 
     public function createOrder(User $profeInfo)
     {
-        $ordersstudent = Price::where('user_id',$profeInfo->id)->get();
+        $ordersstudent = Course::where('user_id',$profeInfo->id)->get();
         return view('ordersstudent.create', compact('ordersstudent'));
     }
 
@@ -26,12 +26,12 @@ class OrderStudentController extends Controller
     {
         $request->validate([
             'user_id_alumno' => 'required',
-            'prices_id' => 'required|integer',
+            'courses_id' => 'required|integer',
         ]);
 
         Order::create([
             'user_id_alumno' => $request->get('user_id_alumno'),
-            'prices_id' => $request->get('prices_id'),
+            'courses_id' => $request->get('courses_id'),
         ]);
 
         return Redirect::Route('ordersstudent.index')->with('createMsj', 'Pedido Creado con Exito.');
@@ -46,7 +46,7 @@ class OrderStudentController extends Controller
     {
         $request->validate([
             'user_id_alumno' => 'required',
-            'prices_id' => 'required|integer',
+            'courses_id' => 'required|integer',
         ]);
 
         $ordersstudent->update();

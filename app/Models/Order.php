@@ -23,12 +23,12 @@ class Order extends Model
 
     protected $fillable = [
         'user_id_alumno',
-        'prices_id',
+        'courses_id',
         'status',
     ];
 
-    public function prices(){
-        return $this->belongsTo(Price::class);
+    public function courses(){
+        return $this->belongsTo(Course::class);
     }
 
     // Luego podrás relacionar los usuarios:

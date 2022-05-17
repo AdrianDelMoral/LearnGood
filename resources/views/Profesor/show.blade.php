@@ -307,37 +307,25 @@
             </div>
             <div class="justify-content-center row row-cols-1 row-cols-md-3 mb-3 text-center align-items-center">
                 <!-- Bucle de precios -->
-                    @if (Auth::user()->prices === null)
+                    @if (Auth::user()->courses === null)
                         <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
                             <h2 class="h2 border-bottom">Este profesor aun no a creado precios</h2>
                                 <p class="lead mb-0 fst-italic text-white">Seguro los creará pronto...</p>
                         </div>
                     @else
-                        @foreach (Auth::user()->prices as $precio)
+                        @foreach (Auth::user()->courses as $precio)
                             <div class="col">
-                                @if ($precio->id <= 2)
-                                    <div class="card mb-4 rounded-3 shadow-sm">
-                                        <div class="card-header py-3">
-                                @endif
-                                @if ($precio->id > 2)
                                     <div class="card mb-4 rounded-3 shadow-sm border-primary">
                                         <div class="card-header py-3 text-white bg-primary border-primary">
-                                @endif
-                                            <h4 class="my-0 fw-normal">{{ $precio->nombrePack }}</h4>
+                                            <h4 class="my-0 fw-normal">{{ $curso->nombreCurso }}</h4>
                                         </div>
                                             <div class="card-body">
-                                                <p class="h1 card-title pricing-card-title my-3"> {{ $precio->precio }}<small>€</small> </p>
+                                                <p class="h1 card-title pricing-card-title my-3"> {{ $curso->precio }}<small>€</small> </p>
                                                     <div>
                                                         <p class="h3 mx-5 card-title pricing-card-title border-top my-3 pt-3"> Ventajas: </p>
                                                     </div>
                                                         <ul class="list-unstyled mt-3 mb-4">
-                                                            <li>{{ $precio->ventajaUno }}</li>
-                                                            @if ($precio->ventajaDos !== null)
-                                                                <li>{{ $precio->ventajaDos }}</li>
-                                                            @endif
-                                                            @if ($precio->ventajaTres !== null)
-                                                                <li>{{ $precio->ventajaTres }}</li>
-                                                            @endif
+                                                            <li>{{ $curso->descripcion }}</li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -347,18 +335,18 @@
             </div>
         </div>
     </div>
-    <!-- Estudios de ingles -->
+    <!-- Estudios -->
     <div class="col-md-10 container">
         <div class="row justify-content-center text-center mb-5">
             <div class="col-md-8 col-lg-6">
                 <div class="header">
-                    <h2>Especialidades</h2>
+                    <h2>Estudios</h2>
                 </div>
             </div>
         </div>
         @if ($user->subjects !== null)
             <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
-                <h2 class="h2 border-bottom">Este profesor aun no a ingresado estudios de sus niveles de ingles</h2>
+                <h2 class="h2 border-bottom">Este profesor aun no a ingresado estudios</h2>
                 <p class="lead mb-0 fst-italic text-white">Seguro los añadirá pronto...</p>
             </div>
         @else
@@ -393,7 +381,7 @@
             </div>
         @endif
     </div>
-    <!-- Fin Estudios de ingles -->
+    <!-- Fin Estudios -->
     <div class="d-flex flex-wrap justify-content-center">
         <a href="/"><button class="btn btn-lg btn-primary my-5">Volver al Inicio</button></a>
     </div>

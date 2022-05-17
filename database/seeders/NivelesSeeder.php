@@ -16,22 +16,25 @@ class NivelesSeeder extends Seeder
     public function run()
     {
         Level::create([
-            'nombre'=>'A1',
+            'nombre'=>'Modelado 3D',
         ]);
         Level::create([
-            'nombre'=>'A2',
+            'nombre'=>'Historia',
         ]);
         Level::create([
-            'nombre'=>'B1',
+            'nombre'=>'Programacion',
         ]);
         Level::create([
-            'nombre'=>'B2',
+            'nombre'=>'Bases de Datos',
         ]);
         Level::create([
-            'nombre'=>'C1',
+            'nombre'=>'Matematicas',
         ]);
         Level::create([
-            'nombre'=>'C2',
+            'nombre'=>'Castellano',
+        ]);
+        Level::create([
+            'nombre'=>'Ingles',
         ]);
     }
 }

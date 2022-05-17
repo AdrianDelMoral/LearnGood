@@ -16,7 +16,7 @@
             @if (Auth::user()->role_id == 'Profesor')
                 <div class="d-flex justify-content-center">
                     <div>
-                        <a href="precios.index">
+                        <a href="cursos.index">
                             <button class="m-5 btn btn-primary profile-button">Ver mis precios</button>
                         </a>
                     </div>

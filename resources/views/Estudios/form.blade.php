@@ -7,7 +7,6 @@
 @endsection
 
 @section('cuerpo')
-    {{-- Route::resource('precios', PriceController::class);  route('precios./index/create/update....') --}}
     <div class="container py-5 text-center">
 
         @if (isset($estudio))

@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('titulo', 'Formulario Niveles')
+@section('titulo', 'Formulario Categoria')
 
 @section('CSSadded')
     <link rel="stylesheet" href="{{ URL::asset('css/profesor/profesor_show.css') }}">
@@ -9,7 +9,7 @@
 @section('cuerpo')
     <div class="container py-5 text-center">
 
-        <h1>Editar Nivel</h1>
+        <h1>Editar Categoria</h1>
 
         <form action="{{ route('levels.update', $level) }}" method="post">
             @method('PUT')
@@ -17,16 +17,15 @@
             @csrf
 
             <div class="mb-3">
-                <label for="nombre" class="form-label">Nombre del Nivel de Ingles</label>
-                <input class="form-control" type="text" name="nombre" id="nombre" placeholder="Nombre del Nivel de Ingles"
+                <label for="nombre" class="form-label">Nombre de la Categoria</label>
+                <input class="form-control" type="text" name="nombre" id="nombre" placeholder="Nombre de la Categoria"
                     value="{{ old('nombre') ?? @$level->nombre }}">
-                <p class="form-text">Escriba el nombre del Nivel de Ingles</p>
                 @error('nombre')
                     <p class="form-text text-danger">{{ $message }}</p>
                 @enderror
             </div>
 
-            <button type="submit" class="btn btn-info">Editar Nivel</button>
+            <button type="submit" class="btn btn-info">Editar Categoria</button>
         </form>
     </div>
 @endsection

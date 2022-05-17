@@ -28,8 +28,8 @@
                 </div>
                 <tr>
                     <th class="text-center text-light">{{ $order->id }}</th>
-                    <th class="text-center text-light">{{ $order->prices->precio }}</th>
-                    <th class="text-center text-light">{{ $order->prices->users->nombre }} {{ $order->prices->users->apellidos }}</th>
+                    <th class="text-center text-light">{{ $order->courses->precio }}</th>
+                    <th class="text-center text-light">{{ $order->courses->users->nombre }} {{ $order->courses->users->apellidos }}</th>
                     <th class="text-center text-light">
                         @if(!$order->status)
                             <button class="btn btn-danger">Por Realizar</button>

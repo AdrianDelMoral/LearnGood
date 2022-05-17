@@ -18,4 +18,8 @@ class Level extends Model
     public function studies (){
         return $this->hasMany(Study::class);
     }
+
+    public function courses (){
+        return $this->hasMany(Course::class);
+    }
 }

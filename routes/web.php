@@ -7,7 +7,7 @@ use App\Http\Controllers\InicioController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\PlatformController;
 use App\Http\Controllers\StudentController;
-use App\Http\Controllers\PriceController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\StudyController;
 use App\Http\Controllers\UserManage;
@@ -63,9 +63,9 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::group(['middleware' => 'profesor', 'prefix' => 'profesor'], function() {
         Route::resource('teacherviews', TeacherController::class);
-        Route::resource('precios', PriceController::class);
-        Route::resource('estudios', StudyController::class);
-
+        Route::resource('cursos', CourseController::class);
         Route::resource('ordersteacher', OrderTeacherController::class);
+
+        Route::resource('estudios', StudyController::class);
     });
 });

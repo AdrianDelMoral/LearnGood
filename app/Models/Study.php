@@ -26,4 +26,9 @@ class Study extends Model
     {
         return $this->belongsTo(Level::class, 'levels_id');
     }
+
+    public function courses()
+    {
+        return $this->hasMany(Course::class);
+    }
 }

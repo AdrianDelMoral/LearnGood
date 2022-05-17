@@ -22,12 +22,12 @@
                 required>
 
             <div class="mb-3">
-                <select class="form-control" name="prices_id">
+                <select class="form-control" name="cursos_id">
                     <option value="a" selected disabled>===Selecciona un Precio del Profesor===</option>
-                    @foreach ($ordersstudent->prices as $price)
-                        <option value="{{ $price->id }}"
-                            @if (isset($ordersstudent->price)) {{ $price->id ? 'selected' : '' }} @endif>
-                            {{ $price->precio }} € - Pack: {{ $price->nombrePack }}
+                    @foreach ($ordersstudent->curso as $curso)
+                        <option value="{{ $curso->id }}"
+                            @if (isset($ordersstudent->curso)) {{ $curso->id ? 'selected' : '' }} @endif>
+                            {{ $curso->precio }} € - Pack: {{ $curso->nombrePack }}
                         </option>
                     @endforeach
                 </select>

@@ -31,7 +31,7 @@
 
                     <a class="btn boton_div-nav text-white  mx-3" href="{{ route('levels.index') }}">
                         <div class="px-4 py-2">
-                            Niveles De Ingles
+                            Categorias de Estudios
                         </div>
                     </a>
                 @endif

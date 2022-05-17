@@ -55,11 +55,6 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function prices()
-    {
-        return $this->hasMany(Price::class);
-    }
-
     public function studies()
     {
         return $this->hasMany(Study::class);
