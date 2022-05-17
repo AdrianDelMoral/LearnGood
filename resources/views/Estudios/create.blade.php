@@ -45,9 +45,12 @@
                 <label for="fechaFinalizacion" class="form-label">Fecha finalizacion</label>
                 <input type="date" data-date-format="DD MMMM YYYY" class="form-control" name="fechaFinalizacion"
                     id="fechaFinalizacion" required>
+                @error('fechaFinalizacion')
+                    <p class="form-text text-danger">{{ $message }}</p>
+                @enderror
             </div>
 
-            <button type="submit" class="btn btn-info">Guardar Nivel de Estudios</button>
+            <button type="submit" class="btn btn-info">Crear Nivel de Estudios</button>
         </form>
     </div>
     <div class="container">

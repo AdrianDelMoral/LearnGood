@@ -21,7 +21,7 @@
                 required>
 
             <div class="mb-3">
-                <select class="form-control" name="prices_id">
+                <select class="form-control" name="prices_id" required>
                     <option value="a" selected disabled>===Selecciona un Precio del Profesor===</option>
                     @foreach ($ordersstudent->prices as $price)
                         <option value="{{ $price->id }}"
@@ -30,6 +30,9 @@
                         </option>
                     @endforeach
                 </select>
+                @error('prices_id')
+                    <p class="form-text text-danger">{{ $message }}</p>
+                @enderror
             </div>
 
             {{-- Estado de pago en el controlador se pondrá por defecto a 0 ya que aun no ha sido realizada la clase con el profesor --}}

@@ -17,15 +17,13 @@
             editar el pedido para que siga en user_id enlazado a el,
             mientras que mediante el precio, sacaré el profesor --}}
 
-            <input required hidden type="number" name="user_id_alumno" id="user_id_alumno" value="{{ Auth::User()->id }}"
-                required>
+            <input required hidden type="number" name="user_id_alumno" id="user_id_alumno" value="{{ Auth::User()->id }}" required>
 
             <div class="mb-3">
                 <select class="form-control" name="prices_id">
                     <option value="a" selected disabled>===Selecciona un Precio del Profesor===</option>
-                    @foreach ($ordersstudent->prices as $price)
-                        <option value="{{ $price->id }}"
-                            @if (isset($ordersstudent->price)) {{ $price->id ? 'selected' : '' }} @endif>
+                    @foreach ($ordersstudent as $price)
+                        <option value="{{ $price->id }}">
                             {{ $price->precio }} € - Pack: {{ $price->nombrePack }}
                         </option>
                     @endforeach
@@ -38,7 +36,7 @@
         </form>
     </div>
     <div class="container">
-        <a href="{{ route('ordersstudent.index') }}">
+        <a href="{{ route('alumnoviews.index') }}">
             <button class="btn btn-primary mt-1 mb-5">Volver al Listado</button>
         </a>
     </div>

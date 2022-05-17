@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\Price;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -15,9 +16,10 @@ class OrderStudentController extends Controller
         return view('ordersstudent.index', compact('ordersStudent'));
     }
 
-    public function create()
+    public function createOrder(User $profeInfo)
     {
-        return view('ordersstudent.create', compact('prices'));
+        $ordersstudent = Price::where('user_id',$profeInfo->id)->get();
+        return view('ordersstudent.create', compact('ordersstudent'));
     }
 
     public function store(Request $request)

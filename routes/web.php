@@ -43,13 +43,16 @@ Route::resource('/', InicioController::class)->only('index');
 
 Route::group(['middleware' => 'auth'], function() {
 
+    // accesible para estudiantes y profesores
     Route::resource('socials', SocialController::class);
 
     Route::group(['middleware' => 'alumno', 'prefix' => 'alumno'], function() {
         Route::resource('alumnoviews', StudentController::class);
 
-
         Route::resource('ordersstudent', OrderStudentController::class);
+
+        Route::get('/ordersstudent/{profeInfo}/createOne/', [OrderStudentController::class, 'createOrder'])->name('ordersstudent.createOrder');
+
     });
 
     Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function() {
@@ -62,7 +65,6 @@ Route::group(['middleware' => 'auth'], function() {
         Route::resource('teacherviews', TeacherController::class);
         Route::resource('precios', PriceController::class);
         Route::resource('estudios', StudyController::class);
-
 
         Route::resource('ordersteacher', OrderTeacherController::class);
     });

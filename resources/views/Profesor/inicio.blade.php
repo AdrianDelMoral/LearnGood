@@ -6,9 +6,9 @@
 @section('cuerpo')
     <div class="container px-4 py-5" id="custom-cards">
         <div class="d-flex justify-content-between border-top border-bottom">
-            <h2 class="pb-2"><strong class="text-primary text-decoration-underline">Inicio de:</strong>
+            <h2 class="pb-2"><strong class="text-warning text-decoration-underline">Inicio de:</strong>
                 {{ Auth::User()->nombre }}</h2>
-            <h2 class="pb-2"><strong class="text-primary text-decoration-underline">Tipo de Usuario:</strong>
+            <h2 class="pb-2"><strong class="text-warning text-decoration-underline">Tipo de Usuario:</strong>
                 {{ Auth::User()->role_id }}</h2>
         </div>
         <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5 justify-content-center">

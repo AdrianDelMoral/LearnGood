@@ -14,6 +14,13 @@ class StudentController extends Controller
         return view('alumno.index', compact('usersProfesor')); // Hacemos un compact, para poder pasarle a una vista una variable anteriormente creada de una tabla de la base de datos
     }
 
+    public function show($id)
+    {
+        $profeInfo = User::find($id);
+        $prices = Price::find('user_id' == $id);
+        return view('alumno.show', compact('profeInfo'));
+    }
+
     public function create()
     {
         //
@@ -23,12 +30,6 @@ class StudentController extends Controller
     {
     }
 
-    public function show($id)
-    {
-        $profeInfo = User::find($id);
-        $prices = Price::find('user_id' == $id);
-        return view('alumno.show', compact('profeInfo'));
-    }
 
     public function edit($id)
     {

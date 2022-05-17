@@ -8,12 +8,17 @@
 @section('cuerpo')
 
     <div>
-        <div class="container rounded bg-white mt-5 mb-5">
-            <div class="row justify-content-evenly mb-5 pb-5">
+        <div class="container mainContainer rounded mt-5 mb-5">
+            <div class="row justify-content-evenly mb-5">
+                <div class="mt-5 d-flex justify-content-end container">
+                    <a href="{{ route('alumnoviews.index') }}">
+                        <button class="btn btn-primary mt-1 mx-5 mb-5">Volver al Listado</button>
+                    </a>
+                </div>
                 <div class="col-md-3 border-right">
                     <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                         <div class="cajaImg_profesor"
-                            style="position: relative; width: 126px; height: 116px; display: flex; justify-content: center; align-items: center; overflow: hidden; border-radius: 50%; transition: 0.5s;">
+                        style="position: relative; width: 126px; height: 116px; display: flex; justify-content: center; align-items: center; overflow: hidden; border-radius: 50%; transition: 0.5s;">
                             <div
                                 class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
                                 <img class="rounded-circle img-fluid overflow-hidden"
@@ -35,21 +40,21 @@
                                 <p class="text-danger fw-bold">Profesor Sin redes Actualmente</p>
                             @endif --}}
                             <!--  {{-- si es github --}}
-                                            <a href="{{-- {{ $id->redes_sociales->link->github }} --}}" class="social m-3">
-                                                <span class="fa-brands fa-2x fa-github"></span>
-                                            </a>
-                                            {{-- si es linkedin --}}
-                                            <a href="{{-- {{ $id->redes_sociales->link->linkedin }} --}}" class="social m-3">
-                                                <span class="fa-brands fa-2x fa-linkedin"></span>
-                                            </a>
-                                            {{-- si es discord --}}
-                                            <a href="{{-- {{ $id->redes_sociales->link->discord }} --}}" class="social m-3">
-                                                <span class="fa-brands fa-2x fa-discord"></span>
-                                            </a>
-                                            {{-- si es facebook --}}
-                                            <a href="{{-- {{ Auth::user()->redes_sociales->link->facebook }} --}}" class="social m-3">
-                                                <span class="fa-brands fa-2x fa-facebook"></span>
-                                            </a>-->
+                                                <a href="{{-- {{ $id->redes_sociales->link->github }} --}}" class="social m-3">
+                                                    <span class="fa-brands fa-2x fa-github"></span>
+                                                </a>
+                                                {{-- si es linkedin --}}
+                                                <a href="{{-- {{ $id->redes_sociales->link->linkedin }} --}}" class="social m-3">
+                                                    <span class="fa-brands fa-2x fa-linkedin"></span>
+                                                </a>
+                                                {{-- si es discord --}}
+                                                <a href="{{-- {{ $id->redes_sociales->link->discord }} --}}" class="social m-3">
+                                                    <span class="fa-brands fa-2x fa-discord"></span>
+                                                </a>
+                                                {{-- si es facebook --}}
+                                                <a href="{{-- {{ Auth::user()->redes_sociales->link->facebook }} --}}" class="social m-3">
+                                                    <span class="fa-brands fa-2x fa-facebook"></span>
+                                                </a>-->
                         </div>
                         {{-- fin bucle redes sociales --}}
                     </div>
@@ -79,32 +84,25 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="col-md-10 container">
-                    <div class="p-3 py-5">
+                    <div class="pb-3 px-5">
                         <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
                             <h1 class="display-4 fw-normal">Precios</h1>
                         </div>
                     </div>
-                    <div class="justify-content-center row row-cols-1 row-cols-md-3 mb-3 text-center align-items-center">
+                    <div class="justify-content-center row row-cols-1 row-cols-md-3 text-center align-items-center">
                         @forelse ($profeInfo->prices as $precio)
                             <div class="col">
-                                @if ($precio->id <= 2)
-                                    <div class="card mb-4 rounded-3 shadow-sm">
+                                    <div class="priEstContainer mb-4 rounded-3 shadow-sm text-light">
                                         <div class="card-header py-3">
-                                @endif
-                                @if ($precio->id > 2)
-                                    <div class="card mb-4 rounded-3 shadow-sm border-primary">
-                                        <div class="card-header py-3 text-white bg-primary border-primary">
-                                @endif
-                                <h4 class="my-0 fw-normal">{{ $precio->nombrePack }}</h4>
+                                <h4 class="my-0 fw-normal text-dark">{{ $precio->nombrePack }}</h4>
                             </div>
                             <div class="card-body">
                                 <p class="h1 card-title pricing-card-title my-3">
                                     {{ $precio->precio }}<small>€</small>
                                 </p>
                                 <div>
-                                    <p class="h3 mx-5 card-title pricing-card-title border-top my-3 pt-3">
+                                    <p class="h3 mx-5 card-title pricing-card-title border-top border-dark my-3 pt-3">
                                         Ventajas:
                                     </p>
                                 </div>
@@ -118,25 +116,30 @@
                                     @endif
                                 </ul>
                                 @if ($precio->id <= 2)
-                                    <a href="{{ route('ordersstudent.create', $profeInfo->id) }}">
-                                        <button type="button" class="w-100 btn btn-lg btn-outline-primary">
+                                    <a href="{{ route('ordersstudent.createOrder', $profeInfo->id) }}">
+                                        <button type="button" class="w-100 btn btn-lg btn-outline-dark fw-bold">
                                             Solicitar Servicio
                                         </button>
                                     </a>
                                 @endif
                                 @if ($precio->id > 2)
-                                    <a href="{{ route('ordersstudent.create', $profeInfo->id) }}">
-                                        <button type="button" class="w-100 btn btn-lg btn-primary">
+                                    <a href="{{ route('ordersstudent.createOrder', $profeInfo->id) }}">
+                                        <button type="button" class="w-100 btn btn-lg btn-dark fw-bold">
                                             Solicitar Servicio
                                         </button>
                                     </a>
                                 @endif
                             </div>
+                        </div>
                     </div>
-                </div>
-            @empty
-                <p>No tiene presios aun</p>
-                @endforelse
+                    @empty
+                        <div class="priEstContainer col-md-6 mb-5">
+                            <div class="h-100 p-5 text-white rounded-3">
+                                <h2 class="text-dark">Este profesor aun no a añadido Estudios realizados</h2>
+                                <p class="fst-italic mb-0 text-dark fw-bold mt-4">Seguro que añadirá muy pronto...</p>
+                            </div>
+                        </div>
+                    @endforelse
                 {{-- <div class="col">
                                 <div class="card mb-4 rounded-3 shadow-sm">
                                     <div class="card-header py-3">
@@ -194,9 +197,9 @@
     <div>
         <div class="container">
             <div class="row justify-content-center text-center">
-                <div class="col-md-8 col-lg-6">
-                    <div class="header">
-                        <h2>Estudios de Ingles</h2>
+                <div class="pb-3 px-5">
+                    <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+                        <h1 class="display-4 fw-normal">Estudios de Realizados</h1>
                     </div>
                 </div>
             </div>
@@ -228,7 +231,12 @@
                         </div>
                     </div>
                 @empty
-                    <p>No tiene estudios aun</p>
+                <div class="priEstContainer text-center col-md-6 mb-5">
+                    <div class="h-100 p-5 text-white rounded-3">
+                        <h2 class="text-dark">Este profesor aun no a añadido Estudios realizados</h2>
+                        <p class="fst-italic mb-0 text-dark fw-bold mt-4">Seguro que añadirá muy pronto...</p>
+                    </div>
+                </div>
                 @endforelse
                 {{-- Fin Bucle Especialidades --}}
             </div>
