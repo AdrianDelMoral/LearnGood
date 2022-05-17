@@ -9,6 +9,14 @@ class Post extends Model
 {
     use HasFactory;
 
+    protected $table = 'posts';
+
+    protected $fillable = [
+        'titulo',
+        'entrada',
+        //'video',
+    ];
+
     public function courses(){
         return $this->belongsTo(Course::class);
     }

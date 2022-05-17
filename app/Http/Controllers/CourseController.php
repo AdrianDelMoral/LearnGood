@@ -16,10 +16,13 @@ class CourseController extends Controller
 {
     public function index()
     {
-        $user = Auth::user();
+        $cursos = Course::whereHas('studies', function ($query) {
+            $query->where('user_id', Auth::user()->id);
+        })->get();
 
+        // $user = Auth::user();
         // devuelve los datos de ese usuario y sus cursos
-        return view('cursos.index', compact('user'));
+        return view('cursos.index', compact('cursos'));
     }
 
     public function create()
@@ -28,7 +31,7 @@ class CourseController extends Controller
         $estudios = Study::get(); // devuelve todos los estudios
         $estudiosProfe = Study::where('user_id', '=', $user)->get();
 
-        if(!$estudiosProfe->count() == 0){// SI NO TIENE Estudios ( 0 ), no puede crear cursos
+        if (!$estudiosProfe->count() == 0) { // SI NO TIENE Estudios ( 0 ), no puede crear cursos
             return view('cursos.create', compact('estudiosProfe'));
         }
 
@@ -41,13 +44,12 @@ class CourseController extends Controller
         // dd($request->input());
         // Le dejará crear cursos, hasta un maximo de 3
         $request->validate([
-            'studies_id' => 'required',
             'nombreCurso' => 'required|string|max:30',
             'precio' => 'required|integer',
             'descripcion' => 'required|string',
         ]);
 
-        Course::create($request->only(Auth::user()->id,'studies_id', 'nombreCurso', 'precio', 'descripcion'));
+        Course::create($request->only('studies_id', 'nombreCurso', 'precio', 'descripcion'));
 
         // Mensaje para indicar en index que se a creado con exito
         return Redirect::Route('cursos.index')->with('createMsj', 'Curso Creado con Exito.');
@@ -59,9 +61,8 @@ class CourseController extends Controller
 
     public function edit(Course $curso)
     {
-        $profeId = Auth::user()->id; // devuelve el id del usuario actual que es profesor
-        $estudios = Study::get(); // devuelve todos los estudios
-        $estudiosProfe = Study::where('user_id', '=', $profeId)->get();
+        $estudiosProfe = Study::where('user_id', '=', Auth::user()->id)->get();
+
         return view('cursos.edit', compact('estudiosProfe'))->with('curso', $curso);
     }
 
@@ -74,7 +75,6 @@ class CourseController extends Controller
             'descripcion' => 'required|string|max:200',
         ]);
 
-        $curso->user_id = Auth::user()->id;
         $curso->studies_id = $request['studies_id'];
         $curso->nombreCurso = $request['nombreCurso'];
         $curso->precio = $request['precio'];

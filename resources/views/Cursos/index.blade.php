@@ -24,7 +24,7 @@
                 <th class="text-center fw-bold text-warning">Eliminar</th>
             </thead>
             <tbody class="text-center">
-                @forelse ($user->courses as $curso)
+                @forelse ($cursos as $curso)
                     <tr>
                         <th class="text-center">{{ $curso->id }}</th>
                         <th class="text-center">{{ $curso->nombreCurso }}</th>
@@ -52,8 +52,6 @@
                 @endforelse
             </tbody>
         </table>
-
-
 
     </div>
     <div class="container">

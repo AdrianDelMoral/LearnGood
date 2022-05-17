@@ -27,8 +27,6 @@ class PlatformController extends Controller
             'platformImage' => 'required|max:1000|mimes:svg' // solo podrá subir una imagen por plataforma y que sea de un maximo de 100kb de peso
         ]);
 
-        // $image = $request->file('platformImage');
-        // $path = Storage::putFile("public/platformsImages", $image);
         $newImageName = time().'-'.$request->nombre . '.' .$request->platformImage->extension();
 
         $request->platformImage->move(public_path('imagenes/platformImages'), $newImageName);
@@ -56,8 +54,12 @@ class PlatformController extends Controller
     {
         $request->validate([
             'nombre' => 'required',
-            'image' => 'required',
+            'platformImage' => 'required',
         ]);
+
+        $newImageName = time().'-'.$request->nombre . '.' .$request->platformImage->extension();
+
+        $request->platformImage->move(public_path('imagenes/platformImages'), $newImageName);
 
         $platform->update();
 

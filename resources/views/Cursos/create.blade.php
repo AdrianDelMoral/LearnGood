@@ -15,7 +15,7 @@
 
             @csrf
 
-            <div class="form-check input-group mb-3">
+            <div class="form-check input-group mb-3 d-flex align-items-center">
                 <div>
                     <label class="bg-dark text-white border-dark input-group-text" for="studies_id">Categorias</label>
                 </div>
@@ -31,7 +31,7 @@
             </div>
 
             <div class="form-check mb-3">
-                <label for="nombreCurso" class="form-label">Nombre del Curso</label>
+                <label for="nombreCurso" class="h5 form-label">Nombre del Curso</label>
                 <input class="form-control" type="string" name="nombreCurso" id="nombreCurso"
                     placeholder="Nombre del Curso" required>
                 @error('nombreCurso')
@@ -39,16 +39,22 @@
                 @enderror
             </div>
 
-            <div class="form-check mb-3">
-                <label for="precio" class="form-label">Precio del Curso</label>
+            <label for="precio" class="form-label h5">Precio del Curso</label>
+            <div class="form-check input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="bg-dark text-white border-dark input-group-text">€</span>
+                </div>
                 <input class="form-control" type="number" name="precio" id="precio" placeholder="Precio del Curso"
-                    required>
+                        aria-label="Precio del Curso" required>
+                <div class="input-group-prepend">
+                    <span class="bg-dark text-white border-dark input-group-text">0.00</span>
+                </div>
                 @error('precio')
                     <p class="form-text text-danger">{{ $message }}</p>
                 @enderror
             </div>
 
-            <label id="descripcion_label" for="descripcion" class="h4" required>Descripcion del Curso</label>
+            <label id="descripcion_label" for="descripcion" class="h5" required>Descripcion del Curso</label>
             <div class="form-check mb-3">
                 <textarea id="descripcion" name="descripcion" rows="5" class="form-control" placeholder="Descripcion del Curso"
                     required></textarea>

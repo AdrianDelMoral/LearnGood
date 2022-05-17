@@ -15,8 +15,10 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('courses_id')->nullable()->constrained();
             $table->string('titulo');
             $table->string('entrada');
+            // $table->string('video');
             $table->timestamps();
         });
     }

@@ -12,7 +12,6 @@ class Course extends Model
     protected $table = 'courses';
 
     protected $fillable = [
-        'user_id',
         'studies_id',
         'nombreCurso',
         'precio',
@@ -23,7 +22,7 @@ class Course extends Model
         return $this->hasMany(Order::class);
     }
 
-    public function estudies(){
+    public function studies(){
         return $this->belongsTo(Study::class, 'studies_id');
     }
 
