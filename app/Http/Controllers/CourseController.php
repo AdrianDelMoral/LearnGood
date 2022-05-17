@@ -24,14 +24,14 @@ class CourseController extends Controller
 
     public function create()
     {
-        $profeId = Auth::user()->id; // devuelve el id del usuario actual que es profesor
         $estudios = Study::get(); // devuelve todos los estudios
-        $estudiosProfe = Study::where('user_id', '=', $profeId)->get();
+        $estudiosProfe = Study::where('user_id', '=', Auth::user()->id)->get();
         // return $estudiosProfe;
-        if(!isset($estudiosProfe) ){// SI NO TIENE DEVUELVE TRUE
-            return Redirect::Route('cursos.index')->with('errorMsj', 'Prueba a añadir Estudios Primero.');
+        if($estudiosProfe == null){// SI NO TIENE Estudios, no puede crear cursos
+            return view('cursos.create', compact('estudiosProfe'));
         }
-        return view('cursos.create', compact('estudiosProfe'));
+
+        return Redirect::Route('cursos.index')->with('errorMsj', 'Prueba a añadir Estudios Primero.');
     }
 
 

@@ -24,36 +24,32 @@
                 <th class="text-center fw-bold text-warning">Eliminar</th>
             </thead>
             <tbody class="text-center">
-                @foreach ($user->studies as $study)
-                    @if ($study->courses !== null)
-                        @foreach ($study->courses as $curso)
-                            <tr>
-                                <th class="text-center">{{ $curso->id }}</th>
-                                <th class="text-center">{{ $curso->nombreCurso }}</th>
-                                <th class="text-center">{{ $curso->precio }}</th>
-                                <th class="text-center">{{ $curso->descripcion }}</th>
-                                <th class="text-center">
-                                    <a href="{{ route('cursos.edit', $curso->id) }}">
-                                        <button class="btn btn-success fas fa-edit fa-xl p-3"></button>
-                                    </a>
-                                </th>
-                                <th class="text-center">
-                                    <form action="{{ route('cursos.destroy', $curso->id) }}" method="post">
-                                        @method('DELETE')
-                                        @csrf
-                                        <button type="submit" class="btn btn-danger fas fa-trash fa-xl p-3"></button>
-                                    </form>
-                                </th>
-                            </tr>
-                        @endforeach
-                    @else
+                @forelse ($user->courses as $curso)
+                    <tr>
+                        <th class="text-center">{{ $curso->id }}</th>
+                        <th class="text-center">{{ $curso->nombreCurso }}</th>
+                        <th class="text-center">{{ $curso->precio }}</th>
+                        <th class="text-center">{{ $curso->descripcion }}</th>
+                        <th class="text-center">
+                            <a href="{{ route('cursos.edit', $curso->id) }}">
+                                <button class="btn btn-success fas fa-edit fa-xl p-3"></button>
+                            </a>
+                        </th>
+                        <th class="text-center">
+                            <form action="{{ route('cursos.destroy', $curso->id) }}" method="post">
+                                @method('DELETE')
+                                @csrf
+                                <button type="submit" class="btn btn-danger fas fa-trash fa-xl p-3"></button>
+                            </form>
+                        </th>
+                    </tr>
+                @empty
                     <tr>
                         <th colspan="7" class="text-center">
                             <p class="h4 text-danger fw-bold m-5">Aun no hay Cursos Creados</p>
                         </th>
                     </tr>
-                    @endif
-                @endforeach
+                @endforelse
             </tbody>
         </table>
 

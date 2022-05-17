@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('studies', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("user_id")->nullable()->constrained();
             $table->foreignId("levels_id")->constrained();
+            $table->foreignId("user_id")->constrained();
             $table->string("nota");
             $table->date('fechaFinalizacion');
             $table->timestamps();
