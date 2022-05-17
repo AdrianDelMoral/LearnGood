@@ -5,12 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
+use Livewire\WithPagination;
 
 class StudentController extends Controller
 {
+    use WithPagination;
     public function index()
     {
-        $usersProfesor = User::where('role_id', '=', 'Profesor')->get();
+        $usersProfesor = User::where('role_id', '=', 'Profesor')->paginate(9);
         return view('alumno.index', compact('usersProfesor')); // Hacemos un compact, para poder pasarle a una vista una variable anteriormente creada de una tabla de la base de datos
     }
 

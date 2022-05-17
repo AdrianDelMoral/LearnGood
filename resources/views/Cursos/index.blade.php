@@ -24,7 +24,7 @@
                 <th class="text-center fw-bold text-warning">Eliminar</th>
             </thead>
             <tbody class="text-center">
-                @forelse ($user->courses as $curso)
+                {{-- @forelse ($user->courses as $curso)
                     <tr>
                         <th class="text-center">{{ $curso->id }}</th>
                         <th class="text-center">{{ $curso->nombreCurso }}</th>
@@ -49,9 +49,11 @@
                             <p class="h4 text-danger fw-bold m-5">Aun no hay Cursos Creados</p>
                         </th>
                     </tr>
-                @endforelse
+                @endforelse --}}
             </tbody>
         </table>
+
+
 
     </div>
     <div class="container">

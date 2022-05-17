@@ -6,10 +6,12 @@
 @endsection
 
 @section('cuerpo')
-    <h1>Listado de Profesores</h1>
+<div class="m-5">
+    <h1 class="text-center">Listado de Profesores</h1>
+</div>
 
     <div class="container">
-        <div class="row">
+        <div class="row justify-content-center">
             @foreach ($usersProfesor as $user)
                 <div class="col-lg-4 my-5">
                     <div class="card p-0">
@@ -44,5 +46,7 @@
                 </div>
             @endforeach
         </div>
+
+        {{ $usersProfesor->links() }}
     </div>
 @endsection
