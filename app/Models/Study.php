@@ -29,6 +29,6 @@ class Study extends Model
 
     public function courses()
     {
-        return $this->hasMany(Course::class);
+        return $this->hasMany(Course::class, 'studies_id');
     }
 }

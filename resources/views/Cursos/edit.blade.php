@@ -10,39 +10,64 @@
 
     <div class="container py-5 text-center">
 
-            <h1>Editar Curso</h1>
+        <h1>Editar Curso</h1>
 
-            <form action="{{ route('cursos.update', $curso) }}" method="post">
+        <form action="{{ route('cursos.update', $curso) }}" method="post">
             @method('PUT')
 
             @csrf
 
-            <input required hidden type="text" name="user_id" id="user_id" value="{{ Auth::User()->id }}" required>
+            <div class="form-check input-group mb-3">
+                <div>
+                    <label class="bg-dark text-white border-dark input-group-text" for="studies_id">Categorias</label>
+                </div>
+                <select class="form-control" name="studies_id" id="studies_id" required>
+                    <option value="a" selected disabled>Selecciona una Categoria del Curso</option>
+                    @foreach ($estudiosProfe as $estudio)
+                        <option value="{{ $estudio->id }}"
+                            @if (isset($curso)) {{ $curso->studies_id == $estudio->id ? 'selected' : '' }} @endif>
+                            {{ $estudio->nivel->nombre }}
+                        </option>
+                    @endforeach
+                </select>
+                @error('studies_id')
+                    <p class="form-text text-danger">{{ $message }}</p>
+                @enderror
+            </div>
 
-            <div class="mb-3">
+            <div class="form-check mb-3">
                 <label for="nombreCurso" class="form-label">Nombre del Curso</label>
-                <input class="form-control" type="string" max="2" name="nombreCurso" id="nombreCurso" placeholder="Nombre del Curso"
-                    value="{{ old('nombreCurso') ?? @$curso->nombreCurso }}">
-                <p class="form-text">Escriba el nombre del Curso</p>
+                <input class="form-control" type="string" max="2" name="nombreCurso" id="nombreCurso"
+                    placeholder="Nombre del Curso" value="{{ old('nombreCurso') ?? @$curso->nombreCurso }}" required>
                 @error('nombreCurso')
                     <p class="form-text text-danger">{{ $message }}</p>
                 @enderror
             </div>
 
-            <div class="mb-3">
-                <label for="precio" class="form-label">Precio del Curso</label>
-                <input class="form-control" type="number" name="precio" id="precio" placeholder="Precio del Curso" value="{{ old('precio') ?? @$curso->precio }}">
-                <p class="form-text">Escriba el precio Curso</p>
+            <div class="form-check input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="bg-dark text-white border-dark input-group-text">€</span>
+                </div>
+                <input class="form-control text-end" type="number" name="precio" id="precio" placeholder="Precio del Curso"
+                    value="{{ old('precio') ?? @$curso->precio }}" aria-label="Precio del Curso" required>
+                <div class="input-group-prepend">
+                    <span class="bg-dark text-white border-dark input-group-text">0.00</span>
+                </div>
                 @error('precio')
                     <p class="form-text text-danger">{{ $message }}</p>
                 @enderror
             </div>
 
-            <div class="mb-3">
-                <label for="descripcion" class="form-label">Descripcion</label>
-                <input class="form-control" type="text" name="descripcion" id="descripcion" placeholder="Descripcion del curso" value="{{ old('descripcion') ?? @$curso->descripcion }}">
-                <p class="form-text">Descripcion del curso</p>
-                @error('form')
+            <div class="form-check mb-3">
+                <label id="descripcion_label" for="descripcion" class="h4" required>Descripcion del
+                    Curso</label>
+                <textarea id="descripcion" name="descripcion" rows="5" class="form-control" placeholder="Descripcion del Curso"
+                    required>
+@if (isset($curso->descripcion))
+{{ $curso->descripcion }}
+@endif
+</textarea>
+                @error('descripcion')
                     <p class="form-text text-danger">{{ $message }}</p>
                 @enderror
             </div>

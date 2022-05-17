@@ -17,7 +17,6 @@ class StudentController extends Controller
     public function show($id)
     {
         $profeInfo = User::find($id);
-        $courses = Course::find('user_id' == $id);
         return view('alumno.show', compact('profeInfo'));
     }
 

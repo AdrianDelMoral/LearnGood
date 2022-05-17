@@ -23,8 +23,7 @@
                 <select class="form-control" name="levels_id">
                     <option value="a" selected disabled>===Selecciona una Categoria de Estudios Disponible===</option>
                     @foreach ($levels as $level)
-                        <option value="{{ $level->id }}"
-                            @if (isset($estudio)) {{ $estudio->levels_id == $level->id ? 'selected' : '' }} @endif>
+                        <option value="{{ $level->id }}" @if (isset($estudio)) {{ $estudio->levels_id == $level->id ? 'selected' : '' }} @endif>
                             {{ $level->nombre }}
                         </option>
                     @endforeach
