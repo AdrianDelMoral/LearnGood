@@ -28,7 +28,8 @@
 
             <div class="mb-3">
                 <label for="platformURL" class="form-label">URL de la plataforma</label>
-                <input class="form-control" type="platformURL" name="platformURL" id="platformURL" value="{{ old('platformURL') ?? @$platform->platformURL }}" required>
+                <input class="form-control" type="url" name="platformURL" id="platformURL"
+                    value="{{ old('platformURL') ?? @$platform->platformURL }}" required>
                 @error('platformURL')
                     <p class="form-text text-danger">{{ $message }}</p>
                 @enderror
@@ -38,10 +39,11 @@
                 <label for="Foto" class="form-label">Foto de la Plataforma</label>
                 <input class="form-control" type="file" accept="image/svg" name="platformImage" id="platformImage"
                     value="{{ old('platformImage') ?? @$platform->platformImage }}">
-                    <p class="h6 mt-5 fw-bold">Imagen Antes de Actualizar de la plataforma:</p>
-                    @if (isset($platform))
-                        <img class="h-8 w-8 rounded-full object-cover" style="width: 7rem;heigth: 7rem;" src="{{ asset('imagenes/platformImages/'.$platform->platformImage) }}">
-                    @endif
+                <p class="h6 mt-5 fw-bold">Imagen Antes de Actualizar de la plataforma:</p>
+                @if (isset($platform))
+                    <img class="h-8 w-8 rounded-full object-cover" style="width: 7rem;heigth: 7rem;"
+                        src="{{ asset('imagenes/platformImages/' . $platform->platformImage) }}">
+                @endif
                 @error('platformImage')
                     <p class="form-text text-danger">{{ $message }}</p>
                 @enderror

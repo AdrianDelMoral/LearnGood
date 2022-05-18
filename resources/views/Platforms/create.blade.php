@@ -26,7 +26,7 @@
 
             <div class="mb-3">
                 <label for="platformURL" class="form-label">URL de la plataforma</label>
-                <input class="form-control" type="platformURL" required name="platformURL" id="platformURL">
+                <input class="form-control" type="url" required name="platformURL" id="platformURL">
                 @error('platformURL')
                     <p class="form-text text-danger">{{ $message }}</p>
                 @enderror
