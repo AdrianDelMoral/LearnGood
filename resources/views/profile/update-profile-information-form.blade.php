@@ -86,33 +86,8 @@
                 </div>
             </div>
         </div>
-        <!-- Email -->
-        <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="email" value="{{ __('Email') }}" />
-            <fieldset disabled>
-                <x-jet-input id="email" type="email" class="form-control" wire:model.defer="state.email" />
-            </fieldset>
-            <x-jet-input-error for="email" class="mt-2" />
-        </div>
-        @if (Auth::user()->role_id === 'Profesor')
-            <div class="col-span-6 sm:col-span-4">
-                <x-jet-label for="descripcion" value="{{ __('Descripcion') }}" />
-                @if (Auth::user()->descripcion === null)
-                    <textarea name="descripcion" id="descripcion" type="textarea" rows="5" class="w-100 mt-1 rounded rounded-3"
-                        placeholder="Escribe aquí una descripción que defina tus aptitudes y especialidades"
-                        wire:model.defer="state.descripcion" maxlength="255" style="resize: none;">
-                    </textarea>
-                @else
-                    <textarea name="descripcion" id="descripcion" type="textarea" rows="5" class="w-100 mt-1 rounded rounded-3"
-                        placeholder="Escribe aquí una descripción que defina tus aptitudes y especialidades"
-                        wire:model.defer="state.descripcion" maxlength="255" style="resize: none;">
-                    {{ Auth::user()->descripcion }}
-                </textarea>
-                @endif
 
-                <x-jet-input-error for="descripcion" class="mt-2" />
-            </div>
-        @endif
+
         @if (Auth::user()->role_id === 'Profesor')
             <div class="col-span-6 sm:col-span-4 flex flex-wrap">
                 <div class="col-md-12 mb-3">
@@ -134,6 +109,35 @@
                         </div>
                     @endif
                 </div>
+            </div>
+        @endif
+
+        <!-- Email -->
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="email" value="{{ __('Email') }}" />
+            <fieldset disabled>
+                <x-jet-input id="email" type="email" class="form-control" wire:model.defer="state.email" />
+            </fieldset>
+            <x-jet-input-error for="email" class="mt-2" />
+        </div>
+
+        @if (Auth::user()->role_id === 'Profesor')
+            <div class="col-span-6 sm:col-span-4">
+                <x-jet-label for="descripcion" value="{{ __('Descripcion') }}" />
+                @if (Auth::user()->descripcion === null)
+                    <textarea name="descripcion" id="descripcion" type="textarea" rows="5" class="w-100 mt-1 rounded rounded-3"
+                        placeholder="Escribe aquí una descripción que defina tus aptitudes y especialidades"
+                        wire:model.defer="state.descripcion" maxlength="255" style="resize: none;">
+                    </textarea>
+                @else
+                    <textarea name="descripcion" id="descripcion" type="textarea" rows="5" class="w-100 mt-1 rounded rounded-3"
+                        placeholder="Escribe aquí una descripción que defina tus aptitudes y especialidades"
+                        wire:model.defer="state.descripcion" maxlength="255" style="resize: none;">
+                    {{ Auth::user()->descripcion }}
+                </textarea>
+                @endif
+
+                <x-jet-input-error for="descripcion" class="mt-2" />
             </div>
         @endif
 

@@ -25,6 +25,14 @@
             </div>
 
             <div class="mb-3">
+                <label for="platformURL" class="form-label">URL de la plataforma</label>
+                <input class="form-control" type="platformURL" required name="platformURL" id="platformURL">
+                @error('platformURL')
+                    <p class="form-text text-danger">{{ $message }}</p>
+                @enderror
+            </div>
+
+            <div class="mb-3">
                 <label for="Foto" class="form-label">Foto de la Plataforma</label>
                 <input class="form-control" type="file" accept="image/*" required name="platformImage"
                     id="platformImage">
@@ -34,7 +42,7 @@
                 @enderror
             </div>
 
-            <button type="submit" class="btn btn-info">Crear Plataforma</button>
+            <button type="submit" class="btn btn-info border border-dark">Crear Plataforma</button>
         </form>
     </div>
     <div class="container">

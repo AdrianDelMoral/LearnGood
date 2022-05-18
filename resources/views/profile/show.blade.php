@@ -20,13 +20,11 @@
                             <button class="m-5 btn btn-primary profile-button">Ver mis precios</button>
                         </a>
                     </div>
-                    <div>
+                    {{-- <div>
                         <a href="ordersteacher.index">
-                            <button class="m-5 btn btn-primary profile-button">Ver mis alumnos(Tanto pendientes como los
-                                que
-                                ya se les ha impartido clase)</button>
+                            <button class="m-5 btn btn-primary profile-button">Ver mis alumnos(Tanto pendientes como losqueya se les ha impartido clase)</button>
                         </a>
-                    </div>
+                    </div> --}}
                 </div>
             @endif
             <div class="d-flex justify-content-center">

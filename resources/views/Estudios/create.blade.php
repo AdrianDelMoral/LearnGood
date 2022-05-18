@@ -49,10 +49,10 @@
                 @enderror
             </div>
 
-            <button type="submit" class="btn btn-info">Crear Nivel de Estudios</button>
+            <button type="submit" class="btn btn-info border border-dark">Crear Nivel de Estudios</button>
         </form>
     </div>
     <div class="container">
-        <a href="{{ route('estudios.index') }}"><button class="btn btn-primary mt-1 mb-5">Volver al Listado</button></a>
+        <a href="{{ route('estudios.index') }}"><button class="btn btn-primary mt-1 mb-5">Volver al Listado de Estudioss</button></a>
     </div>
 @endsection

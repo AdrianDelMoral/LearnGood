@@ -45,7 +45,7 @@
                     <span class="bg-dark text-white border-dark input-group-text">€</span>
                 </div>
                 <input class="form-control" type="number" name="precio" id="precio" placeholder="Precio del Curso"
-                        aria-label="Precio del Curso" required>
+                    aria-label="Precio del Curso" required>
                 <div class="input-group-prepend">
                     <span class="bg-dark text-white border-dark input-group-text">0.00</span>
                 </div>
@@ -63,11 +63,12 @@
                 @enderror
             </div>
 
-            <button type="submit" class="btn btn-info">Guardar Curso</button>
+            <button type="submit" class="btn btn-info border border-dark">Guardar Curso</button>
         </form>
     </div>
     <div class="container">
-        <a href="{{ route('cursos.index') }}"><button class="btn btn-primary mt-1 mb-5">Volver al Listado de
-                Cursos</button></a>
+        <a href="{{ route('cursos.index') }}">
+            <button class="btn btn-primary mt-1 mb-5">Volver al Listado de Cursos</button>
+        </a>
     </div>
 @endsection

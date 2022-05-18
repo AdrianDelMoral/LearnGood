@@ -58,6 +58,8 @@
         <a href="{{ url('/') }}"><button class="btn btn-primary mt-1 mb-5">Volver al Inicio</button></a>
     </div>
 
+
+
 @endsection
 @section('JSadded')
 @endsection

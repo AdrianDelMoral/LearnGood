@@ -37,12 +37,12 @@
 
             {{-- Estado de pago en el controlador se pondrá por defecto a 0 ya que aun no ha sido realizada la clase con el profesor --}}
 
-            <button type="submit" class="btn btn-info">Crear Pedido</button>
+            <button type="submit" class="btn btn-info border border-dark">Crear Pedido</button>
         </form>
     </div>
     <div class="container">
         <a href="{{ route('ordersstudent.index') }}">
-            <button class="btn btn-primary mt-1 mb-5">Volver al Listado</button>
+            <button class="btn btn-primary mt-1 mb-5">Volver al Listado de Pedidos</button>
         </a>
     </div>
 @endsection

@@ -27,19 +27,27 @@
             </div>
 
             <div class="mb-3">
+                <label for="platformURL" class="form-label">URL de la plataforma</label>
+                <input class="form-control" type="platformURL" name="platformURL" id="platformURL" value="{{ old('platformURL') ?? @$platform->platformURL }}" required>
+                @error('platformURL')
+                    <p class="form-text text-danger">{{ $message }}</p>
+                @enderror
+            </div>
+
+            <div class="mb-3">
                 <label for="Foto" class="form-label">Foto de la Plataforma</label>
-                <input class="form-control" type="file" accept="image/svg" required name="platformImage" id="platformImage"
+                <input class="form-control" type="file" accept="image/svg" name="platformImage" id="platformImage"
                     value="{{ old('platformImage') ?? @$platform->platformImage }}">
-                <p class="form-text">Suba una imagen del icono de la plataforma(Formatos Admitidos: SVG)</p>
-                @if (isset($platform))
-                    {{ $platform->platformImage }}
-                @endif
+                    <p class="h6 mt-5 fw-bold">Imagen Antes de Actualizar de la plataforma:</p>
+                    @if (isset($platform))
+                        <img class="h-8 w-8 rounded-full object-cover" style="width: 7rem;heigth: 7rem;" src="{{ asset('imagenes/platformImages/'.$platform->platformImage) }}">
+                    @endif
                 @error('platformImage')
                     <p class="form-text text-danger">{{ $message }}</p>
                 @enderror
             </div>
 
-            <button type="submit" class="btn btn-info">Editar Plataforma</button>
+            <button type="submit" class="btn btn-info border border-dark">Editar Plataforma</button>
         </form>
     </div>
     <div class="container">

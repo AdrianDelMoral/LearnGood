@@ -13,6 +13,7 @@ class Platform extends Model
 
     protected $fillable = [
         'nombre',
+        'platformURL',
         'platformImage'
     ];
 

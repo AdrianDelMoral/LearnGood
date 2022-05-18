@@ -72,7 +72,12 @@
                 @enderror
             </div>
 
-            <button type="submit" class="btn btn-info">Editar Curso</button>
+            <button type="submit" class="btn btn-info border border-dark">Editar Curso</button>
         </form>
+    </div>
+    <div class="container">
+        <a href="{{ route('cursos.index') }}">
+            <button class="btn btn-primary mt-1 mb-5">Volver al Listado de Cursos</button>
+        </a>
     </div>
 @endsection

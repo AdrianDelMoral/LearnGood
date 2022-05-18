@@ -53,10 +53,10 @@
                 <p class="form-text text-danger">{{ $message }}</p>
             @enderror
 
-            <button type="submit" class="btn btn-info">Editar Nivel de Estudios</button>
+            <button type="submit" class="btn btn-info border border-dark">Editar Nivel de Estudios</button>
         </form>
     </div>
     <div class="container">
-        <a href="{{ route('estudios.index') }}"><button class="btn btn-primary mt-1 mb-5">Volver al Listado</button></a>
+        <a href="{{ route('estudios.index') }}"><button class="btn btn-primary mt-1 mb-5">Volver al Listado de Estudios</button></a>
     </div>
 @endsection

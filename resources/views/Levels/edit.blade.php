@@ -25,7 +25,7 @@
                 @enderror
             </div>
 
-            <button type="submit" class="btn btn-info">Editar Categoria</button>
+            <button type="submit" class="btn btn-info border border-dark">Editar Categoria</button>
         </form>
     </div>
 @endsection

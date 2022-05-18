@@ -21,6 +21,7 @@
             <thead class="text-center">
                 <th class="text-center fw-bold text-warning">Foto de la Plataforma</th>
                 <th class="text-center fw-bold text-warning">Nombre de la Plataforma</th>
+                <th class="text-center fw-bold text-warning">URL de la Plataforma</th>
                 <th class="text-center fw-bold text-warning">Editar</th>
                 <th class="text-center fw-bold text-warning">Eliminar</th>
             </thead>
@@ -37,6 +38,7 @@
                             </div>
                         </th>
                         <th class="text-center">{{ $platform->nombre }}</th>
+                        <th class="text-center">{{ $platform->platformURL }}</th>
                         <th class="text-center">
                             <a href="{{ route('platforms.edit',$platform) }}">
                                 <button class="btn btn-success fas fa-edit fa-xl p-3"></button>
