@@ -6,6 +6,7 @@ use App\Models\Order;
 use App\Models\Course;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
 class OrderStudentController extends Controller
@@ -25,38 +26,50 @@ class OrderStudentController extends Controller
         return view('ordersstudent.create', compact('datosPedido'));
     }
 
+    public function infoOrder(Course $idOrder)
+    {
+
+        $datosOrder = Course::where('id', $idOrder)->first();
+        // return $ordersstudent;
+
+        return view('ordersstudent.infoOrder', compact('datosOrder'));
+    }
+
     public function store(Request $request)
     {
         $request->validate([
-            'user_id_alumno' => 'required',
+            'user_id_profesor' => 'required',
             'courses_id' => 'required|integer',
         ]);
 
         Order::create([
-            'user_id_alumno' => $request->get('user_id_alumno'),
+            'user_id_profesor' => $request->get('user_id_profesor'),
+            'user_id_alumno' => Auth::user()->id,
             'courses_id' => $request->get('courses_id'),
+            'status' => '0', // 0 = no pagado
         ]);
 
         return Redirect::Route('ordersstudent.index')->with('createMsj', 'Pedido Creado con Exito.');
     }
 
-    public function edit(Order $ordersstudent)
-    {
-        return view('ordersstudent.edit', compact('ordersstudent'));
-    }
+    // public function edit(Order $ordersstudent)
+    // {
+    //     return view('ordersstudent.edit', compact('ordersstudent'));
+    // }
 
-    public function update(Request $request, Order $ordersstudent)
-    {
-        $request->validate([
-            'user_id_alumno' => 'required',
-            'courses_id' => 'required|integer',
-        ]);
+    // public function update(Request $request, Order $ordersstudent)
+    // {
+    //     $request->validate([
+    //         'user_id_alumno' => 'required',
+    //         'courses_id' => 'required|integer',
+    //         'status' => 'required|integer',
+    //     ]);
 
-        $ordersstudent->update();
+    //     $ordersstudent->update();
 
-        // Mensaje para indicar en index que se a actualizado con exito
-        return Redirect::Route('ordersstudent.index')->with('updateMsj', 'Pedido Actualizado con Exito.');
-    }
+    //     // Mensaje para indicar en index que se a actualizado con exito
+    //     return Redirect::Route('ordersstudent.index')->with('updateMsj', 'Pedido Actualizado con Exito.');
+    // }
 
     public function destroy(Order $ordersstudent)
     {

@@ -17,24 +17,30 @@
             <th class="text-center fw-bold text-warning">Numero de Pedido</th>
             <th class="text-center fw-bold text-warning">Precio</th>
             <th class="text-center fw-bold text-warning">Nombre del Profesor</th>
+            <th class="text-center fw-bold text-warning">Nombre del Alumno</th>
             <th class="text-center fw-bold text-warning">Estado de Pago</th>
             <th class="text-center fw-bold text-warning">Editar</th>
             <th class="text-center fw-bold text-warning">Eliminar</th>
         </thead>
         <tbody class="text-center">
+
+
             @forelse ($ordersTeacher as $order)
-                <div class="bg-dark text-light m-5 p-3">
-                    {{ $order->id }}
-                </div>
+
+                {{-- <div class="bg-dark text-light m-5 p-3">
+                    {{ $order->getProfesor }}
+                </div> --}}
                 <tr>
                     <th class="text-center text-light">{{ $order->id }}</th>
-                    <th class="text-center text-light">{{ $order->courses->precio }}</th>
-                    <th class="text-center text-light">{{ $order->courses->users->nombre }} {{ $order->courses->users->apellidos }}</th>
+
+                    <th class="text-center text-light">{{ $order->cursoModel->precio }}</th>
+                    <th class="text-center text-light">{{ $order->getProfesor->nombre }} {{ $order->getProfesor->apellidos }}</th>
+                    <th class="text-center text-light">{{ $order->getAlumno->nombre }} {{ $order->getAlumno->apellidos }}</th>
                     <th class="text-center text-light">
                         @if(!$order->status)
-                            <button class="btn btn-danger">Por Realizar</button>
+                            <button class="rounded-pill border-danger bg-dark px-4 py-2 fw-bold text-danger">Por Realizar</button>
                         @else
-                            <button class="btn btn-succes">Por Realizar</button>
+                            <button class="rounded-pill border-success bg-dark px-4 py-2 fw-bold text-success">Por Realizar</button>
                         @endif
                     </th>
                     <th class="text-center text-light">

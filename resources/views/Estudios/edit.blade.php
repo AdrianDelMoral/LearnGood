@@ -53,7 +53,7 @@
                 <p class="form-text text-danger">{{ $message }}</p>
             @enderror
 
-            <button type="submit" class="btn btn-info border border-dark">Editar Nivel de Estudios</button>
+            <button type="submit" class="btn btn-info border-dark">Editar Nivel de Estudios</button>
         </form>
     </div>
     <div class="container">

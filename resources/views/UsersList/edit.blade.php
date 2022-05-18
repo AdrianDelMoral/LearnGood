@@ -40,7 +40,7 @@
             @enderror
         </div>
 
-        <button type="submit" class="btn btn-info">Editar Plataforma</button>
+        <button type="submit" class="btn btn-info border-dark">Editar Plataforma</button>
         </form>
     </div>
 @endsection

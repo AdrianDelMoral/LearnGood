@@ -49,7 +49,7 @@
                 @enderror
             </div>
 
-            <button type="submit" class="btn btn-info border border-dark">Crear Nivel de Estudios</button>
+            <button type="submit" class="btn btn-info border-dark">Crear Nivel de Estudios</button>
         </form>
     </div>
     <div class="container">

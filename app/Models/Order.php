@@ -9,19 +9,20 @@ class Order extends Model
 {
     use HasFactory;
 
-    /* public function getAlumnos()
+    public function getAlumno()
     {                           // Obtiene la id del alumno, y obtiene los profesores solicitados
-        return $this->belongsToMany(User::class, 'orders', 'user_id_alumno', 'user_id_profesor');
+        return $this->belongsTo(User::class, 'user_id_alumno');
     }
 
-    public function getProfesores()
-    {                           // Obtiene la id del profesor, y obtiene los alumnos que le han solicitado
-        return $this->belongsToMany(User::class, 'orders', 'user_id_profesor', 'user_id_alumno');
-    } */
+    public function getProfesor()
+    {                           // Obtiene la id del profesor, y obtiene los profesores solicitados
+        return $this->belongsTo(User::class, 'user_id_profesor');
+    }
 
     protected $table = 'orders';
 
     protected $fillable = [
+        'user_id_profesor',
         'user_id_alumno',
         'courses_id',
         'status',

@@ -17,22 +17,30 @@
             editar el pedido para que siga en user_id enlazado a el,
             mientras que mediante el precio, sacaré el profesor --}}
 
-            <input required hidden type="number" name="user_id_alumno" id="user_id_alumno" value="{{ Auth::User()->id }}" required>
 
-            {{ $datosPedido }}
+            <input required hidden type="number" name="user_id_profesor" id="user_id_profesor" value="{{ $datosPedido->studies->infoProfe->id }}" required>
+
+            <input hidden required type="number" id="courses_id" name="courses_id" value="{{ $datosPedido->id }}">
+
             <div class="mb-3">
-                <label class="text-left">Identificador del curso</label>
-                <input class="form-control" type="text" readonly="readonly" name="courses_id" value="{{ $datosPedido->id }}">
+                <span class="text-light bg-dark border-warning fw-bold form-control">
+                    Precio a pagar:
+                    {{ $datosPedido->precio }} €
+                </span>
+                <input class="form-control" type="number" hidden name="courses_id" value="{{ $datosPedido->id }}">
             </div>
 
-            <div class="mb-3">
-                <label class="text-left">Identificador del curso</label>
-                <input class="form-control" type="text" readonly="readonly" name="courses_id" value="{{ $datosPedido->id }}">
+
+            <div class="mb-3 text-dark bg-warning border-dark fw-bold form-control">
+                    <p class=" text-dark fw-bold ">Estado del pedido actualmente:</p>
+                    <p><i class="text-danger fa-xl fa-solid fa-triangle-exclamation"></i> POR PAGAR <i class="text-danger fa-xl fa-solid fa-triangle-exclamation"></i></p>
+                    <p><em>Contacte con su profesor para realizar el pago y pueda activarle el curso</em></p>
+                    <input class="form-control" type="number" hidden name="status" value="0">
             </div>
 
             {{-- Estado de pago en el controlador se pondrá por defecto a 0 ya que aun no ha sido realizada la clase con el profesor --}}
 
-            <button type="submit" class="btn btn-info">Crear Pedido</button>
+            <button type="submit" class="btn btn-info border-dark">Crear Pedido</button>
         </form>
     </div>
     <div class="container">

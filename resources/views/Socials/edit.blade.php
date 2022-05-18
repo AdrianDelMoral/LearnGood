@@ -43,7 +43,7 @@
                 @enderror
             </div>
 
-            <button type="submit" class="btn btn-info">Editar Red Social</button>
+            <button type="submit" class="btn btn-info border-dark">Editar Red Social</button>
         </form>
     </div>
     <div class="container">

@@ -49,7 +49,7 @@
                 @enderror
             </div>
 
-            <button type="submit" class="btn btn-info border border-dark">Editar Plataforma</button>
+            <button type="submit" class="btn btn-info border-dark">Editar Plataforma</button>
         </form>
     </div>
     <div class="container">

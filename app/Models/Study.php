@@ -22,6 +22,10 @@ class Study extends Model
         return $this->hasMany(User::class);
     }
 
+    public function infoProfe(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
     public function nivel ()
     {
         return $this->belongsTo(Level::class, 'levels_id');

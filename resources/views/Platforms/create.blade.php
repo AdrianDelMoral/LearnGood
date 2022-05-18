@@ -42,7 +42,7 @@
                 @enderror
             </div>
 
-            <button type="submit" class="btn btn-info border border-dark">Crear Plataforma</button>
+            <button type="submit" class="btn btn-info border-dark">Crear Plataforma</button>
         </form>
     </div>
     <div class="container">

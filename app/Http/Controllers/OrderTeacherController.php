@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Study;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderTeacherController extends Controller
 {
@@ -14,71 +16,41 @@ class OrderTeacherController extends Controller
      */
     public function index()
     {
-        $ordersTeacher = Order::get();
+
+        // return $ordersTeacher = Order::whereHas('getProfesor', Auth::user()->id)->get();
+
+        $ordersTeacher = Order::whereHas('getProfesor', function ($query) {
+            $query->where('user_id_profesor',Auth::user()->id);
+        })->get();
+
         return view('ordersteacher.index',compact('ordersTeacher'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
     public function show(Order $ordersteacher)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Order $ordersteacher)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Order $ordersteacher)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Order $ordersteacher)
     {
         //

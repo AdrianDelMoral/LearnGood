@@ -49,9 +49,14 @@ Route::group(['middleware' => 'auth'], function() {
     Route::group(['middleware' => 'alumno', 'prefix' => 'alumno'], function() {
         Route::resource('alumnoviews', StudentController::class);
 
+        // Listado y eliminar(cancelar) pedidos
         Route::resource('ordersstudent', OrderStudentController::class);
 
+        // Crear pedido como Alumno
         Route::get('/ordersstudent/{cursoQuePide}/createOne/', [OrderStudentController::class, 'createOrder'])->name('ordersstudent.createOrder');
+
+        // Ver la información del pedido
+        Route::get('/ordersstudent/{idOrder}/infoOrder/', [OrderStudentController::class, 'infoOrder'])->name('ordersstudent.infoOrder');
 
     });
 

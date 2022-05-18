@@ -21,8 +21,10 @@ return new class extends Migration
 
             /*------------------*/
             $table->unsignedBigInteger('user_id_alumno'); // id_Alumno
+            $table->unsignedBigInteger('user_id_profesor'); // id_Alumno
 
             $table->foreign('user_id_alumno')->references('id')->on('users'); // referencia id_Alumno
+            $table->foreign('user_id_profesor')->references('id')->on('users'); // referencia id_Profesor
         });
     }
 

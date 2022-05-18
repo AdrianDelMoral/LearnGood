@@ -35,7 +35,7 @@
                         </h2>
                         <ul class="d-flex list-unstyled mt-auto">
                             <li class="me-auto">
-                                <a href="{{ route('platforms.index') }}">
+                                <a href="{{ route('socials.index') }}">
                                     <button class="btn btn-primary">Ver Crud</button>
                                 </a>
                             </li>

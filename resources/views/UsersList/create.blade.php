@@ -34,7 +34,7 @@
             @enderror
         </div>
 
-            <button type="submit" class="btn btn-info">Guardar Plataforma</button>
+            <button type="submit" class="btn btn-info border-dark">Crear Plataforma</button>
         </form>
     </div>
 @endsection

@@ -72,7 +72,7 @@
                 @enderror
             </div>
 
-            <button type="submit" class="btn btn-info border border-dark">Editar Curso</button>
+            <button type="submit" class="btn btn-info border-dark">Editar Curso</button>
         </form>
     </div>
     <div class="container">
