@@ -29,11 +29,11 @@ class PostController extends Controller
 
         // return $postsDelCurso;
 
-        if($postsDelCurso == null) { // si da null es que no hay
+        /* if($postsDelCurso == null) { */ // si da null es que no hay
+            return view('Posts.index', compact('postsDelCurso'));
+        /* } else { */
             return view('Posts.index',compact('postsDelCurso'));
-        } else {
-            return view('Posts.index',compact('postsDelCurso'));
-        }
+        /* } */
 
 
         //return view('posts.index');

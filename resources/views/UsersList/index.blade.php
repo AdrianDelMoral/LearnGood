@@ -27,10 +27,10 @@
             </thead>
             <tbody>
                 @foreach ($users as $user)
-                    <tr class="text-center">
-                        <th scope="row">{{ $user->id }}</th>
-                        <th scope="row">
-                            <div class="fotoPerfil">
+                <tr class="text-center">
+                    <th scope="row">{{ $user->id }}</th>
+                    <th scope="row">
+                        <div class="fotoPerfil">
                                 <div class="cajaImg">
                                     <div class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
                                         <img class="h-8 w-8 rounded-full object-cover" src="{{ $user->profile_photo_url }}" alt="{{ $user->role_id }}">
@@ -47,12 +47,18 @@
                         <td class="text-center">
                             <p>{{ $user->apellidos }}</p>
                         </td>
-                        <td class="text-center">
-                            <button class="btn btn-success">Editar</button>
-                        </td>
-                        <td class="text-center">
-                            <button class="btn btn-danger">Eliminar</button>
-                        </td>
+                        <th class="text-center">
+                            <a href="{{ route('manageusers.edit', $user->id) }}">
+                                <button class="btn btn-success fas fa-edit fa-xl p-3"></button>
+                            </a>
+                        </th>
+                        <th class="text-center">
+                            <form action="{{ route('manageusers.destroy', $user->id) }}" method="post">
+                                @method('DELETE')
+                                @csrf
+                                <button type="submit" class="btn btn-danger fas fa-trash fa-xl p-3"></button>
+                            </form>
+                        </th>
                     </tr>
                 @endforeach
             </tbody>
