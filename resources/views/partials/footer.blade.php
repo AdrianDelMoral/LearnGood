@@ -41,77 +41,50 @@
                 <!-- Grid column -->
                 <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4 text-white">
                     <!-- Content -->
-                    <h6 class="fw-bold h3 mb-4">
+                    <h6 class="fw-bold h3">
                         <img src="{{ asset('imagenes/generales/logo.png') }}" style="width:4.8rem; height:4rem;"> LearnGood
                     </h6>
-                    <p>
-                        Here you can use rows and columns to organize your footer content. Lorem ipsum
-                        dolor sit amet, consectetur adipisicing elit.
-                    </p>
                 </div>
                 <!-- Grid column -->
 
                 <!-- Grid column -->
                 <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
                     <!-- Links -->
-                    <h6 class="text-uppercase fw-bold mb-4 text-warning">
-                        Products
+                    <h6 class="text-uppercase fw-bold mb-4 text-warning text-center">
+                        Algunas de Nuestras clases
                     </h6>
                     <p>
-                        <a href="#!" class="text-light">Angular</a>
+                        <a href="#!" class="text-light">Edición de Video</a>
                     </p>
                     <p>
-                        <a href="#!" class="text-light">React</a>
+                        <a href="#!" class="text-light">Diseño de Videojuegos</a>
                     </p>
                     <p>
-                        <a href="#!" class="text-light">Vue</a>
+                        <a href="#!" class="text-light">Programacion</a>
                     </p>
                     <p>
-                        <a href="#!" class="text-light">Laravel</a>
+                        <a href="#!" class="text-light">Y Muchas mas...</a>
                     </p>
                 </div>
                 <!-- Grid column -->
 
-                <!-- Grid column -->
-                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-                    <!-- Links -->
-                    <h6 class="text-uppercase fw-bold mb-4 text-warning">
-                        Useful links
-                    </h6>
-                    <p>
-                        <a href="#!" class="text-light">Pricing</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-light">Settings</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-light">Orders</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-light">Help</a>
-                    </p>
-                </div>
-                <!-- Grid column -->
+
 
                 <!-- Grid column -->
                 <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4 text-light">
                     <!-- Links -->
-                    <h6 class="text-uppercase fw-bold mb-4 text-warning text-center">
-                        Contact
-                    </h6>
+                    <p class="h6 text-uppercase fw-bold mb-4 text-warning text-center">Contact</p>
                     <p>
-                        <span class="fas fa-home me-3"></span> New York, NY 10012, US
+                        <span class="fas fa-home me-3"></span>Madrid, Madrid 28001, Spain
                     </p>
                     <p>
                         <span class="fas fa-envelope me-3"></span>
-                        info@example.com
+                        learngood.info@learngood.com
                     </p>
 
-                    <p><span class="fas fa-phone me-3"></span> + 01 234 567 88
+                    <p><span class="fas fa-phone me-3"></span> 685 959 585
                     </p>
 
-                    <p><span class="fas fa-print me-3"></span> + 01 234 567 89
-                    </p>
                 </div>
                 <!-- Grid column -->
             </div>
