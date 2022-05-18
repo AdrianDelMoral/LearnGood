@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="{{ URL::asset('css/profesor/profesor_inicio.css') }}">
 @endsection
 @section('cuerpo')
-    <div class="container rounded bg-white mt-5 mb-5">
+    <div class="container mainContainer rounded mt-5 mb-5">
         <div class="d-flex justify-content-center">
             <div class="text-center mt-5">
                 <div class="d-flex justify-content-between align-items-center mb-3">
@@ -42,9 +42,21 @@
                             <a href="" class="social m-3">
                                 <span class="fa-brands fa-2x fa-facebook"></span>
                             </a> --}}
-
-                        @if (!isset($user->social)) <!--si NO tiene redes sociales irá al siguiente-->
-                            {{-- <img src="{{ asset('imagenes/plaftormImages/' . $social->platform_id) }}" alt=""> --}}
+                        @forelse ($user->social as $socials)
+                            <div class="fotoPerfil">
+                                <a href="" class="social m-3">
+                                    <div class="cajaImg_platform">
+                                        <img src="{{ asset('imagenes/platformImages/' . $socials->platform->platformImage) }}"
+                                            alt="{{ $socials->platform->nombre }}" style="width: 32px;">
+                                    </div>
+                                </a>
+                            </div>
+                        @empty
+                            <p class="fst-italic fw-bold">Este usuario no dispone Plataformas donde contactar con el aún...
+                            </p>
+                        @endforelse
+                        {{-- @if (!isset($user->social))
+                            <!--si NO tiene redes sociales irá al siguiente-->
                             @foreach ($user->social as $socials)
                                 <div class="fotoPerfil">
                                     <a href="" class="social m-3">
@@ -56,8 +68,9 @@
                                 </div>
                             @endforeach
                         @else
-                        <p class="fst-italic fw-bold">Este usuario no dispone Plataformas donde contactar con el aún...</p>
-                        @endif
+                            <p class="fst-italic fw-bold">Este usuario no dispone Plataformas donde contactar con el aún...
+                            </p>
+                        @endif --}}
                     </div>
                     {{-- fin bucle redes sociales --}}
                 </div>
@@ -86,33 +99,46 @@
                 </div>
                 <div class="justify-content-center row row-cols-1 row-cols-md-3 mb-3 text-center align-items-center">
                     {{-- Bucle de precios --}}
-                    @if (!isset($user->courses))
-                        <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
-                            <h2 class="h2 border-bottom">Este profesor aun no a creado cursos</h2>
-                            <p class="lead mb-0 fst-italic text-white">Seguro los creará pronto...</p>
-                        </div>
-                    @else
-                        @foreach ($user->courses as $curso)
-                            <div class="col">
-                                <div class="card mb-4 rounded-3 shadow-sm border-primary">
-                                    <div class="card-header py-3 text-white bg-primary border-primary">
-                                        <h4 class="my-0 fw-normal">{{ $curso->nombreCurso }}</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <p class="h1 card-title pricing-card-title my-3">
-                                            {{ $curso->curso }}<small>€</small> </p>
-                                        <div>
-                                            <p class="h3 mx-5 card-title pricing-card-title border-top my-3 pt-3"> Ventajas:
-                                            </p>
+                    @foreach ($user->studies as $study)
+                        @if ($study->courses)
+                            @foreach ($study->courses as $curso)
+                                <div class="col">
+                                    <div class="priEstContainer mb-4 text-dark rounded-3 shadow-sm text-light">
+                                        <div class="card-header py-3">
+                                            <h4 class="my-0 fw-normal ">{{ $curso->nombreCurso }}</h4>
                                         </div>
-                                        <ul class="list-unstyled mt-3 mb-4">
-                                            <li>{{ $curso->descripcion }}</li>
-                                        </ul>
+                                        <div class="card-body">
+                                            <p class="h1 card-title pricing-card-title my-3">
+                                                {{ $curso->precio }}<small>€</small>
+                                            </p>
+                                            <div>
+                                                <p
+                                                    class="h5 mx-5 card-title pricing-card-title border-top border-dark my-3 pt-3">
+                                                    Descripción del Curso:
+                                                </p>
+                                            </div>
+                                            <ul class="list-unstyled mt-3 mb-4">
+                                                <li>{{ $curso->descripcion }}</li>
+                                            </ul>
+                                            <a href="{{ route('ordersstudent.createOrder', $curso) }}">
+                                                <button type="button" class="w-100 btn btn-lg btn-dark fw-bold">
+                                                    Comprar Curso
+                                                </button>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
+                            @endforeach
+                        @else
+                            <div class="priEstContainer col-md-6 mb-5">
+                                <div class="h-100 p-5 text-white rounded-3">
+                                    <h2 class="text-dark">Este profesor aun no a añadido Estudios realizados</h2>
+                                    <p class="fst-italic mb-0 text-dark fw-bold mt-4">Seguro que añadirá muy pronto...
+                                    </p>
+                                </div>
                             </div>
-                        @endforeach
-                    @endif
+                        @endif
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -126,44 +152,41 @@
                 </div>
             </div>
 
-            @if (!isset($user->studies))
-                <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
-                    <h2 class="h2 border-bottom">Este profesor aun no a añadido estudios</h2>
-                    <p class="lead mb-0 fst-italic text-white">Seguro los añadirá pronto...</p>
-                </div>
-            @else
-                <div class="row justify-content-center">
-                    <!-- Single Product -->
-                    @foreach ($user->studies as $study)
-                        {{-- Inicio Bucle especialidades --}}
-                        <div class="col-md-8 col-lg-6 col-xl-5">
-                            <div class="card bg-dark text-light m-3">
-                                <div class="m-4">
-                                    <p class="card-caption h2 text-red">
-                                        Nivel: {{ $study->nivel->nombre }}
-                                    </p>
-                                    <p class="mt-4">
-                                        Nota Final:
-                                    </p>
-                                    <p class="text-center h1">{{ $study->nota }}</p>
-                                    <table class="mt-4 table table-bordered border-light table-dark">
-                                        <thead>
-                                            <tr class="text-center">
-                                                <th scope="col text-center">Fecha de Finalización</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td class="text-center">{{ $study->fechaFinalizacion }}</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+            <div class="row justify-content-center text-dark">
+                <!-- Single Product -->
+                {{-- Inicio Bucle especialidades --}}
+                @forelse ($user->studies as $study)
+                    <div class="priEstContainer col-md-8 col-lg-6 col-xl-5 m-5">
+                        <div class="text-dark">
+                            <div class="p-5">
+                                <p class="card-caption h2 text-red">
+                                    {{ $study->nivel->nombre }}
+                                </p>
+                                <p class="pt-4">
+                                    Nota Final:
+                                </p>
+                                <p class="text-center h1">{{ $study->nota }}</p>
+                                <div class="d-flex row mt-4">
+                                    <div class="flex-start">
+                                        Fecha Finalizacion
+                                    </div>
+                                    <div class=" mt-4">
+                                        <p class="text-center">{{ $study->fechaFinalizacion }}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    @endforeach
-                </div>
-            @endif
+                    </div>
+                @empty
+                    <div class="priEstContainer col-md-6 mb-5 text-dark">
+                        <div class="h-100 p-5 rounded-3">
+                            <h2>Este profesor aun no a añadido Estudios realizados</h2>
+                            <p class="fst-italic mb-0  fw-bold mt-4">Seguro que añadirá muy pronto...</p>
+                        </div>
+                    </div>
+                @endforelse
+                {{-- Fin Bucle Especialidades --}}
+            </div>
         </div>
         {{-- Fin Estudios --}}
         <div class="d-flex flex-wrap justify-content-center">

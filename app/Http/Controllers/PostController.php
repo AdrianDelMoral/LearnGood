@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Order;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -14,18 +15,23 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function postsCurso(Order $idCurso)
+    public function postsCurso(Order $Curso)
     {
-        // Comprobar que este usuario
-        $usuario = Auth::user();
+        $idCurso =  $Curso->id;
+        // sacar el curso, de la id del order
 
-        // if (condition) {
+        $postsDelCurso = Course::where('cursoModel', $idCurso)->get();
 
-        // }
-        $cursoPedido = Auth::user();
+        return $postsDelCurso;
+
+        if($postsDelCurso) { // si da null es que no hay
+            return 'no hay cursos';
+        } else {
+            return 'hay cursos';
+        }
 
 
-        return view('posts.index');
+        //return view('posts.index');
     }
 
     /**

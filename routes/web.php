@@ -49,7 +49,7 @@ Route::group(['middleware' => 'auth'], function() {
 
     // Crear editar y eliminar Post como Profesor / Ver Post Como Alumno
     Route::resource('posts', PostController::class);
-    Route::get('/ordersstudent/{idCurso}/postsCurso/', [PostController::class, 'postsCurso'])->name('posts.postsCurso');
+    Route::get('/ordersstudent/{Curso}/postsCurso/', [PostController::class, 'postsCurso'])->name('posts.postsCurso');
 
     Route::group(['middleware' => 'alumno', 'prefix' => 'alumno'], function() {
         Route::resource('alumnoviews', StudentController::class);

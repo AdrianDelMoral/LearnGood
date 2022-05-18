@@ -28,36 +28,27 @@
                         </div>
                         <span class="fw-bold mt-4">{{ $profeInfo->nombre }} {{ $profeInfo->apellidos }}</span>
                         <span class="fw-bold text-primary mt-4">{{ $profeInfo->email }}</span>
-                        {{-- inicio bucle redes sociales --}}
-
                         <div class="div_socials d-flex flex-row align-items-center text-center mt-3">
-                            {{-- @if (!$redes)
-                                @foreach ($redes as $red)
-                                    <a href="{{ $red->link }}" class="social m-3">
-                                        <span class="fa-brands fa-2x fa-github"></span>
+                            {{-- <a href="$id->redes_sociales->link->github" class="social m-3">
+                                <span class="fa-brands fa-2x fa-github"></span>
+                            </a> --}}
+                            {{-- inicio bucle redes sociales --}}
+                            @forelse ($profeInfo->social as $socials)
+                                <div class="fotoPerfil">
+                                    <a href="" class="social m-3">
+                                        <div class="cajaImg_platform">
+                                            <img src="{{ asset('imagenes/platformImages/' . $socials->platform->platformImage) }}"
+                                                alt="{{ $socials->platform->nombre }}" style="width: 32px;">
+                                        </div>
                                     </a>
-                                @endforeach
-                            @else
-                                <p class="text-danger fw-bold">Profesor Sin redes Actualmente</p>
-                            @endif --}}
-                            <!--  {{-- si es github --}}
-                                                                <a href="{{-- {{ $id->redes_sociales->link->github }} --}}" class="social m-3">
-                                                                    <span class="fa-brands fa-2x fa-github"></span>
-                                                                </a>
-                                                                {{-- si es linkedin --}}
-                                                                <a href="{{-- {{ $id->redes_sociales->link->linkedin }} --}}" class="social m-3">
-                                                                    <span class="fa-brands fa-2x fa-linkedin"></span>
-                                                                </a>
-                                                                {{-- si es discord --}}
-                                                                <a href="{{-- {{ $id->redes_sociales->link->discord }} --}}" class="social m-3">
-                                                                    <span class="fa-brands fa-2x fa-discord"></span>
-                                                                </a>
-                                                                {{-- si es facebook --}}
-                                                                <a href="{{-- {{ Auth::user()->redes_sociales->link->facebook }} --}}" class="social m-3">
-                                                                    <span class="fa-brands fa-2x fa-facebook"></span>
-                                                                </a>-->
+                                </div>
+                            @empty
+                                <p class="fst-italic fw-bold">Este usuario no dispone Plataformas donde contactar con el
+                                    aún...
+                                </p>
+                            @endforelse
+                            {{-- fin bucle redes sociales --}}
                         </div>
-                        {{-- fin bucle redes sociales --}}
                     </div>
                 </div>
                 <div class="d-flex col-md-7 border-right m-2 align-items-center">
