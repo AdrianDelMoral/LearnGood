@@ -23,7 +23,7 @@
             <input hidden required type="number" id="courses_id" name="courses_id" value="{{ $datosPedido->id }}">
 
             <div class="mb-3">
-                <span class="text-light bg-dark border-warning fw-bold form-control">
+                <span class="text-light bg-dark border-light fw-bold form-control">
                     Precio a pagar:
                     {{ $datosPedido->precio }} €
                 </span>

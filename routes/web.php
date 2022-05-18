@@ -13,6 +13,7 @@ use App\Http\Controllers\StudyController;
 use App\Http\Controllers\UserManage;
 use App\Http\Controllers\OrderTeacherController;
 use App\Http\Controllers\OrderStudentController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,9 +33,9 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
     ])->group(function () {
-        Route::get('/dashboard', function () {
-            return view('dashboard');
-        })->name('dashboard');
+        Route::get('/home', function () {
+            return view('home');
+        })->name('home');
     });
 
 
@@ -43,8 +44,12 @@ Route::resource('/', InicioController::class)->only('index');
 
 Route::group(['middleware' => 'auth'], function() {
 
-    // accesible para estudiantes y profesores
+    // Accesible para estudiantes y profesores
     Route::resource('socials', SocialController::class);
+
+    // Crear editar y eliminar Post como Profesor / Ver Post Como Alumno
+    Route::resource('posts', PostController::class);
+    Route::get('/ordersstudent/{idCurso}/postsCurso/', [PostController::class, 'postsCurso'])->name('posts.postsCurso');
 
     Route::group(['middleware' => 'alumno', 'prefix' => 'alumno'], function() {
         Route::resource('alumnoviews', StudentController::class);
@@ -73,4 +78,6 @@ Route::group(['middleware' => 'auth'], function() {
 
         Route::resource('estudios', StudyController::class);
     });
+
+
 });

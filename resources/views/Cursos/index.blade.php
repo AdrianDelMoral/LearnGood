@@ -20,6 +20,7 @@
                 <th class="text-center fw-bold text-warning">Nombre del Curso</th>
                 <th class="text-center fw-bold text-warning">Precio €</th>
                 <th class="text-center fw-bold text-warning">Descripcion</th>
+                <th class="text-center fw-bold text-warning">Posts del Curso</th>
                 <th class="text-center fw-bold text-warning">Editar</th>
                 <th class="text-center fw-bold text-warning">Eliminar</th>
             </thead>
@@ -30,6 +31,11 @@
                         <th class="text-center">{{ $curso->nombreCurso }}</th>
                         <th class="text-center">{{ $curso->precio }} €</th>
                         <th class="text-center">{{ $curso->descripcion }}</th>
+                        <th class="text-center">
+                            <a href="{{ route('posts.postsCurso', $curso->id) }}">
+                                <button class="btn btn-secondary fas fa-eye fa-xl p-3"></button>
+                            </a>
+                        </th>
                         <th class="text-center">
                             <a href="{{ route('cursos.edit', $curso->id) }}">
                                 <button class="btn btn-success fas fa-edit fa-xl p-3"></button>

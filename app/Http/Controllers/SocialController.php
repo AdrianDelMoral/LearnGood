@@ -35,7 +35,12 @@ class SocialController extends Controller
     public function create()
     {
         $platforms = Platform::All();
-        return view('socials.create', compact('platforms'));
+
+        if (!$platforms->count() == 0) { // SI NO HAY CREADAS plataformas ( 0 ), no puede crear una Red Social
+            return view('socials.create', compact('platforms'));
+        }
+
+    return Redirect::Route('socials.index')->with('warningMsj', 'Aun no hay redes Sociales disponibles Pronto se añadirán.');
     }
 
     /**

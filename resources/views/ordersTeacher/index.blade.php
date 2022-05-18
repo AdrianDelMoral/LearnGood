@@ -9,7 +9,7 @@
 @section('cuerpo')
 
 <div class="container py-5 pb-2">
-    <h1 class="text-center">Listado de Pedidos de {{ Auth::user()->nombre }}</h1>
+    <h1 class="text-center">Listado de Pedidos de {{ Auth::user()->nombre }} <span class="mx-5"></span> <em class="fw-bold text-warning">{{ Auth::user()->role_id }}</em></h1>
         <x-form-alerts/>
 
     <table class="table table-bordered border-warning bg-dark text-light">
@@ -19,8 +19,8 @@
             <th class="text-center fw-bold text-warning">Nombre del Profesor</th>
             <th class="text-center fw-bold text-warning">Nombre del Alumno</th>
             <th class="text-center fw-bold text-warning">Estado de Pago</th>
-            <th class="text-center fw-bold text-warning">Editar</th>
-            <th class="text-center fw-bold text-warning">Eliminar</th>
+            {{-- <th class="text-center fw-bold text-warning">Editar</th> --}}
+            <th class="text-center fw-bold text-warning">Eliminar Pedido</th>
         </thead>
         <tbody class="text-center">
 
@@ -37,17 +37,21 @@
                     <th class="text-center text-light">{{ $order->getProfesor->nombre }} {{ $order->getProfesor->apellidos }}</th>
                     <th class="text-center text-light">{{ $order->getAlumno->nombre }} {{ $order->getAlumno->apellidos }}</th>
                     <th class="text-center text-light">
-                        @if(!$order->status)
-                            <button class="rounded-pill border-danger bg-dark px-4 py-2 fw-bold text-danger">Por Realizar</button>
+                        @if($order->status == false)
+                            <a href="{{ route('ordersteacher.edit', $order->id) }}">
+                                <button class="rounded-pill border-danger bg-dark px-4 py-2 fw-bold text-danger">Por Realizar</button>
+                            </a>
                         @else
-                            <button class="rounded-pill border-success bg-dark px-4 py-2 fw-bold text-success">Por Realizar</button>
+                            <a href="{{ route('ordersteacher.edit', $order->id) }}">
+                                <button class="rounded-pill border-success bg-dark px-4 py-2 fw-bold text-success">Pagado</button>
+                            </a>
                         @endif
                     </th>
-                    <th class="text-center text-light">
+                    {{-- <th class="text-center text-light">
                         <a href="{{ route('ordersteacher.edit', $order->id) }}">
                             <button class="btn btn-success fas fa-edit fa-xl p-3"></button>
                         </a>
-                    </th>
+                    </th> --}}
                     <th class="text-center">
                         <form action="{{ route('ordersteacher.destroy', $order) }}" method="post">
                             @method('DELETE')

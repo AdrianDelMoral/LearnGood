@@ -6,6 +6,7 @@ use App\Models\Order;
 use App\Models\Study;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class OrderTeacherController extends Controller
 {
@@ -43,12 +44,24 @@ class OrderTeacherController extends Controller
 
     public function edit(Order $ordersteacher)
     {
-        //
+
+        $status = $ordersteacher->get('status');
+
+        if ($status == false) {
+            $ordersteacher->status = 1;
+            $ordersteacher->update();
+
+            return Redirect::Route('ordersteacher.index')->with('updateMsj', 'Estado Actualizado con exito.');
+
+        } else if ($ordersteacher->get('status') == true) {
+
+            return Redirect::Route('ordersteacher.index')->with('errorMsj', 'Este Alumno ya tiene permiso para entrar al curso.');
+        }
     }
 
     public function update(Request $request, Order $ordersteacher)
     {
-        //
+
     }
 
     public function destroy(Order $ordersteacher)

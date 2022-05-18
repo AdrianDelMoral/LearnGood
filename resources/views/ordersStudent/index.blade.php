@@ -9,7 +9,7 @@
 @section('cuerpo')
 
 <div class="container py-5 pb-2">
-    <h1 class="text-center">Listado de Pedidos de {{ Auth::user()->nombre }}</h1>
+    <h1 class="text-center">Listado de Pedidos de {{ Auth::user()->nombre }} <span class="mx-5"></span> <em class="fw-bold text-warning">{{ Auth::user()->role_id }}</em></h1>
         <x-form-alerts/>
 
     <table class="table table-bordered border-warning bg-dark text-light">
@@ -29,10 +29,10 @@
                     <th class="text-center text-light">{{ $order->getProfesor->nombre }} {{ $order->getProfesor->apellidos}}</th>
                     <th class="text-center text-light">{{ $order->getAlumno->nombre }} {{ $order->getAlumno->apellidos}}</th>
                     <th class="text-center text-light">
-                        @if(!$order->status)
+                        @if($order->status == false)
                             <button class="rounded-pill border-danger bg-dark px-4 py-2 fw-bold text-danger">Por Realizar</button>
                         @else
-                            <button class="rounded-pill border-success bg-dark px-4 py-2 fw-bold text-success">Por Realizar</button>
+                            <button class="rounded-pill border-success bg-dark px-4 py-2 fw-bold text-success">Pagado</button>
                         @endif
                     </th>
                     <th class="text-center">

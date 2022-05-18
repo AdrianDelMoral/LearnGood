@@ -43,12 +43,6 @@ class PlatformController extends Controller
 
         Platform::create($input);
 
-        /* Platform::create([
-            'nombre' => $request->get('nombre'),
-            'platformImage' => $newImageName,
-            'platformURL' => $request->get('platformURL')
-        ]); */
-
         // Mensaje para indicar en index que se a creado con exito
         return Redirect::Route('platforms.index')->with('createMsj', 'Plataforma Creada con Exito.');
     }

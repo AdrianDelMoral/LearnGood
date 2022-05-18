@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -12,9 +14,18 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function postsCurso(Order $idCurso)
     {
-        //
+        // Comprobar que este usuario
+        $usuario = Auth::user();
+
+        // if (condition) {
+
+        // }
+        $cursoPedido = Auth::user();
+
+
+        return view('posts.index');
     }
 
     /**
