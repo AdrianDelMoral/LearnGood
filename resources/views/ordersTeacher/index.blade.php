@@ -16,10 +16,9 @@
         <thead class="text-center">
             <th class="text-center fw-bold text-warning">Numero de Pedido</th>
             <th class="text-center fw-bold text-warning">Precio</th>
-            <th class="text-center fw-bold text-warning">Nombre del Profesor</th>
             <th class="text-center fw-bold text-warning">Nombre del Alumno</th>
+            <th class="text-center fw-bold text-warning">Posts del Curso</th>
             <th class="text-center fw-bold text-warning">Estado de Pago</th>
-            {{-- <th class="text-center fw-bold text-warning">Editar</th> --}}
             <th class="text-center fw-bold text-warning">Eliminar Pedido</th>
         </thead>
         <tbody class="text-center">
@@ -34,8 +33,12 @@
                     <th class="text-center text-light">{{ $order->id }}</th>
 
                     <th class="text-center text-light">{{ $order->cursoModel->precio }}</th>
-                    <th class="text-center text-light">{{ $order->getProfesor->nombre }} {{ $order->getProfesor->apellidos }}</th>
                     <th class="text-center text-light">{{ $order->getAlumno->nombre }} {{ $order->getAlumno->apellidos }}</th>
+                    <th class="text-center text-light">
+                        <a href="{{ route('posts.postsCurso', $order->cursoModel->id) }}">
+                            <button class="btn btn-secondary fas fa-eye fa-xl p-3"></button>
+                        </a>
+                    </th>
                     <th class="text-center text-light">
                         @if($order->status == false)
                             <a href="{{ route('ordersteacher.edit', $order->id) }}">
@@ -47,11 +50,6 @@
                             </a>
                         @endif
                     </th>
-                    {{-- <th class="text-center text-light">
-                        <a href="{{ route('ordersteacher.edit', $order->id) }}">
-                            <button class="btn btn-success fas fa-edit fa-xl p-3"></button>
-                        </a>
-                    </th> --}}
                     <th class="text-center">
                         <form action="{{ route('ordersteacher.destroy', $order) }}" method="post">
                             @method('DELETE')
