@@ -28,7 +28,7 @@
                     <tr>
                         <th class="text-center">{{ $curso->id }}</th>
                         <th class="text-center">{{ $curso->nombreCurso }}</th>
-                        <th class="text-center">{{ $curso->precio }}</th>
+                        <th class="text-center">{{ $curso->precio }} €</th>
                         <th class="text-center">{{ $curso->descripcion }}</th>
                         <th class="text-center">
                             <a href="{{ route('cursos.edit', $curso->id) }}">

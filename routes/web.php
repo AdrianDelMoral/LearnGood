@@ -51,7 +51,7 @@ Route::group(['middleware' => 'auth'], function() {
 
         Route::resource('ordersstudent', OrderStudentController::class);
 
-        Route::get('/ordersstudent/{profeInfo}/createOne/', [OrderStudentController::class, 'createOrder'])->name('ordersstudent.createOrder');
+        Route::get('/ordersstudent/{cursoQuePide}/createOne/', [OrderStudentController::class, 'createOrder'])->name('ordersstudent.createOrder');
 
     });
 

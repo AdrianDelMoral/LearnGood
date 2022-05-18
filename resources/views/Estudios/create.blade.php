@@ -33,7 +33,7 @@
             </div>
             <div class="mb-3">
                 <label for="nota" class="form-label">Nota final</label>
-                <input class="form-control" type="number" name="nota" id="nota" placeholder="Nota final">
+                <input class="form-control" type="number" max="10" min="1" name="nota" id="nota" placeholder="Nota final">
                 <p class="form-text">Nota final</p>
                 @error('nota')
                     <p class="form-text text-danger">{{ $message }}</p>

@@ -27,8 +27,8 @@ class Order extends Model
         'status',
     ];
 
-    public function courses(){
-        return $this->belongsTo(Course::class);
+    public function cursoModel(){
+        return $this->belongsTo(Course::class, 'courses_id');
     }
 
     // Luego podrás relacionar los usuarios:

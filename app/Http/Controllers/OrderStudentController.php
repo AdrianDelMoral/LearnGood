@@ -16,10 +16,13 @@ class OrderStudentController extends Controller
         return view('ordersstudent.index', compact('ordersStudent'));
     }
 
-    public function createOrder(User $profeInfo)
+    public function createOrder(Course $cursoQuePide)
     {
-        $ordersstudent = Course::where('user_id',$profeInfo->id)->get();
-        return view('ordersstudent.create', compact('ordersstudent'));
+
+        $datosPedido = Course::where('id', $cursoQuePide->id)->first();
+        // return $ordersstudent;
+
+        return view('ordersstudent.create', compact('datosPedido'));
     }
 
     public function store(Request $request)

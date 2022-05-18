@@ -35,7 +35,7 @@ class CourseController extends Controller
             return view('cursos.create', compact('estudiosProfe'));
         }
 
-        return Redirect::Route('cursos.index')->with('errorMsj', 'Prueba a añadir Estudios Primero.');
+        return Redirect::Route('cursos.index')->with('warningMsj', 'Prueba a añadir Estudios Primero.');
     }
 
 
