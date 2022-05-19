@@ -37,7 +37,9 @@ class OrderStudentController extends Controller
 
     public function store(Request $request)
     {
-        $comprobador = Order::where([['user_id_alumno', Auth::user()->id], ['courses_id', $request->get('courses_id')]])->get();
+
+        $comprobador = Order::where([['user_id_alumno', Auth::user()->id], ['courses_id', $request->courses_id]])->find(1);
+        // return 'no tiene';
 
         $request->validate([
             'user_id_alumno' => 'required',
@@ -51,7 +53,6 @@ class OrderStudentController extends Controller
          *   en un mensaje como que ya existe uno
          * - si no, devolverá 0 y dejará crearlo
         */
-
         if (count($comprobador) == 1) {
             return Redirect::Route('ordersstudent.index')->with('infoErrorMsj', 'Ya existe un pedido igual.');
         } else {
