@@ -104,7 +104,7 @@
                                                     </p>
                                                 </div>
                                                 <ul class="list-unstyled mt-3 mb-4">
-                                                    <li>{{ $curso->descripcion }}</li>
+                                                    <li class="text-break">{{ $curso->descripcion }}</li>
                                                 </ul>
                                                 <a href="{{ route('ordersstudent.createOrder', $curso) }}">
                                                     <button type="button" class="w-100 btn btn-lg btn-dark fw-bold">
@@ -133,7 +133,7 @@
                     <div class="row justify-content-center text-center">
                         <div class="pb-3 px-5">
                             <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-                                <h1 class="display-4 fw-normal">Estudios de Realizados</h1>
+                                <h1 class="display-4 fw-normal">Estudios</h1>
                             </div>
                         </div>
                     </div>

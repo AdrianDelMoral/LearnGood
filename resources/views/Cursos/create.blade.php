@@ -56,7 +56,7 @@
 
             <label id="descripcion_label" for="descripcion" class="h5" required>Descripcion del Curso</label>
             <div class="form-check mb-3">
-                <textarea id="descripcion" name="descripcion" rows="5" class="form-control" placeholder="Descripcion del Curso"
+                <textarea id="descripcion" name="descripcion" rows="2" class="form-control" placeholder="Descripcion del Curso"
                     required></textarea>
                 @error('descripcion')
                     <p class="form-text text-danger">{{ $message }}</p>

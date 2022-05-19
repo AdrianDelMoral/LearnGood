@@ -37,7 +37,7 @@
 
             <div class="form-check mb-3">
                 <label for="nombreCurso" class="form-label">Nombre del Curso</label>
-                <input class="form-control" type="string" max="2" name="nombreCurso" id="nombreCurso"
+                <input class="form-control" type="string" name="nombreCurso" id="nombreCurso"
                     placeholder="Nombre del Curso" value="{{ old('nombreCurso') ?? @$curso->nombreCurso }}" required>
                 @error('nombreCurso')
                     <p class="form-text text-danger">{{ $message }}</p>

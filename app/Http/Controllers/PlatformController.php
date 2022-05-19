@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PlatformRequest;
 use App\Models\Platform;
 use Faker\Core\File;
 use Illuminate\Http\Request;
@@ -21,11 +22,11 @@ class PlatformController extends Controller
         return view('platforms.create');
     }
 
-    public function store(Request $request)
+    public function store(PlatformRequest $request)
     {
         // return $request;
         $request->validate([
-            'nombre' => 'required|string|max:30',
+            'nombre' => 'required|unique:platforms|string|max:30',
             'platformURL' => 'required|url',
             'platformImage' => 'required|image|mimes:svg|dimensions:width=16,height=16' // solo podrá subir una imagen por plataforma y que sea de un maximo de 100kb de peso
         ]);
@@ -60,9 +61,9 @@ class PlatformController extends Controller
     public function update(Request $request, Platform $platform)
     {
         $request->validate([
-            'nombre' => 'required',
-            'platformURL' => 'required',
-            'platformImage' => 'required|image|mimes:svg|dimensions:width=16,height=16',
+            'nombre' => 'string',
+            'platformURL' => 'url',
+            'platformImage' => 'image|mimes:svg|dimensions:width=16,height=16',
         ]);
 
         $input = $request->all();

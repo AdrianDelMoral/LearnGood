@@ -29,17 +29,27 @@
 
     <!-- Warning Alert -->
     @if (Session::has('warningMsj'))
-    <div class="alert alert-warning alert-dismissible d-flex align-items-center fade show">
-        <i class="fa-solid fa-2xl fa-triangle-exclamation"></i>
-        <span class="mx-2"></span> {{ Session::get('warningMsj') }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
+        <div class="alert alert-warning alert-dismissible d-flex align-items-center fade show">
+            <i class="fa-solid fa-2xl fa-triangle-exclamation"></i>
+            <span class="mx-2"></span> {{ Session::get('warningMsj') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
     @endif
 
-    {{-- @if (Session::has('createMsj'))
-        <div class="alert alert-success h5">
-            {{ Session::get('createMsj') }}
+    {{-- infoErrorMsj --}}
+
+    <!-- Info Error -->
+    @if (Session::has('infoErrorMsj'))
+        <div class="alert alert-info alert-dismissible d-flex align-items-center fade show">
+            <i class="fa-solid fa-2xl fa-circle-info"></i>
+            <span class="mx-2"></span> {{ Session::get('infoErrorMsj') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>
+    @endif
+    {{-- @if (Session::has('createMsj'))
+            <div class="alert alert-success h5">
+                {{ Session::get('createMsj') }}
+            </div>
         @endif
 
         @if (Session::has('updateMsj'))

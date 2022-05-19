@@ -44,11 +44,8 @@ class OrderTeacherController extends Controller
 
     public function edit(Order $ordersteacher)
     {
-
-        $status = $ordersteacher->get('status');
-
-        if ($status == false) {
-            $ordersteacher->status = 1;
+        if ($ordersteacher->status == false) {
+            $ordersteacher->status = true;
             $ordersteacher->update();
 
             return Redirect::Route('ordersteacher.index')->with('updateMsj', 'Estado Actualizado con exito.');

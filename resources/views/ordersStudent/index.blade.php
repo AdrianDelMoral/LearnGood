@@ -18,6 +18,7 @@
                 <th class="text-center fw-bold text-warning">Numero de Pedido</th>
                 <th class="text-center fw-bold text-warning">Precio</th>
                 <th class="text-center fw-bold text-warning">Profesor</th>
+                <th class="text-center fw-bold text-warning">Alumno</th>
                 <th class="text-center fw-bold text-warning">Posts del Curso</th>
                 <th class="text-center fw-bold text-warning">Estado del pago</th>
                 <th class="text-center fw-bold text-warning">Eliminar</th>
@@ -29,14 +30,21 @@
                         <th class="text-center text-light">{{ $order->cursoModel->precio }} €</th>
                         <th class="text-center text-light">{{ $order->getProfesor->nombre }}
                             {{ $order->getProfesor->apellidos }}</th>
+                            <th class="text-center text-light">{{ $order->getAlumno->nombre }}</th>
                         <th class="text-center text-light">
-                            <a href="{{ route('posts.postsCurso', $order->cursoModel->id) }}">
-                                <button class="btn btn-secondary fas fa-eye fa-xl p-3"></button>
-                            </a>
+                            @if ($order->status === 0)
+                                <button class="btn btn-secondary fa-solid fa-eye-slash fa-xl p-3"></button>
+                            @else
+                            {{ $order->cursoModel->id }} id curso
+                                <a href="{{ route('posts.show', $order->cursoModel->id) }}">
+                                    <button class="btn btn-secondary fas fa-eye fa-xl p-3"></button>
+                                </a>
+                            @endif
                         </th>
                         <th class="text-center text-light">
-                            @if ($order->status == false)
-                                <button class="rounded-pill border-danger bg-dark px-4 py-2 fw-bold text-danger">Por Realizar</button>
+                            @if ($order->status == 0)
+                                <button class="rounded-pill border-danger bg-dark px-4 py-2 fw-bold text-danger">Por
+                                    Realizar</button>
                             @else
                                 <button
                                     class="rounded-pill border-success bg-dark px-4 py-2 fw-bold text-success">Pagado</button>

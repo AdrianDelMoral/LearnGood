@@ -13,7 +13,7 @@ class OrderStudentController extends Controller
 {
     public function index()
     {
-        $ordersStudent = Order::get();
+        $ordersStudent = Order::where('user_id_alumno', Auth::user()->id)->get();
         return view('ordersstudent.index', compact('ordersStudent'));
     }
 
@@ -37,38 +37,34 @@ class OrderStudentController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'user_id_profesor' => 'required',
-            'courses_id' => 'required|integer',
-        ]);
+        $comprobador = Order::where([['user_id_alumno', Auth::user()->id], ['courses_id', $request->get('courses_id')]])->get();
 
-        Order::create([
-            'user_id_profesor' => $request->get('user_id_profesor'),
-            'user_id_alumno' => Auth::user()->id,
-            'courses_id' => $request->get('courses_id'),
-        ]);
-
-        return Redirect::Route('ordersstudent.index')->with('createMsj', 'Pedido Creado con Exito.');
-    }
-
-    /* public function edit(Order $ordersstudent)
-    {
-        return view('ordersstudent.edit', compact('ordersstudent'));
-    }
-
-    public function update(Request $request, Order $ordersstudent)
-    {
         $request->validate([
             'user_id_alumno' => 'required',
-            'courses_id' => 'required|integer',
-            'status' => 'required|integer',
+            'courses_id' => 'required',
+            'user_id_profesor' => 'required',
         ]);
 
-        $ordersstudent->update();
+        /**
+         * Comprueba que lo que devuelve del comprobador
+         * - si existe ya uno devolverá 1, y redirigirá a la lista de pedidos, indicandole
+         *   en un mensaje como que ya existe uno
+         * - si no, devolverá 0 y dejará crearlo
+        */
 
-        // Mensaje para indicar en index que se a actualizado con exito
-        return Redirect::Route('ordersstudent.index')->with('updateMsj', 'Pedido Actualizado con Exito.');
-    }*/
+        if (count($comprobador) == 1) {
+            return Redirect::Route('ordersstudent.index')->with('infoErrorMsj', 'Ya existe un pedido igual.');
+        } else {
+
+            Order::create([
+                'user_id_alumno' => Auth::user()->id,
+                'user_id_profesor' => $request->get('user_id_profesor'),
+                'courses_id' => $request->get('courses_id'),
+            ]);
+
+            return Redirect::Route('ordersstudent.index')->with('createMsj', 'Pedido Creado con Exito.');
+        }
+    }
 
     public function destroy(Order $ordersstudent)
     {

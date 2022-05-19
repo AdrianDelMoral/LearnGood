@@ -16,6 +16,7 @@
         <table class="table table-bordered border-warning bg-dark text-light">
             <thead class="text-center">
                 <th class="text-center fw-bold text-warning">Numero de Pedido</th>
+                <th class="text-center fw-bold text-warning">Nombre del Curso</th>
                 <th class="text-center fw-bold text-warning">Precio</th>
                 <th class="text-center fw-bold text-warning">Nombre del Alumno</th>
                 <th class="text-center fw-bold text-warning">Posts del Curso</th>
@@ -32,10 +33,11 @@
                 <tr>
                     <th class="text-center text-light">{{ $order->id }}</th>
 
+                    <th class="text-center text-light">{{ $order->cursoModel->nombreCurso }}</th>
                     <th class="text-center text-light">{{ $order->cursoModel->precio }}</th>
                     <th class="text-center text-light">{{ $order->getAlumno->nombre }} {{ $order->getAlumno->apellidos }}</th>
                     <th class="text-center text-light">
-                        <a href="{{ route('posts.index', $order->cursoModel->id) }}">
+                        <a href="{{ route('posts.show', $order->cursoModel->id) }}">
                             <button class="btn btn-secondary fas fa-eye fa-xl p-3"></button>
                         </a>
                     </th>

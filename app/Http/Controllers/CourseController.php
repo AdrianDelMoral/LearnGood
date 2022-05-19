@@ -45,7 +45,7 @@ class CourseController extends Controller
         $request->validate([
             'nombreCurso' => 'required|string|max:30',
             'precio' => 'required|integer',
-            'descripcion' => 'required|string',
+            'descripcion' => 'required|string|max:60',
         ]);
 
         Course::create($request->only('studies_id', 'nombreCurso', 'precio', 'descripcion'));
@@ -69,9 +69,9 @@ class CourseController extends Controller
     {
         $request->validate([
             'studies_id' => 'required',
-            'nombreCurso' => 'required|string|max:100',
+            'nombreCurso' => 'required|string|max:30',
             'precio' => 'required|integer',
-            'descripcion' => 'required|string|max:200',
+            'descripcion' => 'required|string|max:60',
         ]);
 
         $curso->studies_id = $request['studies_id'];

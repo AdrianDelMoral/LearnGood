@@ -27,21 +27,22 @@
             <tbody class="text-center">
                 @forelse ($cursos as $curso)
                     <tr>
-                        <th class="text-center">{{ $curso->id }}</th>
-                        <th class="text-center">{{ $curso->nombreCurso }}</th>
-                        <th class="text-center">{{ $curso->precio }} €</th>
-                        <th class="text-center">{{ $curso->descripcion }}</th>
-                        <th class="text-center">
-                            <a href="{{ route('posts.postsCurso', $curso->id) }}">
+                        <th>{{ $curso->id }}</th>
+                        <th>{{ $curso->nombreCurso }}</th>
+                        <th>{{ $curso->precio }} €</th>
+                        <th class="text-break">{{ $curso->descripcion }}</th>
+                        <th>
+                            {{ $curso->id }}
+                            <a href="{{ route('posts.show', $curso->id) }}">
                                 <button class="btn btn-secondary fas fa-eye fa-xl p-3"></button>
                             </a>
                         </th>
-                        <th class="text-center">
+                        <th>
                             <a href="{{ route('cursos.edit', $curso->id) }}">
                                 <button class="btn btn-success fas fa-edit fa-xl p-3"></button>
                             </a>
                         </th>
-                        <th class="text-center">
+                        <th>
                             <form action="{{ route('cursos.destroy', $curso->id) }}" method="post">
                                 @method('DELETE')
                                 @csrf

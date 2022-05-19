@@ -47,13 +47,8 @@ Route::group(['middleware' => 'auth'], function () {
     // Accesible para estudiantes y profesores
     Route::resource('socials', SocialController::class);
 
-    // Crear editar y eliminar Post como Profesor / Ver Post Como Alumno
-    Route::resource('posts', PostController::class);
-
-    /* --------------------------------------------------------------------------------- */
-        // Mostrar Todos los Posts del Curso en cuestíon
-        Route::get('/ordersstudent/{Curso}/postsCurso/', [PostController::class, 'postsCurso'])->name('posts.postsCurso');
-    /* --------------------------------------------------------------------------------- */
+    // Mostrar Todos los Posts a todo el mundo del Curso en cuestíon
+    Route::get('posts/{Curso}', [PostController::class, 'show'])->name('posts.show');
 
     Route::group(['middleware' => 'alumno', 'prefix' => 'alumno'], function () {
         Route::resource('alumnoviews', StudentController::class);
@@ -80,8 +75,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('ordersteacher', OrderTeacherController::class);
 
         /* --------------------------------------------------------------------------------- */
-            // Crear Post como Profesor del Curso en cuestíon
-            Route::get('/posts/{infoCurso}/createPost/', [PostController::class, 'createPost'])->name('posts.createPost');
+            // Crear editar y eliminar Posts como Profesor
+            Route::post('posts', [PostController::class, 'store'])->name('posts.store'); // profesor/posts
+            Route::get('posts', [PostController::class, 'create'])->name('posts.create'); // profesor/posts/create
+            Route::put('update', [PostController::class, 'update'])->name('posts.update'); // profesor/posts/{post}
+            Route::delete('destroy', [PostController::class, 'destroy'])->name('posts.destroy'); // profesor/posts/{post}
         /* --------------------------------------------------------------------------------- */
 
         Route::resource('estudios', StudyController::class);
