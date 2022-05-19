@@ -8,23 +8,23 @@
 
 @section('cuerpo')
 
-<div class="container py-5 pb-2">
-    <h1 class="text-center">Listado de Pedidos de {{ Auth::user()->nombre }} <span class="mx-5"></span> <em class="fw-bold text-warning">{{ Auth::user()->role_id }}</em></h1>
-        <x-form-alerts/>
+    <div class="container py-5 pb-2">
+        <h1 class="text-center">Listado de Pedidos de {{ Auth::user()->nombre }} <span class="mx-5"></span> <em
+                class="fw-bold text-warning">{{ Auth::user()->role_id }}</em></h1>
+        <x-form-alerts />
 
-    <table class="table table-bordered border-warning bg-dark text-light">
-        <thead class="text-center">
-            <th class="text-center fw-bold text-warning">Numero de Pedido</th>
-            <th class="text-center fw-bold text-warning">Precio</th>
-            <th class="text-center fw-bold text-warning">Nombre del Alumno</th>
-            <th class="text-center fw-bold text-warning">Posts del Curso</th>
-            <th class="text-center fw-bold text-warning">Estado de Pago</th>
-            <th class="text-center fw-bold text-warning">Eliminar Pedido</th>
-        </thead>
-        <tbody class="text-center">
+        <table class="table table-bordered border-warning bg-dark text-light">
+            <thead class="text-center">
+                <th class="text-center fw-bold text-warning">Numero de Pedido</th>
+                <th class="text-center fw-bold text-warning">Precio</th>
+                <th class="text-center fw-bold text-warning">Nombre del Alumno</th>
+                <th class="text-center fw-bold text-warning">Posts del Curso</th>
+                <th class="text-center fw-bold text-warning">Estado de Pago</th>
+                <th class="text-center fw-bold text-warning">Eliminar Pedido</th>
+            </thead>
+            <tbody class="text-center">
 
-
-            @forelse ($ordersTeacher as $order)
+                @forelse ($ordersTeacher as $order)
 
                 {{-- <div class="bg-dark text-light m-5 p-3">
                     {{ $order->getProfesor }}
@@ -35,12 +35,12 @@
                     <th class="text-center text-light">{{ $order->cursoModel->precio }}</th>
                     <th class="text-center text-light">{{ $order->getAlumno->nombre }} {{ $order->getAlumno->apellidos }}</th>
                     <th class="text-center text-light">
-                        <a href="{{ route('posts.postsCurso', $order->cursoModel->id) }}">
+                        <a href="{{ route('posts.index', $order->cursoModel->id) }}">
                             <button class="btn btn-secondary fas fa-eye fa-xl p-3"></button>
                         </a>
                     </th>
                     <th class="text-center text-light">
-                        @if($order->status == false)
+                        @if ($order->status == false)
                             <a href="{{ route('ordersteacher.edit', $order->id) }}">
                                 <button class="rounded-pill border-danger bg-dark px-4 py-2 fw-bold text-danger">Por Realizar</button>
                             </a>
@@ -63,12 +63,12 @@
                     <th colspan="7" class="text-center"><p class="h4 text-danger fw-bold m-5">No se le han solicitado Servicios Actualmente</p></th>
                 </tr>
             @endforelse
-        </tbody>
-    </table>
-</div>
-<div class="container">
-    <a href="{{ url('/') }}"><button class="btn btn-primary mt-1 mb-5">Volver al Inicio</button></a>
-</div>
+            </tbody>
+        </table>
+    </div>
+    <div class="container">
+        <a href="{{ url('/') }}"><button class="btn btn-primary mt-1 mb-5">Volver al Inicio</button></a>
+    </div>
 
 @endsection
 @section('JSadded')

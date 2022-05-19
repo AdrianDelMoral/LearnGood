@@ -32,26 +32,30 @@ Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
-    ])->group(function () {
-        Route::get('/home', function () {
-            return view('home');
-        })->name('home');
-    });
+])->group(function () {
+    Route::get('/home', function () {
+        return view('home');
+    })->name('home');
+});
 
 
 // siempre que ponga "/" me redireccione al index
 Route::resource('/', InicioController::class)->only('index');
 
-Route::group(['middleware' => 'auth'], function() {
+Route::group(['middleware' => 'auth'], function () {
 
     // Accesible para estudiantes y profesores
     Route::resource('socials', SocialController::class);
 
     // Crear editar y eliminar Post como Profesor / Ver Post Como Alumno
     Route::resource('posts', PostController::class);
-    Route::get('/ordersstudent/{Curso}/postsCurso/', [PostController::class, 'postsCurso'])->name('posts.postsCurso');
 
-    Route::group(['middleware' => 'alumno', 'prefix' => 'alumno'], function() {
+    /* --------------------------------------------------------------------------------- */
+        // Mostrar Todos los Posts del Curso en cuestíon
+        Route::get('/ordersstudent/{Curso}/postsCurso/', [PostController::class, 'postsCurso'])->name('posts.postsCurso');
+    /* --------------------------------------------------------------------------------- */
+
+    Route::group(['middleware' => 'alumno', 'prefix' => 'alumno'], function () {
         Route::resource('alumnoviews', StudentController::class);
 
         // Listado y eliminar(cancelar) pedidos
@@ -62,22 +66,24 @@ Route::group(['middleware' => 'auth'], function() {
 
         // Ver la información del pedido
         Route::get('/ordersstudent/{idOrder}/infoOrder/', [OrderStudentController::class, 'infoOrder'])->name('ordersstudent.infoOrder');
-
     });
 
-    Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function() {
+    Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function () {
         Route::resource('platforms', PlatformController::class);
         Route::resource('manageusers', UserManage::class);
         Route::resource('levels', LevelController::class);
     });
 
-    Route::group(['middleware' => 'profesor', 'prefix' => 'profesor'], function() {
+    Route::group(['middleware' => 'profesor', 'prefix' => 'profesor'], function () {
         Route::resource('teacherviews', TeacherController::class);
         Route::resource('cursos', CourseController::class);
         Route::resource('ordersteacher', OrderTeacherController::class);
 
+        /* --------------------------------------------------------------------------------- */
+            // Crear Post como Profesor del Curso en cuestíon
+            Route::get('/posts/{infoCurso}/createPost/', [PostController::class, 'createPost'])->name('posts.createPost');
+        /* --------------------------------------------------------------------------------- */
+
         Route::resource('estudios', StudyController::class);
     });
-
-
 });

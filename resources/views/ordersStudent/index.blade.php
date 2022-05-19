@@ -36,8 +36,7 @@
                         </th>
                         <th class="text-center text-light">
                             @if ($order->status == false)
-                                <button class="rounded-pill border-danger bg-dark px-4 py-2 fw-bold text-danger">Por
-                                    Realizar</button>
+                                <button class="rounded-pill border-danger bg-dark px-4 py-2 fw-bold text-danger">Por Realizar</button>
                             @else
                                 <button
                                     class="rounded-pill border-success bg-dark px-4 py-2 fw-bold text-success">Pagado</button>

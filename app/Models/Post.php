@@ -12,6 +12,7 @@ class Post extends Model
     protected $table = 'posts';
 
     protected $fillable = [
+        'courses_id',
         'titulo',
         'entrada',
         //'video',
