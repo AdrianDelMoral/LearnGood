@@ -39,7 +39,7 @@
             <!-- Grid row -->
             <div class="row mt-3">
                 <!-- Grid column -->
-                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4 text-white">
+                <div class="d-flex align-items-center justify-content-center col-md-3 col-lg-4 col-xl-3 mx-auto mb-4 text-white">
                     <!-- Content -->
                     <h6 class="fw-bold h3">
                         <img src="{{ asset('imagenes/generales/logo.png') }}" style="width:4.8rem; height:4rem;"> LearnGood

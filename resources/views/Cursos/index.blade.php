@@ -32,8 +32,8 @@
                         <th>{{ $curso->precio }} €</th>
                         <th class="text-break">{{ $curso->descripcion }}</th>
                         <th>
-                            {{ $curso->id }}
-                            <a href="{{ route('posts.show', $curso->id) }}">
+                            id del curso:{{ $curso->id }}
+                            <a href="{{ route('cursosposts.show', $curso->id) }}">
                                 <button class="btn btn-secondary fas fa-eye fa-xl p-3"></button>
                             </a>
                         </th>

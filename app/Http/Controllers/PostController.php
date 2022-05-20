@@ -5,89 +5,96 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use App\Models\Order;
 use App\Models\Post;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
 
 class PostController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
+        //
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
         //
     }
 
-    public function createPost(Course $Curso)
-    {
-        return view('posts.create', compact('Curso'));
-    }
-
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
-        $request->validate([
-            'courses_id' => 'required',
-            'titulo' => 'required',
-            'entrada' => 'required',
-        ]);
+        //
+    }
 
-        Post::create([
-            'courses_id' => $request->get('courses_id'),
-            'titulo' => $request->get('titulo'),
-            'entrada' => $request->get('entrada'),
-        ]);
-
-        $Curso = Course::where('id',$request->get('courses_id'))->first();
-        // sacar los posts con el id del curso($posts->id)
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $Curso = Course::where('id', $id)->first();
         // return $Curso;
 
-        $posts = Post::where('courses_id', $Curso->id)->get();
+        // sacar los posts con el id del curso($posts->id)
+        $posts = Post::where('courses_id', $id)->get();
+        // return $posts;
 
-        return view('posts.show', compact('Curso', 'posts'))->with('createMsj', 'Pedido Creado con Exito.');
+        $status = Order::where([['user_id_alumno', Auth::user()->id], ['courses_id', $id]])->find(1);
+
+        $status =  $status->status;
+        // return $status;
+
+        return view('postsStudentView.show', compact('posts', 'Curso', 'status'));
     }
 
-    // Muestra todos los posts de el pedido en cuestión
-    public function showPosts(Course $Curso)
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
     {
-
-        if (Auth::user()->role_id == 'Profesor' || Auth::user()->role_id == 'Admin') {
-
-            // sacar los posts con el id del curso($posts->id)
-            $posts = Post::where('courses_id', $Curso->id)->get();
-            //return $posts;
-
-            return view('Posts.show', compact('Curso', 'posts'));
-        }
-
-        if (Auth::user()->role_id == 'Alumno') {
-
-            // sacar los posts con el id del curso($posts->id)
-            $posts = Post::where('courses_id', $Curso->id)->get();
-            //return $posts;
-
-            $status = Order::where([['user_id_alumno', Auth::user()->id], ['courses_id', $Curso->id]])->find(1);
-
-            return view('Posts.show', compact('Curso', 'posts'));
-        }
+        //
     }
 
-    public function infoPost(Post $post)
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
     {
+        //
     }
 
-    public function edit(Post $post)
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
     {
-    }
-
-    public function update(Request $request, Post $post)
-    {
-    }
-
-    public function destroy(Post $post)
-    {
+        //
     }
 }

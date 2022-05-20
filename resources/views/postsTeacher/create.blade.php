@@ -11,7 +11,7 @@
 
         <h1>Crear Post</h1>
 
-        <form action="{{ route('posts.store') }}" method="post">
+        <form action="{{ route('cursosposts.store') }}" method="post">
 
             @csrf
             <input required hidden type="number" name="courses_id" id="courses_id" value="{{ $Curso->id }}" required>
@@ -36,6 +36,6 @@
         </form>
     </div>
     <div class="container">
-        <a href="{{ route('posts.show', $Curso) }}"><button class="btn btn-primary mt-1 mb-5">Volver al Listado</button></a>
+        <a href="{{ route('cursosposts.show', $Curso->id) }}"><button class="btn btn-primary mt-1 mb-5">Volver al Listado</button></a>
     </div>
 @endsection

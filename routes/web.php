@@ -14,6 +14,7 @@ use App\Http\Controllers\UserManage;
 use App\Http\Controllers\OrderTeacherController;
 use App\Http\Controllers\OrderStudentController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\PostTeacherController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,8 +26,6 @@ use App\Http\Controllers\PostController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
 
 Route::middleware([
     'auth:sanctum',
@@ -48,7 +47,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('socials', SocialController::class);
 
     // Mostrar Todos los Posts a todo el mundo del Curso en cuestíon
-    Route::get('posts', [PostController::class, 'show'])->name('posts.show');
+    Route::resource('alumnosposts', PostController::class);
 
     Route::group(['middleware' => 'alumno', 'prefix' => 'alumno'], function () {
         Route::resource('alumnoviews', StudentController::class);
@@ -73,17 +72,14 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('teacherviews', TeacherController::class);
         Route::resource('cursos', CourseController::class);
         Route::resource('ordersteacher', OrderTeacherController::class);
+        Route::resource('estudios', StudyController::class);
 
         /* --------------------------------------------------------------------------------- */
             // Crear editar y eliminar Posts como Profesor
-            Route::get('posts/{Curso}', [PostController::class, 'createPost'])->name('posts.createPost');
+            Route::resource('cursosposts', PostTeacherController::class);
+            // Route::get('cursosposts/{id}/createPost', [PostTeacherController::class, 'createPost'])->name('cursosposts.createPost');
 
-            Route::post('posts', [PostController::class, 'store'])->name('posts.store'); // profesor/posts
-            // Route::get('posts/', [PostController::class, 'create'])->name('posts.create'); // profesor/posts/create
-            Route::put('update', [PostController::class, 'update'])->name('posts.update'); // profesor/posts/{post}
-            Route::delete('destroy', [PostController::class, 'destroy'])->name('posts.destroy'); // profesor/posts/{post}
         /* --------------------------------------------------------------------------------- */
 
-        Route::resource('estudios', StudyController::class);
     });
 });
