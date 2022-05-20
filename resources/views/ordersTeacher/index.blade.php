@@ -37,7 +37,7 @@
                     <th class="text-center text-light">{{ $order->cursoModel->precio }}</th>
                     <th class="text-center text-light">{{ $order->getAlumno->nombre }} {{ $order->getAlumno->apellidos }}</th>
                     <th class="text-center text-light">
-                        <a href="{{ route('cursospost.show', $order->cursoModel->id) }}">
+                        <a href="{{ route('cursosposts.show', $order->cursoModel->id) }}">
                             <button class="btn btn-secondary fas fa-eye fa-xl p-3"></button>
                         </a>
                     </th>
