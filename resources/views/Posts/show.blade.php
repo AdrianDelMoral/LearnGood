@@ -9,51 +9,56 @@
 @section('cuerpo')
     @if (Auth::user()->role_id == 'Profesor')
         <div class="d-flex justify-content-end">{{-- posts.createPost, $postsDelCurs --}}
-            <a href="{{ route('posts.create' /* $idCurso */) }}" class="btn btn-success my-3 border-dark">
+            @if (count($posts) >= 1)
+            <a href="{{ route('posts.createPost', $Curso->id) }}" class="m-4 btn btn-success border-dark">
                 Crear Post
             </a>
-        </div>
-        <!-- editar y eliminar -->
-        <div class="d-flex justify-content-end">
+            @endif
 
-            <div class="d-flex justify-content-end">
-                <button class="m-4 btn btn-success">Boton para editar</button>
-            </div>
-
-            <div class="d-flex justify-content-end">
-                <button class="m-4 btn btn-danger">Boton para Eliminar</button>
-            </div>
+            {{-- Dentro de las tarjetas de temas  --}}
+                {{-- <a href="{{ route('posts.infoPost') }}" class="m-4 btn btn-secondary border-dark">
+                    Ver
+                </a>
+                <a href="{{ route('posts.edit') }}" class="m-4 btn btn-primary border-dark">
+                    Editar
+                </a>
+                <a href="{{ route('posts.destroy') }}" class="m-4 btn btn-danger border-dark">
+                    Eliminar
+                </a> --}}
+            {{-- Dentro de las tarjetas de temas  --}}
         </div>
         <!-- editar y eliminar -->
     @endif
     <!-- editar y eliminar -->
-    <div class="bg-dark text-white p-4">
-@if (count($posts) == 1)
-    <div class="container my-5">
-        <h3>No tiene cursos creados aun</h3>
-        <a href="{{ route('posts.create', $idCurso) }}" class="btn btn-success my-3 border-dark">Crear Post</a>
-        <h1 class="fw-bold mb-5">No tiene Posts / Temarios este curso aun.</h1>
-        <h2 class="fw-bold">Estructura de posts:</h2>
-        <ol class="fw-bold mb-5">
-            <li>Index: listado de posts, estilo card, y comprobar si el usuario alumno que esta en el curso, ha
-                pagado(status true)</li>
-            <li>Show: Ver un post en concreto sobre ese curso</li>
-            <li>Edit: editar info de ese post en concreto</li>
-            <li>Update: actualizar algo de ese post en concreto</li>
-            <li>Delete: Eliminar algun post en concreto</li>
-        </ol>
+    <div class="p-4">
+
+        <h1 class="text-center"><u>	{{ $Curso->nombreCurso }}</u></h1>
+
+        @if (count($posts) == 0)
+            <div class="container my-5">
+                <h1 class="fw-bold mb-5">Aún no se han creado Posts en este curso aun.</h1>
+                @if (Auth::user()->role_id == 'Profesor')
+                    <a href="{{ route('posts.createPost', $Curso) }}" class="btn btn-success mb-5 border-dark">Crear Post</a>
+                @endif
+                <h2 class="fw-bold">Estructura de posts:</h2>
+                <ol class="fw-bold mb-5">
+                    <li>Show: Ver un post en concreto sobre ese curso</li>
+                    <li>Edit: editar info de ese post en concreto</li>
+                    <li>Update: actualizar algo de ese post en concreto</li>
+                    <li>Delete: Eliminar algun post en concreto</li>
+
+                </ol>
+            </div>
+        @else
+            <h1 class="fw-bold">Listado de Posts de este Curso</h1>
+            <div class="text-light bg-danger">
+                @foreach ($posts as $post)
+                {{ $post->titulo }}
+                <br><br>
+                @endforeach
+            </div>
+        @endif
     </div>
-@else
-    <h1 class="fw-bold">Listado de Posts de este Curso</h1>
-    @foreach ($posts as $post)
-        <br>
-        {{ $post->id }}
-        <br>
-        {{ $post->titulo }}
-    @endforeach
-@endif
-    </div>
-    {{ $Curso }}
 
 
     <!-- Bucle de post -->

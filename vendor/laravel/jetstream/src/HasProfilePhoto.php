@@ -77,6 +77,14 @@ trait HasProfilePhoto
 
         return 'https://ui-avatars.com/api/?name='.urlencode($name).'&color=7F9CF5&background=EBF4FF'; */
         /* return 'http://cemokalab.com/wp-content/uploads/2015/07/avatar-372-456324.png'; */
+
+        // if (Auth::user() == 'Admin') {
+        //     return asset('imagenes/generales/AdminDefaultProfilePhoto.png');
+        // } else if (Auth::user() == 'Profesor') {
+        //     return asset('imagenes/generales/TeacherDefaultProfilePhoto.png');
+        // } else if (Auth::user() == 'Alumno') {
+        //     return asset('imagenes/generales/StudentDefaultProfilePhoto.png');
+        // }
         return asset('imagenes/generales/DefaultProfilePhoto.png');
     }
 

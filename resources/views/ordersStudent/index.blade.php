@@ -32,14 +32,14 @@
                             {{ $order->getProfesor->apellidos }}</th>
                             <th class="text-center text-light">{{ $order->getAlumno->nombre }}</th>
                         <th class="text-center text-light">
-                            @if ($order->status === 0)
+                            {{-- @if ($order->status === 0)
                                 <button class="btn btn-secondary fa-solid fa-eye-slash fa-xl p-3"></button>
-                            @else
+                            @else --}}
                             {{ $order->cursoModel->id }} id curso
                                 <a href="{{ route('posts.show', $order->cursoModel->id) }}">
                                     <button class="btn btn-secondary fas fa-eye fa-xl p-3"></button>
                                 </a>
-                            @endif
+                            {{-- @endif --}}
                         </th>
                         <th class="text-center text-light">
                             @if ($order->status == 0)

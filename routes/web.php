@@ -48,7 +48,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('socials', SocialController::class);
 
     // Mostrar Todos los Posts a todo el mundo del Curso en cuestíon
-    Route::get('posts/{Curso}', [PostController::class, 'show'])->name('posts.show');
+    Route::get('posts', [PostController::class, 'show'])->name('posts.show');
 
     Route::group(['middleware' => 'alumno', 'prefix' => 'alumno'], function () {
         Route::resource('alumnoviews', StudentController::class);
@@ -76,8 +76,10 @@ Route::group(['middleware' => 'auth'], function () {
 
         /* --------------------------------------------------------------------------------- */
             // Crear editar y eliminar Posts como Profesor
+            Route::get('posts/{Curso}', [PostController::class, 'createPost'])->name('posts.createPost');
+
             Route::post('posts', [PostController::class, 'store'])->name('posts.store'); // profesor/posts
-            Route::get('posts', [PostController::class, 'create'])->name('posts.create'); // profesor/posts/create
+            // Route::get('posts/', [PostController::class, 'create'])->name('posts.create'); // profesor/posts/create
             Route::put('update', [PostController::class, 'update'])->name('posts.update'); // profesor/posts/{post}
             Route::delete('destroy', [PostController::class, 'destroy'])->name('posts.destroy'); // profesor/posts/{post}
         /* --------------------------------------------------------------------------------- */

@@ -14,8 +14,7 @@
         <form action="{{ route('posts.store') }}" method="post">
 
             @csrf
-
-            <input required hidden type="number" name="courses_id" id="courses_id" value="{{ $idCurso }}" required>
+            <input required hidden type="number" name="courses_id" id="courses_id" value="{{ $Curso->id }}" required>
 
             <div class="mb-3">
                 <label for="titulo" class="h4 form-label">Titulo del Post</label>
@@ -37,6 +36,6 @@
         </form>
     </div>
     <div class="container">
-        <a href="{{ route('posts.index') }}"><button class="btn btn-primary mt-1 mb-5">Volver al Listado</button></a>
+        <a href="{{ route('posts.show', $Curso) }}"><button class="btn btn-primary mt-1 mb-5">Volver al Listado</button></a>
     </div>
 @endsection
