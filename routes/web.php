@@ -77,7 +77,7 @@ Route::group(['middleware' => 'auth'], function () {
         /* --------------------------------------------------------------------------------- */
             // Crear editar y eliminar Posts como Profesor
             Route::resource('cursosposts', PostTeacherController::class);
-            // Route::get('cursosposts/{id}/createPost', [PostTeacherController::class, 'createPost'])->name('cursosposts.createPost');
+            Route::get('cursosposts/{Curso}/createPost', [PostTeacherController::class, 'createPost'])->name('cursosposts.createPost');
 
         /* --------------------------------------------------------------------------------- */
 

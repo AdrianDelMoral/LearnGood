@@ -15,7 +15,9 @@ class Post extends Model
         'courses_id',
         'titulo',
         'entrada',
-        //'video',
+        'contenidoPost',
+        'imagePost',
+        'video',
     ];
 
     public function courses(){

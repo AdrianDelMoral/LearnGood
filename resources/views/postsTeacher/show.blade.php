@@ -10,7 +10,7 @@
     @if (Auth::user()->role_id == 'Profesor')
         <div class="d-flex justify-content-end">{{-- posts.createPost, $postsDelCurs --}}
             @if (count($posts) >= 1)
-                <a href="" class="m-4 btn btn-success border-dark">
+                <a href="{{ route('cursosposts.createPost', $Curso) }}" class="m-4 btn btn-success border-dark">
                     Crear Post
                 </a>
             @endif
@@ -33,6 +33,7 @@
     <div class="p-4">
         <h1 class="text-center fw-bold"><u>{{ $Curso->nombreCurso }}</u></h1>
         <h2>Usuario: {{ Auth::user()->role_id }}</h2>
+        <x-form-alerts />
 
         @if (count($posts) == 0)
             <div class="container my-5">
@@ -43,7 +44,8 @@
                     <div class="card-body d-flex align-items-center justify-content-center p-5">
                         <p class="h6 text-warning fw-bold me-3">Prueba a crear uno:</p>
                         @if (Auth::user()->role_id == 'Profesor')
-                            <a href="{{ route('cursosposts.createPost') }}" class="btn btn-success border-dark">Crear
+                            <a href="{{ route('cursosposts.createPost', $Curso) }}"
+                                class="btn btn-success border-dark">Crear
                                 Post</a>
                         @endif
                     </div>
@@ -53,21 +55,20 @@
             <div class="text-dark p-5 row row-cols-1 row-cols-md-3 g-4">
                 @foreach ($posts as $post)
                     <div class="col" style="min-height: 641px;"">
-                                <div class="  card h-100">
-                        @if (count($post->imagePost) == 1)
-                            <img src="{{ asset('imagenes/postImages/' . $post->imagePost) }}" class="card-img-top"
-                                alt="{{ $post->titulo }}">
-                        @else
-                            <img src="https://wpdirecto.com/wp-content/uploads/2017/08/alt-de-una-imagen.png"
-                                class="card-img-top" alt="Imagen Por defecto del Post">
-                        @endif
-
-                        <div class="card-body">
+                        <div class="card h-100">
+                            @if ($post->imagePost !== null)
+                                <img src="{{ asset('imagenes/postImages/' . $post->imagePost) }}" class="card-img-top"
+                                    alt="{{ $post->titulo }}">
+                            @else
+                                <img src="https://wpdirecto.com/wp-content/uploads/2017/08/alt-de-una-imagen.png"
+                                    class="card-img-top" alt="Imagen Por defecto del Post">
+                            @endif
+                            <div class="card-body">
                             <h5 class="card-title fw-italic">{{ $post->titulo }}</h5>
                             <p class="card-text">{{ $post->entrada }} </p>
                         </div>
                         <div class="m-3">
-                            <a href="{{-- {{ route('cursosposts.createPost', $Curso->id) }} --}}" class="btn btn-warning">
+                            <a href="{{-- {{ route('cursosposts.infoPost', $Curso->id) }} --}}" class="btn btn-warning">
                                 Ver Post
                             </a>
                         </div>
