@@ -17,7 +17,6 @@
             editar el pedido para que siga en user_id enlazado a el,
             mientras que mediante el precio, sacaré el profesor --}}
 
-
             <input required hidden type="number" name="user_id_profesor" id="user_id_profesor" value="{{ $datosPedido->studies->infoProfe->id }}" required>
 
             <input hidden required type="number" id="courses_id" name="courses_id" value="{{ $datosPedido->id }}">

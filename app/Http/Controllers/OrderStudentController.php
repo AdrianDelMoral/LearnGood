@@ -30,7 +30,7 @@ class OrderStudentController extends Controller
     {
 
         $datosOrder = Course::where('id', $idOrder)->first();
-        // return $ordersstudent;
+        // return $datosOrder;
 
         return view('ordersstudent.infoOrder', compact('datosOrder'));
     }
@@ -39,13 +39,6 @@ class OrderStudentController extends Controller
     {
 
         $comprobador = Order::where([['user_id_alumno', Auth::user()->id], ['courses_id', $request->courses_id]])->find(1);
-        // return 'no tiene';
-
-        $request->validate([
-            'user_id_alumno' => 'required',
-            'courses_id' => 'required',
-            'user_id_profesor' => 'required',
-        ]);
 
         /**
          * Comprueba que lo que devuelve del comprobador
@@ -53,10 +46,11 @@ class OrderStudentController extends Controller
          *   en un mensaje como que ya existe uno
          * - si no, devolverá 0 y dejará crearlo
         */
-        if (count($comprobador) == 1) {
+
+        if ($comprobador !== null) {
+
             return Redirect::Route('ordersstudent.index')->with('infoErrorMsj', 'Ya existe un pedido igual.');
         } else {
-
             Order::create([
                 'user_id_alumno' => Auth::user()->id,
                 'user_id_profesor' => $request->get('user_id_profesor'),
@@ -65,6 +59,7 @@ class OrderStudentController extends Controller
 
             return Redirect::Route('ordersstudent.index')->with('createMsj', 'Pedido Creado con Exito.');
         }
+        return 'llega 3';
     }
 
     public function destroy(Order $ordersstudent)
