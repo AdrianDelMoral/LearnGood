@@ -48,7 +48,7 @@
                             <p>{{ $user->apellidos }}</p>
                         </td>
                         <th class="text-center">
-                            <a href="{{ route('manageusers.edit', $user->id) }}">
+                            <a href="{{ route('manageusers.edit', $user) }}">
                                 <button class="btn btn-success fas fa-edit fa-xl p-3"></button>
                             </a>
                         </th>
@@ -68,7 +68,7 @@
             @if ($users->hasPages())
                 <nav role="navigation" aria-label="Pagination Navigation">
                     <ul class="pagination">
-                        {{-- Previous Page Link --}}
+                        <!-- Previous Page Link -->
                         @if ($users->onFirstPage())
                             <li class="page-item disabled" aria-disabled="true">
                                 <span class="bg-dark border border-warning text-light page-link">{!! __('X') !!}</span>
@@ -81,7 +81,7 @@
                             </li>
                         @endif
 
-                        {{-- Next Page Link --}}
+                        <!-- Next Page Link -->
                         @if ($users->hasMorePages())
                             <li class="page-item">
                                 <a class="bg-dark page-link text-light border border-warning" href="{{ $users->nextPageUrl() }}"
