@@ -34,14 +34,19 @@ class UserManage extends Controller
 
     public function edit($id)
     {
-        // return $id;
-        $id = User::where('id',$id)->find();
+        $id = User::where('id', $id)->get();
+        foreach ($id as $key => $value) {
+            $devolver = $value;
+        }
+        $id = $devolver;
         if ($id->role_id == 'Profesor') {
-            return ['Profesor',$id];
-            return view('UsersList.edit_Profesor', compact('id'));
-        } else {
-            return ['Alumno',$id];
-            return view('UsersList.edit_Alumno', compact('id'));
+            // return ['Profesor',$id];
+            return view('UsersList.edit', compact('id'));
+        } else if ($id->role_id == 'Alumno') {
+            // return ['Alumno',$id];
+            return view('UsersList.edit', compact('id'));
+        } else if ($id->role_id == 'Admin') {
+            return view('UsersList.edit', compact('id'));
         }
     }
 
