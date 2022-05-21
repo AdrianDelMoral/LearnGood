@@ -1,4 +1,4 @@
-<?php
+A<?php
 
 namespace App\Http\Middleware;
 

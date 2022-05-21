@@ -197,3 +197,33 @@ footer {
     }
 }
 
+:root {
+    --bg-whitePrimary: rgba(255,255,255,0.3);
+    --bg-darkPrimary: rgba(0,0,0,0.3);
+    --brPrimary:5px;
+    --borderPrimary: solid 1px rgba(255,255,255,0.5)
+}
+
+
+.mainContainer {
+    background-color: var(--bg-whitePrimary);
+    backdrop-filter: blur(20px);
+    border: var(--borderPrimary);
+    border-radius: var(--brPrimary)!important;
+    box-shadow: 0 10px 20px 5px rgba(0,0,0,0.05);
+}
+
+.priEstContainer {
+    background-color: var(--bg-whitePrimary);
+    backdrop-filter: blur(20px);
+    border: var(--borderPrimary);
+    box-shadow: 0 10px 20px 5px rgba(0,0,0,0.05);
+}
+
+.cardsInicio {
+    background-color: var(--bg-darkPrimary);
+    backdrop-filter: blur(20px);
+    border: var(--borderPrimary);
+    border-radius: var(--brPrimary)!important;
+    box-shadow: 0 10px 20px 5px rgba(0,0,0,0.05);
+}

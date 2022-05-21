@@ -8,7 +8,7 @@
         <div class="contenidoNav collapse navbar-collapse" id="navbarsExampleXxl">
             <div class=" nav__div_primero">
                 <a href="/">
-                    <x-jet-application-mark/>
+                    <x-jet-application-mark />
                     {{-- <img src="{{ asset('imagenes/generales/logo.png') }}" alt="logo" style="width:4.8rem; height:4rem;"> --}}
                 </a>
                 <h1 class="navTitle">Learn Good</h1>
@@ -21,37 +21,12 @@
                         Login y Registro
                     </button>
                     <ul class="dropdown-menu dropdown-menu-dark">
-                        @auth
-                            <li>
-                                <a class="dropdown-item" href="{{ route('profile.show') }}">Editar Perfil</a>
-                            </li>
-                            @if (Auth::user()->role_id == 'Profesor')
-                                <li>
-                                    <a class="dropdown-item" href="{{-- {{ route('Profesor.show') }} --}}">Perfil Vista Alumno</a>
-                                </li>
-                            @endif
-
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" id="logout" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault(); this.closest('form').submit();">
-                                        Cerrar Sesión
-                                    </a>
-                                </li>
-                            </form>
-                        @else
-                            <li>
-                                <a class="dropdown-item" href="{{ route('login') }}">Iniciar Sesión</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="{{ route('register') }}">Registrarse</a>
-                            </li>
-                        @endauth
+                        <li>
+                            <a class="dropdown-item" href="{{ route('login') }}">Iniciar Sesión</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ route('register') }}">Registrarse</a>
+                        </li>
                     </ul>
                 </div>
             </div>

@@ -17,7 +17,6 @@ class Alumno
      */
     public function handle(Request $request, Closure $next)
     {
-        /* return $next($request); */
         if (Auth::user()->role_id == 'Alumno' || Auth::user()->role_id == 'Admin') {
             return $next($request); // Para que continue con la petición
         } else {

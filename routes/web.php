@@ -46,7 +46,7 @@ Route::group(['middleware' => 'auth'], function () {
     // Accesible para estudiantes y profesores
     Route::resource('socials', SocialController::class);
 
-    // Mostrar Todos los Posts a todo el mundo del Curso en cuestíon
+    // Vistas donde muestran los posts y se puede ver cada información de cada post
     Route::resource('alumnosposts', PostController::class);
 
     Route::group(['middleware' => 'alumno', 'prefix' => 'alumno'], function () {
@@ -70,12 +70,17 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['middleware' => 'profesor', 'prefix' => 'profesor'], function () {
         Route::resource('teacherviews', TeacherController::class);
+        // Crud de Cursos
         Route::resource('cursos', CourseController::class);
+
+        // Crud de pedidos de cada profesor
         Route::resource('ordersteacher', OrderTeacherController::class);
+
+        // Crud de estudios
         Route::resource('estudios', StudyController::class);
 
         /* --------------------------------------------------------------------------------- */
-            // Crear editar y eliminar Posts como Profesor
+            // Crud Posts como Profesor
             Route::resource('cursosposts', PostTeacherController::class);
             Route::get('cursosposts/{Curso}/createPost', [PostTeacherController::class, 'createPost'])->name('cursosposts.createPost');
 

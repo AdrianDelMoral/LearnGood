@@ -32,7 +32,6 @@
                         <th>{{ $curso->precio }} €</th>
                         <th class="text-break">{{ $curso->descripcion }}</th>
                         <th>
-                            id del curso:{{ $curso->id }}
                             <a href="{{ route('cursosposts.show', $curso->id) }}">
                                 <button class="btn btn-secondary fas fa-eye fa-xl p-3"></button>
                             </a>
@@ -43,7 +42,7 @@
                             </a>
                         </th>
                         <th>
-                            <form action="{{ route('cursos.destroy', $curso->id) }}" method="post">
+                            <form action="{{ route('cursos.destroy', $curso) }}" method="post">
                                 @method('DELETE')
                                 @csrf
                                 <button type="submit" class="btn btn-danger fas fa-trash fa-xl p-3"></button>
