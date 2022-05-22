@@ -68,7 +68,7 @@
                             <p class="card-text">{{ $post->entrada }} </p>
                         </div>
                         <div class="m-3">
-                            <a href="{{-- {{ route('cursosposts.infoPost', $Curso->id) }} --}}" class="btn btn-warning">
+                            <a href="{{ route('cursosposts.infoPost', $post) }}" class="btn btn-warning">
                                 Ver Post
                             </a>
                         </div>

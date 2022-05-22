@@ -49,6 +49,7 @@ Route::group(['middleware' => 'auth'], function () {
     // Vistas donde muestran los posts y se puede ver cada información de cada post
     Route::resource('alumnosposts', PostController::class);
 
+
     Route::group(['middleware' => 'alumno', 'prefix' => 'alumno'], function () {
         Route::resource('alumnoviews', StudentController::class);
 
@@ -83,6 +84,7 @@ Route::group(['middleware' => 'auth'], function () {
             // Crud Posts como Profesor
             Route::resource('cursosposts', PostTeacherController::class);
             Route::get('cursosposts/{Curso}/createPost', [PostTeacherController::class, 'createPost'])->name('cursosposts.createPost');
+            Route::get('cursosposts/infoPost/{Post}',[PostTeacherController::class, 'infoPost'])->name('cursosposts.infoPost');
 
         /* --------------------------------------------------------------------------------- */
 

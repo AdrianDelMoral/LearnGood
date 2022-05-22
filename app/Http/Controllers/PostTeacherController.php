@@ -23,6 +23,13 @@ class PostTeacherController extends Controller
         // return $Curso;
         return view('postsTeacher.show', compact('posts', 'Curso'));
     }
+    public function infoPost($id)
+    {
+        $post = Post::where('id', $id)->first();
+        // return $post;
+
+        return view('postsTeacher.infoPost', compact('post'));
+    }
 
     public function createPost($Curso)
     {
@@ -42,7 +49,6 @@ class PostTeacherController extends Controller
             'entrada' => 'required|string',
             'contenidoPost' => 'required|string',
             'imagePost' => 'image',
-            'video' => 'video'
         ]);
 
         if ($image = $request->file('imagePost')) {
@@ -50,6 +56,13 @@ class PostTeacherController extends Controller
             $profileImage = date('dmYHi') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
             $input['imagePost'] = "$profileImage";
+        }
+
+        if ($video = $request->file('video')) {
+            $destinationPath = 'postVideos';
+            $videoPosts = date('dmYHi') . "." . $video->getClientOriginalExtension();
+            $video->move($destinationPath, $videoPosts);
+            $input['video'] = "$videoPosts";
         }
 
         // return $id;
