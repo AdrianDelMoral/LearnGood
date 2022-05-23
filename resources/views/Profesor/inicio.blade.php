@@ -75,7 +75,6 @@
                 <div class="card card-cover h-100 overflow-hidden text-white cardsInicio rounded-5 shadow-lg">
                     <div class="d-flex align-items-center justify-content-center flex-column h-100 p-5 pb-3 text-white text-shadow-1">
                         <h2 class="pt-5 mb-4 text-center display-6 lh-1 fw-bold">Gestionar Estudios del Profesor</h2>
-
                         <ul class="d-flex list-unstyled mt-auto mb-5">
                             <li class="me-auto">
                                 <a href="{{ route('estudios.index') }}">

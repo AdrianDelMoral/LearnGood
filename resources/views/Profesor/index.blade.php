@@ -67,7 +67,7 @@
                 <div class="justify-content-center row row-cols-1 row-cols-md-3 mb-3 text-center align-items-center">
                     {{-- Bucle de precios --}}
                     @foreach ($user->studies as $study)
-                        @if (!$study->courses)
+                        @if (count($study->courses) >= 1)
                             @foreach ($study->courses as $curso)
                                 <div class="col">
                                     <div class="priEstContainer mb-4 text-dark rounded-3 shadow-sm text-light">

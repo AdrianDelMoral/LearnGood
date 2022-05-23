@@ -48,7 +48,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Vistas donde muestran los posts y se puede ver cada información de cada post
     Route::resource('alumnosposts', PostController::class);
-
+    Route::get('cursosposts/infoPost/{Post}',[PostController::class, 'infoPost'])->name('alumnosposts.infoPost');
 
     Route::group(['middleware' => 'alumno', 'prefix' => 'alumno'], function () {
         Route::resource('alumnoviews', StudentController::class);

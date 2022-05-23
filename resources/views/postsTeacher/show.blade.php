@@ -55,15 +55,15 @@
             <div class="text-dark p-5 row row-cols-1 row-cols-md-3 g-4">
                 @foreach ($posts as $post)
                     <div class="col" style="min-height: 641px;"">
-                        <div class="card h-100">
-                            @if ($post->imagePost !== null)
-                                <img src="{{ asset('imagenes/postImages/' . $post->imagePost) }}" class="card-img-top"
-                                    alt="{{ $post->titulo }}">
-                            @else
-                                <img src="https://wpdirecto.com/wp-content/uploads/2017/08/alt-de-una-imagen.png"
-                                    class="card-img-top" alt="Imagen Por defecto del Post">
-                            @endif
-                            <div class="card-body">
+                            <div class=" card h-100">
+                        @if ($post->imagePost !== null)
+                            <img src="{{ asset('imagenes/postImages/' . $post->imagePost) }}" class="card-img-top"
+                                alt="{{ $post->titulo }}">
+                        @else
+                            <img src="https://wpdirecto.com/wp-content/uploads/2017/08/alt-de-una-imagen.png"
+                                class="card-img-top" alt="Imagen Por defecto del Post">
+                        @endif
+                        <div class="card-body">
                             <h5 class="card-title fw-italic">{{ $post->titulo }}</h5>
                             <p class="card-text">{{ $post->entrada }} </p>
                         </div>
