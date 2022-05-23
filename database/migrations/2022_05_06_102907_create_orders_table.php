@@ -19,7 +19,6 @@ return new class extends Migration
             $table->boolean('status')->default(false);
             $table->timestamps();
 
-            /*------------------*/
             $table->unsignedBigInteger('user_id_alumno'); // id_Alumno
             $table->unsignedBigInteger('user_id_profesor'); // id_Profesor
 
