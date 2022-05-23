@@ -56,12 +56,8 @@
 
                     <article class="post-preview mt-5">
                         <h2 class="post-title text-center mb-5"><u>Video:</u></h2>
-                        @if ($post->video !== ' ')
-                            {{-- <div class="d-flex justify-content-center">
-                                <video src="{{ asset('postVideos/' . $post->video) }}" width="840" height="480"
-                                    controls></video>
-                            </div> --}}
-                            <div class="d-flex justify-content-center mainContainer p-5">
+                        <div class="d-flex justify-content-center mainContainer p-5">
+                            @if ($post->video !== null)
                                 <div class="btn-video">
                                     <div class="play"></div>
                                     <p>Play Video</p>
@@ -89,14 +85,15 @@
                                         video.pause();
                                     }
                                 </script>
-                            </div>
-                        @else
-                            <h4 class="post-subtitle">Este post no tiene videos actualmente</h4>
-                        @endif
+                            @else
+                                <h4 class="post-subtitle">Este post no tiene videos actualmente</h4>
+                            @endif
+                        </div>
                     </article>
                     <article class="post-preview mt-5 d-flex justify-content-start">
                         <div class="btn mainContainer mb-5">
-                            <p class="post-meta">Ultima actualización hace: {{ $post->updated_at->diffForHumans() }}</p>
+                            <p class="post-meta">Ultima actualización hace: {{ $post->updated_at->diffForHumans() }}
+                            </p>
                         </div>
                     </article>
                 </div>
