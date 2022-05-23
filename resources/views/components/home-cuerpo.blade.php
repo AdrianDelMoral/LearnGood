@@ -1,6 +1,6 @@
 <main>
     <div class="d-flex justify-content-center align-items-center my-5">
-        <h1 class="h1 text-center my-5">Leran Good</h1>
+        <h1 class="text-center my-5 fst-italic me-4" style="font-size: 5rem;">Leran Good</h1>
         <x-jet-application-mark />
     </div>
 
