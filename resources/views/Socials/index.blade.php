@@ -25,7 +25,7 @@
         <tbody class="text-center">
             @forelse ($socials as $social)
                 <tr>
-                    <th class="text-center text-light">
+                    <th class="text-center bg-secondary">
                         <div class="fotoPerfil">
                             <div class="cajaImg">
                                 <div class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">

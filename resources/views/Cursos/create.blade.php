@@ -20,20 +20,20 @@
                     <label class="bg-dark text-white border-dark input-group-text" for="studies_id">Categorias</label>
                 </div>
                 <select class="form-control" id="studies_id" name="studies_id" required>
-                    <option value="a" selected disabled>Selecciona una Categoria del Curso</option>
+                    <option selected disabled>Selecciona una Categoria del Curso</option>
                     @foreach ($estudiosProfe as $estudio)
-                        <option value="{{ $estudio->id }}">{{ $estudio->nivel->nombre }}</option>
+                        <option value="{{ $estudio->id }}"@if (isset($curso)) {{ $curso->studies_id == $estudio->id ? 'selected' : '' }} @endif>{{ $estudio->nivel->nombre }}</option>
                     @endforeach
                 </select>
-                @error('studies_id')
-                    <p class="form-text text-danger">{{ $message }}</p>
-                @enderror
             </div>
+            @error('studies_id')
+                <p class="form-text text-danger p-3 bg-dark fw-bold">{{ $message }}</p>
+            @enderror
 
             <div class="form-check mb-3">
                 <label for="nombreCurso" class="h5 form-label">Nombre del Curso</label>
                 <input class="form-control" type="string" name="nombreCurso" id="nombreCurso"
-                    placeholder="Nombre del Curso" required>
+                    placeholder="Nombre del Curso" value="{{ old('nombreCurso')}}" required>
                 @error('nombreCurso')
                     <p class="form-text text-danger">{{ $message }}</p>
                 @enderror
@@ -45,7 +45,7 @@
                     <span class="bg-dark text-white border-dark input-group-text">€</span>
                 </div>
                 <input class="form-control" type="number" name="precio" id="precio" placeholder="Precio del Curso"
-                    aria-label="Precio del Curso" required>
+                    aria-label="Precio del Curso" value="{{ old('precio')}}" required>
                 <div class="input-group-prepend">
                     <span class="bg-dark text-white border-dark input-group-text">0.00</span>
                 </div>
@@ -57,7 +57,7 @@
             <label id="descripcion_label" for="descripcion" class="h5" required>Descripcion del Curso</label>
             <div class="form-check mb-3">
                 <textarea id="descripcion" name="descripcion" rows="2" class="form-control" placeholder="Descripcion del Curso"
-                    required></textarea>
+                    required>{{ old('descripcion')}}</textarea>
                 @error('descripcion')
                     <p class="form-text text-danger">{{ $message }}</p>
                 @enderror

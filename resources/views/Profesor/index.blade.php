@@ -26,25 +26,9 @@
                     <span class="fw-bold text-primary mt-4">{{ $user->email }}</span>
                     {{-- inicio bucle redes sociales --}}
                     <div class="div_socials d-flex flex-row align-items-center text-center mt-3">
-                        {{-- <!--si es github-->
-                            <a href="" class="social m-3">
-                                <span class="fa-brands fa-2x fa-github"></span>
-                            </a>
-                            <!--si es linkedin-->
-                            <a href="" class="social m-3">
-                                <span class="fa-brands fa-2x fa-linkedin"></span>
-                            </a>
-                            <!--si es discord-->
-                            <a href="" class="social m-3">
-                                <span class="fa-brands fa-2x fa-discord"></span>
-                            </a>
-                            <!--si es facebook-->
-                            <a href="" class="social m-3">
-                                <span class="fa-brands fa-2x fa-facebook"></span>
-                            </a> --}}
                         @forelse ($user->social as $socials)
                             <div class="fotoPerfil">
-                                <a href="" class="social m-3">
+                                <a href="{{ $socials->platform->platformURL.$socials->username }}" class="social m-3" target="blank">
                                     <div class="cajaImg_platform">
                                         <img src="{{ asset('imagenes/platformImages/' . $socials->platform->platformImage) }}"
                                             alt="{{ $socials->platform->nombre }}" style="width: 32px;">

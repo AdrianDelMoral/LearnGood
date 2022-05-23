@@ -43,6 +43,7 @@ class CourseController extends Controller
         // dd($request->input());
         // Le dejará crear cursos, hasta un maximo de 3
         $request->validate([
+            'studies_id' => 'required',
             'nombreCurso' => 'required|string|max:30',
             'precio' => 'required|integer',
             'descripcion' => 'required|string|max:60',

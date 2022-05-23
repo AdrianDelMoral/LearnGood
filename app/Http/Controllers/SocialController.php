@@ -54,7 +54,7 @@ class SocialController extends Controller
         $request->validate([
             'user_id' => 'required',
             'platform_id' => 'required|integer',
-            'username' => 'required|string|max:25',
+            'username' => 'required|string|max:35',
         ]);
 
         Social::create([
@@ -87,7 +87,7 @@ class SocialController extends Controller
     public function edit(Social $social)
     {
         $platforms = Platform::All();
-        return view('socials.edit', compact('platforms'));
+        return view('socials.edit', compact('platforms', 'social'));
     }
 
     /**
@@ -99,7 +99,18 @@ class SocialController extends Controller
      */
     public function update(Request $request, Social $social)
     {
-        //
+        $request->validate([
+            'user_id' => 'required',
+            'platform_id' => 'required|integer',
+            'username' => 'required|string|max:35',
+        ]);
+
+        $input = $request->all();
+
+        $social->update($input);
+
+        // Mensaje para indicar en index que se a creado con exito
+        return Redirect::Route('socials.index')->with('updateMsj', 'Red Social Actualizada con Exito.');
     }
 
     /**
@@ -110,6 +121,7 @@ class SocialController extends Controller
      */
     public function destroy(Social $social)
     {
-        //
+        $social->delete();
+        return Redirect::Route('socials.index')->with('errorMsj', 'Red Social Eliminada con Exito.');
     }
 }

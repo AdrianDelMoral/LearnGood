@@ -68,8 +68,6 @@ class PlatformController extends Controller
 
         $input = $request->all();
 
-
-
         if ($image = $request->file('platformImage')) {
             $destinationPath = 'imagenes/platformImages';
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
@@ -88,7 +86,6 @@ class PlatformController extends Controller
     public function destroy(Platform $platform)
     {
         $platform->delete();
-        // $platform->delete();
 
         // Mensaje para indicar en index que se a eliminado con exito
         return Redirect::Route('platforms.index')->with('errorMsj', 'Plataforma Eliminada con Exito.');

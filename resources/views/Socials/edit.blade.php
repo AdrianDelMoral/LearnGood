@@ -11,7 +11,7 @@
 
         <h1>Editar Red Social</h1>
 
-        <form action="{{ route('socials.update', $estudio) }}" method="post">
+        <form action="{{ route('socials.update', $social) }}" method="post">
             @method('PUT')
 
             @csrf
@@ -23,7 +23,7 @@
                     <option value="a" selected disabled>===Selecciona una Red Social===</option>
                     @foreach ($platforms as $platform)
                         <option value="{{ $platform->id }}"
-                            @if (isset($estudio)) {{ $estudio->platform_id == $platform->id ? 'selected' : '' }} @endif>
+                            @if (isset($social)) {{ $social->platform_id == $platform->id ? 'selected' : '' }} @endif>
                             {{ $platform->nombre }}
                         </option>
                     @endforeach

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Livewire\WithPagination;
 
 class UserManage extends Controller
@@ -15,16 +16,6 @@ class UserManage extends Controller
         // sacamos todos los usuarios, para mostrarselos al administrador
         $users = User::paginate(9);
         return view('usersList.index', compact('users'));
-    }
-
-    public function create()
-    {
-        //
-    }
-
-    public function store(Request $request)
-    {
-        //
     }
 
     public function show($id)
@@ -57,6 +48,11 @@ class UserManage extends Controller
 
     public function destroy($id)
     {
-        //
+        $borrarUser = User::findOrFail($id);
+        $borrarUser->delete();
+
+        $users = User::paginate(9);
+        return view('usersList.index', compact('users'))->with('errorMsj', 'Usuario Eliminado con Exito.');
+        // return Redirect::Route('usersList.index', compact('users'))->with('errorMsj', 'Usuario Eliminado con Exito.');
     }
 }

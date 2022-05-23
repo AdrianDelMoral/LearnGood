@@ -70,7 +70,7 @@
                 </div>
             @endif
 
-            <button type="submit" class="btn btn-info border-dark">Editar Plataforma</button>
+            <button type="submit" class="btn btn-info border-dark">Editar Usuario</button>
         </form>
     </div>
     <div class="container">

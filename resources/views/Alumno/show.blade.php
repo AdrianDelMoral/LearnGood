@@ -36,10 +36,12 @@
                             @forelse ($profeInfo->social as $socials)
                                 <div class="fotoPerfil">
                                     <a href="" class="social m-3">
-                                        <div class="cajaImg_platform">
-                                            <img src="{{ asset('imagenes/platformImages/' . $socials->platform->platformImage) }}"
-                                                alt="{{ $socials->platform->nombre }}" style="width: 32px;">
-                                        </div>
+                                        <a href="{{ $socials->platform->platformURL . $socials->username }}" class="social m-3" target="blank">
+                                            <div class="cajaImg_platform">
+                                                <img src="{{ asset('imagenes/platformImages/' . $socials->platform->platformImage) }}"
+                                                    alt="{{ $socials->platform->nombre }}" style="width: 32px;">
+                                            </div>
+                                        </a>
                                     </a>
                                 </div>
                             @empty

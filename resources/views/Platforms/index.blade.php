@@ -28,7 +28,7 @@
             <tbody class="text-center">
                 @forelse($platforms as $platform)
                     <tr>
-                        <th class="text-center">
+                        <th class="text-center bg-secondary">
                             <div class="fotoPerfil">
                                 <div class="cajaImg">
                                     <div class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">

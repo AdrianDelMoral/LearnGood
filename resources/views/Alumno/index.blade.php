@@ -57,8 +57,21 @@
                         </div>
                         <div class="card-content d-flex flex-column align-items-center">
                             <h4 class="text-dark pt-2">{{ $user->nombre }} {{ $user->apellidos }}</h4>
-                            <ul class="social-icons d-flex justify-content-center">
-                                <li style="--i:1">
+                            <ul class="social-icons d-flex justify-content-center text-align-center">
+                                @forelse ($user->social as $socials)
+                                    <div class="fotoRS">
+                                        <a href="{{ $socials->platform->platformURL . $socials->username }}" class="social m-3" target="blank">
+                                            <div class="cajaImg_platform">
+                                                <img src="{{ asset('imagenes/platformImages/' . $socials->platform->platformImage) }}" alt="{{ $socials->platform->nombre }}" style="width: 32px;">
+                                            </div>
+                                        </a>
+                                    </div>
+                                @empty
+                                    <p class="fst-italic fw-bold mx-3 pt-3 text-dark text-center">Este profesor no dispone Red Social donde contactar con el
+                                        aún...
+                                    </p>
+                                @endforelse
+                                    {{-- <li style="--i:1">
                                     <a href="#">
                                         <span class="text-dark fab fa-linkedin"></span>
                                     </a>
@@ -72,7 +85,7 @@
                                     <a href="#">
                                         <span class="text-dark fab fa-github"></span>
                                     </a>
-                                </li>
+                                </li> --}}
                             </ul>
 
                             <a href="{{ route('alumnoviews.show', $user) }}">
