@@ -52,7 +52,10 @@ class UserManage extends Controller
         $borrarUser->delete();
 
         $users = User::paginate(9);
-        return view('usersList.index', compact('users'))->with('errorMsj', 'Usuario Eliminado con Exito.');
+        //return view('usersList.index', compact('users'))->with('errorMsj', 'Usuario Eliminado con Exito.');
+        return back()->with('errorMsj', 'Usuario Eliminado con Exito.');
+
+
         // return Redirect::Route('usersList.index', compact('users'))->with('errorMsj', 'Usuario Eliminado con Exito.');
     }
 }
