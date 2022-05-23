@@ -39,24 +39,7 @@
                             <p class="fst-italic fw-bold">Este usuario no dispone Plataformas donde contactar con el aún...
                             </p>
                         @endforelse
-                        {{-- @if (!isset($user->social))
-                            <!--si NO tiene redes sociales irá al siguiente-->
-                            @foreach ($user->social as $socials)
-                                <div class="fotoPerfil">
-                                    <a href="" class="social m-3">
-                                        <div class="cajaImg_platform">
-                                            <img src="{{ asset('imagenes/platformImages/' . $socials->platform->platformImage) }}"
-                                                alt="{{ $socials->platform->nombre }}" style="width: 32px;">
-                                        </div>
-                                    </a>
-                                </div>
-                            @endforeach
-                        @else
-                            <p class="fst-italic fw-bold">Este usuario no dispone Plataformas donde contactar con el aún...
-                            </p>
-                        @endif --}}
                     </div>
-                    {{-- fin bucle redes sociales --}}
                 </div>
             </div>
             <div class="d-flex col-md-7 border-right m-2 align-items-center">
@@ -84,7 +67,7 @@
                 <div class="justify-content-center row row-cols-1 row-cols-md-3 mb-3 text-center align-items-center">
                     {{-- Bucle de precios --}}
                     @foreach ($user->studies as $study)
-                        @if ($study->courses)
+                        @if (!$study->courses)
                             @foreach ($study->courses as $curso)
                                 <div class="col">
                                     <div class="priEstContainer mb-4 text-dark rounded-3 shadow-sm text-light">
@@ -116,7 +99,7 @@
                         @else
                             <div class="priEstContainer col-md-6 mb-5">
                                 <div class="h-100 p-5 text-white rounded-3">
-                                    <h2 class="text-dark">Este profesor aun no a añadido Estudios realizados</h2>
+                                    <h2 class="text-dark">Este profesor aun no ha creado ningun Curso</h2>
                                     <p class="fst-italic mb-0 text-dark fw-bold mt-4">Seguro que añadirá muy pronto...
                                     </p>
                                 </div>

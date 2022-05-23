@@ -29,10 +29,6 @@
                         <span class="fw-bold mt-4">{{ $profeInfo->nombre }} {{ $profeInfo->apellidos }}</span>
                         <span class="fw-bold text-primary mt-4">{{ $profeInfo->email }}</span>
                         <div class="div_socials d-flex flex-row align-items-center text-center mt-3">
-                            {{-- <a href="$id->redes_sociales->link->github" class="social m-3">
-                                <span class="fa-brands fa-2x fa-github"></span>
-                            </a> --}}
-                            {{-- inicio bucle redes sociales --}}
                             @forelse ($profeInfo->social as $socials)
                                 <div class="fotoPerfil">
                                     <a href="" class="social m-3">
@@ -88,7 +84,7 @@
                     <div class="justify-content-center row row-cols-1 row-cols-md-3 text-center align-items-center">
 
                         @foreach ($profeInfo->studies as $study)
-                            @if ($study->courses)
+                            @if (!$study->courses)
                                 @foreach ($study->courses as $curso)
                                     <div class="col">
                                         <div class="priEstContainer mb-4 text-dark rounded-3 shadow-sm text-light">
@@ -120,7 +116,7 @@
                             @else
                                 <div class="priEstContainer col-md-6 mb-5">
                                     <div class="h-100 p-5 text-white rounded-3">
-                                        <h2 class="text-dark">Este profesor aun no a añadido Estudios realizados</h2>
+                                        <h2 class="text-dark">Este profesor aun no ha creado ningun Curso</h2>
                                         <p class="fst-italic mb-0 text-dark fw-bold mt-4">Seguro que añadirá muy pronto...
                                         </p>
                                     </div>
