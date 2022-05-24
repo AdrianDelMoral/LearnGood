@@ -44,6 +44,24 @@ class UserManage extends Controller
     public function update(Request $request, $id)
     {
         //
+        $usuario = User::findOrFail($id);
+
+        if($request->role_id == "Profesor"){
+            $usuario -> nombre = $request->nombre;
+            $usuario -> apellidos = $request->apellidos;
+            $usuario -> idioma = $request->idioma;
+            $usuario -> descripcion = $request->descripcion;
+            $usuario->save();
+        }
+        if($request->role_id == "Alumno"){
+            $usuario -> nombre = $request->nombre;
+            $usuario -> apellidos = $request->apellidos;
+            $usuario->save();
+        }
+
+
+        return redirect(route('manageusers.index'))->with('warningMsj', 'Usuario Editado con Exito.');
+
     }
 
     public function destroy($id)

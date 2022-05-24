@@ -11,14 +11,14 @@
 
         <h1>Actualizar Usuario</h1>
         @foreach ($id as $item)
-
         @endforeach
         <form action="{{ route('manageusers.update', $id) }}" method="post">
             @method('PUT')
 
             @csrf
 
-            <input class="form-control" readonly="readonly" hidden type="number" name="id" id="id" value="{{ old('id') ?? @$id->id }}">
+            <input class="form-control" readonly="readonly" hidden type="number" name="id" id="id"
+                value="{{ old('id') ?? @$id->id }}">
 
             <div class="mb-3">
                 <label for="role_id" class="form-label">role_id</label>
