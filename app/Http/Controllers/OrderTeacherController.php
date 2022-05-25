@@ -18,28 +18,11 @@ class OrderTeacherController extends Controller
     public function index()
     {
 
-        // return $ordersTeacher = Order::whereHas('getProfesor', Auth::user()->id)->get();
-
         $ordersTeacher = Order::whereHas('getProfesor', function ($query) {
             $query->where('user_id_profesor',Auth::user()->id);
         })->get();
 
         return view('ordersteacher.index',compact('ordersTeacher'));
-    }
-
-    public function create()
-    {
-        //
-    }
-
-    public function store(Request $request)
-    {
-        //
-    }
-
-    public function show(Order $ordersteacher)
-    {
-        //
     }
 
     public function edit(Order $ordersteacher)
@@ -56,13 +39,11 @@ class OrderTeacherController extends Controller
         }
     }
 
-    public function update(Request $request, Order $ordersteacher)
-    {
-
-    }
-
     public function destroy(Order $ordersteacher)
     {
-        //
+        $ordersteacher->delete();
+
+        // Mensaje para indicar en index que se a eliminado con exito
+        return Redirect::Route('ordersteacher.index')->with('errorMsj', 'Pedido Eliminado con Exito.');
     }
 }

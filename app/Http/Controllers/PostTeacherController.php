@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostRequest;
 use App\Models\Course;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -18,15 +19,14 @@ class PostTeacherController extends Controller
     public function show($id)
     {
         $posts = Post::where('courses_id', $id)->get();
-        // return $posts;
+
         $Curso = Course::where('id', $id)->first();
-        // return $Curso;
+
         return view('postsTeacher.show', compact('posts', 'Curso'));
     }
     public function infoPost($id)
     {
         $post = Post::where('id', $id)->first();
-        // return $post;
 
         return view('postsTeacher.infoPost', compact('post'));
     }
@@ -36,14 +36,12 @@ class PostTeacherController extends Controller
         return view('postsTeacher.create', compact('Curso'));
     }
 
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
         $input = $request->all();
-        // return $input;
+
         $id = $request->get('courses_id');
-        // return $id;
-        // return $request->file('imagePost');
-        // return $id;
+
         $request->validate([
             'titulo' => 'required|unique:posts|string|max:30',
             'entrada' => 'required|string',
@@ -65,29 +63,54 @@ class PostTeacherController extends Controller
             $input['video'] = "$videoPosts";
         }
 
-        // return $id;
         Post::create($input);
 
-        $posts = Post::where('courses_id', $id)->get();
-        // return $posts;
-        $Curso = Course::where('id', $id)->first();
-        // return $Curso;
-        // Mensaje para indicar en index que se a creado con exito
         return redirect("profesor/cursosposts/".$id)->with('createMsj', 'Post Creado con Exito.');
     }
 
-    public function edit($id)
+    public function edit($cursospost)
     {
-        //
+        // $cursospost = Post::where('id', $cursospost)->first();
+        return view('postsTeacher.edit')->with('cursospost',$cursospost);
     }
 
-    public function update(Request $request, $id)
+    public function update(PostRequest $request, $id)
     {
-        //
+        $input = $request->all();
+
+        $id = $request->get('courses_id');
+
+        $request->validate([
+            'titulo' => 'required|unique:posts|string|max:30',
+            'entrada' => 'required|string',
+            'contenidoPost' => 'required|string',
+            'imagePost' => 'image',
+        ]);
+
+        if ($image = $request->file('imagePost')) {
+            $destinationPath = 'imagenes/postImages';
+            $profileImage = date('dmYHi') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $input['imagePost'] = "$profileImage";
+        }
+
+        if ($video = $request->file('video')) {
+            $destinationPath = 'postVideos';
+            $videoPosts = date('dmYHi') . "." . $video->getClientOriginalExtension();
+            $video->move($destinationPath, $videoPosts);
+            $input['video'] = "$videoPosts";
+        }
+
+        $id->update($input);
+
+        return redirect("profesor/cursosposts/".$id)->with('createMsj', 'Post Actualizado con Exito.');
     }
 
     public function destroy($id)
     {
-        //
+        $borrarPost = Post::findOrFail($id);
+        $borrarPost->delete();
+
+        return back()->with('errorMsj', 'Post Eliminado con Exito.');
     }
 }

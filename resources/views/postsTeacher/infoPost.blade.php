@@ -10,17 +10,17 @@
     @if (Auth::user()->role_id == 'Profesor')
         <div class="d-flex justify-content-end">
 
-            <div class="d-flex justify-content-end">
-                <button class="m-4 btn btn-success">Boton para editar</button>
-            </div>
-
-            <div class="d-flex justify-content-end">
-                <button class="m-4 btn btn-danger">Boton para Eliminar</button>
-            </div>
+            <a href="{{ route('cursosposts.edit', $post) }}" class="mx-2">
+                <button class="btn btn-success fas fa-edit fa-xl p-3"></button>
+            </a>
+            <form action="{{ route('cursosposts.destroy', $post) }}" method="post">
+                @method('DELETE')
+                @csrf
+                <button type="submit" class="btn btn-danger fas fa-trash fa-xl p-3 mx-2"></button>
+            </form>
         </div>
     @endif
     <div class="mainContainer container">
-        {{-- <img src="{{ asset('imagenes/postImages/' . $post->imagePost) }}" class="card-img-top" alt="{{ $post->titulo }}"> --}}
         <header class="masthead d-flex align-items-center"
             style="background-image: url('{{ asset('imagenes/postImages/' . $post->imagePost) }}'); height:20rem; background-position: center;background-repeat: no-repeat;">
             <div class="overlay"></div>

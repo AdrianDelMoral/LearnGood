@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserManageRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -30,38 +31,41 @@ class UserManage extends Controller
             $devolver = $value;
         }
         $id = $devolver;
-        if ($id->role_id == 'Profesor') {
-            // return ['Profesor',$id];
-            return view('UsersList.edit', compact('id'));
-        } else if ($id->role_id == 'Alumno') {
-            // return ['Alumno',$id];
-            return view('UsersList.edit', compact('id'));
-        } else if ($id->role_id == 'Admin') {
-            return view('UsersList.edit', compact('id'));
-        }
+        return view('UsersList.edit', compact('id'));
     }
 
-    public function update(Request $request, $id)
+    public function update(UserManageRequest $request, $id)
     {
-        //
+
         $usuario = User::findOrFail($id);
 
         if($request->role_id == "Profesor"){
+            $request->validate([
+                'nombre' => 'required|string',
+                'apellidos' => 'required|string',
+                'idioma' => 'required|string',
+                'descripcion' => 'required|string|max:150',
+            ]);
+
             $usuario -> nombre = $request->nombre;
             $usuario -> apellidos = $request->apellidos;
             $usuario -> idioma = $request->idioma;
             $usuario -> descripcion = $request->descripcion;
             $usuario->save();
         }
+
         if($request->role_id == "Alumno"){
+            $request->validate([
+                'nombre' => 'required|string',
+                'apellidos' => 'required|string',
+            ]);
             $usuario -> nombre = $request->nombre;
             $usuario -> apellidos = $request->apellidos;
             $usuario->save();
         }
 
 
-        return redirect(route('manageusers.index'))->with('warningMsj', 'Usuario Editado con Exito.');
-
+        return redirect(route('manageusers.index'))->with('updateMsj', 'Usuario Actualizado con Exito.');
     }
 
     public function destroy($id)
@@ -69,11 +73,7 @@ class UserManage extends Controller
         $borrarUser = User::findOrFail($id);
         $borrarUser->delete();
 
-        $users = User::paginate(9);
-        //return view('usersList.index', compact('users'))->with('errorMsj', 'Usuario Eliminado con Exito.');
         return back()->with('errorMsj', 'Usuario Eliminado con Exito.');
 
-
-        // return Redirect::Route('usersList.index', compact('users'))->with('errorMsj', 'Usuario Eliminado con Exito.');
     }
 }

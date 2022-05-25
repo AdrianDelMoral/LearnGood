@@ -43,7 +43,6 @@
                             <a href="{{ route('platforms.edit',$platform) }}">
                                 <button class="btn btn-success fas fa-edit fa-xl p-3"></button>
                             </a>
-
                         </th>
                         <th class="text-center">
                             <form action="{{ route('platforms.destroy', $platform) }}" method="post">

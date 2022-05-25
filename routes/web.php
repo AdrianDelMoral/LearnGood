@@ -80,10 +80,10 @@ Route::group(['middleware' => 'auth'], function () {
         // Crud de estudios
         Route::resource('estudios', StudyController::class);
 
-            // Crud Posts como Profesor
-            Route::resource('cursosposts', PostTeacherController::class);
-            Route::get('cursosposts/{Curso}/createPost', [PostTeacherController::class, 'createPost'])->name('cursosposts.createPost');
-            Route::get('cursosposts/infoPost/{Post}',[PostTeacherController::class, 'infoPost'])->name('cursosposts.infoPost');
+        // Crud Posts como Profesor
+        Route::resource('cursosposts', PostTeacherController::class);
+        Route::get('cursosposts/{Curso}/createPost', [PostTeacherController::class, 'createPost'])->name('cursosposts.createPost');
+        Route::get('cursosposts/infoPost/{Post}',[PostTeacherController::class, 'infoPost'])->name('cursosposts.infoPost');
 
     });
 });

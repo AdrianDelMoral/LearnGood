@@ -15,25 +15,14 @@
                 </a>
             @endif
 
-            {{-- Dentro de las tarjetas de temas --}}
-            {{-- <a href="{{ route('posts.infoPost') }}" class="m-4 btn btn-secondary border-dark">
-                    Ver
-                </a>
-                <a href="{{ route('posts.edit') }}" class="m-4 btn btn-primary border-dark">
-                    Editar
-                </a>
-                <a href="{{ route('posts.destroy') }}" class="m-4 btn btn-danger border-dark">
-                    Eliminar
-                </a> --}}
-            {{-- Dentro de las tarjetas de temas --}}
         </div>
-        <!-- editar y eliminar -->
     @endif
-    <!-- editar y eliminar -->
     <div class="p-4">
         <h1 class="text-center fw-bold"><u>{{ $Curso->nombreCurso }}</u></h1>
         <h2>Usuario: {{ Auth::user()->role_id }}</h2>
-        <x-form-alerts />
+        <div class="container">
+            <x-form-alerts />
+        </div>
 
         @if (count($posts) == 0)
             <div class="container my-5">
@@ -67,10 +56,22 @@
                             <h5 class="card-title fw-italic">{{ $post->titulo }}</h5>
                             <p class="card-text">{{ $post->entrada }} </p>
                         </div>
-                        <div class="m-3">
-                            <a href="{{ route('cursosposts.infoPost', $post) }}" class="btn btn-warning">
-                                Ver Post
-                            </a>
+                        <div class="m-3 d-flex row">
+                            <div class="col">
+                                <a href="{{ route('cursosposts.infoPost', $post) }}" class="btn btn-warning">
+                                    Ver Post
+                                </a>
+                            </div>
+                            <div class="col d-flex align-items-center justify-content-end">
+                                <a href="{{ route('cursosposts.edit', $post) }}" class="mx-2">
+                                    <button class="btn btn-success fas fa-edit fa-xl p-3"></button>
+                                </a>
+                                <form action="{{ route('cursosposts.destroy', $post) }}" method="post">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger fas fa-trash fa-xl p-3 mx-2"></button>
+                                </form>
+                            </div>
                         </div>
                         <div class="card-footer text-muted">
                             Ultima actualización:
@@ -86,10 +87,5 @@
     </div>
     @endif
     </div>
-
-
-    <!-- Bucle de post -->
-    <!-- Dentro del bucle en cada tarjeta del post -->
-    <!-- Bucle de post -->
 
 @endsection

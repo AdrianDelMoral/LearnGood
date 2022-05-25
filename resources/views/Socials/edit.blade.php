@@ -37,7 +37,7 @@
                 <label for="username" class="form-label">Nombre de Usuario</label>
                 <input class="form-control" type="text" name="username" id="username" placeholder="Nombre de Usuario"
                     value="{{ old('username') ?? @$social->username }}">
-                <p class="form-text">Nombre de usuario</p>
+                    <p class="form-text">Nombre de usuario</p>
                 @error('username')
                     <p class="form-text text-danger">{{ $message }}</p>
                 @enderror
