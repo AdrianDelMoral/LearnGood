@@ -52,9 +52,9 @@ class PostTeacherController extends Controller
 
         if ($image = $request->file('imagePost')) {
             $destinationPath = 'imagenes/postImages';
-            $profileImage = date('dmYHi') . "." . $image->getClientOriginalExtension();
-            $image->move($destinationPath, $profileImage);
-            $input['imagePost'] = "$profileImage";
+            $postImage = date('dmYHi') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $postImage);
+            $input['imagePost'] = "$postImage";
         }
 
         if ($video = $request->file('video')) {

@@ -1,5 +1,4 @@
 <div>
-
     <!-- Warning Alert -->
     @if (Session::has('createMsj'))
         <div class="alert alert-success alert-dismissible d-flex align-items-center fade show h7">
@@ -46,7 +45,8 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>
     @endif
-    {{-- @if (Session::has('createMsj'))
+    {{--
+        @if (Session::has('createMsj'))
             <div class="alert alert-success h5">
                 {{ Session::get('createMsj') }}
             </div>

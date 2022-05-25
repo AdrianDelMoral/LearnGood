@@ -20,6 +20,7 @@
     <div class="p-4">
         <h1 class="text-center fw-bold"><u>{{ $Curso->nombreCurso }}</u></h1>
         <h2>Usuario: {{ Auth::user()->role_id }}</h2>
+
         <div class="container">
             <x-form-alerts />
         </div>
