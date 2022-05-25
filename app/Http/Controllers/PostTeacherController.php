@@ -70,8 +70,10 @@ class PostTeacherController extends Controller
 
     public function edit($cursospost)
     {
-        // $cursospost = Post::where('id', $cursospost)->first();
-        return view('postsTeacher.edit')->with('cursospost',$cursospost);
+        // return $cursospost;
+        $post = Post::where('id', $cursospost)->first();
+        // return $cursospost;
+        return view('postsTeacher.edit', compact('post'));
     }
 
     public function update(PostRequest $request, $id)
@@ -81,7 +83,7 @@ class PostTeacherController extends Controller
         $id = $request->get('courses_id');
 
         $request->validate([
-            'titulo' => 'required|unique:posts|string|max:30',
+            'titulo' => 'required|string|max:30',
             'entrada' => 'required|string',
             'contenidoPost' => 'required|string',
             'imagePost' => 'image',
