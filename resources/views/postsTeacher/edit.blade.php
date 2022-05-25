@@ -10,7 +10,6 @@
     <div class="container py-5 text-center">
 
         <h1><u>Editar Post</u></h1>
-
         <form action="{{ route('cursosposts.update', $post) }}" method="post" enctype="multipart/form-data">
             @method('PUT')
 

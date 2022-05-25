@@ -38,12 +38,13 @@ class PostTeacherController extends Controller
 
     public function store(PostRequest $request)
     {
+        return $request;
         $input = $request->all();
 
         $id = $request->get('courses_id');
 
         $request->validate([
-            'titulo' => 'required|unique:posts|string|max:30',
+            'titulo' => 'required|string|max:30',
             'entrada' => 'required|string',
             'contenidoPost' => 'required|string',
             'imagePost' => 'image',

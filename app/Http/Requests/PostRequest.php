@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class PostRequest extends FormRequest
@@ -30,9 +31,9 @@ class PostRequest extends FormRequest
         return [
             'titulo' => [
                 'required',
-                'unique:posts',
                 'string',
-                'max:30'],
+                'max:30',
+            ],
             'entrada' => [
                 'required',
                 'string',
@@ -49,7 +50,6 @@ class PostRequest extends FormRequest
         return [
             /* Titulo */
             'titulo.required' => 'El Titulo del Post es obligatorio',
-            'titulo.unique' => 'Ya existe un post con este Titulo.',
             'titulo.string' => 'El Titulo del Post debe ser un texto.',
             'titulo.max' => 'El Titulo del Post de no puede tener más de 30 carácteres.',
 
