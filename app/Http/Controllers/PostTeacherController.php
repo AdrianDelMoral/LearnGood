@@ -79,7 +79,7 @@ class PostTeacherController extends Controller
 
     public function update(PostRequest $request, $id)
     {
-        $input = $request->all();
+        $post = Post::findOrFail($id);
 
         $id = $request->get('courses_id');
 
@@ -90,11 +90,17 @@ class PostTeacherController extends Controller
             'imagePost' => 'image',
         ]);
 
+        $input = $request->all();
+        $post->titulo = $request->titulo;
+        $post->entrada = $request->entrada;
+        $post->contenidoPost = $request->contenidoPost;
+
         if ($image = $request->file('imagePost')) {
             $destinationPath = 'imagenes/postImages';
             $profileImage = date('dmYHi') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
             $input['imagePost'] = "$profileImage";
+            $post->imagePost = $profileImage;
         }
 
         if ($video = $request->file('video')) {
@@ -102,9 +108,10 @@ class PostTeacherController extends Controller
             $videoPosts = date('dmYHi') . "." . $video->getClientOriginalExtension();
             $video->move($destinationPath, $videoPosts);
             $input['video'] = "$videoPosts";
+            $post->video = $videoPosts;
         }
 
-        $id->update($input);
+        $post->save();
 
         return redirect("profesor/cursosposts/".$id)->with('createMsj', 'Post Actualizado con Exito.');
     }
