@@ -9,10 +9,9 @@ selectElement.addEventListener('change', (event) => {
 
     /* Selecciona Profesor quitar los hidden de las clases que lo tienen */
     if (event.target.value == 'Profesor') {
-        /* console.log(event.target.value); */
         resultado = document.querySelector('.rol_seleccionado');
         resultado.className = 'rol_seleccionado'
-        /* selectElement.disabled = true; */
+
         rol_seleccionado = event.target.value;
         rol_selected = document.querySelector('.rol_selected');
         rol_selected.className = 'rol_selected hidden';
@@ -20,22 +19,16 @@ selectElement.addEventListener('change', (event) => {
         decir_rol = document.querySelector('.decir_rol');
         decir_rol.className = 'decir_rol';
 
-        /* let type_selected = document.createElement("p");
-        type_selected.className = '';
-        type_selected.textContent = `${event.target.value}`;
-        decir_rol.appendChild(p); */
-
         for (let clase_profesor of document.querySelectorAll('.profesor')) {
             clase_profesor.className = 'mt-4 profesor'
             console.log(clase_profesor);
         }
     }
+
     /* Selecciona Alumno mostrará los que no tienen la clase hidden */
     if (event.target.value == 'Alumno') {
-        /* console.log(event.target.value); */
         resultado = document.querySelector('.rol_seleccionado');
         resultado.className = 'rol_seleccionado'
-        /* selectElement.disabled = true; */
 
         rol_seleccionado = event.target.value;
         rol_selected = document.querySelector('.rol_selected');
@@ -55,13 +48,14 @@ selectElement.addEventListener('change', (event) => {
 /* aqui el boton de reiniciar la parte visual y se escondan los campos del formulario */
 selectButton = document.querySelector('#bad_role');
 selectButton.onclick = function(e) {
-    /* console.log(resultado); */
+
         resultado = document.querySelector('.rol_seleccionado');
         resultado.className = 'rol_seleccionado hidden'
         selectElement.disabled = false;
+
+        // Recorrerá los divs con la clase profesor, y los pondrá como hidden
         for (let clase_profesor_ocultar of document.querySelectorAll('.profesor')) {
             clase_profesor_ocultar.className = 'mt-4 profesor hidden'
-            /* console.log(clase_profesor_ocultar); */
         }
 
         rol_selected = document.querySelector('.rol_selected');
