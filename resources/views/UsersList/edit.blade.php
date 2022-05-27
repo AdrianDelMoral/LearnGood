@@ -55,8 +55,6 @@
                 <div class="mb-3">
                     <label for="descripcion" class="form-label">Descripcion</label>
                     <textarea  class="form-control" name="descripcion" id="descripcion" cols="30" rows="10">{{ old('descripcion') ?? @$id->descripcion }}</textarea>
-                    {{-- <input class="form-control" type="text" name="descripcion" id="descripcion" placeholder="Descripcion"
-                        value="{{ old('descripcion') ?? @$id->descripcion }}"> --}}
                     @error('descripcion')
                         <p class="form-text text-danger">{{ $message }}</p>
                     @enderror
