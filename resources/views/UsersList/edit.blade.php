@@ -9,7 +9,7 @@
 @section('cuerpo')
     <div class="container py-5 text-center">
 
-        <h1>Actualizar Usuario</h1>
+        <h1>Actualizar Usuario - {{ $id->role_id }}</h1>
         @foreach ($id as $item)
         @endforeach
         <form action="{{ route('manageusers.update', $id) }}" method="post">
