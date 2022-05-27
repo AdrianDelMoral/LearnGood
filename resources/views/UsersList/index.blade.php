@@ -47,18 +47,20 @@
                         <td class="text-center">
                             <p>{{ $user->apellidos }}</p>
                         </td>
-                        <th class="text-center">
-                            <a href="{{ route('manageusers.edit', $user) }}">
-                                <button class="btn btn-success fas fa-edit fa-xl p-3"></button>
-                            </a>
-                        </th>
-                        <th class="text-center">
-                            <form action="{{ route('manageusers.destroy', $user->id) }}" method="post">
-                                @method('DELETE')
-                                @csrf
-                                <button type="submit" class="btn btn-danger fas fa-trash fa-xl p-3"></button>
-                            </form>
-                        </th>
+                        @if ($user->id > 1)
+                            <th class="text-center">
+                                <a href="{{ route('manageusers.edit', $user) }}">
+                                    <button class="btn btn-success fas fa-edit fa-xl p-3"></button>
+                                </a>
+                            </th>
+                            <th class="text-center">
+                                <form action="{{ route('manageusers.destroy', $user->id) }}" method="post">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger fas fa-trash fa-xl p-3"></button>
+                                </form>
+                            </th>
+                        @endif
                     </tr>
                 @endforeach
             </tbody>
