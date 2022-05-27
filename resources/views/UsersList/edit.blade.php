@@ -19,15 +19,7 @@
 
             <input class="form-control" readonly="readonly" hidden type="number" name="id" id="id"
                 value="{{ old('id') ?? @$id->id }}">
-
-            <div class="mb-3">
-                <label for="role_id" class="form-label">role_id</label>
-                <input class="form-control" type="text" name="role_id" id="role_id" placeholder="Nombre"
-                    value="{{ old('role_id') ?? @$id->role_id }}">
-                @error('role_id')
-                    <p class="form-text text-danger">{{ $message }}</p>
-                @enderror
-            </div>
+            <input class="form-control" readonly="readonly" hidden type="text" name="role_id" id="role_id" value="{{ old('role_id') ?? @$id->role_id }}">
 
 
             <div class="mb-3">
