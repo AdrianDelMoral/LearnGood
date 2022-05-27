@@ -71,9 +71,7 @@ class PostTeacherController extends Controller
 
     public function edit($cursospost)
     {
-        // return $cursospost;
         $post = Post::where('id', $cursospost)->first();
-        // return $cursospost;
         return view('postsTeacher.edit', compact('post'));
     }
 
