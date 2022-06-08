@@ -18,12 +18,12 @@ class PostController extends Controller
 
         // sacar los posts con el id del curso($posts->id)
         $posts = Post::where('courses_id', $id)->get();
-        // return $posts;
+        // return ['Curso', $Curso,'Posts', $posts];
 
         $status = Order::where([['user_id_alumno', Auth::user()->id], ['courses_id', $id]])->find(1);
 
-        $status =  $status->status;
-        // return $status;
+        // return ['status', $status];
+        $status =  $status == false;
 
         return view('postsStudentView.show', compact('posts', 'Curso', 'status'));
     }

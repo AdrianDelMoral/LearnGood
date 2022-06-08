@@ -35,7 +35,6 @@
                             @if ($order->status === 0)
                                 <button class="btn btn-secondary fa-solid fa-eye-slash fa-xl p-3"></button>
                             @else
-                            {{ $order->cursoModel->id }}
                                 <a href="{{ route('alumnosposts.show', $order->cursoModel->id) }}">
                                     <button class="btn btn-secondary fas fa-eye fa-xl p-3"></button>
                                 </a>

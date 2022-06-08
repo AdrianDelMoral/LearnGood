@@ -32,7 +32,8 @@
                             @forelse ($profeInfo->social as $socials)
                                 <div class="fotoPerfil">
                                     <a href="" class="social m-3">
-                                        <a href="{{ $socials->platform->platformURL . $socials->username }}" class="social m-3" target="blank">
+                                        <a href="{{ $socials->platform->platformURL . $socials->username }}"
+                                            class="social m-3" target="blank">
                                             <div class="cajaImg_platform">
                                                 <img src="{{ asset('imagenes/platformImages/' . $socials->platform->platformImage) }}"
                                                     alt="{{ $socials->platform->nombre }}" style="width: 32px;">
@@ -82,47 +83,57 @@
                         </div>
                     </div>
                     <div class="justify-content-center row row-cols-1 row-cols-md-3 text-center align-items-center">
-
-                        @foreach ($profeInfo->studies as $study)
-                            @if (count($study->courses) >= 1)
-                                @foreach ($study->courses as $curso)
-                                    <div class="col">
-                                        <div class="priEstContainer mb-4 text-dark rounded-3 shadow-sm text-light">
-                                            <div class="card-header py-3">
-                                                <h4 class="my-0 fw-normal ">{{ $curso->nombreCurso }}</h4>
-                                            </div>
-                                            <div class="card-body">
-                                                <p class="h1 card-title pricing-card-title my-3">
-                                                    {{ $curso->precio }}<small>€</small>
-                                                </p>
-                                                <div>
-                                                    <p
-                                                        class="h5 mx-5 card-title pricing-card-title border-top border-dark my-3 pt-3">
-                                                        Descripción del Curso:
-                                                    </p>
+                        @if (count($profeInfo->studies) > 0)
+                            @foreach ($profeInfo->studies as $study)
+                                @if (count($study->courses) > 0)
+                                    @foreach ($study->courses as $curso)
+                                        <div class="col">
+                                            <div class="priEstContainer mb-4 text-dark rounded-3 shadow-sm text-light">
+                                                <div class="card-header py-3">
+                                                    <h4 class="my-0 fw-normal ">{{ $curso->nombreCurso }}</h4>
                                                 </div>
-                                                <ul class="list-unstyled mt-3 mb-4">
-                                                    <li class="text-break">{{ $curso->descripcion }}</li>
-                                                </ul>
-                                                <a href="{{ route('ordersstudent.createOrder', $curso) }}">
-                                                    <button type="button" class="w-100 btn btn-lg btn-dark fw-bold">
-                                                        Comprar Curso
-                                                    </button>
-                                                </a>
+                                                <div class="card-body">
+                                                    <p class="h1 card-title pricing-card-title my-3">
+                                                        {{ $curso->precio }}<small>€</small>
+                                                    </p>
+                                                    <div>
+                                                        <p
+                                                            class="h5 mx-5 card-title pricing-card-title border-top border-dark my-3 pt-3">
+                                                            Descripción del Curso:
+                                                        </p>
+                                                    </div>
+                                                    <ul class="list-unstyled mt-3 mb-4">
+                                                        <li class="text-break">{{ $curso->descripcion }}</li>
+                                                    </ul>
+                                                    <a href="{{ route('ordersstudent.createOrder', $curso) }}">
+                                                        <button type="button" class="w-100 btn btn-lg btn-dark fw-bold">
+                                                            Comprar Curso
+                                                        </button>
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
+                                    @endforeach
+                                @else
+                                    <div class="priEstContainer col-md-6 mb-5">
+                                        <div class="h-100 p-5 text-white rounded-3">
+                                            <h2 class="text-dark">Este profesor aun no ha creado ningun Curso</h2>
+                                            <p class="fst-italic mb-0 text-dark fw-bold mt-4">Seguro que añadirá muy
+                                                pronto...
+                                            </p>
+                                        </div>
                                     </div>
-                                @endforeach
-                            @else
-                                <div class="priEstContainer col-md-6 mb-5">
-                                    <div class="h-100 p-5 text-white rounded-3">
-                                        <h2 class="text-dark">Este profesor aun no ha creado ningun Curso</h2>
-                                        <p class="fst-italic mb-0 text-dark fw-bold mt-4">Seguro que añadirá muy pronto...
-                                        </p>
-                                    </div>
+                                @endif
+                            @endforeach
+                        @else
+                            <div class="priEstContainer col-md-6 mb-5">
+                                <div class="h-100 p-5 text-white rounded-3">
+                                    <h2 class="text-dark">Este profesor al no tener Estudios, no puede crear aún ningún curso</h2>
+                                    <p class="fst-italic mb-0 text-dark fw-bold mt-4">Seguro que los añadirá muy pronto...
+                                    </p>
                                 </div>
-                            @endif
-                        @endforeach
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>

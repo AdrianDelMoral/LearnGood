@@ -54,7 +54,14 @@
                         </div>
                     </article>
 
-                    <article class="post-preview mt-5">
+                    <article class="post-preview mt-5 d-flex justify-content-start">
+                        <div class="btn mainContainer">
+                            <p class="post-meta">Ultima actualización hace: {{ $post->updated_at->diffForHumans() }}
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="post-preview mt-5 mb-5">
                         <h2 class="post-title text-center mb-5"><u>Video:</u></h2>
                         <div class="d-flex justify-content-center mainContainer p-5">
                             @if ($post->video !== null)
@@ -63,10 +70,10 @@
                                     <p>Play Video</p>
                                 </div>
                                 <div class="clip-video">
+                                    <b class="text-light close-video">Close</b>
                                     <!-- Video Attribution  -->
                                     <video src="{{ asset('postVideos/' . $post->video) }}" controls="true"
                                         id="video"></video>
-                                    <b class="close-video">Close</b>
                                 </div>
                                 <script type="text/javascript">
                                     let btn = document.querySelector(".btn-video");
@@ -88,12 +95,6 @@
                             @else
                                 <h4 class="post-subtitle">Este post no tiene videos actualmente</h4>
                             @endif
-                        </div>
-                    </article>
-                    <article class="post-preview mt-5 d-flex justify-content-start">
-                        <div class="btn mainContainer mb-5">
-                            <p class="post-meta">Ultima actualización hace: {{ $post->updated_at->diffForHumans() }}
-                            </p>
                         </div>
                     </article>
                 </div>

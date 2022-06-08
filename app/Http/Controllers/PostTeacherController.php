@@ -38,7 +38,7 @@ class PostTeacherController extends Controller
 
     public function store(PostRequest $request)
     {
-        return $request;
+        // return $request;
         $input = $request->all();
 
         $id = $request->get('courses_id');

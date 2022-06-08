@@ -8,7 +8,7 @@
 
 @section('cuerpo')
     <div class="p-4">
-        <h1 class="text-center fw-bold">Listado de Posts de este Curso{{ $Curso->nombreCurso }}</h1>
+        <h1 class="text-center fw-bold">Listado de Posts de este Curso {{ $Curso->nombreCurso }}</h1>
         <h2>Usuario: {{ Auth::user()->role_id }}</h2>
 
         <div class="text-dark p-5 row row-cols-1 row-cols-md-3 g-4">

@@ -62,10 +62,11 @@
         <div class="col-md-10 container">
             <div class="p-3 py-5">
                 <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-                    <h2 class="">Cursos</h2>
+                    <h1 class="display-4 fw-normal">Cursos</h1>
                 </div>
                 <div class="justify-content-center row row-cols-1 row-cols-md-3 mb-3 text-center align-items-center">
                     {{-- Bucle de precios --}}
+                    @if (count($user->studies) > 0)
                     @foreach ($user->studies as $study)
                         @if (count($study->courses) >= 1)
                             @foreach ($study->courses as $curso)
@@ -106,6 +107,15 @@
                             </div>
                         @endif
                     @endforeach
+                    @else
+                    <div class="priEstContainer col-md-6 mb-5">
+                        <div class="h-100 p-5 text-white rounded-3">
+                            <h2 class="text-dark">Este profesor al no tener Estudios, no puede crear aún ningún curso</h2>
+                            <p class="fst-italic mb-0 text-dark fw-bold mt-4">Seguro que los añadirá muy pronto...
+                            </p>
+                        </div>
+                    </div>
+                @endif
                 </div>
             </div>
         </div>
@@ -114,7 +124,7 @@
             <div class="row justify-content-center text-center mb-5">
                 <div class="col-md-8 col-lg-6">
                     <div class="header">
-                        <h2>Estudios</h2>
+                        <h1 class="display-4 fw-normal">Estudios</h1>
                     </div>
                 </div>
             </div>

@@ -75,7 +75,7 @@
 }
 
 .clip-video .close-video {
-    position: absolute;
+    position: relative;
     top: 30px;
     right: 30px;
     cursor: pointer;
